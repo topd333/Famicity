@@ -1,0 +1,40 @@
+{
+  "name": "famicity-front",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "2.1.3",
+    "angular": "1.4.4",
+    "angular-resource": "1.4.4",
+    "angular-animate": "1.4.4",
+    "angular-sanitize": "1.4.4",
+    "angular-cookies": "1.4.4",
+    "angular-translate": "2.7.0",
+    "messageformat": "0.1.7",
+    "angular-translate-interpolation-messageformat": "2.7.0",
+    "angular-translate-loader-static-files": "2.1.0",
+    "ngInfiniteScroll": "1.2.0",
+    "angular-dynamic-locale": "0.1.11",
+    "moment": "2.10.3",
+    "angular-breadcrumb": "0.3.3",
+    "jstimezonedetect": "https://github.com/josh/jstimezonedetect.git#~1.0.4",
+    "fastclick": "1.0.6",
+    "font-awesome": "4.3.0",
+    "isMobile": "~0.3.6",
+    "hello": "~1.5.1",
+    "famicity_font": "git@github.com:famicity/icons.git#0.1.2",
+    "angular-ui-router": "0.2.15",
+    "angular-ui-router-i18n": "git@github.com:nicompte/angular-ui-router-i18n.git",
+    "ngImgCrop": "https://github.com/Javarome/ngImgCrop.git#1f894227f2c7a364a97cb11a8828018d4b09ef5b",
+    "afkl-lazy-image": "~0.1.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.4.4",
+    "angular-scenario": "1.4.4",
+    "es5-shim": "~4.0.5"
+  },
+  "resolutions": {
+    "angular-translate": "2.7.0",
+    "angular": "1.4.4",
+    "angular-ui-router": "0.2.15"
+  }
+}

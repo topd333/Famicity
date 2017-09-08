@@ -1,0 +1,95 @@
+// Below are convenient constants to
+
+body, html {
+  font-size: 16px;
+}
+
+p {
+  font-size: 1em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.17em;
+}
+
+h4 {
+  font-size: 1.12em;
+}
+
+h5 {
+  font-size: 0.83em;
+}
+
+h6 {
+  font-size: 0.75em;
+}
+
+@mixin onSmallScreen() {
+  @media (max-width: $breakingPointSmall) {
+    @content;
+  }
+}
+@mixin aboveSmallScreen() {
+  @media (min-width: $breakingPointSmall + 0.0625em) {
+    @content;
+  }
+}
+@mixin onMediumScreenOnly() {
+  @media (min-width: $breakingPointSmall) and (max-width: $breakingPointMedium) {
+    @content;
+  }
+}
+@mixin aboveMediumScreen() {
+  @media (min-width: $breakingPointMedium) { /*and (max-width: $breakingPointDesktop)*/
+    @content;
+  }
+}
+@mixin belowLargeScreen() {
+  @media (max-width: $breakingPointMedium) {
+    @content;
+  }
+}
+@mixin aboveLargeScreen() {
+  @media (min-width: $breakingPointLarge) {
+    @content;
+  }
+}
+@mixin onTouchScreen() {
+  html.touch {    // The touch class will be set if touch-enabled device is detected
+    @content;
+  }
+}
+@mixin onNoTouchScreen() {
+  html.no-touch { // The no-touch class will be set if touch-enabled device is detected
+    @content;
+  }
+}
+
+@include onSmallScreen() {
+  body {
+    font-size: 0.9em;
+  }
+}
+@include onMediumScreenOnly() {
+  body {
+    //font-size: 0.9em;
+  }
+}
+@include aboveMediumScreen() {
+  body {
+    font-size: 1em;
+  }
+}
+@include aboveLargeScreen() {
+  body {
+    //font-size: 1.1em;
+  }
+}

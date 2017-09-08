@@ -1,0 +1,530 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" data-translate>PROFILE.TITLE</h2>-->
+      <!--<a ng-if="isUpdatable" class="btn btn-icon pull-right" ui-sref="u.profile-edit({user_id: viewedUserId})"><i-->
+        <!--class="fa fa-edit"></i></a>-->
+    <!--</fc-header-bar>-->
+
+    <div fc-mobile-header-profile basic-profile="user || profile" viewed-user-id="viewedUserId"
+         current-tab="currentTab"></div>
+
+    <div class="visible-xs"
+         ng-if="user.global_state != 'active' && user.global_state != 'unknown' && user.global_state != 'deceased' && !user.is_invited_by_me && userId != user.id && user.global_state !== 'profile'"
+         ng-click="invite(user)">
+      <div>
+        <div class="clearfix">
+          <img alt="" class="pic-in-text-left hidden-xs" src="/images/unblock-user-collage.jpg"/>
+          <br class="visible-xs"/>
+
+          <p class="text-next-to-pic-right" data-translate data-translate-values="{firstName: user.first_name}">
+            PROFILE.INVITE_TEXT</p>
+        </div>
+      </div>
+      <div class="vertical-button-group">
+        <br/>
+        <a ng-click="invite(user)" class="btn btn-primary btn-lg button-min-width" data-translate>INVITE</a>
+        <br/>
+      </div>
+    </div>
+
+    <div class="container-fluid column-holder" ng-show="user.permissions.is_readable">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary profile="user"></fc-user-summary>
+
+          <!-- Left context icons -->
+          <div ng-show="viewedUserId != userId" class="left-column-block">
+            <div fc-other-users-links></div>
+          </div>
+          <!-- /// Left context icons -->
+          <div
+            ng-show="viewedUserId != userId && user.global_state != 'deceased' && ( user.is_a_close == true || ( user.global_state == 'managed' && user.email != null ) || user.global_state == 'directory')"
+            class="left-column-block">
+            <!-- TODO : check when the information is visible or not -->
+            <fc-left-column-block-header>
+              <h3 data-translate>GROUPS</h3>
+            </fc-left-column-block-header>
+            <div ng-if="user.in_groups && user.in_groups.length" class="left-column-block-content">
+              <p data-translate>THE_GROUPS</p>
+              <span class="left-column-names" ng-repeat="group in user.in_groups" ng-if="group.group_name != undefined">{{ group.group_name}}<span
+                ng-if="$last == false">,&nbsp;</span></span>
+            </div>
+            <div ng-if="user.in_groups == null || !user.in_groups.length" class="left-column-block-content">
+              <p data-translate>NO_GROUP</p>
+            </div>
+            <div class="item-sub-delimiter"></div>
+            <div>
+
+              <a ui-sref="u.directory.groups({user_id: viewedUserId})" class="left-column-bottom-link"><span translate>EDIT</span><i
+                class="fa fa-pencil-square-o"></i></a>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8 right-column right-column-directory">
+          <div class="main-content">
+            <div class="profile-top-block clearfix hidden-xs">
+
+              <a ui-sref="u.profile-photos({user_id: viewedUserId})">
+                <img alt="avatar" class="profile-top-block-picture" ng-src="{{ user.avatar_url }}"/>
+              </a>
+
+              <div class="profile-top-block-info">
+                <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+
+                <h3 ng-if="user.global_state == 'deceased' && (user.birth_date || user.death_date)">
+                  <span>{{ user.birth_date ? $moment.fromServer(user.birth_date).format('L') : '?' }}</span> - <span>{{ user.death_date ? $moment.fromServer(user.death_date).format('L') : '?' }}</span>
+                </h3>
+
+                <h3 ng-if="user.email && user.global_state != 'deceased'"><i class="fa fa-envelope-o"></i> {{
+                  user.email }}</h3>
+
+                <h3 ng-if="user.birth_place && user.global_state != 'deceased'">{{ user.birth_place }}</h3>
+              </div>
+
+            </div>
+
+            <br/>
+
+            <div class="view-profile-holder">
+              <div ng-show="user.personalInfos.length || isUpdatable">
+                <div class="clearfix">
+                  <div ng-show="isUpdatable" class="center-right-icons right-function-icons clearfix">
+                    <a class="btn btn-icon btn-icon-primary" ui-sref="u.profile-edit({user_id: viewedUserId})"><i
+                      class="fa fa-edit"></i></a>
+                  </div>
+
+                  <h3 ng-if="userId == viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-user"></i></span><span data-translate>MY_PERSONAL_INFORMATIONS</span></h3>
+
+                  <h3 ng-if="userId != viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-user"></i></span>{{ "HIS_HER_PERSONAL_INFORMATIONS" | translate: { GENDER: user.sex } :
+                    "messageformat" }}</h3>
+                </div>
+
+                <div class="view-profile-block">
+                  <div class="clearfix">
+                    <div ng-repeat-start="(key, info) in user.personalInfos" class="clearfix">
+                      <div>
+                        <h4>{{ info.label | translate }} :</h4>
+                      </div>
+                      <div class="view-profile-editable-value">{{ info.value }}</div>
+                    </div>
+                    <div ng-repeat-end ng-show="($index % 2 != 0) && !$last"
+                         class="view-profile-delimiter hidden-xs"></div>
+                  </div>
+                </div>
+                <p ng-show="!user.personalInfos.length" data-translate>EMPTY_PERSONAL_INFORMATIONS_INSTRUCTIONS</p>
+
+                <div class="view-profile-section-delimiter" ng-show="!user.is_deceased"></div>
+              </div>
+
+              <div ng-show="(user.user_emails || isUpdatable) && !user.is_deceased">
+                <div class="clearfix">
+                  <div ng-show="isUpdatable" class="center-right-icons right-function-icons clearfix">
+                    <a class="btn btn-icon btn-icon-primary btn-plus" ng-click="openAddMailPopup()">+</a>
+                  </div>
+
+                  <h3 ng-if="userId == viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-envelope-o"></i></span><span data-translate>MY_EMAIL_ADDRESSES</span></h3>
+
+                  <h3 ng-if="userId != viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-envelope-o"></i></span>{{ "HIS_HER_EMAIL_ADDRESSES" | translate: { GENDER: user.sex } :
+                    "messageformat" }}</h3>
+                </div>
+                <div class="view-profile-block" ng-show="userId == viewedUserId">
+
+                  <div class="clearfix">
+                    <div class="float-left-992-r">
+                      <h4>{{ "YOUR_CURRENT_LOGIN" | translate }}: &nbsp;</h4>
+                    </div>
+                    <div ng-if="isUpdatable" class="view-profile-editable-icon small-edit-icon"><a class="pointer"
+                                                                                                   ng-click="openChangeLoginMailPopup()"><i
+                      class="fa fa-edit"></i></a>
+                    </div>
+                    <div class="view-profile-editable-value view-profile-editable-email">{{ user.currentEmail.email }}
+                    </div>
+                  </div>
+
+                </div>
+                <div class="view-profile-block">
+                  <div class="clearfix">
+                    <div ng-repeat-start="(type, subList) in user.user_emails" class="clearfix">
+                      <div>
+                        <h4>{{ type }} :</h4>
+                      </div>
+                      <div class="fcity-clearfix" ng-repeat="email in subList">
+
+                        <div class="view-profile-editable-icons">
+                          <div class="view-profile-editable-icon small-edit-icon">
+                            <div ng-if="isUpdatable"><a class="pointer"
+                                                        ng-show="!email.user_email.is_used_for_authenticate"
+                                                        ng-click="openEditMailPopup(email.user_email.id)"><i
+                              class="fa fa-edit"></i></a></div>
+                          </div>
+                          <div ng-show="(viewedUserId == userId) &&  !email.user_email.is_valid_email"
+                               class="danger-color pull-right pointer"
+                               ng-click="openValidateMailPopup(email.user_email.id, $last)"><i
+                            class="fa fa-exclamation-triangle"></i></div>
+                        </div>
+
+                        <div class="view-profile-editable-value">{{ email.user_email.email }}</div>
+                      </div>
+                    </div>
+                    <div ng-repeat-end ng-show="($index % 2 != 0) && !$last"
+                         class="view-profile-delimiter hidden-xs"></div>
+                  </div>
+                </div>
+
+                <div ng-show="!user.user_emails" ng-bind="'EMPTY_EMAILS_INSTRUCTIONS' | translate"></div>
+
+                <div class="view-profile-section-delimiter"></div>
+              </div>
+
+              <div ng-show="(user.user_phones || isUpdatable) && !user.is_deceased">
+                <div class="clearfix">
+                  <div ng-show="isUpdatable" class="center-right-icons right-function-icons clearfix">
+                    <a class="btn btn-icon btn-icon-primary btn-plus" ng-click="openAddPhonePopup()">+</a>
+                  </div>
+                  <h3 ng-if="userId == viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-phone"></i></span><span data-translate>MY_PHONE_NUMBERS</span></h3>
+
+                  <h3 ng-if="userId != viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-phone"></i></span>{{ "HIS_HER_PHONE_NUMBERS" | translate: { GENDER: user.sex } :
+                    "messageformat" }}</h3>
+                </div>
+                <div class="view-profile-block">
+                  <div class="clearfix">
+                    <div ng-repeat-start="(type, subList) in user.user_phones" class="clearfix">
+                      <div>
+                        <h4>{{ type }} :</h4>
+                      </div>
+                      <div ng-repeat="phone in subList">
+                        <div ng-if="isUpdatable" class="view-profile-editable-icon small-edit-icon"><a class="pointer"
+                                                                                                       ng-click="openEditPhonePopup(phone.user_phone.id)"><i
+                          class="fa fa-edit"></i></a>
+                        </div>
+                        <div class="view-profile-editable-value">{{ phone.user_phone.phone }}</div>
+                      </div>
+                    </div>
+                    <div ng-repeat-end ng-show="($index % 2 != 0) && !$last"
+                         class="view-profile-delimiter hidden-xs"></div>
+                  </div>
+                </div>
+                <div ng-show="!user.user_phones" ng-bind="'EMPTY_PHONES_INSTRUCTIONS' | translate"></div>
+                <div class="view-profile-section-delimiter"></div>
+              </div>
+
+              <div ng-show="(user.user_addresses || isUpdatable) && !user.is_deceased">
+                <div class="clearfix">
+                  <div ng-show="isUpdatable" class="center-right-icons right-function-icons clearfix">
+                    <a class="btn btn-icon btn-icon-primary btn-plus" ng-click="openAddAddressPopup()">+</a>
+                  </div>
+                  <h3 ng-if="userId == viewedUserId" class="section-title"><span
+                    class="wcs-g-icon wcs-g-icon-green"><i class="fa fa-map-marker"></i></span><span data-translate>MY_ADDRESSES</span>
+                  </h3>
+
+                  <h3 ng-if="userId != viewedUserId" class="section-title"><span
+                    class="wcs-g-icon wcs-g-icon-green"><i class="fa fa-map-marker"></i></span>{{ "HIS_HER_ADDRESSES"
+                    | translate: { GENDER: user.sex } : "messageformat" }}</h3>
+                </div>
+                <div class="view-profile-block">
+                  <div class="clearfix">
+                    <div ng-repeat-start="(type, subList) in user.user_addresses" class="clearfix">
+                      <div><h4>{{ type }} :</h4></div>
+                      <div ng-repeat="address in subList" class="address clearfix">
+                        <div ng-if="isUpdatable" class="view-profile-editable-icon small-edit-icon"><a
+                          class="pointer address-edit" ng-click="openEditAddressPopup(address.user_address.id)"><i
+                          class="fa fa-edit"></i></a></div>
+                        <div class="view-profile-editable-value">
+                          {{ address.user_address.address }}<span ng-if="address.user_address.address_complement">,&nbsp;{{ address.user_address.address_complement }}</span>
+
+                          <div ng-if="address.user_address.city || address.user_address.zip_code">
+                            {{ address.user_address.zip_code }}&nbsp;{{ address.user_address.city }}<span
+                            ng-if="address.user_address.country">,&nbsp;{{ "COUNTRY_" + address.user_address.country | translate }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div ng-repeat-end ng-show="($index % 2 != 0) && !$last"
+                         class="view-profile-delimiter hidden-xs"></div>
+                  </div>
+                </div>
+                <div ng-show="!user.user_addresses" ng-bind="'EMPTY_ADDRESSES_INSTRUCTIONS' | translate"></div>
+
+                <div class="view-profile-section-delimiter"></div>
+              </div>
+
+              <div ng-show="(user.user_websites || isUpdatable) && !user.is_deceased">
+                <div class="clearfix">
+                  <div ng-show="isUpdatable" class="center-right-icons right-function-icons clearfix">
+                    <a class="btn btn-icon btn-icon-primary btn-plus" ng-click="openAddWebSitePopup()">+</a>
+                  </div>
+
+                  <h3 ng-if="userId == viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-globe"></i></span><span data-translate>MY_WEB_SITES</span></h3>
+
+                  <h3 ng-if="userId != viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-globe"></i></span>{{ "HIS_HER_WEB_SITES" | translate: { GENDER: user.sex } :
+                    "messageformat" }}</h3>
+                </div>
+                <div class="view-profile-block">
+                  <div class="clearfix">
+                    <div ng-repeat-start="(type, subList) in user.user_websites" class="clearfix">
+                      <div>
+                        <h4>{{ type }} :</h4>
+                      </div>
+                      <div ng-repeat="website in subList">
+                        <div ng-if="isUpdatable" class="view-profile-editable-icon small-edit-icon"><a class="pointer"
+                                                                                                       ng-click="openEditWebSitePopup(website.user_website.id)"><i
+                          class="fa fa-edit"></i></a>
+                        </div>
+                        <div class="view-profile-editable-value">{{ website.user_website.web_site }}</div>
+                      </div>
+                    </div>
+                    <div ng-repeat-end ng-show="($index % 2 != 0) && !$last"
+                         class="view-profile-delimiter hidden-xs"></div>
+                  </div>
+                </div>
+                <div ng-show="!user.user_websites" ng-bind="'EMPTY_WEB_SITES_INSTRUCTIONS' | translate"></div>
+
+                <div class="view-profile-section-delimiter"></div>
+              </div>
+
+              <div
+                ng-if="(userId == viewedUserId || (user.global_state == 'active' && !user.emptyPassions)) && !user.is_deceased">
+                <div class="clearfix">
+                  <div ng-if="isUpdatable" class="center-right-icons right-function-icons clearfix">
+                    <a class="btn btn-icon btn-icon-primary" ui-sref="u.profile-passions({user_id: viewedUserId})"><i
+                      class="fa fa-edit"></i></a>
+                  </div>
+
+                  <h3 ng-if="userId == viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-star"></i></span><span data-translate>MY_PASSIONS</span></h3>
+
+                  <h3 ng-if="userId != viewedUserId" class="section-title"><span class="wcs-g-icon wcs-g-icon-green"><i
+                    class="fa fa-star"></i></span>{{ "HIS_HER_PASSIONS" | translate: { GENDER: user.sex } :
+                    "messageformat" }}</h3>
+                </div>
+
+                <div ng-show="user.user_info.activity" class="clearfix">
+                  <div ng-if="userId == viewedUserId">
+                    <h4>{{ "MY_ACTIVITIES" | translate }} :</h4>
+                  </div>
+                  <div ng-if="userId != viewedUserId">
+                    <h4>{{ "HIS_HER_ACTIVITIES" | translate: { GENDER: user.sex } : "messageformat" }} :</h4>
+                  </div>
+                  <div class="view-profile-editable-value">{{ user.user_info.activity }}</div>
+                </div>
+                <div ng-show="user.user_info.music" class="view-profile-delimiter"></div>
+                <div ng-show="user.user_info.music" class="clearfix">
+                  <div ng-if="userId == viewedUserId">
+                    <h4>{{ "MY_MUSICS" | translate }} :</h4>
+                  </div>
+                  <div ng-if="userId != viewedUserId">
+                    <h4>{{ "HIS_HER_MUSICS" | translate: { GENDER: user.sex } : "messageformat" }} :</h4>
+                  </div>
+                  <div class="view-profile-editable-value">{{ user.user_info.music }}</div>
+                </div>
+                <div ng-show="user.user_info.tvmovie" class="view-profile-delimiter"></div>
+                <div ng-show="user.user_info.tvmovie" class="clearfix">
+                  <div ng-if="userId == viewedUserId">
+                    <h4>{{ "MY_SERIALS" | translate }} :</h4>
+                  </div>
+                  <div ng-if="userId != viewedUserId">
+                    <h4>{{ "HIS_HER_SERIALS" | translate: { GENDER: user.sex } : "messageformat" }} :</h4>
+                  </div>
+                  <div class="view-profile-editable-value">{{ user.user_info.tvmovie }}</div>
+                </div>
+                <div ng-show="user.user_info.movie" class="view-profile-delimiter"></div>
+                <div ng-show="user.user_info.movie" class="clearfix">
+                  <div ng-if="userId == viewedUserId">
+                    <h4>{{ "MY_MOVIES" | translate }} :</h4>
+                  </div>
+                  <div ng-if="userId != viewedUserId">
+                    <h4>{{ "HIS_HER_MOVIES" | translate: { GENDER: user.sex } : "messageformat" }} :</h4>
+                  </div>
+                  <div class="view-profile-editable-value">{{ user.user_info.movie }}</div>
+                </div>
+                <div ng-show="user.user_info.book" class="view-profile-delimiter"></div>
+                <div ng-show="user.user_info.book" class="clearfix">
+                  <div ng-if="userId == viewedUserId">
+                    <h4>{{ "MY_BOOKS" | translate }} :</h4>
+                  </div>
+                  <div ng-if="userId != viewedUserId">
+                    <h4>{{ "HIS_HER_BOOKS" | translate: { GENDER: user.sex } : "messageformat" }} :</h4>
+                  </div>
+                  <div class="view-profile-editable-value">{{ user.user_info.book }}</div>
+                </div>
+                <div ng-show="user.user_info.about_me" class="view-profile-delimiter"></div>
+                <div ng-show="user.user_info.about_me" class="clearfix">
+                  <div ng-if="userId == viewedUserId">
+                    <h4>{{ "MY_NOTES" | translate }} :</h4>
+                  </div>
+                  <div ng-if="userId != viewedUserId">
+                    <h4>{{ "HIS_HER_NOTES" | translate: { GENDER: user.sex } : "messageformat" }} :</h4>
+                  </div>
+                  <div class="view-profile-editable-value">{{ user.user_info.about_me }}</div>
+                </div>
+                <div ng-show="user.emptyPassions" ng-bind="'EMPTY_PASSIONS_INSTRUCTIONS' | translate"></div>
+                <br/>
+              </div>
+              <br/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid column-holder" ng-show="user.permissions.is_readable == false">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+         <!-- <div class="left-block-profile-summary clearfix">
+            <fc-avatar class="left-block-profile-picture avatar-size60" data-user="user"></fc-avatar>
+            &lt;!&ndash; <img alt="avatar" class="left-block-profile-picture" ng-src="{{ user.avatar_url }}" /> &ndash;&gt;
+            <div class="left-block-profile-details">
+              <h3><i class="fa fa-fw" ng-class="{'fa-male': user.sex == 'male', 'fa-female': user.sex == 'female'}"></i>{{
+                user.first_name }} {{ user.last_name }}</h3>
+            </div>
+          </div>-->
+          <fc-user-summary profile="user"></fc-user-summary>
+          <br/>
+        </div>
+        <div class="col-sm-8 right-column right-column-directory">
+          <div class="main-content">
+            <div class="profile-top-block clearfix hidden-xs">
+              <div class="table">
+                <div class="table-cell v-align-middle">
+                  <div class="profile-top-block-info profile-other-top-block-info">
+                    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                  </div>
+                </div>
+                <div class="table-cell"><img alt="avatar" class="profile-top-block-picture hidden-xs"
+                                             ng-src="{{ user.avatar_url }}"/></div>
+              </div>
+            </div>
+            <br class="hidden-xs"/>
+
+            <div ng-show="!user.is_blocked_by_me && !user.is_invited_by_me && user.is_a_close && user.global_state !== 'profile'">
+              <br class="hidden-xs"/>
+
+              <div class="clearfix">
+                <img alt="" class="pic-in-text-left hidden-xs" src="/images/unblock-user-collage.jpg"/>
+                <br class="visible-xs"/>
+
+                <p class="text-next-to-pic-right"
+                   data-translate
+                   data-translate-interpolation="messageformat"
+                   data-translate-values="{ GENDER: user.sex }">NO_ACCESS_TO_THIS_INFORMATION</p>
+              </div>
+            </div>
+
+            <div ng-show="user.is_blocked_by_me">
+              <div>
+                <br/>
+
+                <div class="clearfix">
+                  <img alt="" class="pic-in-text-left hidden-xs" src="/images/unblock-user-collage.jpg"/>
+                  <br class="visible-xs"/>
+
+                  <p class="text-next-to-pic-right"
+                     data-translate
+                     data-translate-interpolation="messageformat"
+                     data-translate-values="{ GENDER: user.sex }">NO_ACCESS_TO_THIS_INFORMATION</p>
+                </div>
+              </div>
+              <br/>
+
+              <div class="vertical-button-group ">
+                <a class="btn btn-primary btn-lg button-min-width" ng-click="authorizeUser()" data-translate>UNBLOCK_THIS_USER</a>
+              </div>
+            </div>
+
+            <div ng-show="!user.is_blocked_by_me && !user.is_a_close && !user.is_invited_by_me && !user.received_invitation && user.global_state !== 'profile'">
+
+              <div class="table">
+                <div class="table-cell v-align-middle hidden-xs">
+                  <img alt="" class="pic-in-text" src="/images/unblock-user-collage.jpg"/>
+                </div>
+                <div class="table-cell v-align-top center-to-left-text">
+                  <br class="visible-xs"/>
+                  <span data-translate data-translate-values="{ GENDER: user.sex }"
+                        data-translate-interpolation="messageformat">NO_ACCESS_YET_TO_THIS_INFORMATION</span><br/>
+                  <span data-translate data-translate-values="{ GENDER: user.sex }"
+                        data-translate-interpolation="messageformat">INVITE_USER_INSTRUCTION</span>
+                </div>
+              </div>
+              <div class="vertical-button-group profile-view-invite-button">
+                <a ng-click="invite(user)" class="btn btn-primary btn-lg button-min-width" data-translate>INVITE</a>
+              </div>
+            </div>
+
+            <div ng-show="user.global_state === 'profile'">
+
+              <div class="table">
+                <div class="table-cell v-align-middle hidden-xs">
+                  <img alt="" class="pic-in-text" src="/images/unblock-user-collage.jpg"/>
+                </div>
+                <div class="table-cell v-align-top center-to-left-text">
+                  <br class="visible-xs"/>
+                  <span data-translate>NO_ACCESS_YET_TO_THIS_INFORMATION</span><br/>
+                </div>
+              </div>
+            </div>
+
+            <div ng-show="user.received_invitation">
+              <div>
+                <br/>
+
+                <div class="clearfix">
+                  <img alt="" class="pic-in-text-left hidden-xs" src="/images/unblock-user-collage.jpg"/>
+                  <br class="visible-xs"/>
+
+                  <p class="text-next-to-pic-right">
+                    <span data-translate data-translate-values="{ GENDER: user.sex }"
+                          data-translate-interpolation="messageformat">NO_ACCESS_YET_TO_THIS_INFORMATION</span><br/>
+                    <span data-translate>ACCEPT_INVITATION_INSTRUCTION</span>
+                  </p>
+                </div>
+              </div>
+              <div>&nbsp;</div>
+              <!-- TODO -->
+              <div class="vertical-button-group ">
+                <div>
+                  <a ng-click="accept(user)" class="btn btn-primary btn-lg button-min-width" data-translate>ACCEPT</a>
+                </div>
+                <div>
+                  <a ng-click="destroyInvitation(user.received_invitation)"
+                     class="btn btn-secondary btn-lg button-min-width" data-translate>DECLINE</a>
+                </div>
+              </div>
+            </div>
+
+            <div ng-if="user.is_invited_by_me">
+              <div>
+                <br/>
+
+                <div class="clearfix">
+                  <img alt="" class="pic-in-text-left hidden-xs" src="/images/unblock-user-collage.jpg"/>
+                  <br class="visible-xs"/>
+
+                  <p class="text-next-to-pic-right">{{ "INVITATION_SENT_DATE" | translate: { date: (
+                    user.concerned_invitation.created_date * 1000 | date: "shortDate" ) } }}</p>
+                </div>
+              </div>
+              <div class="vertical-button-group">
+                <br/>
+                <a ui-sref="u.directory.resend-invitation({invitation_id: user.concerned_invitation.id})"
+                   class="btn btn-secondary btn-lg button-min-width" data-translate>REVIVE</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

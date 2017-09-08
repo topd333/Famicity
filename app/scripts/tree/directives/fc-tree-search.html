@@ -1,0 +1,70 @@
+<div id="tree-search-panel" class="left-insert tree-search-panel" ng-show="displayPanel">
+  <div class="left-insert-open-header">
+    <div class="table">
+      <div class="table-cell left-text v-align-middle" data-translate>TREE.SEARCH.TITLE</div>
+      <div class="table-cell right-text v-align-middle">
+        <a href="" ng-click="closePanel()"><i class="fa fa-times white-close-icon"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="left-insert-inside" id="tree-search-panel-inside">
+
+    <form class="form tree-search">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+        <label class="sr-only" for="tree-search" data-translate>SEARCH.TITLE</label>
+        <input class="form-control" id="tree-search" data-translate data-translate-attr-placeholder="SEARCH.TITLE" ng-model="search.criteria" ng-model-options="{debounce: 500}"/>
+      </div>
+      <div ng-if="showOptions">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+          <label class="sr-only" for="tree-search-place" data-translate>TREE.SEARCH.PLACE</label>
+          <input class="form-control" id="tree-search-place" data-translate
+                 data-translate-attr-placeholder="TREE.SEARCH.PLACE" ng-model="filter.place"/>
+        </div>
+        <div class="form-inline">
+          <div class="begin">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+              <label class="sr-only" for="tree-search-begin" data-translate>TREE.SEARCH.YEAR</label>
+              <input class="form-control" id="tree-search-begin" data-translate
+                     data-translate-attr-placeholder="TREE.SEARCH.YEAR" ng-model="filter.begin"/>
+            </div>
+          </div><!-- Keep them joined --><div class="end">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+              <label class="sr-only" for="tree-search-end" data-translate>TREE.SEARCH.YEAR</label>
+              <input class="form-control" id="tree-search-end" data-translate
+                     data-translate-attr-placeholder="TREE.SEARCH.YEAR" ng-model="filter.end"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="input-group toggle-options">
+        <a href="" ng-click="toggleOptions()">{{ (showOptions ? 'TREE.SEARCH.HIDE_OPTIONS' : 'TREE.SEARCH.SHOW_OPTIONS')
+          | translate:({count: resultCount}) }}</a>
+      </div>
+    </form>
+
+    <div class="result-count" ng-if="resultCount">
+      {{ 'TREE.SEARCH.RESULT_COUNT' | translate:({count: resultCount}):'messageformat' }}
+    </div>
+
+    <div class="result-count" ng-if="search.criteria && !resultCount">
+      {{ 'TREE.SEARCH.NO_RESULT' | translate }}
+    </div>
+
+    <fc-user-list ng-model="users"
+      data-load-more="loadMore"
+      data-mode="directory"
+      data-display-capital="falseValue"
+      data-show-result-count="false"
+      data-template="/scripts/tree/directives/tree-user-list-template.html"
+      data-on-click="onClick"
+      data-disable-search-field="trueValue"
+      data-custom-search-criteria="search.criteria"
+      data-infinite-scroll-container="#tree-search-panel-inside"
+      data-infinite-scroll-parent="trueValue"></fc-user-list>
+
+  </div>
+</div>

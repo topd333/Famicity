@@ -1,0 +1,21 @@
+@include aboveMediumScreen() {
+  #welcome {
+    &.targeted .slider #ref-welcome {
+      @include sliderSelect();
+    }
+  }
+
+  .contents {
+    max-width: $maxContentWidth;
+    margin: auto;
+    @include centeredVertically();
+
+    .form-container {
+      background: $formBackgroundGray;
+    }
+  }
+}
+
+@import "../common/util/auth/fc-hello_desktop";
+@import "sign-in/fc-sign-in_desktop";
+@import "sign-up/fc-sign-up_desktop";

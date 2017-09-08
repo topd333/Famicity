@@ -1,0 +1,74 @@
+$photoSize: 9em;
+$photoMargin: 1em;
+
+.fc-profile-photo {
+  display: inline-block;
+  &.cropping {
+    display: block;
+    .uploaded-photo {
+      position: absolute;
+      visibility: hidden;
+    }
+  }
+  .upload-button {
+    background-color: $gray_color;
+    border-radius: 50%;
+    width: $photoSize;
+    height: $photoSize;
+  }
+  .uploaded-photo {
+    height: $photoSize;
+    width: $photoSize;
+    img {
+      border: $green 2px solid;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  h2 {
+    margin-bottom: 2em;
+  }
+  .crop-zone {
+    max-width: 800px;
+    max-height: 600px;
+    .photo-cropped {
+      width: 0;
+    }
+    .actions {
+      margin-top: 0.5em;
+      .end {
+        text-align: center;
+        button {
+          width: auto;
+        }
+      }
+    }
+  }
+  .add-photo-area {
+    display: inline-block;
+    text-align: center;
+    margin-top: 2em;
+    vertical-align: middle;
+    max-width: $photoSize;
+    width: $photoSize;
+    height: $photoSize;
+
+    img {
+      width: 100%;
+    }
+    .smartImage {
+      width: 100%;
+      height: 100%;
+    }
+    i {
+      color: $white;
+      font-size: 3em;
+    }
+    .label {
+      width: $photoSize - 2em;
+      color: #a8a8aa;
+      display: inline-block;
+    }
+  }
+}

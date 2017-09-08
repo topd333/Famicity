@@ -1,0 +1,26 @@
+@import "../inline/variables.scss";
+
+.avatar {
+  display: block;
+  width: $avatarSizeLarge;
+  height: $avatarSizeLarge;
+  .avatar-rounded{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+  }
+  img {
+    // We should have to do this if fc-avatar style was fluid
+    width: 100%;
+    height: 100%;
+  }
+}
+.group {
+  @extend .avatar;
+  i {
+    font-size: 1.1em;
+    padding: 0.5em;
+    width: 2.5em;
+    height: 2.5em;
+  }
+}

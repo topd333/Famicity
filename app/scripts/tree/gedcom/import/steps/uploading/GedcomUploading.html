@@ -1,0 +1,21 @@
+<div class="uploading">
+
+  <form class="standard-form login-form">
+
+    <!--<p><span data-translate>GEDCOM.IMPORT.OPTIONS.FILENAME</span> {{gedcomImport.preloaded_file.name}}</p>-->
+
+    <h3 data-translate>GEDCOM.IMPORT.DETAILS.UPLOADING.SUBTITLE</h3>
+
+    <p class="info" data-translate>GEDCOM.IMPORT.DETAILS.UPLOADING.PLEASE_WAIT</p>
+
+    <progress id="upload-progress" value="{{uploadData.uploadedPercent}}" min="0" max="100"></progress>
+    <label for="upload-progress">{{uploadData.uploadedPercent|number:0}}%
+      ({{uploadData.uploadedBytes/1024|number:2}} {{'GEDCOM.IMPORT.DETAILS.UPLOADING.INFO.KB'|translate}} /
+      {{uploadData.totalBytes/1024|number:2}} {{'GEDCOM.IMPORT.DETAILS.UPLOADING.INFO.KB'|translate}})</label>
+
+    <div class="form-group">
+      <button class="btn btn-lg cancel large-button" ui-sref="gedcom-import-wizard.file" data-translate>GEDCOM.IMPORT.DETAILS.UPLOADING.CANCEL</button>
+    </div>
+
+  </form>
+</div>

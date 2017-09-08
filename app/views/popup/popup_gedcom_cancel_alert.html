@@ -1,0 +1,16 @@
+<div ng-init="init()">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3 translate>MY_GEDCOM_IMPORT</h3>
+      <div class="gedcom-cancel-alert-text">Souhaitez-vous annuler l'importation de votre fichier Gedcom?</div>
+      <form action="javascript:;" class="standard-form login-form" id="intro_form" method="POST">
+        <div class="form-group">
+          <button class="btn btn-primary green-button" type="submit" ng-click="submit()" data-translate>SUBMIT</button>
+        </div>
+        <button class="btn btn-primary dark-gray-button" ng-click="$close()" type="submit" data-translate>CANCEL
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

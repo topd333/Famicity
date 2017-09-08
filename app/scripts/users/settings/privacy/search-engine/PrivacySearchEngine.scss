@@ -1,0 +1,11 @@
+@include aboveMediumScreen() {
+  .settings.privacy.search-engine {
+    .action-submit {
+      display: none;
+    }
+    .agree-check {
+      text-align: center;
+      margin-top: 1em;
+    }
+  }
+}

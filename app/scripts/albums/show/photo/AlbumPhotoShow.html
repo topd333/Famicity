@@ -1,0 +1,120 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<a ng-if="album.permissions.is_updatable" ng-click="openPhotosMobileOptionsPopup()" class="btn btn-icon pull-right tree-dots"><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i></a>-->
+      <!--<fc-like data-object="photo" data-view-mode="mobile" data-list-page="listPageUrl"></fc-like>-->
+      <!--<a class="reduced-icon-size btn btn-icon pull-right" href="#comments-wrapper"><i class="fa fa-comment-o"></i> {{ photo.comments_count }}</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+          <div class="left-column-block">
+            <div class="left-column-block">
+              <div class="left-column-block-content left-navigation-icons">
+                <a ng-if="photo.likes_count" class="red-rollover" ui-sref="u.albums-photos-likes({user_id: viewedUserId, album_id: album.id, photo_id: photo.id})">
+                  <i><i class="fa fa-heart"></i></i><span translate>THEY_LIKE_PHOTO </span><b>{{ photo.likes_count }}</b>
+                </a>
+                <a ng-show="album.permissions.is_updatable" class="pointer" ng-click="setAsProfileImage()">
+                  <i><i class="fa fa-user"></i></i><span data-translate>SET_AS_PROFILE_PICTURE</span>
+                </a>
+                <a class="pointer" ng-href="{{ photo.url_original }}" target="_blank">
+                  <i><i class="fa fa-download"></i></i><span>{{ "SAVE" | translate }}</span>
+                </a>
+              </div>
+              <fc-left-column-block-header ng-show="photo.description || photo.photo_date || album.permissions.is_updatable">
+                <!--album.permissions.is_updatable-->
+                <h3 data-translate>PHOTO_INFORMATION</h3>
+                <span><a class="btn-plus">+</a></span>
+              </fc-left-column-block-header>
+              <div class="left-column-block-content" ng-show="photo.description || photo.photo_date">
+                <p ng-show="photo.description">
+                  {{ "DESCRIPTION_SC" | translate }}
+                  <span class="left-column-names">{{ photo.description }}</span>
+                </p>
+                <p ng-show="photo.photo_date">
+                  {{ "PHOTO_TAKEN_THE_SC" | translate }}
+                  <span class="left-column-names">{{ photo.photo_date | date: "shortDate" }}</span>
+                </p>
+                <div class="item-sub-delimiter" ng-show="album.permissions.is_updatable"></div>
+                <div ng-show="album.permissions.is_updatable">
+                  <a ng-click="openPhotoDescriptionPopup()" class="left-column-bottom-link pointer">
+                    <span translate>EDIT</span><i class="fa fa-pencil-square-o"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="left-column-block-content" ng-show="!photo.description && !photo.photo_date && album.permissions.is_updatable">
+                <p>
+                  <span data-translate>EMPTY_PHOTO_INFORMATION</span>
+                  <a class="green-link-color pointer" ng-click="openPhotoDescriptionPopup()" translate>EMPTY_PHOTO_CLICK_HERE</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8 right-column right-column-directory">
+
+          <div class="main-content">
+            <div class="slideshow" ng-show="slideshowMode">
+              <div class="navbar">
+                <p class="slide-count">{{ slider.currSlideId + 1 }} / {{ slider.numSlides }}</p>
+                <p id="playSlide" class="slideshow-play-btn fa fa-play"></p>
+                <p id="pauseSlide" class="slideshow-pause-btn fa fa-pause"></p>
+                <p id="prevSlide" class="slideshow-prev-btn fa fa-chevron-left pointer"></p>
+                <p id="nextSlide" class="slideshow-next-btn fa fa-chevron-right pointer"></p>
+                <p class="slideshow-close-btn fa fa-times pointer" ng-click="closeSlideshowMode()"></p>
+              </div>
+              <!--<img class="slideshow-img" ng-src="{{ photo.url_original }}" />-->
+              <div class="royalSlider rsDefault">
+              </div>
+            </div>
+
+            <!--<div class="clearfix visible-xs">-->
+              <!--<div class="center-right-icons right-function-icons clearfix">-->
+                <!--<a class="btn btn-icon btn-icon-primary" ng-click="goPreviousPhoto()"><i class="fa fa-angle-left"></i></a>-->
+                <!--<a class="btn btn-icon btn-icon-primary" ng-click="goNextPhoto()"><i class="fa fa-angle-right"></i></a>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div class="center-right-icons right-function-icons clearfix">-->
+                <!--<fc-like class="icon-link-wrapper"-  data-object="photo" data-view-mode="btn-icon"></fc-like>-->
+                <!--<a class="btn btn-icon btn-icon-primary pointer" ng-click="goPreviousPhoto()"><i class="fa fa-angle-left"></i></a>-->
+                <!--<a class="btn btn-icon btn-icon-primary pointer" ng-click="goNextPhoto()"><i class="fa fa-angle-right"></i></a>-->
+                <!--<a class="reduced-icon-size btn btn-icon btn-icon-primary pointer" ng-click="openSlideshowMode()"><i class="fa fa-play-circle-o"></i></a>-->
+                <!--<a ng-show="album.permissions.is_updatable" class="reduced-icon-size btn btn-icon btn-icon-primary pointer" ng-click="rotateLeft()"><i class="fa fa-reply"></i></a>-->
+                <!--<a ng-show="album.permissions.is_updatable" class="reduced-icon-size btn btn-icon btn-icon-primary pointer" ng-click="rotateRight()"><i class="fa fa-share"></i></a>-->
+                <!--<a ng-show="album.permissions.is_updatable" class="reduced-icon-size btn btn-icon btn-icon-danger pointer" ng-click="openDeletePhotoAlertPopup()"><i class="fa fa-trash-o"></i></a>-->
+              <!--</div>-->
+<!---->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <!--<br ng-class="{'hidden-xs': showCommentsView}" />-->
+            <div class="photo-gallery-image-holder">
+              <div id="photo-wrapper" class="photo-wrapper">
+                <img class="pointer" ng-click="openSlideshowMode()" id="rotated-img" ng-class="{'hidden-xs': showCommentsView}" ng-src="{{ photo.url_normal }}" />
+                <div ng-show="rotation != 0" class="picture-rotate-blur"></div>
+                <div ng-show="rotation != 0" class="picture-rotate-blur-neutralizer">
+                  <div class="picture-rotate-confirm-controls-holder">
+                    <div class="picture-rotate-confirm-controls">
+                      <div><a class="btn btn-primary btn-lg button-min-width pointer" ng-click="validateRotation()" translate>SUBMIT</a>
+                      </div>
+                      <br />
+                      <div><a class="btn btn-secondary btn-lg button-min-width pointer" ng-click="cancelRotation()" translate>CANCEL</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <fc-comment-list data-object="photo" data-user="user"></fc-comment-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

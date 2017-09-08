@@ -1,0 +1,19 @@
+<div class="wrapper" ng-init="init()">
+    <div class="lang lang-pos" data-fc-language-switcher></div>
+    <div class="content">
+        <div class="main">
+            <div class="ui_elem famicity-logo"><a ui-sref="base"></a></div>
+            <div ng-if="success" class="screen-response clearfix">
+              <div class="response-icon pull-left">
+                  <i class="fa fa-check"></i>
+              </div>
+              <h1 class="response-text pull-right" translate>EMAIL_VALIDATED_SUCCESS_MSG</h1>
+            </div>
+        </div>
+        <br />
+        <div>
+            <a class="btn btn-primary btn-lg green-button-min-width" ui-sref="base" translate>RETURN_TO_FAMICITY_LINK</a>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,120 @@
+<div class="wrapper" ng-init="init()">
+  <div class="lang lang-pos" data-fc-language-switcher></div>
+  <div class="sign-in-pos hidden-xs">
+    <a class="btn btn-primary button-force-padding home-signin" ui-sref="sign-in" translate="">SIGN_IN</a>
+  </div>
+  <div class="content">
+    <div class="main">
+      <div id="slide1" class="introduction-slide image-slide">
+        <div id="inner-slide1">
+          <div class="form-and-items-background">
+            <div class="home-above-form">
+              <div class="ui_elem famicity-logo"><a ui-sref="base"></a></div>
+              <h1 class="welcome-message" translate>BASELINE-MY-FEED</h1>
+            </div>
+            <div fc-sign-up data-btn-text="CREATE_ACCOUNT" data-show-spam-msg="showSpamMsg"></div>
+          </div>
+
+          <a data-fc-scroll href="#slide2" class="next-slide-link fa fa-chevron-down"></a>
+        </div>
+      </div>
+
+      <div id="slide2" class="content-slide">
+        <div class="slide-text">
+          <h2 data-translate>FAMICITY-PRESENTATION-SLIDE2-TITLE</h2>
+
+          <p data-translate>FAMICITY-PRESENTATION-SLIDE2-TEXT</p>
+        </div>
+        <div class="content-image">
+          <div class="parallax-bubble-sprite sprite-sauvegarde-vos-donnees">
+          </div>
+        </div>
+
+        <a data-fc-scroll href="#slide3" class="next-slide-link fa fa-chevron-down"></a>
+      </div>
+
+      <div id="image-slide2" class="image-slide"></div>
+
+      <div id="slide3" class="slide content-slide">
+        <div class="content-image">
+          <div class="parallax-famicity-presentation-sprite sprite-album-photos">
+          </div>
+        </div>
+        <div class="slide-text">
+          <h2 translate>FAMICITY-PRESENTATION-SLIDE3-TITLE</h2>
+
+          <p translate>FAMICITY-PRESENTATION-SLIDE3-TEXT</p>
+        </div>
+
+        <a data-fc-scroll href="#slide4" class="next-slide-link fa fa-chevron-down"></a>
+      </div>
+
+      <div id="image-slide3" class="image-slide"></div>
+
+      <div id="slide4" class="slide content-slide">
+        <div class="slide-text">
+          <h2 translate>FAMICITY-PRESENTATION-SLIDE4-TITLE</h2>
+
+          <p translate>FAMICITY-PRESENTATION-SLIDE4-TEXT</p>
+        </div>
+        <div class="content-image">
+          <div class="parallax-famicity-presentation-sprite sprite-arbre-genealogique">
+          </div>
+        </div>
+
+        <a data-fc-scroll href="#slide5" class="next-slide-link fa fa-chevron-down"></a>
+      </div>
+
+      <div id="image-slide4" class="image-slide"></div>
+
+      <div id="slide5" class="slide content-slide">
+        <div class="content-image">
+          <div class="parallax-famicity-presentation-sprite sprite-partage-familial">
+          </div>
+        </div>
+        <div class="slide-text">
+          <h2 translate>FAMICITY-PRESENTATION-SLIDE5-TITLE</h2>
+
+          <p translate>FAMICITY-PRESENTATION-SLIDE5-TEXT</p>
+        </div>
+
+        <a data-fc-scroll href="#slide6" class="next-slide-link fa fa-chevron-down"></a>
+      </div>
+
+      <div id="image-slide5" class="image-slide"></div>
+
+      <div id="slide6" class="slide content-slide">
+        <div class="slide-text">
+          <h2 translate>FAMICITY-PRESENTATION-SLIDE6-TITLE</h2>
+
+          <p translate>FAMICITY-PRESENTATION-SLIDE6-TEXT</p>
+        </div>
+        <div class="content-image">
+          <div class="parallax-famicity-presentation-sprite sprite-evenement-familiaux">
+          </div>
+        </div>
+
+        <a data-fc-scroll href="#slide7" class="next-slide-link fa fa-chevron-down"></a>
+      </div>
+
+      <div id="image-slide6" class="image-slide"></div>
+
+      <div id="slide7" class="slide content-slide">
+        <div class="content-image">
+          <div class="parallax-bubble-sprite sprite-donnees-privee">
+          </div>
+        </div>
+        <div class="slide-text">
+          <h2 translate>FAMICITY-PRESENTATION-SLIDE7-TITLE</h2>
+
+          <p translate>FAMICITY-PRESENTATION-SLIDE7-TEXT</p>
+        </div>
+
+        <a data-fc-scroll href="#slide1" class="next-slide-link fa fa-chevron-up"></a>
+      </div>
+    </div>
+  </div>
+
+  <div fc-public-footer data-locale="{{locale}}"></div>
+
+</div>

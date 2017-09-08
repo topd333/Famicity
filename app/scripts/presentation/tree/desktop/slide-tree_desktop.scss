@@ -1,0 +1,15 @@
+@include aboveMediumScreen() {
+  .presentation {
+    #tree {
+      .text {
+        p {
+          text-align: center;
+        }
+      }
+      .image {
+        height: 50vh;
+        background-size: contain;
+      }
+    }
+  }
+}

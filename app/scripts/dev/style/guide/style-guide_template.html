@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css"/>
+<link rel="stylesheet" href="/scripts/dev/style/guide/style.css">
+
+<div class="navbar-inner">Famicity style guide</div>
+
+<div class="wrapper">
+  <div id="menu">
+    <form id="tcb_form">
+      <div class="field">
+        <label for="locale-select">Locale</label>
+        <select id="locale-select" ng-model="style.locale" ng-change="style.setLocale()">
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+      <div class="field">
+        <input id="toggle_checkerboard" type="checkbox" ng-click="style.transparency=!style.transparency"/>
+        <label for="toggle_checkerboard">Preview transparency</label>
+      </div>
+    </form>
+    <ul class="nav left-links" role="tablist">
+      @menu;
+    </ul>
+  </div>
+  <div id="guide" data-spy="scroll" data-target=".wrapper" class="container" ng-class="{transparent:style.transparency}">
+    @include content.html;
+  </div>
+</div>

@@ -1,0 +1,118 @@
+.family-tree {
+  #slide1 {
+    background: url("../../images/parallax/background/family-tree-visuel1-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide2 {
+    background: url("../../images/parallax/background/family-tree-visuel2-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide3 {
+    background: url("../../images/parallax/background/family-tree-visuel3-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide4 {
+    background: url("../../images/parallax/background/family-tree-visuel4-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide5 {
+    background: url("../../images/parallax/background/family-tree-visuel5-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide6 {
+    background: url("../../images/parallax/background/family-tree-visuel6-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+}
+
+.family-tree.share-memories {
+  #slide1 {
+    background: url("../../images/parallax/background/share-memories-480-768.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+}
+
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+
+    .family-tree #slide1 {
+        background: url("../../images/parallax/background/family-tree-visuel1-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree.share-memories {
+      #slide1 {
+        background: url("../../images/parallax/background/share-memories-768-700.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+      }
+    }
+
+    .family-tree #image-slide2 {
+        background: url("../../images/parallax/background/family-tree-visuel2-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree #image-slide3 {
+        background: url("../../images/parallax/background/family-tree-visuel3-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree #image-slide4 {
+        background: url("../../images/parallax/background/family-tree-visuel4-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree #image-slide5 {
+        background: url("../../images/parallax/background/family-tree-visuel5-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree #image-slide6 {
+        background: url("../../images/parallax/background/family-tree-visuel6-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}
+
+/* 980px */
+@media only screen and (min-width: 980px) {
+
+    .family-tree #slide1 {
+        background: url("../../images/parallax/background/family-tree-visuel1-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree.share-memories {
+      #slide1 {
+        background: url("../../images/parallax/background/share-memories-1200-800.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+      }
+    }
+
+    .family-tree #image-slide2 {
+        background: url("../../images/parallax/background/family-tree-visuel2-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree #image-slide3 {
+        background: url("../../images/parallax/background/family-tree-visuel3-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree #image-slide4 {
+        background: url("../../images/parallax/background/family-tree-visuel4-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree #image-slide5 {
+        background: url("../../images/parallax/background/family-tree-visuel5-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .family-tree #image-slide6 {
+        background: url("../../images/parallax/background/family-tree-visuel6-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}

@@ -1,0 +1,30 @@
+.tree-popup-add-relatives {
+  .add-row-top,
+  .add-row-bottom {
+    figure{
+      margin: 1em;
+      .add-tile{
+        margin: 0;
+      }
+    }
+    .add-tile{
+      margin: 1.8em;
+    }
+  }
+  .add-row-top.tile-holder {
+    figure{
+      .add-tile:not(.add-tile-filled-image){
+        margin-bottom: 1.8em;
+      }
+    }
+  }
+  text-align: center;
+  img {
+    display: inline-block;
+    width: 100%;
+  }
+  > div {
+    vertical-align: middle;
+  }
+  @import "fc-add-tile";
+}

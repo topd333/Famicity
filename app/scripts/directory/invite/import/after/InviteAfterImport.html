@@ -1,0 +1,66 @@
+<div class="invite-after-import-from-services">
+
+  <div class="intro">
+    <button class="btn btn-primary btn-lg button-inserted-right hidden-xs upper-button" submit-method="invite()"
+            fc-form-submit
+            form-in-progress="formInProgress" type="submit">{{ 'VALIDATE' | translate }}
+    </button>
+    <div data-translate>InviteAfterImport.INTRO</div>
+  </div>
+
+  <form action="javascript:;" fc-form-submit form-in-progress="formInProgress"
+        class="standard-form standard-form-nomargin login-form" id="directory-search-form" method="POST">
+
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+        <label class="sr-only" for="search-term" data-translate>fc-user-list.SEARCH.PLACEHOLDER</label>
+        <input ng-model="search.criteria" class="form-control" id="search-term" data-translate
+               data-translate-attr-placeholder="fc-user-list.SEARCH.PLACEHOLDER" type="text"/>
+      </div>
+    </div>
+
+  </form>
+
+  <fieldset>
+    <legend ng-if="match && match.length" data-translate>InviteAfterImport.FROM_YOUR_FAMILY</legend>
+    <fc-user-list id="selected-match"
+                  ng-model="match"
+                  load-more="null"
+                  filter="filter"
+                  selection-mode="true"
+                  mode="default"
+                  show-alert="false"
+                  filter-by-name="true"
+                  disable-search-field="true"
+                  selected-users="selectedMatch"
+      >
+    </fc-user-list>
+  </fieldset>
+
+  <fieldset>
+    <legend ng-if="match && match.length" data-translate>InviteAfterImport.OTHERS</legend>
+    <fc-user-list id="selected-no-match"
+                  ng-model="noMatch"
+                  load-more="loadMore"
+                  filter="filter"
+                  selection-mode="true"
+                  mode="default"
+                  show-alert="false"
+                  selected-users="selectedNoMatch"
+                  disable-search-field="true"
+                  custom-search-criteria="search.criteria"
+      ></fc-user-list>
+  </fieldset>
+
+  <div class="actions">
+    <div class="start">
+    </div>
+    <div class="end">
+      <button class="btn btn-primary" submit-method="invite()" fc-form-submit
+              form-in-progress="formInProgress" type="submit">{{ 'VALIDATE' | translate }}
+      </button>
+    </div>
+  </div>
+
+</div>

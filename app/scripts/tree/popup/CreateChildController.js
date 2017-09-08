@@ -1,0 +1,192 @@
+angular.module('famicity.tree')
+  .controller('CreateChildController', function(
+    $timeout, $scope, $location, $state, $q, $filter, ModalManager,
+    configuration, userService, Tree, profileService, Invitation, notification, sessionManager,
+    $moment, partnerId, treeService, pubsub, PUBSUB) {
+    'use strict';
+    const log = debug('fc-CreateChildController');
+    log('starting fc-CreateChildController');
+
+    if (!$scope.currentForm.user) {
+      log('No user to fill. Redirecting to add');
+      $state.go('u.tree.detail.add');
+    }
+    if ($scope.childForm && $scope.childForm.user) {
+      $scope.currentForm = angular.extend($scope.currentForm, $scope.childForm);
+      $scope.childForm = undefined;
+    }
+    $scope.currentForm.user.partner_id = partnerId ? partnerId : undefined;
+    $scope.currentForm.user = $scope.currentForm.user || {};
+    $scope.currentForm.user.birthDateValid = null;
+    $scope.currentForm.user.deathDateValid = null;
+
+    let uploader = null;
+    $scope.isValid = true;
+    $timeout(function() {
+      angular.element('#last_name').focus();
+    });
+
+    function addUpdateDone(createdPeople) {
+      const promises = [];
+      if (!$scope.autocompleteUserId) {
+        if ($scope.invitationFormHolder.mail_address) {
+          $scope.invitationFormHolder.user_concerned_id = createdPeople.id;
+          const invitation = new Invitation({invitation: $scope.invitationFormHolder, type: 'I'});
+          promises.push(invitation.$save({user_id: $scope.userId}));
+        }
+        if (uploader.getUploads() && uploader.getUploads().length) {
+          uploader.setEndpoint(configuration.api_url + '/users/' + createdPeople.id + '/avatars');
+          const avatarPromise = $q((resolve) => {
+            pubsub.subscribe(PUBSUB.UPLOADER.ON_COMPLETE, () => {
+              resolve();
+            });
+          }, $scope);
+          uploader.uploadStoredFiles();
+          promises.push(avatarPromise);
+        }
+      }
+      if (promises.length) {
+        $q.all(promises)
+          .then(function() {
+            notification.add('PARENT_FILLED_WITH_INVITATION_SUCCESS_MSG');
+            $scope.success({user_id: $scope.treeUserProfile.id});
+          })
+          .catch(() => $scope.fail({user_id: $scope.treeUserProfile.id}));
+      } else {
+        notification.add($scope.isUpdate ? 'PARENT_FILLED_SUCCESS_MSG' : 'RELATIVE_ADDED_SUCCESS_MSG');
+        $scope.success({user_id: $scope.treeUserProfile.id});
+      }
+      return $q.all(promises);
+    }
+
+    function defaultLastName(currentUser) {
+      let lastName;
+      if (currentUser.last_name) {
+        lastName = currentUser.last_name;
+      }
+      return lastName;
+    }
+
+    // var updateModel = function (newValue) {
+    //  $scope.currentForm.sex = newValue.sex;
+    //  $scope.currentForm.is_deceased = newValue.is_deceased;
+    //
+    //  $scope.isUpdate = newValue.isUpdate;
+    //  $scope.parentLink = newValue.parentLink;
+    //  $scope.secondParentId = newValue.secondParentId;
+    //
+    //  if (newValue.user_info) {
+    //    $scope.currentForm.user_info_attributes = $scope.currentForm.user_info_attributes || {};
+    //    $scope.currentForm.user_info_attributes.id = newValue.user_info.id;
+    //  }
+    //
+    //  if ($scope.secondParentId) {
+    //    $scope.currentForm['partner_id'] = $scope.secondParentId;
+    //  }
+    // };
+
+    // $scope.$watch('formModel', updateModel, true);
+
+    $scope.autocompleteUserId = null;
+    $scope.formInProgress = false;
+    $scope.tab = 'basic';
+    // $scope.currentForm = {
+    //  sex: $scope.sex || 'Male',
+    //  is_deceased: false
+    // };
+    $scope.invitationFormHolder = {};
+    $scope.form = {};
+    $scope.submitted = false;
+    $scope.currentForm.user.last_name = defaultLastName($scope.treeUserProfile);
+
+    Tree.isTreeBlocked({user_id: $scope.treeUserProfile.id}).$promise.then(function(response) {
+      if (response.info_tree.tree_is_lock) {
+        notification.add('PROFILE_EDIT_TREE_LOCKED_ERROR_MSG', {warn: true});
+      }
+    });
+
+    $scope.deleteRelativePhoto = function() {
+      $scope.isUploadedPhoto = false;
+      uploader.reset();
+    };
+
+    $scope.isUploadedPhoto = false;
+    uploader = new qq.FineUploaderBasic({
+      button: document.getElementById('tree-popup-photo'),
+      multiple: false,
+      autoUpload: false,
+      validation: {
+        acceptFiles: '.png, .jpg, .jpeg, .gif, .tiff',
+        allowedExtensions: ['jpeg', 'jpg', 'gif', 'png', 'tiff']
+      },
+      request: {
+        endpoint: '',
+        customHeaders: {
+          Authorization: 'Bearer ' + sessionManager.getToken()
+        },
+        params: {
+          from: 'upload'
+        }
+      },
+      callbacks: {
+        onStatusChange(id, oldStatus, newStatus) {
+          if (newStatus === 'submitted') {
+            $timeout(function() {
+              uploader.drawThumbnail(id, document.getElementById('thumb-uploader-directive-img'), 200, false);
+              $scope.isUploadedPhoto = true;
+            });
+          }
+        },
+        onComplete() {
+          pubsub.publish(PUBSUB.UPLOADER.ON_COMPLETE);
+        }
+      },
+      scaling: {
+        sendOriginal: false,
+        includeExif: true,
+        orient: true,
+        sizes: {
+          name: 'original',
+          maxSize: 2400
+        }
+      }
+    });
+
+    $scope.autocompleteSuccess = function($item, $model) {
+      [$scope.currentForm.user, $scope.autocompleteUserId, $scope.autocompleteUserName] = treeService.autocompleteSuccess($model);
+    };
+
+    $scope.cancelAutocompleteSelect = function() {
+      [$scope.currentForm.user, $scope.autocompleteUserId, $scope.autocompleteUserName] = treeService.cancelAutocompleteSelect();
+    };
+
+    const cleanWatch = $scope.$watch('currentForm.user.is_deceased', function(newValue) {
+      log('change: %o', newValue);
+      if (newValue === true && $scope.autocompleteUserId != null) {
+        $scope.cancelAutocompleteSelect();
+      }
+    });
+
+    $scope.$on('$destroy', function() {
+      cleanWatch();
+    });
+
+    $scope.getUsers = function(q, field) {
+      return userService.treeAutocomplete(q, field).$promise;
+    };
+
+    $scope.submitBasicForm = function() {
+      $scope.currentForm.user.user_info_attributes = $scope.currentForm.user.user_info_attributes || {};
+      $scope.currentForm.promises = [];
+      $scope.submitted = true;
+      $scope.currentForm.sex = $filter('capitalize')($scope.currentForm.sex);
+      $scope.currentForm.promises.push(userService.createFromTree($scope.currentForm.parentLink, $scope.treeUserProfile.id, $scope.currentForm.user, $scope.autocompleteUserId)
+        .then(function(createdChild) {
+          return addUpdateDone(createdChild);
+        }));
+      return $scope.currentForm.promises;
+    };
+    return $scope.$on('$destroy', function() {
+      uploader = null;
+    });
+  });

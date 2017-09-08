@@ -1,0 +1,207 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 ng-if="isMenuPage" class="pull-left" translate>SETTINGS.TITLE</h2>-->
+      <!--<h2 ng-if="!isMenuPage" class="pull-left" translate>MY_ACCOUNT</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-settings-menu data-current-section="account"></fc-settings-menu>
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <div class="view-profile-holder" ng-class="{ 'hidden-xs': isMenuPage}">
+              <div class="clearfix">
+                <h3 class="no-top-margin pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-green"><i class="fa fa-envelope-o"></i>
+                  </span>{{ "MY_EMAIL_ADDRESSES" | translate }}</h3>
+                <div class="center-right-icons clearfix">
+                  <a class="btn btn-icon btn-icon-primary center-right-plus-icon" ng-click="openAddMailPopup()">+</a>
+                </div>
+              </div>
+              <div class="view-profile-block">
+                <div class="clearfix">
+                  <div class="clearfix">
+                    <div class="float-left-992-r">
+                      <h4>{{ "YOUR_CURRENT_LOGIN" | translate }}: &nbsp;</h4>
+                    </div>
+                    <div class="view-profile-editable-icon small-edit-icon"><a class="pointer" ng-click="openChangeLoginMailPopup()"><i class="fa fa-edit"></i></a>
+                    </div>
+                    <div class="view-profile-editable-value view-profile-editable-email"> {{ currentEmail.email }}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="view-profile-block">
+                <div class="clearfix">
+                  <div ng-repeat-start="(type, subList) in emailsList" class="clearfix">
+                    <div>
+                      <h4>{{ type }} :</h4>
+                    </div>
+                    <div ng-repeat="email in subList" class="clearfix">
+                      <div class="view-profile-editable-icon small-edit-icon"><a class="pointer" ng-show="!email.user_email.is_used_for_authenticate" ng-click="openEditMailPopup(email.user_email.id, subList.length > 1)"><i class="fa fa-edit"></i></a>
+                      </div>
+                      <div ng-if="!email.user_email.is_valid_email" class="danger-color pull-right pointer" ng-click="openValidateMailPopup(email.user_email.id)"><i class="fa fa-exclamation-triangle"></i> &nbsp;</div>
+                      <div class="view-profile-editable-value"><i class="fa fa-envelope-o"></i> {{ email.user_email.email }}</div>
+                    </div>
+                  </div>
+                  <div ng-repeat-end ng-show="($index % 2 != 0) && !$last" class="view-profile-delimiter hidden-xs"></div>
+                </div>
+
+
+              </div>
+              <div class="view-profile-section-delimiter"></div>
+              <br>
+              <div class="clearfix">
+                <h3 class="no-top-margin pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-green"><i class="fa fa-lock"></i></span>
+                  <span data-translate>CHANGE_PASSWORD</span>
+                </h3>
+                <div class="center-right-icons clearfix">
+                  <a class="btn btn-icon btn-icon-primary center-right-plus-icon" ng-click="openChangePasswordPopup()"><i class="fa fa-edit"></i></a>
+                </div>
+              </div>
+              <span class="change-pass-instr" data-translate>PASSWORD_CHANGE_INSTRUCTIONS</span>
+              <!--<div class="view-profile-section-delimiter"></div>-->
+              <!--<br>-->
+              <!--<div class="clearfix">-->
+              <!--<h3 class="no-top-margin pull-left"><a class="red-rollover" href="#"><i class="btn btn-icon btn-icon-danger fa fa-trash-o"></i><span translate>DELETE_MY_ACCOUNT</span></a></h3>-->
+              <!--</div>-->
+              <!--<span translate>DELETE_ACCOUNT_INSTRUCTIONS</span>-->
+            </div>
+
+            <div class="s-menu-options visible-xs" ng-if="isMenuPage">
+              <a class="clearfix s-menu-option" ui-sref="u.settings-account">
+                <div class="s-menu-option-icon pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-user"></i>
+                  </span>
+                </div>
+                <div class="s-menu-option-ta clearfix">
+                  <div class="pull-right"><i class="fa fa-angle-right"></i>
+                  </div>
+                  <div class="s-menu-option-text">
+                    <div>
+                      <div translate>MY_ACCOUNT</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a class="clearfix s-menu-option" ui-sref="u.settings-locale">
+                <div class="s-menu-option-icon pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-wrench"></i>
+                  </span>
+                </div>
+                <div class="s-menu-option-ta clearfix">
+                  <div class="pull-right"><i class="fa fa-angle-right"></i>
+                  </div>
+                  <div class="s-menu-option-text">
+                    <div>
+                      <div translate>SETTINGS2</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a class="clearfix s-menu-option" ui-sref="u.settings-privacy">
+                <div class="s-menu-option-icon pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-lock"></i>
+                  </span>
+                </div>
+                <div class="s-menu-option-ta clearfix">
+                  <div class="pull-right"><i class="fa fa-angle-right"></i>
+                  </div>
+                  <div class="s-menu-option-text">
+                    <div>
+                      <div translate>PRIVACY</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a class="clearfix s-menu-option" ui-sref="u.settings-notifications">
+                <div class="s-menu-option-icon pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-envelope-o"></i>
+                  </span>
+                </div>
+                <div class="s-menu-option-ta clearfix">
+                  <div class="pull-right"><i class="fa fa-angle-right"></i>
+                  </div>
+                  <div class="s-menu-option-text">
+                    <div>
+                      <div translate>EMAIL_NOTIFICATIONS</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a class="clearfix s-menu-option" ui-sref="u.settings-providers">
+                <div class="s-menu-option-icon pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-globe"></i>
+                  </span>
+                </div>
+                <div class="s-menu-option-ta clearfix">
+                  <div class="pull-right"><i class="fa fa-angle-right"></i>
+                  </div>
+                  <div class="s-menu-option-text">
+                    <div>
+                      <div translate>SOCIAL_NETWORKS</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a class="clearfix s-menu-option" ui-sref="u.settings-terms">
+                <div class="s-menu-option-icon pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-info-circle"></i>
+                  </span>
+                </div>
+                <div class="s-menu-option-ta clearfix">
+                  <div class="pull-right"><i class="fa fa-angle-right"></i>
+                  </div>
+                  <div class="s-menu-option-text">
+                    <div>
+                      <div translate>READ_OUR_TERMS</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a class="clearfix s-menu-option" ui-sref="u.settings-contact">
+                <div class="s-menu-option-icon pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-question-circle"></i>
+                  </span>
+                </div>
+                <div class="s-menu-option-ta clearfix">
+                  <div class="pull-right"><i class="fa fa-angle-right"></i>
+                  </div>
+                  <div class="s-menu-option-text">
+                    <div>
+                      <div translate>CONTACT_US_LINK</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a class="clearfix s-menu-option" ui-sref="u.settings-unsubscription">
+                <div class="s-menu-option-icon pull-left">
+                  <span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-trash"></i>
+                  </span>
+                </div>
+                <div class="s-menu-option-ta clearfix">
+                  <div class="pull-right"><i class="fa fa-angle-right"></i>
+                  </div>
+                  <div class="s-menu-option-text">
+                    <div>
+                      <div translate>DELETE_MY_ACCOUNT</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="content">
+  <div data-fc-progress-bullet-bar ng-attr-data-nb-steps="fromInvitation ? 2 : showInvitationStep ? 4 : 3" data-current-step="2"></div>
+
+  <div class="form-block">
+
+    <h2 data-translate>WIZARD_AVATAR_PAGE_TITLE</h2>
+    <h5 data-translate>WIZARD_AVATAR_PAGE_SUBTITLE</h5>
+
+    <ul class="photo-add-options clearfix">
+      <li id="photo-add-local" class="photo-add-local"><a class="pointer"><i class="fa fa-desktop"></i><span data-translate>FROM_COMPUTER</span></a>
+
+        <p ng-show="uploadPercent">{{ uploadPercent }} %</p></li>
+      <!--<li class="photo-add-webcam"><a href="#"><i><span><span class="ui_elem photo-add-webcam-icon"></span></span></i><span>2. {{ "FROM_WEBCAM" | translate }}</span></a></li>-->
+      <!--<li class="photo-add-gallery"><a href="#"><i class="fa fa-user"></i><span><span class="pao-enum-toggle-device-small">2</span><span class="pao-enum-toggle-device-big">3</span>. {{ "FROM_GALLERY" | translate }}</span></a></li>-->
+    </ul>
+
+    <a ng-show="uploadOngoing" class="cancel-button pointer" ng-click="cancelUpload()" data-translate>CANCEL</a>
+
+    <div ng-show="!uploadOngoing" ng-click="nextStep()" class="skip-step"><a data-translate>SKIP_STEP_LINK</a>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>DEFAULT_RIGHTS</h2>-->
+      <!--<a class="btn pull-right" ng-click="submit()" translate>OK</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-settings-menu data-current-section="privacy"></fc-settings-menu>
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <div class="text-and-button-table">
+              <div class="center-to-left-text" translate>DEFAULT_RIGHTS_SETTINGS_INSTRUCTIONS</div>
+              <div class="text-and-button-table-button hidden-xs">
+                <fc-menu-trigger action="submitAction"></fc-menu-trigger>
+              </div>
+            </div>
+            <br />
+
+            <fc-old-permission-list></fc-old-permission-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

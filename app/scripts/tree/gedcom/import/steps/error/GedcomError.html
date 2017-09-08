@@ -1,0 +1,18 @@
+<div class="error">
+
+  <h3 data-translate>GEDCOM.IMPORT.FAILED.SUBTITLE</h3>
+
+  <div ng-repeat="error in gedcomImport.errors" class="errors">
+    <div class="icon">
+      <i class="fc fc-file-warning"></i>
+    </div>
+    <div class="message">
+      {{error}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <a class="see-more btn btn-danger btn-lg" ui-sref="u.gedcom-details({gedcom_id: gedcomImport.id})" data-translate>GEDCOM.IMPORT.FAILED.SEE_MORE</a>
+  </div>
+
+</div>

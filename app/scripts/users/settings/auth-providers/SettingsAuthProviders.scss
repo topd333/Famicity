@@ -1,0 +1,7 @@
+@include aboveMediumScreen() {
+  .settings.social {
+    .action-submit {
+      display: none;
+    }
+  }
+}

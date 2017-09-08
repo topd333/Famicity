@@ -1,0 +1,12 @@
+.settings.account {
+  .language-select {
+    margin-top: 1em;
+  }
+}
+@include aboveMediumScreen() {
+  .settings.account {
+    .action-submit {
+      display: none;
+    }
+  }
+}

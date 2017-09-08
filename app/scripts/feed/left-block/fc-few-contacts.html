@@ -1,0 +1,16 @@
+<div class="s-block" ng-if="::hasFewContacts === true">
+  <fc-left-column-block-header>
+    <h3 data-translate>HOME.HAS_FEW_CONTACTS.LEFT_BLOCK.TITLE</h3>
+  </fc-left-column-block-header>
+  <div class="s-block-content invite-closes">
+    <div data-translate>HOME.HAS_FEW_CONTACTS.LEFT_BLOCK.TEXT</div>
+    <div class="text-center button-block">
+      <button ui-sref="u.directory.import-from-services" class="btn btn-primary btn-lg" data-translate>
+        HOME.HAS_FEW_CONTACTS.LEFT_BLOCK.IMPORT_CONTACTS
+      </button>
+      <button ui-sref="u.directory.invite({user_id: userId})" class="btn btn-secondary btn-lg" data-translate>
+        HOME.HAS_FEW_CONTACTS.LEFT_BLOCK.TITLE
+      </button>
+    </div>
+  </div>
+</div>

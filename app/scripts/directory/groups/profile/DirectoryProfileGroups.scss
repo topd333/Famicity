@@ -1,0 +1,12 @@
+.directory.profile {
+  .menu {
+    display: block;
+  }
+}
+@include aboveMediumScreen() {
+  .directory.groups.profile {
+    .action-submit {
+      display: none;
+    }
+  }
+}

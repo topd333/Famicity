@@ -1,0 +1,511 @@
+header {
+  line-height: 1;
+  position: relative;
+  // padding-bottom: 5px;
+  padding-top: 0;
+  i.fa.fa-caret-right {
+    font-size: 28px;
+  }
+
+  .header-blur {
+    background-color: $white;
+    bottom: 0;
+    display: none;
+    left: 0;
+    opacity: 0.7;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+  }
+}
+
+header.disabled .header-blur {
+  display: block;
+
+}
+
+.famicity-logo-private,
+.top-left-menu {
+  float: left;
+
+}
+
+.center-to-center-text {
+  text-align: center;
+}
+
+.main-menu-xs a,
+.main-menu-xs a:hover {
+  color: $darker_main_font_23;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.main-menu-xs > div {
+  display: inline-block;
+  left: 7%;
+  position: relative;
+}
+
+.main-menu {
+  font-size: 22px;
+  margin: 0 105px 0 60px;
+  padding-top: 10px;
+}
+
+.main-menu-mobile-new {
+  margin-bottom: 25px;
+  padding-top: 20px;
+}
+
+.main-menu ul {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+
+}
+
+.top-icons-right,
+.top-right-menu {
+  float: right;
+  position: relative;
+
+}
+
+.top-right-menu > div {
+  display: table;
+
+}
+
+.top-right-menu .top-logout-icon {
+  font-size: 25px;
+  padding: 0 4px;
+  margin-top: 4px;
+}
+
+.top-right-menu .top-search {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 67px;
+
+}
+
+/*.top-right-menu .top-search>span,*/
+/*.top-right-menu .top-search>a {*/
+/*display: table-cell;*/
+/*height: 100%;*/
+/*vertical-align: bottom;*/
+/*}*/
+
+/* .top-right-menu .top-search>a {
+  background-color: $gray_color;
+  display: block;
+    float: left;
+} */
+
+.top-right-menu .top-search > span {
+  width: 10px;
+
+}
+
+.top-right-menu .top-search > a > i {
+  /*display: table;*/
+  /*font-size: 24px;*/
+  height: 30px;
+  width: 30px;
+
+}
+
+.top-right-menu .top-search > a.top-search-icon {
+  margin-right: 10px;
+
+}
+
+/*.top-right-menu .top-search>a.top-search-icon>i {*/
+/*background-color: #f4f4f4;*/
+/*color: $darker_main_font_23;*/
+/*}*/
+
+/*.top-right-menu .top-search>a.top-logout-icon>i {*/
+/*background-color: #f14949;*/
+/*color: $white;*/
+/*}*/
+
+/*.top-right-menu .top-search>a>i:before {*/
+/*display: table-cell;*/
+/*height: 100%;*/
+/*width: 100%;*/
+/*vertical-align: middle;*/
+/*}*/
+
+.top-right-menu > div > a,
+.top-right-menu > div > span,
+.top-right-menu > div > b {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+
+}
+
+.top-right-menu > div i.fa-question-circle {
+  color: $green;
+
+}
+
+.top-right-menu > div i.fa-cog,
+.top-right-menu > div i.fa-caret-right {
+  color: $darker_main_font_4;
+
+}
+
+header.header-new {
+  .header-top-strip {
+    background-color: $green;
+    height: 2.5em;
+    > div {
+      max-width: 75em;
+      margin: auto;
+      height: 100%;
+      padding: 0 10px;
+      position: relative;
+      > div {
+        height: 100%;
+      }
+    }
+    .fa {
+      font-size: 1.25em; // Bigger icons
+      &.fa-circle {
+        font-size: 2em;
+      }
+    }
+    .logo {
+      margin: 5px 0 0;
+      img {
+        height: 30px;
+      }
+    }
+  }
+  .header-top-strip-icons {
+    color: #fff;
+    height: 100%;
+    > a {
+      border-left: 1px solid #fff;
+      color: #fff;
+      width: 3.125em;
+      &:hover {
+        background-color: #bcd582;
+      }
+    }
+    > div:last-child {
+      border-left: 1px solid #fff;
+      width: 0.625em;
+    }
+    .header-search {
+      input {
+        @include inputSizingSmall();
+      }
+      border-left: 1px solid #fff;
+      padding-left: 0.9375em;
+      padding-right: 0.9375em;
+      button.btn-search {
+        background: transparent;
+        border: none;
+        .fa {
+          font-size: 1em; // Search magnify icon looks better smaller than other 1.25em-sized icons
+        }
+        &:hover,
+        &:active,
+        &:focus {
+          outline: 0 !important;
+          //background: $lighter_green_19;
+        }
+      }
+      form {
+        display: inline-block;
+      }
+      input {
+        background-color: $white;
+        border-radius: $gui_standard_border_radius;
+        border-style: none;
+        box-sizing: border-box;
+        color: #000;
+        height: 30px;
+        margin-right: 7px;
+        width: 250px;
+        padding: 0 10px;
+        &::placeholder {
+          font-size: 0.9375em;
+          line-height: 1.5;
+        }
+      }
+      .avatar {
+        margin-right: 0.5em;
+      }
+      @import "../../../template/typeahead/search-autocomplete";
+    }
+  }
+  .header-top-strip-icons > .header-search .header-top-strip-icons > .header-search a,
+  .header-top-strip-icons > a .fa.fa-cog {
+    color: #fff;
+  }
+  .header-poweroff-icon {
+    background-color: $sub-header_color;
+    i {
+      color: $darker_main_font_4;
+    }
+  }
+  a.header-poweroff-icon:hover {
+    background-color: $red;
+    i {
+      color: $white;
+    }
+
+  }
+  .header-main-icons-block {
+    margin-bottom: 15px;
+    position: relative;
+    background-color: $sub-header_color;
+
+  }
+  .header-main-icons-bb {
+    height: 55px;
+
+  }
+  .header-main-icons-holder {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    > div {
+      display: inline-block;
+    }
+  }
+  .header-main-icons {
+    margin: 0 auto;
+    width: auto;
+    .table-cell {
+      width: 9.375em;
+    }
+  }
+  .header-main-icons-row {
+    .table-cell {
+      color: #6a7179;
+      height: 2.55em;
+      vertical-align: bottom;
+      cursor: pointer;
+      position: relative;
+      .fa {
+        height: 1em;
+        position: relative;
+      }
+      .fa-stack-1x {
+        top: 0;
+      }
+      .notification-count {
+        left: 1.5em;
+        top: -0.7em;
+        font-size: 0.500em;
+        line-height: 1.1em;
+        span {
+          font-size: 1.3em;
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .header-main-icons-row .table-cell span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+  }
+  .header-main-icons-row .table-cell i.main-menu-tree-icon + span {
+    margin-top: 0;
+
+  }
+  .header-main-icons-row .table-cell i {
+    //  font-size: 24px;  // This makes notifications-count too big
+
+  }
+  .header-main-icon-bb-row .table-cell {
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+  }
+
+  .header-main-icon-bb-row {
+    :nth-child(1) {
+      border-bottom-color: $header_home_bottom_color;
+    }
+    :nth-child(2) {
+      border-bottom-color: $header_profile_bottom_color;
+    }
+    :nth-child(3) {
+      border-bottom-color: $header_tree_bottom_color;
+    }
+    :nth-child(4) {
+      border-bottom-color: $header_messages_bottom_color;
+    }
+    :nth-child(5) {
+      border-bottom-color: $header_contacts_bottom_color;
+    }
+    :nth-child(6) {
+      border-bottom-color: $header_albums_bottom_color;
+    }
+    :nth-child(7) {
+      border-bottom-color: $header_diary_bottom_color;
+    }
+    :nth-child(8) {
+      border-bottom-color: $main_font_color;
+    }
+
+  }
+  .header-main-icons-row {
+    a:hover {
+      opacity: 0.6;
+    }
+    a:nth-child(1):hover {
+      background-color: #70cbed;
+    }
+    a:nth-child(2):hover {
+      background-color: #c89bde;
+    }
+    a:nth-child(3):hover {
+      background-color: #bbd481;
+    }
+    a:nth-child(4):hover {
+      background-color: #a8a8a9;
+    }
+    a:nth-child(5):hover {
+      background-color: #ff8585;
+    }
+    a:nth-child(6):hover {
+      background-color: #ffd37a;
+    }
+    a:nth-child(7):hover {
+      background-color: #f188ac;
+    }
+    a:nth-child(8):hover {
+      background-color: #595959;
+    }
+  }
+  .notifications-header-link {
+    position: relative;
+  }
+  i.notifications-count {
+    border-radius: 50%;
+    color: white;
+    background-color: $red;
+    padding: 0.3125em 0.4375em;
+    .fa {
+      font-size: 0.625em;
+    }
+    position: absolute;
+    // Avoid setting right to 0 because it prevents from displaying the counter aside an header menu choice
+    top: 0.1875em;
+    z-index: 12;
+    font-style: normal;
+  }
+}
+
+.top-right-menu a.arrow.selected {
+  transform: rotate(90deg);
+
+}
+
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 46px;
+  width: 100%;
+  background-color: $green;
+  color: $white;
+  .logo {
+    color: $white;
+    height: 2.8em;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+    width: 2.8em;
+    i {
+      font-size: 2em;
+      line-height: 1.5;
+    }
+  }
+  h2 {
+    font-size: 1.2em;
+    line-height: 1;
+    margin-top: 0.7em;
+  }
+  .mini-mobile-icons-header {
+    @extend .fcity-clearfix;
+    margin-right: 5px;
+  }
+  a.btn {
+    padding: 0 12px;
+  }
+  .btn {
+    font-size: 24px;
+    height: auto; //40px;
+    margin-top: 7px; //TODO: check impact
+    color: #fff;
+    margin-left: 10px;
+    &:active,
+    &:focus {
+      box-shadow: none;
+    }
+    a {
+      color: #fff;
+    }
+  }
+
+  .txt-icon {
+    font-size: 32px;
+    line-height: 28px;
+  }
+
+  .tree-dots {
+    i {
+      font-size: 10px;
+    }
+    font-size: 10px;
+    line-height: 28px;
+  }
+
+}
+
+@include belowLargeScreen() {
+  .private {
+    #scroll {
+      margin-top: $fieldFullHeight + $fieldMargin;
+    }
+  }
+}
+/* 768px */
+@media only screen and (min-width: 768px) {
+  header {
+    padding-top: 0;
+  }
+  .famicity-logo-private {
+    margin-top: 40px;
+  }
+  .top-right-menu .top-search {
+    display: table-cell;
+  }
+}
+
+/* 992px */
+@media only screen and (min-width: 992px) {
+  .famicity-logo-private {
+    margin-top: 31px;
+  }
+}

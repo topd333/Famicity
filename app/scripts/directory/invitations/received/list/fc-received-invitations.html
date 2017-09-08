@@ -1,0 +1,20 @@
+<h2 data-translate>YOUR_INVITATIONS</h2>
+
+<p data-translate>RECEIVED_POPUP_INTRO</p>
+
+<button ng-disabled="multiplePending" ng-class="{disabled: multiplePending}"
+        class="btn btn-primary accept-all" ng-click="acceptMultiple()" type="submit">{{acceptAllRemaingInvitationsMessage|translate}}
+</button>
+<div class="invitations-all-user-list">
+  <fc-user-list
+    ng-model="invitations"
+    data-load-more="null"
+    data-filter="filter"
+    data-disable-search-field="true"
+    data-selection-mode="false"
+    data-mode="received_invit"
+    data-show-alert="false"
+    data-selected-users="selectedUsers"
+    data-me="me">
+  </fc-user-list>
+</div>

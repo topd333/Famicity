@@ -1,0 +1,21 @@
+<div>
+  <div class="clearfix left-column-block-paging left-column-block-message-list" ng-if="!messages[0].is_the_first || !messages[messages.length - 1].is_the_last">
+    <span class="left-column-block-paging-previous"><a class="btn btn-icon btn-icon-primary next-icon-button-big" ng-click="!messages[0].is_the_first && goPrevPage()" ng-class="{'disabled': messages[0].is_the_first || !messages.length}"><i class="fa fa-angle-left"></i></a></span>
+    <span class="left-column-block-paging-next"><a class="btn btn-icon btn-icon-primary previous-icon-button-big" ng-click="!messages[messages.length - 1].is_the_last && goNextPage()" ng-class="{'disabled': messages[messages.length - 1].is_the_last || !messages.length}"><i class="fa fa-angle-right"></i></a></span>
+  </div>
+  <div ng-repeat="message in messages" ng-class="{active: currentId == message.id }" class="message pointer" ng-click="selectDiscussion(message)">
+    <span class="pull-left"><i ng-show="message.is_unread" class="fa fa-circle"></i></span>
+    <span class="pull-right">{{ message.updated_date * 1000 | timeOrDateFilter }}</span>
+
+    <h4 ng-class="{ 'message-index-left-list-nom': !message.is_unread }">{{ message.recipients[0].user_name }} <span
+      ng-if="message.recipients.length > 1" data-translate
+      data-translate-values="{ NUM: message.recipients.length - 1 }" data-translate-interpolation="messageformat">AND_X_OTHER_PEOPLE</span>
+    </h4>
+    <div class="clearfix">
+      <span class="pull-right"><a><i class="fa fa-angle-right"></i></a></span>
+      <span ng-if="!message.messages_count" class="pull-right message-index-left-list-nof-empty"></span>
+      <span ng-if="message.messages_count" class="pull-right">{{ message.messages_count }}</span>
+      <span ng-class="{ 'message-index-left-list-nom': !message.is_unread }">{{ message.subject }}</span>
+    </div>
+  </div>
+</div>

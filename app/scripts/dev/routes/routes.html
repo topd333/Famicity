@@ -1,0 +1,20 @@
+<div class="left-text container">
+    <h1>Routes Famicity</h1>
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Nom</td>
+        <td>Url</td>
+        <!--<td>View</td>-->
+      </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="route in routes | orderBy: 'name' ">
+          <td>{{route.name}}</td>
+          <td>{{route.url}}</td>
+          <!--<td>{{route.views}}</td>-->
+        </tr>
+      </tbody>
+    </table>
+
+</div>

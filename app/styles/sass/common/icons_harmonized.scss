@@ -1,0 +1,100 @@
+
+
+.top-navigation-icons,
+.left-navigation-icons,
+.right-function-icons,
+.center-right-icons,
+.wcs-g-icon,
+.tree-toolbar
+{
+
+  .fa-search,
+  .fa-search-plus,
+  .fa-search-minus,
+  .fc-tree-detailed {
+    font-size: $px18;
+  }
+
+  .fa-users,
+  .fa-calendar,
+  .fa-picture-o,
+  .fa-book-o,
+  .fa-eraser,
+  .fa-heart,
+  .fa-heart-o,
+  .fa-reply,
+  .fa-share,
+  .fa-crosshairs {
+    font-size: $px20;
+  }
+
+  .fa-pencil,
+  .fa-comment-o,
+  .fa-book,
+  .fa-pencil-square-o,
+  .fa-envelope-o,
+  .fa-link,
+  .fa-copy,
+  .fa-sitemap,
+  .fa-download,
+  .fa-share-square-o,
+  .fa-minus-circle,
+  .fa-edit,
+  .fa-gift,
+  .fa-refresh,
+  .fa-eye,
+  .fa-leaf,
+  .fa-trash,
+  .fa-trash-o,
+  .fc-plus,
+  .fc-users-plus,
+  .fc-tree,
+  .fc-import {
+    font-size: $px22;
+  }
+
+  .fa-user,
+  .fa-comments-o,
+  .fa-lock,
+  .fa-gear,
+  .fa-wrench,
+  .fa-globe,
+  .fa-exclamation-circle,
+  .fa-question-circle,
+  .fa-play-circle-o,
+  .fa-phone,
+  .fa-map-marker,
+  .fa-star
+        {
+    font-size: $px24;
+  }
+
+  .fa-home {
+    font-size: $px26;
+  }
+
+  .fa-play-circle-o {
+    line-height: 1.425;
+  }
+
+  .composite-icon-plus {
+    font-size: 0.8em;
+    margin-left: -3px;
+  }
+}
+
+
+@include aboveMediumScreen() {
+    .top-navigation-icons,
+    .left-navigation-icons,
+    .right-function-icons,
+    .center-right-icons,
+    .wcs-g-icon,
+    .tree-toolbar
+    {
+      .fa {
+        margin-left: -1.5em;
+        margin-right: -1.5em;
+      }
+    }
+}

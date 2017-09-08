@@ -1,0 +1,66 @@
+<div>
+  <div class="private-home-page-photo-new bg-image-cover"></div>
+  <div class="home-big-buttons clearfix">
+    <a ui-sref="u.feed" class="btn btn-input btn-lg">
+      <div class="home-big-button-icon">
+        <i class="fa fa-home"></i>
+      </div>
+      <div class="home-big-button-text" data-translate>HEADER.HOME</div>
+    </a>
+
+    <a ui-sref="u.profile({user_id: userId})" class="btn btn-input btn-lg">
+      <div class="home-big-button-icon">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="home-big-button-text" data-translate>ME</div>
+    </a>
+
+    <a ui-sref="u.calendar" class="btn btn-input btn-lg">
+      <div class="home-big-button-icon">
+        <i class="fa fa-calendar"></i>
+      </div>
+      <div class="home-big-button-text" data-translate>HEADER.DIARY</div>
+    </a>
+
+    <a ui-sref="u.directory.list" class="btn btn-input btn-lg">
+      <div class="home-big-button-icon">
+        <i class="fa fa-book"></i>
+      </div>
+      <div class="home-big-button-text" data-translate>DIRECTORY_LINK</div>
+    </a>
+
+    <a ui-sref="u.directory.mobile-invitations-menu" class="btn btn-input btn-lg">
+      <div class="home-big-button-icon">
+        <i class="fa fa-users"></i>
+        <span ng-show="unreadInvitations > 0" class="fa-stack fa-stack-3x notification-bubble">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <span class="fa-stack-1x ng-binding">{{unreadInvitations}}</span>
+        </span>
+      </div>
+
+      <div class="home-big-button-text" data-translate>HELP_MENU_ITEM.invitations</div>
+
+    </a>
+
+    <a ui-sref="u.messages.welcome" class="btn btn-input btn-lg">
+      <div class="home-big-button-icon">
+        <i class="fa fa-envelope-o"></i>
+        <span ng-show="unreadMessages > 0" class="fa-stack fa-stack-3x notification-bubble">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <span class="fa-stack-1x ng-binding">{{ unreadMessages }}</span>
+        </span>
+      </div>
+      <div class="home-big-button-text" data-translate>HEADER.MAIL</div>
+
+    </a>
+
+  </div>
+
+  <div class="home-main-delimiter"></div>
+
+  <div class="home-small-buttons clearfix">
+    <a ui-sref="u.settings({user_id: userId})"><i class="fa fa-cog"></i></a>
+    <a ui-sref="u.helps-private({user_id: userId})"><i class="fa fa-question-circle"></i></a>
+    <a class="home-log-out-button pointer" ui-sref="u.sign-out"><i class="fa fa-power-off"></i></a>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+@mixin actions($buttonsHeight, $secondaryColor: $green) {
+  font-size: 0.9em;
+  transition: height 0.3s ease;
+  display: block;
+  .start {
+    text-align: left;
+    .show-more-options {
+      color: $secondaryColor;
+    }
+    .deletion {
+      color: $red;
+      text-decoration: underline;
+      text-align: left;
+    }
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    > * {
+      display: inline-block;
+      vertical-align: bottom;
+    }
+  }
+  .end {
+    transition: opacity 0.3s ease, height 0.3s ease;
+    overflow-y: hidden; // Hide scrollbar during height animation
+    min-width: 10em;  // TODO: This counts for the sum of buttons width. We should find a more generic solution to this (white-space:nowrap?)
+    text-align: right;
+    > * {
+      display: inline-block;
+    }
+    .btn-primary {
+      background: $secondaryColor;
+      border-color: $secondaryColor;
+    }
+  }
+  &.visible {
+    height: $buttonsHeight;
+    button {
+      height: $buttonsHeight;
+      line-height: 1em;
+      margin: $buttonsMargin 0 0 0;
+      vertical-align: top;
+    }
+  }
+}

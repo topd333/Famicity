@@ -1,0 +1,10 @@
+@include aboveMediumScreen() {
+  .profile {
+    .left-column {
+      margin-top: 0;
+    }
+    .menu {
+      display: none;
+    }
+  }
+}

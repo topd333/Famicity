@@ -1,0 +1,55 @@
+.cookies-alert {
+  margin-top: -4em;
+  position: fixed;
+  font-size: 0.8em;
+  color: #86919F;
+  bottom: -10em;
+  z-index: $layerAlways + 1;
+  line-height: 1.8em;
+  box-shadow: 0.3em 0.3em 0.3em;
+  transition: all 1s ease;
+  &.visible {
+    margin: 0 2.3em 0 0.7em;
+    bottom: 0;
+    &.fullWidth {
+      margin: 0 0.7em 0 0.7em;
+    }
+  }
+  .close {
+    cursor: pointer;
+    font-size: 2em;
+    line-height: 1.5em;
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+  }
+  .cookies-alert-inside {
+    background: $grey7;
+    padding: 0.7em 3em 0.7em 0.7em;
+    position: relative;
+  }
+}
+
+@include aboveSmallScreen() {
+  .cookies-alert {
+    text-align: center;
+    margin-top: -3em;
+    transition: margin-top 1s ease;
+    box-shadow: none;
+    width: 100%;
+    &.visible {
+      bottom: auto;
+      margin: 0;
+    }
+    .close {
+      cursor: pointer;
+      font-size: 2em;
+      position: absolute;
+      right: 0.5em;
+      top: 0;
+    }
+    .cookies-alert-inside {
+      background: #DAE6F6;
+    }
+  }
+}

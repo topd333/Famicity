@@ -1,0 +1,35 @@
+<div class="steps status">
+
+  <form class="standard-form login-form">
+
+    <progress fc-progress-icon ng-model="progress" data-icon-class="fc fc-tree-gedcom"></progress>
+    <div class="details" ng-switch="gedcomImport.status">
+      <div ng-switch-when="wait" class="wait-message">
+        <div class="centered">
+          <p data-translate>GEDCOM.IMPORT.DETAILS.QUEUED.TREE_BEING_CREATED</p>
+
+          <p data-translate>GEDCOM.IMPORT.DETAILS.QUEUED.MAIL_WILL_BE_SENT</p>
+
+        </div>
+        <div class="form-group">
+          <a class="back" href="" ui-sref="u.tree({user_id: userId})"
+             data-translate>GEDCOM.IMPORT.UPLOAD.BACK_TO_TREE</a>
+        </div>
+      </div>
+      <div ng-switch-default>
+        <ol class="sequence">
+          <li class="item" ng-repeat="importStep in importSteps" ng-class="{reached: importStep.status}">
+            <span class="label" data-translate>{{importStep.label}}</span> <i class="check fa" ng-if="importStep.status" ng-class="importStep.status === 'running' ? 'fa-spinner fa-pulse' : 'fa-check'"></i>
+          </li>
+        </ol>
+
+        <!--<div class="form-group">-->
+          <!--<button class="cancel btn btn-danger btn-lg" ui-sref="gedcom-import-wizard.file" data-translate>-->
+            <!--GEDCOM.IMPORT.DETAILS.STATUS.CANCEL-->
+          <!--</button>-->
+        <!--</div>-->
+      </div>
+    </div>
+
+  </form>
+</div>

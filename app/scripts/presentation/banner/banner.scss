@@ -1,0 +1,11 @@
+#banner {
+  display: none;
+}
+
+@import "banner_desktop";
+
+@include onTouchScreen() {
+  #banner {
+    @extend .fullWidth;
+  }
+}

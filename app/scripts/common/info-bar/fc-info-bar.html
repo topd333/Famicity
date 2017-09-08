@@ -1,0 +1,5 @@
+<p class="info-banner hidden-xs" ng-if="content">
+  <span ng-bind-html="content | trustedHtml"></span>
+  <a class="info-bar-link" href="{{ link }}" ng-if="link">{{ linkText }}</a>.
+  <i class="fa fa-close pointer" ng-click="dismiss()"></i>
+</p>

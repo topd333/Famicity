@@ -1,0 +1,112 @@
+@import "fc-tree/fc-tree";
+
+/* Tree toolbars */
+$iconSquareSize: 1.5em;
+
+.tree{
+  fc-menu {
+    display: none;
+  }
+  .content-view {
+    padding: 0;
+  }
+  .toolbar-container {
+    display: none;
+  }
+}
+
+@import "gedcom/gedcom";
+@import "fusions/fusions";
+
+@include onTouchScreen() {
+  .tree.modal-open{
+    position: fixed;
+  }
+}
+
+@include aboveMediumScreen() {
+  .tree {
+    .fc-toolbar-icon {
+      color: $grey;
+    }
+    .main-content {
+      margin-top: 0;
+    }
+    .toolbar-container {
+      display: block;
+      width: 75em;
+      @include centeredHorizontally();
+      max-width: 100%;
+    }
+    .main-container {
+      position: relative;
+      //padding-top: 10px;
+
+      .main-toolbar {
+        right: 10px;
+        position: absolute;
+        top: 10px;
+      }
+      .fc-toolbar-choice {
+        float: left;
+        margin-left: 0.7em;
+        .fc-toolbar-icon {
+          width: 2.5em;
+          //i {
+          //font-size: 1.5em;
+          //}
+        }
+        &.more-choices {
+          position: relative;
+          .remaining-choice {
+            padding-right: 2.7em;
+          }
+        }
+        .more-choices {
+          .fc-toolbar-icon {
+            width: $iconSquareSize;
+          }
+        }
+      }
+    }
+    .zoom-container {
+      position: absolute;
+      bottom: 12em;
+      left: 0;
+      right: 0;
+      //width: 100%;
+      .zoom-toolbar {
+        bottom: 0;
+        right: 10px;
+        position: absolute;
+      }
+      fc-toolbar {
+        clear: both;
+        max-width: 100%;
+        position: relative;
+        width: 2.8em;
+        @include centeredHorizontally;
+        .fc-toolbar-icon {
+          i.plus-icon {
+            font-size: 1.2em;
+            line-height: 1.3em;
+            &:before {
+              content: '\002b';
+            }
+          }
+          i.minus-icon {
+            font-size: 1.2em;
+            line-height: 0.8em;
+            &:before {
+              content: '\002d';
+            }
+          }
+        }
+      }
+      .fc-toolbar-choice {
+        display: inline-block;
+        margin-top: 0.2em;
+      }
+    }
+  }
+}

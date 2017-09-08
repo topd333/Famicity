@@ -1,0 +1,70 @@
+@include aboveMediumScreen() {
+  .presentation {
+    #share {
+      .contents {
+        .text {
+          h1 {
+            text-align: left;
+          }
+          display: inline-block;
+          float: left; // Shouldn't be necessary because of inline-block
+          width: 45%;
+        }
+        .images {
+          display: inline-block;
+          margin-left: 2em;
+          float: right;
+          width: 51%;
+          > * {
+            //opacity: 0;
+          }
+        }
+      }
+      //$animation: img-appear 0.5s forwards ease-out;
+      $animation: none;
+
+      .share-img-1 {
+        $width: 80%;
+        transform: rotate(3deg);
+        width: $width;
+        opacity: 1;
+
+        margin-left: (100%-$width);
+      }
+
+      &:target .share-img-2 {
+        animation: $animation;
+      }
+      .share-img-2 {
+        position: absolute;
+        top: 4em;
+        height: 10em;
+        width: 30%;
+        transform: rotate(2deg);
+      }
+
+      &:target .share-img-3 {
+        animation: $animation;
+        animation-delay: 0.25s;
+      }
+      .share-img-3 {
+        height: 10em;
+        top: 12em;
+        width: 30%;
+        transform: rotate(-3deg);
+      }
+
+      &:target .share-img-4 {
+        animation: $animation;
+        animation-delay: 0.5s;
+      }
+      .share-img-4 {
+        height: 10em;
+        left: 14%;
+        top: 19em;
+        width: 30%;
+        transform: rotate(1deg);
+      }
+    }
+  }
+}

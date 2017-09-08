@@ -1,0 +1,15 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <div data-fc-progress-bullet-bar ng-attr-data-nb-steps="showInvitationStep ? 4 : 3" data-current-step="4"></div>
+
+    <div class="form-block">
+
+      <fc-import-services-buttons></fc-import-services-buttons>
+
+      <div ng-click="nextStep()" class="skip-step"><a data-translate>SKIP_STEP_LINK</a>
+      </div>
+
+    </div>
+  </div>
+</div>

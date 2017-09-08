@@ -1,0 +1,93 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<a ng-if="post.permissions.is_updatable" class="btn btn-icon pull-right"-->
+         <!--ui-sref="u.user-blog-edit-post({'user_id': viewedUserId, 'post_id': post.id})"><i class="fa fa-edit"></i></a>-->
+      <!--<span fc-like data-object-type="post" data-object="post" data-view-mode="mobile"-->
+            <!--data-list-page="listPageUrl"></span>-->
+      <!--<a class="reduced-icon-size btn btn-icon pull-right"><i class="fa fa-comment-o"></i> {{ post.comments_count }}</a>-->
+<!---->
+      <!--<h2 class="pull-left" translate>POST</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary profile="basicProfile"></fc-user-summary>
+
+          <div class="left-column-block">
+            <div class="left-column-block-content">
+              <a ng-if="post.likes_count" class="red-rollover"
+                 ui-sref="u.user-posts-likes({ user_id: viewedUserId, post_id: post.id })">
+                <i><i class="fa fa-heart"></i></i><span translate>THEY_LIKE_POST </span><b>{{ post.likes_count }}</b>
+              </a>
+            </div>
+          </div>
+          <!-- Left context icons -->
+          <!-- <div class="left-column-block" ng-if="isShowLeftMenu">
+              <div class="left-column-block-header left-column-block-header-with-icon">
+                  <div>
+                      <h3>Mes rubriques</h3>
+                      <span></span>
+                  </div>
+              </div>
+              <div class="left-column-block-content">
+                  <a class="clearfix" href="#">
+                      <i><i class="fa fa-pencil"></i></i><b>23</b><span>Mes nouvelles</span>
+                  </a>
+                  <a class="clearfix" href="#">
+                      <i><i class="fa fa-cutlery"></i></i><b>12</b><span>Mes recettes</span>
+                  </a>
+                  <a class="clearfix" href="#">
+                      <i><i class="fa fa-map-marker"></i></i><b>14</b><span>Mes bonnes adresses</span>
+                  </a>
+              </div>
+          </div> -->
+          <!-- /// Left context icons -->
+
+
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!-- <div class="center-right-icons clearfix hidden-xs">
+               <span fc-like data-object-type="post" data-object="post" data-view-mode="btn-icon"></span>
+               <a ng-show="post.permissions.is_updatable" class="btn btn-icon btn-icon-primary pointer" ng-click="goToEditPage()"><i class="fa fa-pencil-square-o"></i></a>
+             </div>-->
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <!-- <div class="f-block">
+               <div class="banner">
+                 <a class="story-title" ng-if="post.story" ui-sref="u.story.get({id:post.story.id})">{{post.story.title}}</a>
+               </div>
+                 <div class="">
+                     <div ng-if="post.title" class="center-text">{{ post.title }}</div><br />
+                     <div class="center-text post-picture" ng-if="post.photo_url_normal"><img  class="max-sized-full pointer" ng-src="{{ post.photo_url_normal }}" ng-click="openFullScreenImage()" /></div>
+                     <p ng-bind-html="post.content_html | trustedHtml"></p>
+                 </div>
+                 <div class="item-sub-delimiter"></div>
+               <div fc-comment-list data-object="post" data-user="user"></div>
+               <div class="slideshow single-picture" ng-show="slideshowMode">
+                   <div class="navbar">
+                     <p class="slideshow-close-btn fa fa-times pointer" ng-click="closeSlideshowMode()"></p>
+                   </div>
+                   &lt;!&ndash;<img class="slideshow-img" ng-src="{{ photo.url_original }}" />&ndash;&gt;
+                   <div class="royalSlider rsDefault">
+                   </div>
+                 </div>
+             </div>-->
+
+            <fc-feed-post data-post="post" data-user="me"
+                          data-on-remove="removePost(postId)"
+                          data-on-update="updatePost(editCopy,textVal,userId,required)" index="0"
+              ></fc-feed-post>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

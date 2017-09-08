@@ -1,0 +1,39 @@
+<div class="table-row">
+  <div class="table-cell v-align-top gedcom-espace-import-table-avatar">
+    <fc-avatar class="avatar-size45" user="fusionCtrl.fusion.other_user"></fc-avatar>
+  </div>
+
+  <div ng-if="fusionCtrl.fusion.state == 'waiting_treatment'">
+    <div class="table-cell" ng-bind-html="'FUSION_PENDING' | translate: {'other_user': fusionCtrl.fusion.other_user.user_name, 'other_user_id': fusionCtrl.fusion.other_user.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate')}"></div>
+    <div class="table-cell right-text v-align-top gedcom-espace-import-table-button">
+      <a class="btn btn-secondary btn-md button-min-width2" ng-click="fusionCtrl.cancel({id: fusionCtrl.fusion.id})" translate>CANCEL</a>
+    </div>
+  </div>
+
+  <div ng-if="fusionCtrl.fusion.state == 'in_progress'">
+    <div class="table-cell" ng-bind-html="'FUSION_IN_PROGRESS' | translate: {'other_user': fusionCtrl.fusion.other_user.user_name, 'other_user_id': fusionCtrl.fusion.other_user.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate')}"></div>
+  </div>
+
+  <div ng-if="fusionCtrl.fusion.state == 'famicity_handle'">
+    <div class="table-cell" ng-bind-html="'FUSION_PENDING_CONFLICT' | translate: {'other_user': fusionCtrl.fusion.other_user.user_name, 'other_user_id': fusionCtrl.fusion.other_user.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate')}"></div>
+    <div class="table-cell right-text v-align-top gedcom-espace-import-table-button">
+      <a class="btn btn-primary btn-md button-min-width2" ui-sref="u.settings-contact"  translate>CONTACT_US_LINK</a>
+    </div>
+  </div>
+
+  <div ng-if="fusionCtrl.fusion.state == 'initiate'">
+    <div class="table-cell" ng-bind-html="'SENT_FUSION_NON_ANSWERED' | translate: {'other_user': fusionCtrl.fusion.other_user.user_name, 'other_user_id': fusionCtrl.fusion.other_user.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate'), 'nb_remaining_days': fusionCtrl.fusion.remaining_days}">
+    </div>
+    <div class="table-cell right-text v-align-top gedcom-espace-import-table-button">
+      <a class="btn btn-secondary btn-md button-min-width2" ng-click="fusionCtrl.cancel({id: fusionCtrl.fusion.id})" translate>CANCEL</a>
+    </div>
+  </div>
+
+  <div ng-if="fusionCtrl.fusion.state == 'waiting_merge_acceptation'">
+    <div class="table-cell" data-translate>FUSION.WAITING_MERGE</div>
+    <div class="table-cell right-text v-align-top gedcom-espace-import-table-button">
+      <a class="btn btn-secondary btn-md button-min-width2" ng-click="fusionCtrl.cancel({id: fusionCtrl.fusion.id})" translate>CANCEL</a>
+    </div>
+  </div>
+
+</div>

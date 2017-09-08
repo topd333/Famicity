@@ -1,0 +1,8 @@
+<fc-header-bar user-id="userId">
+    <!-- <h2 class="pull-left" translate>INTERNAL_MENU_ITEM_DIRECTORY</h2> -->
+
+    <!-- <a class="btn btn-icon pointer pull-right" ng-click=""><i class="fa fa-trash-o"></i></a> -->
+    <a class="btn btn-icon txt-icon pull-right" ui-sref="u.directory.add({user_id: userId})">+</a>
+    <a class="btn btn-icon pull-right" ui-sref="u.directory.import-from-services({user_id: userId})"><i class="fa fa-refresh"></i></a>
+    <a class="btn btn-icon pull-right" ui-sref="u.directory.invite({user_id: userId})"><i class="fa fa-users"></i></a>
+</fc-header-bar>

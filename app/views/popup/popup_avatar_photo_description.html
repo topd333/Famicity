@@ -1,0 +1,50 @@
+<div id="photo-description-modal" ng-init="init()">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3 translate>PHOTO_DESCRIPTION</h3>
+
+      <form data-fc-form-submit data-submit-method="submit()" data-form-in-progress="formInProgress" class="standard-form login-form" id="intro_form">
+        <div class="form-group clearfix">
+          <div class="form-group">
+            <div class="textarea-with-icon">
+              <textarea fc-auto-focus class="form-control" id="photo-desc" data-translate
+                        data-translate-attr-placeholder="PHOTO_DESCRIPTION"
+                        ng-model="photoEditCopy.description"></textarea>
+              <label for="photo-desc"><i class="fa fa-pencil"></i></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+              <label class="sr-only" for="date" translate>DATE</label>
+             <input class="form-control" id="date" name="date"
+                     placeholder="{{ 'PHOTO_TAKEN_THE_PLACEHOLDER' | translate }}" ng-model="photoEditCopy.taken_at"
+                     type="text" datepicker-popup="shortDate" is-open="datePickers.photoDate.isOpen"
+                     ng-click="datePickers.photoDate.isOpen = true"
+              />
+               </div>
+               -->
+              <fc-date-input name="date" id="date"
+                             data-locale="{{me.settings.locale}}"
+                             data-not-found-message="{{'fc-date-input.DATE_INVALID'|translate}}"
+                             data-click-to-confirm-message="fc-date-input.CLICK_TO_CONFIRM"
+                             data-is-valid="avatar.dateIsValid"
+                             ng-model="photoEditCopy.taken_at"
+                             placeholder="{{::'PHOTO_TAKEN_THE_PLACEHOLDER'|translate}}">
+              </fc-date-input>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-primary green-button" type="submit" ng-bind="'SUBMIT' | translate"></button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-secondary" ng-click="$close()" type="button" translate>CANCEL</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.tree-popup-second-parent {
+
+  $tileMargin: 1em; // todo: redundant, the value is also in another file
+  $tileSize: $tileMargin + $avatarSizeLarge + $tileMargin;   // todo: redundant, the value is also in another file
+
+  .btn {
+    margin: 1em;
+    padding: 0.4em 0.8em;
+    &.back {
+      background: grey;  // todo: use variable
+      border: gray;
+    }
+  }
+  
+  .named-partner-tile {
+    color: $green;
+  }
+  
+}

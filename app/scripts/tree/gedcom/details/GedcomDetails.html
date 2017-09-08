@@ -1,0 +1,68 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" data-translate="DETAILS"></h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-gedcom-left-menu></fc-gedcom-left-menu>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+
+            <div class="table table-espace-ged-details">
+              <div class="table-row">
+                <div class="table-cell"></div>
+                <div class="table-cell"><div><fc-avatar user="basicProfile"></fc-avatar></div></div>
+                <div class="table-cell v-align-middle"><span class="table-espace-ged-details-name">{{ basicProfile.user_name }}</span></div>
+              </div>
+
+              <div ng-repeat="event in gedcomDetails.events" class="table-row" ng-class="{'table-espace-ged-details-bottom': $last}">
+                <div class="table-cell table-espace-ged-details-date">{{ event.created_date * 1000 | timeOrDateFilter }}</div>
+                <div class="table-cell table-espace-ged-details-stalk ">
+                  <div class="table-espace-ged-details-stalk-1 "><div><span></span></div></div>
+                </div>
+                <div class="table-cell table-espace-ged-details-info">
+                  <div>
+                    <div ng-if="event.type_id == 11 && event.code == 5">
+                      <p class="danger-color"><i class="fa fa-exclamation-triangle"></i>&nbsp;{{ "IMPORT_FAILED_TITLE" | translate }}</p>
+                    </div>
+
+                    <p>{{ event.description }}<p>
+                    <!-- <p>Mon importation Gedcom - &lt;<span class="standard-green-c">nom du ficher.ged</span>&gt;</p> -->
+                    <ul ng-if="event.public_errors.length" class="squares">
+                      <li ng-repeat="error in event.public_errors" ng-bind-html="error.message | trustedHtml"></li>
+                    </ul>
+                    <ul ng-if="event.internal_errors.length" class="squares">
+                      <li ng-repeat="error in event.internal_errors" ng-bind-html="error.message | trustedHtml"></li>
+                    </ul>
+
+                    <p ng-if="event.warnings.length && event.warnings.length < 5" data-translate>GEDCOM_DETAIL_WARNINGS_TITLE</p>
+                    <p ng-if="event.warnings.length >= 5" data-translate>GEDCOM_DETAIL_WARNINGS_TITLE_MORE_THAN_5</p>
+                    <ul ng-if="event.warnings.length" class="squares">
+                      <li ng-repeat="warning in event.warnings" ng-bind-html="warning.message | trustedHtml"></li>
+                    </ul>
+
+                    <div ng-if="event.internal_errors.length || event.public_errors.length" class="button-centring-div">
+                      <button ui-sref="u.settings-contact" class="btn btn-primary green-button button-min-width" data-translate>CONTACT_US_LINK</button>
+                    </div>
+
+                    <div ng-if="event.type_id == 11 && event.code == 4" class="button-centring-div">
+                      <button ui-sref="u.tree({user_id: userId, ts: event.id})" ui-sref-opts="{reload: true}" class="btn btn-primary green-button button-min-width" data-translate>SEE_MY_TREE</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

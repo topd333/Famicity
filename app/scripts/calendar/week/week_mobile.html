@@ -1,0 +1,53 @@
+
+   <table class="calendar-week-view-xs-days">
+      <tr>
+         <td translate>{{ daysName[0][0] }}</td>
+         <td translate>{{ daysName[1][0] }}</td>
+         <td translate>{{ daysName[2][0] }}</td>
+         <td translate>{{ daysName[3][0] }}</td>
+         <td translate>{{ daysName[4][0] }}</td>
+         <td translate>{{ daysName[5][0] }}</td>
+         <td translate>{{ daysName[6][0] }}</td>
+      </tr>
+      <tr class="calendar-week-view-xs-dates">
+         <td ng-class="{'selected-day': currentDayIndex == $index, 'current-date': isCurrentWeek == true && currentDate == d.day}" ng-repeat="d in daysWeek"><div><a href='' ng-click="selectDay(d, $index)">{{ d.day }}</a></div></td>
+      </tr>
+   </table>
+   <div class="center-text calendar-week-view-xs-today">{{ currentDayUnix * 1000 | date: 'EEEE dd MMM yyyy' }}</div>
+   <div class="item-delimiter"></div>
+   <br>
+   <table class="calendar-week-view-xs-events">
+    <tbody>
+        <tr ng-repeat="e in allDays">
+            <td colspan="2">
+                <div ng-attr-style="position: absolute; z-index: 12; background-color: {{e.event.color}};   width: 100%; font-size: 14px; height: 21px; line-height: 21px;" ng-click="showEvent(e.event.id)" class="pointer" ng-if="e.event.is_birthday != true">
+                    <span>{{ e.event.name }}</span>
+                </div>
+                <div style="white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;text-align: left; padding-left: 60px; position: relative; z-index: 12;  width: 100%;  font-size: 14px; color: #96bd3e; height: 21px; line-height: 21px;" ng-if="e.event.is_birthday == true" class="pointer" ng-click="showBirthDay(e.event.id)">
+                    <div><i class="fa fa-gift"></i> {{ e.event.name }}</div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+   </table>
+   <br>
+   <table class="calendar-week-view-xs-events">
+      <tr>
+         <td style="width: 50px; padding: 10px;">
+            <div style="height:70px; width: 100%;" ng-repeat="h in range(24) track by $index" class="calendar-week-view-xs-timecell">
+                <span ng-if="$index < 10 && true">0{{$index}}:00</span>
+                <span ng-if="$index >= 10 && $index < 24 && true">{{$index}}:00</span>
+            </div>
+         </td>
+         <td style="vertical-align: top">
+                            <div style="position: relative; height: 100%; width: 100%;">
+                                <div ng-attr-style="position: absolute; border-right: solid 1px #e7e9ea; z-index: 9; left: {{ e.event.left }}%; top:  {{ e.event.index_hour * 70 }}px; width: {{ e.event.width }}%; height: {{e.event.duration * 70 }}px; background-color: {{e.event.color}}; margin-top: 9px;" ng-repeat= "e in dayEvents" ng-click="showEvent(e.event.id)" tooltip-html-unsafe="{{e.event.content_html}}" tooltip-trigger="mouseenter" tooltip-append-to-body="true" class="pointer">
+                                    <span ng-hide="e.event.split > 2" class>{{ e.event.start_hour }}<br />{{ e.event.name }}</span>.
+                                </div>
+                            </div>
+
+         </td>
+      </tr>
+   </table>

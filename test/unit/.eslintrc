@@ -1,0 +1,4 @@
+globals:
+  inject: false
+  module: false
+  spyOn: false

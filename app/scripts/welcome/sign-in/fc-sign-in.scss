@@ -1,0 +1,27 @@
+.signin {
+  .wrapper {
+    .contents {
+      @include centeredVertically();  // Sign-in is always centered as a single-page form
+      .form-container {
+        background: transparent;
+        .login-form {
+          .remember {
+            @extend .standard-checkbox;
+            margin-top: 0.5em;
+            label {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include aboveSmallScreen() {
+  .signin {
+    .wrapper {
+      height: 100vh;                    // Sign-in is always centered as a single-page form
+    }
+  }
+}

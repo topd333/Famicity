@@ -1,0 +1,54 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+    <!--<h2 class="pull-left" translate>LANGUAGE</h2>-->
+    <!--<a class="btn pull-right" ng-click="submit()" translate>OK</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-settings-menu data-current-section="locale"></fc-settings-menu>
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <div class="text-and-button-table">
+              <div class="center-to-left-text" data-translate>LANGUAGE_SETTINGS_INSTRUCTION</div>
+              <div class="text-and-button-table-button hidden-xs">
+                <fc-menu-trigger action="submitAction"></fc-menu-trigger>
+              </div>
+            </div>
+
+            <div class="custom-select-w">
+              <div class="btn-group form-group btn-group-for-select custom-select-holder" dropdown
+                   is-open="status.isopen">
+                <div dropdown-toggle class="language-select btn-group">
+                  <button class="btn-options-choice btn-options-choice-profile btn btn-default custom-select-button"
+                          type="button">
+                    <i class="fa fa-pencil fa-fw"></i> {{ selectedLanguage | translate }}
+                  </button>
+                  <button class="btn-angle-down btn btn-default custom-select-caret" type="button">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                </div>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="pointer"><a ng-click="selectedLanguage = 'fr'; toggleDropdown();" data-translate>fr</a>
+                  </li>
+                  <li class="pointer"><a ng-click="selectedLanguage = 'en'; toggleDropdown();" data-translate>en</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

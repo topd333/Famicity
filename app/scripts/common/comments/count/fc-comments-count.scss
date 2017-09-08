@@ -1,0 +1,31 @@
+$colorComment: $green;
+
+fc-comments-count {
+  display: inline-block;
+  .icon, .counter {
+    display: inline;
+    color: $white;
+    .count-only {
+      display: inline;
+      font-size: 0.7em;
+    }
+    .count-full {
+      display: none;
+    }
+  }
+}
+
+@include aboveMediumScreen() {
+  fc-comments-count {
+    width: auto;
+    .icon, .counter {
+      color: $colorComment;
+      .count-only {
+        display: none;
+      }
+      .count-full {
+        display: inline;
+      }
+    }
+  }
+}

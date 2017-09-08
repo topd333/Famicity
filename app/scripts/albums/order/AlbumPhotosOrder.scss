@@ -1,0 +1,7 @@
+@include aboveMediumScreen() {
+  .album.reorder {
+    .menu {
+      display: none;
+    }
+  }
+}

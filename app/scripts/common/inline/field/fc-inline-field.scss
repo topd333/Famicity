@@ -1,0 +1,16 @@
+.inline .inline-form fc-inline-field {  // We should not have to assume context *before* the component
+  .input-group-addon {
+    line-height: 1;
+  }
+  .field .field-input {
+    .input-group {
+      border: none;
+      label {
+        left: 1.8em;
+      }
+      input {
+        padding-left: 0;
+      }
+    }
+  }
+}

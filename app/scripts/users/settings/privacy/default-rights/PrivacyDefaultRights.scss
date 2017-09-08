@@ -1,0 +1,12 @@
+.settings.privacy.default-rights {
+  .language-select {
+    margin-top: 1em;
+  }
+}
+@include aboveMediumScreen() {
+  .settings.privacy.default-rights {
+    .action-submit {
+      display: none;
+    }
+  }
+}

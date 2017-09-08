@@ -1,0 +1,29 @@
+<div class="popin-holder popin-holder-on" ng-init="init()">
+  <div class="popin-dialog">
+    <div class="popin-dialog-decoration"></div>
+    <h3 translate>CHANGE_MY_LOGIN</h3>
+
+    <form novalidate class="standard-form login-form" id="intro_form">
+      <h6 class="center-text" translate>SET_AS_LOGIN_EMAIL_INSTRUCTION</h6>
+
+      <div ng-repeat="(type, typesList) in emailsList">
+        &nbsp; &nbsp; &nbsp; &nbsp; {{ type }}:
+        <div ng-repeat="email in typesList">
+          <div class="standard-radiobutton select-auth-email">
+            <input ng-attr-id="{{ type + $index }}" ng-attr-value="{{ email.user_email.id }}" ng-model="formHolder.currentEmail" name="i" type="radio">
+            <span class="radio-element"></span>
+          </div>
+          <label ng-attr-for="{{ type + $index }}" class="fa"><i class="fa fa-envelope-o"></i> {{ email.user_email.email }}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary green-button" ng-click="submit()" type="submit" translate>SET_AS_LOGIN_EMAIL_BTN</button>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-secondary" ng-click="$close()" type="submit" translate>CANCEL</button>
+      </div>
+    </form>
+
+  </div>
+</div>

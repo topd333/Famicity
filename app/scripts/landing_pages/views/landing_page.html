@@ -1,0 +1,383 @@
+<div class="wrapper">
+  <div class="lang lang-pos" data-fc-language-switcher></div>
+  <div class="content content-wider">
+
+    <div class="main">
+      <div class="home-above-form">
+        <div class="ui_elem famicity-logo">
+          <a ui-sref="base"></a>
+        </div>
+        <h1 ng-if="object_type == 'album'" class="welcome-message" data-translate>DISCOVER_ALBUM_SHARED_WITH_YOU</h1>
+        <h1 ng-if="object_type == 'album_bio'" class="welcome-message" data-translate>LANDING.ALBUM_BIO.TITLE</h1>
+
+        <h1 ng-if="object_type == 'biography'" class="welcome-message" data-translate>
+          DISCOVER_BIOGRAPHIES_SHARED_WITH_YOU</h1>
+
+        <h1 ng-if="object_type == 'message'" class="welcome-message" data-translate>
+          DISCOVER_MESSAGE_SHARED_WITH_YOU</h1>
+        <h1 ng-if="object_type == 'profile'" class="welcome-message" data-translate>DISCOVER_RELATIVE_PROFILES</h1>
+        <h1 ng-if="object_type == 'tree'" class="welcome-message" data-translate>DISCOVER_FAMILY_TREE</h1>
+        <h1 ng-if="object_type == 'event'" class="welcome-message" data-translate>INVITATION_AWAITS_YOU</h1>
+
+        <h1 ng-if="object_type == 'invitation'" class="welcome-message" data-translate>
+          WELCOME.BASELINE_START_STORY_1</h1>
+
+        <h1 ng-if="object_type == 'post'" class="welcome-message" data-translate>DISCOVER_MESSAGE_SHARED_WITH_YOU</h1>
+        <br>
+      </div>
+
+      <div ng-if="object_type == 'album'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="two-column-form-table">
+            <div class="frame-green-1">
+              <div class="green-top-left-decoration"></div>
+              <div class="table two-column-form-table-ntf-table">
+                <div class="table-cell two-column-form-table-avatar">
+                  <img ng-src="{{ invitation_data.user.avatar_url }}">
+                </div>
+                <div class="table-cell v-align-middle land-page-info-detail"><span data-translate
+                                                                                   data-translate-values="{'first_name': invitation_data.user.first_name}">FIRST_NAME_SHARED_AN_ALBUM_WITH_YOU</span>
+                  <br><i class="fa fa-picture-o"></i>
+                  <br class=" hidden-xs">
+
+                  <div class="hidden-xs invite-four-photos-holder" ng-if="invitation_data.last_photos.length>=4">
+                    <div class="invite-four-photos clearfix">
+                      <img ng-repeat="photo in invitation_data.last_photos | limitTo: 4" class="pull-left" ng-src="{{ photo.url_thumb }}">
+                    </div>
+                  </div>
+                  <span ng-if="invitation_data.last_photos.length > 0 && invitation_data.last_photos.length < 4" class="ui_elem albums-photo-frame hidden-xs">
+                    <img ng-src="{{ invitation_data.last_photos[0].url_thumb }}">
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <br class="visible-xs">
+              <fc-sign-up data-show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="ACCESS_TO_ALBUM" data-intro-text="PLEASE_SUBSCRIBE_ACCESS_ALBUM"></fc-sign-up>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+
+      <div ng-if="object_type == 'album_bio'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="two-column-form-table">
+            <div class="frame-green-1">
+              <div class="green-top-left-decoration"></div>
+              <div class="table two-column-form-table-ntf-table">
+                <div class="table-cell two-column-form-table-avatar">
+                  <img ng-src="{{ invitation_data.user.avatar_url }}">
+                </div>
+                <div class="table-cell v-align-middle land-page-info-detail"><span>{{ "LANDING.ALBUM_BIO.DESCRIPTION" | translate: {'first_name': invitation_data.user.first_name, 'bio_first_name': invitation_data.user_bio.first_name, 'bio_last_name': invitation_data.user_bio.last_name} }}</span>
+                  <br><i class="fa fa-picture-o"></i>
+                  <br class=" hidden-xs">
+
+                  <div class="hidden-xs invite-four-photos-holder" ng-if="invitation_data.last_photos.length>=4">
+                    <div class="invite-four-photos clearfix">
+                      <img ng-repeat="photo in invitation_data.last_photos | limitTo: 4" class="pull-left" ng-src="{{ photo.url_thumb }}">
+                    </div>
+                  </div>
+                  <span ng-if="invitation_data.last_photos.length > 0 && invitation_data.last_photos.length < 4" class="ui_elem albums-photo-frame hidden-xs">
+                    <img ng-src="{{ invitation_data.last_photos[0].url_thumb }}">
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <br class="visible-xs">
+              <fc-sign-up show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="LANDING.ALBUM_BIO.ACCESS" data-intro-text="LANDING.ALBUM_BIO.SUBSCRIBE"></fc-sign-up>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+
+      <div ng-if="object_type == 'biography'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="white-bkg-strip-inside-r">
+            <img class="invite-land-photo hidden-xs" src="/images/invite-land-bio.jpg">
+
+            <div class="two-column-form-table">
+              <div class="v-align-top">
+                <div class="two-column-form-dd-table table">
+                  <div class="table-cell frame-green-1">
+                    <div class="green-top-left-decoration"></div>
+                    <div class="table two-column-form-table-ntf-table">
+                      <div class="table-cell two-column-form-table-avatar">
+                        <img ng-src="{{ invitation_data.user.avatar_url }}">
+                      </div>
+                      <div class="table-cell v-align-middle land-page-info-detail"><span>{{ (invitation_data.user_bio.is_deceased ? 'FIRST_NAME_SHARED_A_BIOGRAPHY_WITH_YOU' : 'FIRST_NAME_SHARED_A_DIARY_WITH_YOU') | translate: {'first_name': invitation_data.user.first_name, 'biography_user': invitation_data.user_bio.first_name } }}</span>
+                        <br><i class="fa fa-edit"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+                <br class="visible-xs">
+
+                <div fc-sign-up show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="{{invitation_data.user_bio.is_deceased ? 'ACCESS_TO_BIOGRAPHY' : 'ACCESS_TO_DIARY'}}" data-intro-text="{{invitation_data.user_bio.is_deceased ? 'PLEASE_SUBSCRIBE_ACCESS_BIOGRAPHY' : 'PLEASE_SUBSCRIBE_ACCESS_DIARY'}}"></div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+        </div>
+      </div>
+
+      <div ng-if="object_type =='event'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="white-bkg-strip-inside-r">
+
+            <div class="two-column-form-table ">
+              <div class="v-align-top frame-green-1">
+                <div class="two-column-form-dd-table table">
+                  <div class="table-cell ">
+                    <div class="green-top-left-decoration"></div>
+                    <div class="table two-column-form-table-ntf-table">
+                      <div class="table-cell two-column-form-table-avatar">
+                        <img ng-src="{{ invitation_data.user.avatar_url }}">
+                      </div>
+                      <div class="table-cell v-align-middle land-page-info-detail"><span data-translate
+                                                                                         data-translate-values="{'first_name': invitation_data.user.first_name}">FIRST_NAME_SHARED_AN_EVENT</span>
+                        <br><i class="fa fa-envelope-o"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="left-text landing-padding-10">
+                  <p ng-if="invitation_data.name"><span class="land-page-info-detail"
+                                                        data-translate>EVENT_NAME_LABEL</span> {{ invitation_data.name
+                    }}</p>
+
+                  <p ng-if="invitation_data.start_date"><span class="land-page-info-detail" data-translate>EVENT_START_DATE_LABEL</span>
+                    {{ $moment(invitation_data.start_date, 'X').format('LLLL') }}</p>
+
+                  <p ng-if="invitation_data.end_date"><span class="land-page-info-detail" data-translate>EVENT_END_DATE_LABEL</span>
+                    {{ $moment(invitation_data.end_date, 'X').format('LLLL') }}</p>
+
+                  <p ng-if="invitation_data.location" ng-if="invitation_data.end_date"><span
+                    class="land-page-info-detail" data-translate>EVENT_LOCATION_LABEL</span> {{ invitation_data.location
+                    }}</p>
+                </div>
+              </div>
+              <div>
+                <br class="visible-xs">
+
+                <div fc-sign-up show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="ACCESS_TO_EVENT" data-intro-text="PLEASE_SUBSCRIBE_ANSWER_INVITATION"></div>
+
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+        </div>
+      </div>
+
+      <div ng-if="object_type == 'invitation'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="white-bkg-strip-inside-r">
+            <img class="invite-land-photo hidden-xs" src="/images/invite-land-classique.jpg">
+
+            <div class="two-column-form-table">
+              <div class="v-align-top">
+                <div class="two-column-form-dd-table table">
+                  <div class="table-cell frame-green-1">
+                    <div class="green-top-left-decoration"></div>
+                    <div class="table two-column-form-table-ntf-table">
+                      <div class="table-cell two-column-form-table-avatar">
+                        <img ng-src="{{ invitation_data.avatar_url }}">
+                      </div>
+                      <div class="table-cell v-align-middle land-page-info-detail"><span>{{ "FIRST_NAME_INVITED_YOU" | translate: {"first_name": invitation_data.first_name} }}</span>
+                        <br><i class="fa fa-envelope-o"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+                <br class="visible-xs">
+
+                <div fc-sign-up show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="START_STORY" data-intro-text="PLEASE_SUBSCRIBE_JOIN_USER" inviter-first-name="invitation_data.first_name"></div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+        </div>
+      </div>
+
+      <div ng-if="object_type == 'message'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="white-bkg-strip-inside-r">
+            <img class="invite-land-photo hidden-xs" src="/images/invite-land-message.jpg">
+
+            <div class="two-column-form-table">
+              <div class="v-align-top">
+                <div class="two-column-form-dd-table table">
+                  <div class="table-cell frame-green-1">
+                    <div class="green-top-left-decoration"></div>
+                    <div class="table two-column-form-table-ntf-table">
+                      <div class="table-cell two-column-form-table-avatar">
+                        <img ng-src="{{ invitation_data.user.avatar_url }}">
+                      </div>
+                      <div class="table-cell v-align-middle land-page-info-detail"><span>{{ "FIRST_NAME_WROTE_MESSAGE" | translate: {"first_name": invitation_data.user.first_name} }}</span>
+                        <br><i class="fa fa-envelope-o"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+                <br class="visible-xs">
+
+                <div fc-sign-up show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="ACCESS_TO_MESSAGE" data-intro-text="PLEASE_SUBSCRIBE_ACCESS_MESSAGE"></div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+        </div>
+      </div>
+
+      <div ng-if="object_type == 'post'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="white-bkg-strip-inside-r">
+            <img class="invite-land-photo hidden-xs" src="/images/invite-land-posts.jpg">
+
+            <div class="two-column-form-table">
+              <div class="v-align-top">
+                <div class="two-column-form-dd-table table">
+                  <div class="table-cell frame-green-1">
+                    <div class="green-top-left-decoration"></div>
+                    <div class="table two-column-form-table-ntf-table">
+                      <div class="table-cell two-column-form-table-avatar">
+                        <img ng-src="{{ invitation_data.user.avatar_url }}">
+                      </div>
+                      <div class="table-cell v-align-middle land-page-info-detail"><span>{{ "FIRST_NAME_WROTE_POST" | translate: {"first_name": invitation_data.user.first_name} }}</span>
+                        <br><i class="fa fa-envelope-o"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+                <br class="visible-xs">
+
+                <div fc-sign-up show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="ACCESS_TO_POST" data-intro-text="PLEASE_SUBSCRIBE_ACCESS_POST"></div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+        </div>
+      </div>
+
+      <div ng-if="object_type == 'profile'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="white-bkg-strip-inside-r">
+            <img class="invite-land-photo hidden-xs" src="/images/invite-land-profil.jpg">
+
+            <div class="two-column-form-table">
+              <div class="v-align-top">
+                <div class="two-column-form-dd-table table">
+                  <div class="table-cell frame-green-1">
+                    <div class="green-top-left-decoration"></div>
+                    <div class="table two-column-form-table-ntf-table">
+                      <div class="table-cell two-column-form-table-avatar">
+                        <img ng-src="{{ invitation_data.user.avatar_url }}">
+                      </div>
+                      <div class="table-cell v-align-middle land-page-info-detail"><span>{{ "FIRST_NAME_SHARED_INFORMATIONS" | translate: {"first_name": invitation_data.user.first_name} }}</span>
+                        <br><i class="fa fa-user"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+                <br class="visible-xs">
+
+                <div fc-sign-up show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="ACCESS_TO_INFORMATIONS" data-intro-text="PLEASE_SUBSCRIBE_ACCESS_INFORMATIONS"></div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+        </div>
+      </div>
+
+      <div ng-if="object_type == 'tree'" class="white-bkg-strip">
+        <div class="white-bkg-strip-inside">
+          <br>
+
+          <div class="white-bkg-strip-inside-r">
+            <img class="invite-land-photo hidden-xs" src="/images/invite-land-arbre.jpg">
+
+            <div class="two-column-form-table">
+              <div class="v-align-top">
+                <div class="two-column-form-dd-table table">
+                  <div class="table-cell frame-green-1">
+                    <div class="green-top-left-decoration"></div>
+                    <div class="table two-column-form-table-ntf-table">
+                      <div class="table-cell two-column-form-table-avatar">
+                        <img ng-src="{{ invitation_data.avatar_url }}">
+                      </div>
+                      <div class="table-cell v-align-middle land-page-info-detail"><span>{{ "FIRST_NAME_SHARED_TREE" | translate: {"first_name": invitation_data.first_name} }}</span>
+                        <br><i class="fa fa-leaf"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+                <br class="visible-xs">
+
+                <div fc-sign-up show-logo="false" data-locale="{{locale}}" data-is-landing-page="true" data-app-icons="false" data-btn-text="ACCESS_TO_TREE" data-intro-text="PLEASE_SUBSCRIBE_ACCESS_TREE"></div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fc-public-footer data-locale="{{locale}}"></div>
+</div>

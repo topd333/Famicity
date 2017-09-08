@@ -1,0 +1,353 @@
+/*** Small block */
+.s-block {
+  margin-bottom: 40px;
+  a {
+    color: $green;
+  }
+}
+.s-block-bordered {
+  border: 1px solid $green;
+}
+.s-block-padded {
+  padding: 10px 20px;
+}
+
+.s-block-header {
+  div {
+    @extend .fcity-clearfix;
+  }
+  h3 {
+    color: $green;
+  }
+
+  .s-block-header-amount {
+    display: block;
+    float: right;
+    height: 28px;
+    line-height: 28px;
+    width: 28px;
+    >* {
+      background-color: $orange_color;
+      border-radius: 16px;
+      display: inline-block;
+      height: 100%;
+      text-align: center;
+      vertical-align: middle;
+      width: 100%;
+    }
+  }
+}
+
+.s-block-header-with-amount {
+  h3 {
+    margin-right: 40px;
+  }
+}
+
+.s-block-header-with-icon {
+  margin-top: 10px;
+  h2 {
+    color: $green;
+    display: inline;
+    font-size: 1.2em;
+  }
+  .wcs-g-icon {
+    margin-right: 10px;
+  }
+}
+.s-block-subheader {
+  border-bottom: 1px solid $darker_gray_20;
+  display: block;
+  &:first-child {
+    padding-top: 20px;
+  }
+}
+.s-block-simple-content {
+  text-align: left;
+}
+.s-block-content {
+  display: table;
+  text-align: left;
+  width: 100%;
+  &.s-block-reduce-size {
+    font-size: 0.8em;
+  }
+  a {
+    color: $green;
+  }
+  h2, h3, h4, form {
+    font-size: 1em;
+    margin: 0;
+  }
+  h3{
+    line-height: 1.2;
+  }
+  >div, >a {
+    display: table-row;
+    >div {
+      display: table-cell;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      vertical-align: middle;
+      &:nth-child(2) {
+        text-align: left;
+        >span:first-child {
+          color: $green;
+          display: block;
+          height: 1.3em;
+          line-height: 1.2;
+          overflow: hidden;
+          position: relative;
+          a {
+            @include ellipsis;
+            max-width: 100%;
+            position: absolute;
+          }
+        }
+        >span:nth-child(2) {
+          color: $lighter_main_font_25;
+          display: block;
+          font-size: 0.8em;
+          min-height: 1.2em;
+          position: relative;
+          span {
+            @include ellipsis;
+            max-width: 100%;
+            position: absolute;
+          }
+        }
+      }
+      &:nth-child(3) {
+          font-size: 1.2em;
+          text-align: center;
+          width: 2.6em;
+          a {
+            cursor: pointer;
+          }
+      }
+    }
+  }
+  >div + div>div {
+    border-top: 1px solid $darker_gray_20;
+  }
+  & + .s-block-header-with-icon {
+    margin-top: 20px;
+  }
+}
+.s-block-content-tlf {
+  table-layout: fixed;
+}
+.s-block-content-type1 {
+  >div>div:first-child {
+    width: 88px;
+    img {
+      //width: 68px;
+    }
+  }
+  >div>div:nth-child(3) {
+    font-size: 1.2em;
+    padding-right: 15px;
+    text-align: right;
+    width: 30px;
+  }
+}
+.s-block-content-type2 {
+  >div>div:first-child {
+    width: 55px;
+    .avatar, img{
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+    .avatar img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.s-block-content-type3 {
+  >div>div:first-child {
+    width: 0;
+  }
+}
+//TODO: caused error on chat online notification
+// >div>div:nth-child(3) {
+//   font-size: 1.2em;
+//   padding-right: 15px;
+//   text-align: right;
+//   width: 30px;
+// }
+.s-block-more {
+  @extend .fcity-clearfix;
+  border-top: 1px solid $darker_gray_20;
+  color: $green;
+  text-align: right;
+  a {
+    font-size: 0.8em;
+    span {
+      margin-right: 5px
+    }
+  }
+}
+.s-block-empty {
+  @extend .fcity-clearfix;
+  img {
+    float: left;
+    width: 70px;
+  }
+  p {
+    margin-left: 80px;
+    margin-top: 10px;
+    line-height: 1.2;
+    text-align: left;
+  }
+}
+/* / Small block */
+
+
+
+/*** Feed block */
+
+.f-block-header {
+  @extend .fcity-clearfix;;
+  margin-top: 1em;
+  a {
+    //color: $green;
+    &.avatar {
+      display: inline-block;
+      float: left;
+      img {
+        float: none;
+      }
+    }
+  }
+  img {
+    float: left;
+  }
+}
+.f-block-header-left {
+  @extend .fcity-clearfix;;
+  margin-left: 80px;
+  h3 {
+    color: $green;
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  & > div {
+    margin-right: 30px;
+  }
+  & > span {
+    float: right;
+    font-size: 1.5em;
+    line-height: 1;
+    padding-top: 25px;
+    text-align: right;
+    span.f-block-icon {
+      margin-bottom: 10px;
+    }
+  }
+  .at{
+    color: $lighter_main_font_25;
+  }
+  .f-block-icon {
+    background-color: $green;
+    color: $white;
+    display: inline-block;
+    font-size: 0.8em;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 0;
+    text-align: center;
+    width: 25px;
+    .fa {
+      font-size: 0.8em;
+    }
+  }
+  .f-block-icon i {
+    line-height: 25px;
+  }
+  .f-block-icon-text {
+    color: $green;
+    font-size: 0.7em;
+  }
+  &.f-block-header-left-nolmargin {
+    margin-left: 0;
+    h3 {
+      display: inline;
+    }
+    & > div {
+      padding-top: 5px;
+    }
+  }
+  &.f-block-header-left-bio h3 {
+    display: inline;
+  }
+  &.f-block-header-left-with-icon {
+    & > span {
+      padding-top: 0;
+    }
+  }
+}
+.f-block-content {
+  @extend .fcity-clearfix;
+  a:not(.btn) {
+    color: $green;
+  }
+}
+.f-block-content-type1 {
+  border-top: 1px solid $lighter_main_font_47;
+  margin-top: 10px;
+  padding: 10px 0;
+  word-wrap: break-word;
+  hyphens: auto;
+  .post-picture{
+    margin-bottom: 20px;
+  }
+}
+
+.f-block-content-type2 {
+  margin: 1em 0;
+  >div:first-child {
+    float: left;
+    color: $green;
+    span {
+      vertical-align: middle;
+    }
+  }
+  >div:nth-child(2) {
+    float: right;
+    margin-top: 8px;
+  }
+  >div:nth-child(3) {
+    margin-left: 150px;
+    margin-right: 80px;
+    margin-top: 8px;
+    text-align: center;
+    h3 {
+      display: inline;
+      font-size: 1em;
+    }
+  }
+}
+.f-block-content-type3 {
+  >div {
+    @extend .fcity-clearfix;
+    >div:first-child {
+      color: $green;
+      float: left;
+    }
+    >div:nth-child(2) {
+      float: right;
+    }
+  }
+}
+.f-block-event-info {
+  a {
+    color: $green;
+  }
+  div {
+    margin-bottom: 10px;
+  }
+}
+
+/* / Feed block */

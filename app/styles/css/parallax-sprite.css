@@ -1,0 +1,495 @@
+
+/********** Parallax Pages Sprites */
+
+/* Bubbles */
+.parallax-bubble-sprite {
+    background-image: url(../../images/parallax/sprites/bubbles-spritesheet@mdpi.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-ajouter-votre-avatar {
+    width: 322px;
+    height: 260px;
+    background-position: -5px -5px;
+}
+
+.sprite-albums-photos-evenements {
+    width: 331px;
+    height: 267px;
+    background-position: -337px -5px;
+}
+
+.sprite-annuaire-prive {
+    width: 329px;
+    height: 247px;
+    background-position: -5px -282px;
+}
+
+.sprite-arbre-genealogique-gratuit {
+    width: 329px;
+    height: 257px;
+    background-position: -344px -282px;
+}
+
+.sprite-donnees-privee {
+    width: 329px;
+    height: 257px;
+    background-position: -5px -549px;
+}
+
+.sprite-gedcom {
+    width: 349px;
+    height: 275px;
+    background-position: -344px -549px;
+}
+
+.sprite-invitez-des-proches {
+    width: 329px;
+    height: 257px;
+    background-position: -678px -5px;
+}
+
+.sprite-messagerie-pour-tous {
+    width: 329px;
+    height: 257px;
+    background-position: -683px -272px;
+}
+
+.sprite-sauvegarde-vos-donnees {
+    width: 329px;
+    height: 257px;
+    background-position: -703px -539px;
+}
+
+.sprite-webcam {
+    width: 322px;
+    height: 255px;
+    background-position: -703px -806px;
+}
+/* /// Bubbles */
+
+/* Album */
+
+.parallax-album-sprite {
+    background-image: url(../../images/parallax/sprites/album-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-albums-photos {
+    width: 154px;
+    height: 127px;
+    background-position: -5px -5px;
+}
+
+.sprite-evenement-familiaux1 {
+    width: 305px;
+    height: 243px;
+    background-position: -5px -142px;
+}
+
+.sprite-pellicules {
+    width: 259px;
+    height: 98px;
+    background-position: -169px -5px;
+}
+
+.sprite-souvenirs {
+    width: 306px;
+    height: 264px;
+    background-position: -438px -5px;
+}
+
+/* /// Album */
+
+/* Calendar */
+
+.parallax-calendar-sprite {
+    background-image: url(../../images/parallax/sprites/calendar-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-agenda-en-ligne {
+    width: 307px;
+    height: 167px;
+    background-position: -5px -5px;
+}
+
+.sprite-cadeaux1 {
+    width: 304px;
+    height: 250px;
+    background-position: -5px -182px;
+}
+
+.sprite-invitations-evenements {
+    width: 306px;
+    height: 264px;
+    background-position: -322px -5px;
+}
+
+/* /// Calendar */
+
+/* Directory */
+
+.parallax-directory-sprite {
+    background-image: url(../../images/parallax/sprites/directory-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-agenda-prive {
+    width: 306px;
+    height: 264px;
+    background-position: -5px -5px;
+}
+
+.sprite-annuaire-gratuit {
+    width: 308px;
+    height: 137px;
+    background-position: -5px -279px;
+}
+
+.sprite-gestion-contacts {
+    width: 307px;
+    height: 167px;
+    background-position: -321px -5px;
+}
+
+.sprite-groupe-prive {
+    width: 197px;
+    height: 225px;
+    background-position: -323px -182px;
+}
+
+/* /// Directory */
+
+/* Economical model */
+
+.parallax-economical-model-sprite {
+    background-image: url(../../images/parallax/sprites/economical-model-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-blog {
+    width: 306px;
+    height: 264px;
+    background-position: -5px -5px;
+}
+
+.sprite-cadeaux {
+    width: 393px;
+    height: 295px;
+    background-position: -321px -5px;
+}
+
+.sprite-coffre-fort-numerique {
+    width: 190px;
+    height: 115px;
+    background-position: -5px -310px;
+}
+
+.sprite-impression-photos {
+    width: 154px;
+    height: 127px;
+    background-position: -724px -5px;
+}
+
+/* /// Economical model */
+
+/* Famicity presentation */
+
+.parallax-famicity-presentation-sprite {
+    background-image: url(../../images/parallax/sprites/famicity-presentation-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-album-photos {
+    width: 154px;
+    height: 127px;
+    background-position: -5px -5px;
+}
+
+.sprite-arbre-genealogique {
+    width: 300px;
+    height: 225px;
+    background-position: -169px -5px;
+}
+
+.sprite-evenement-familiaux {
+    width: 305px;
+    height: 243px;
+    background-position: -5px -240px;
+}
+
+.sprite-partage-familial {
+    width: 306px;
+    height: 264px;
+    background-position: -479px -5px;
+}
+
+/* /// Famicity presentation */
+
+/* Family tree */
+
+.parallax-family-tree-sprite {
+    background-image: url(../../images/parallax/sprites/family-tree-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-biographies {
+    width: 259px;
+    height: 98px;
+    background-position: -5px -5px;
+}
+
+.sprite-famille {
+    width: 306px;
+    height: 264px;
+    background-position: -5px -113px;
+}
+
+.sprite-profils-enfants {
+    width: 306px;
+    height: 264px;
+    background-position: -321px -5px;
+}
+
+.sprite-transmettez-histoire {
+    width: 300px;
+    height: 225px;
+    background-position: -321px -279px;
+}
+
+/* /// Family tree */
+
+/* Mail */
+
+.parallax-mail-sprite {
+    background-image: url(../../images/parallax/sprites/mail-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-discussion-instantanee {
+    width: 308px;
+    height: 137px;
+    background-position: -5px -5px;
+}
+
+.sprite-envoyez-messages {
+    width: 306px;
+    height: 264px;
+    background-position: -323px -5px;
+}
+
+/* /// Mail */
+
+/* News feed */
+
+.parallax-news-feed-sprite {
+    background-image: url(../../images/parallax/sprites/news-feed-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-nouvelles-de-vos-proches {
+    width: 208px;
+    height: 231px;
+    background-position: -5px -5px;
+}
+
+.sprite-partage-famille {
+    width: 182px;
+    height: 230px;
+    background-position: -223px -5px;
+}
+
+.sprite-sauvegarde {
+    width: 306px;
+    height: 264px;
+    background-position: -415px -5px;
+}
+
+/* /// News feed */
+
+/* Privacy */
+
+.parallax-privacy-sprite {
+    background-image: url(../../images/parallax/sprites/privacy-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-confidentilite {
+    width: 306px;
+    height: 264px;
+    background-position: -5px -5px;
+}
+
+.sprite-donnees-vous-appartiennent {
+    width: 190px;
+    height: 115px;
+    background-position: -5px -279px;
+}
+
+.sprite-droit-a-l-oubli {
+    width: 278px;
+    height: 237px;
+    background-position: -5px -404px;
+}
+
+.sprite-enfants-proteges {
+    width: 306px;
+    height: 264px;
+    background-position: -5px -651px;
+}
+
+/* /// Privacy */
+
+/* Profile */
+
+.parallax-profile-sprite {
+    background-image: url(../../images/parallax/sprites/profile-spritesheet@mdpi.jpg);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-espaces-albums {
+    width: 306px;
+    height: 264px;
+    background-position: -5px -5px;
+}
+
+.sprite-genealogie {
+    width: 300px;
+    height: 225px;
+    background-position: -321px -5px;
+}
+
+.sprite-profil {
+    width: 307px;
+    height: 167px;
+    background-position: -321px -240px;
+}
+
+/* /// Profile */
+
+
+
+/* Retina */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi) {
+
+    /* Bubbles */
+
+    .parallax-bubble-sprite {
+        background-image: url(../../images/parallax/sprites/bubbles-spritesheet@2x.png);
+        background-size: 1037px 1066px;
+    }
+
+    /* /// Bubbles */
+
+    /* Album */
+
+    .parallax-album-sprite {
+        background-image: url(../../images/parallax/sprites/album-spritesheet@2x.jpg);
+        background-size: 749px 390px;
+    }
+
+    /* /// Album */
+
+    /* Calendar */
+
+    .parallax-calendar-sprite {
+        background-image: url(../../images/parallax/sprites/calendar-spritesheet@2x.jpg);
+        background-size: 633px 437px;
+    }
+
+    /* /// Calendar */
+
+    /* Directory */
+
+    .parallax-directory-sprite {
+        background-image: url(../../images/parallax/sprites/directory-spritesheet@2x.jpg);
+        background-size: 633px 421px;
+    }
+
+    /* /// Directory */
+
+    /* Economical model */
+
+    .parallax-economical-model-sprite {
+        background-image: url(../../images/parallax/sprites/economical-model-spritesheet@2x.jpg);
+        background-size: 883px 430px;
+    }
+
+    /* /// Economical model */
+
+    /* Famicity presentation */
+
+    .parallax-famicity-presentation-sprite {
+        background-image: url(../../images/parallax/sprites/famicity-presentation-spritesheet@2x.jpg);
+        background-size: 790px 488px;
+    }
+
+    /* /// Famicity presentation */
+
+    /* Family tree */
+
+    .parallax-family-tree-sprite {
+        background-image: url(../../images/parallax/sprites/family-tree-spritesheet@2x.jpg);
+        background-size: 632px 509px;
+    }
+
+    /* /// Family tree */
+
+    /* Mail */
+
+    .parallax-mail-sprite {
+        background-image: url(../../images/parallax/sprites/mail-spritesheet@2x.jpg);
+        background-size: 634px 274px;
+    }
+
+    /* /// Mail */
+
+    /* News feed */
+
+    .parallax-news-feed-sprite {
+        background-image: url(../../images/parallax/sprites/news-feed-spritesheet@2x.jpg);
+        background-size: 726px 274px;
+    }
+
+    /* /// News feed */
+
+    /* Privacy */
+
+    .parallax-privacy-sprite {
+        background-image: url(../../images/parallax/sprites/privacy-spritesheet@2x.jpg);
+        background-size: 316px 920px;
+    }
+
+    /* /// Privacy */
+
+    /* Profile */
+
+    .parallax-profile-sprite {
+        background-image: url(../../images/parallax/sprites/profile-spritesheet@2x.jpg);
+        background-size: 633px 412px;
+    }
+
+    /* /// Profile */
+
+}
+
+/* /// Retina */
+
+/* /// Parallax page */
+
+/********** /// Parallax Pages Sprites */

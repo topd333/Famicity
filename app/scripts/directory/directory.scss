@@ -1,0 +1,526 @@
+.hidden-directory-submenu {
+  display: none !important;
+}
+.center-right-icons {
+  @extend .fcity-clearfix;
+  display: block;
+  float: right;
+  span {
+    float: left;
+  }
+}
+.center-right-icons-centered-holder {
+  .center-right-icons {
+    float: none;
+  }
+}
+.center-left-icons a,.center-right-icons a {
+  float: left;
+}
+.center-left-icons a >i.fa,.center-right-icons a >i.fa {
+  //color:$darker_main_font_4;
+}
+/* a.standard-icon {
+  color: $darker_main_font_4;
+  display: block;
+} */
+// .center-right-icons a, .center-right-icons a i.fa,a.standard-icon i.fa, a.standard-icon {
+//   // color: $darker_main_font_4;
+//   &:hover i, &:active i{
+//     color: $white;
+//   }
+//   &.btn-icon-danger:hover{
+//     background-color: $red;
+//     &:hover, &:hover i, &:active, &:active i{
+//       color: $white;
+//     }
+//   }
+// }
+.directory-listing {
+  text-align: left;
+}
+.directory-listing-rights {
+  .directory-item {
+    padding-left: 0;
+    padding-right: 0;
+    &:first-child {
+      border-top-width: 0;
+    }
+  }
+  .directory-item-user {
+    @extend .directory-item;
+    @extend .fcity-clearfix;
+    display: table;
+    &:not(.separator) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    width: 100%;
+    & > * {
+      display: table-row;
+      & > div,
+      & > * {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    .avatar {
+      padding-right: 1em;
+    }
+    .directory-listing-item-info {
+      h2 {
+        margin-bottom: 0;
+      }
+    }
+    .actions {
+      font-size: $px24;
+      text-align: right;
+      vertical-align: middle;
+      a {
+        color: $green;
+      }
+    }
+  }
+}
+.directory-listing-groups {
+  .directory-listing-item+.directory-listing-item {
+    border-top: 1px solid $lighter_main_font_47;
+  }
+  .directory-listing-item-info {
+    & > h2 {
+      margin-bottom: 0;
+    }
+  }
+}
+.directory-listing-item-checkbox.margin-top-xs {
+  margin-top: 10px;
+}
+
+.directory-listing-checkboxes .directory-listing-item-info>h2 {
+  margin-top: 2px;
+}
+
+.directory-listing-item-member>i {
+  height: 10px;
+  margin-top: 8px;
+  width: 10px;
+}
+
+
+.directory-listing-item-info>h2 {
+  margin-bottom: 10px;
+}
+
+.directory-listing-item-info.right-margin-zero {
+  margin-right: 0;
+}
+
+.directory-listing-item-info {
+  margin-right: 40px;
+}
+
+.directory-listing-item-nob {
+  border-bottom-style: none;
+
+}
+
+.directory-listing-item {
+  padding      : 0.5em 0;
+  position     : relative;
+}
+.directory-listing-item  + .directory-listing-item,
+.directory-item-user  + .directory-listing-item {
+  border-top: 1px solid $gray_color;
+}
+.directory-listing-item-checkbox {
+  float: left;
+}
+.directory-listing-item-info {
+  & > h2 {
+    font-size: 110%;
+    margin: 0;
+    & > a {
+      color: #626264;
+    }
+    & > a:hover {
+      color: $green;
+      text-decoration: underline;
+    }
+  }
+  & > span {
+    display: block;
+    & > span {
+      float: left;
+    }
+    & > span:first-child {
+      margin-right: 40px;
+    }
+    & > span+span {
+      color: #a6a6a6;
+    }
+  }
+}
+.directory-listing-item-info >span >span,.directory-listing-item-info >h2 span {
+  display: inline-block;
+  @include ellipsis;
+  width: 150px;
+}
+.directory-listing-item-info >span >span .fa-envelope-o ,.directory-listing-item-info >h2 span .fa-envelope-o {
+  margin-right: 10px;
+}
+.directory-listing-item-member {
+  display: block;
+  float: right;
+  & > b {
+    display: block;
+  }
+}
+.directory-listing-item-member-green {
+  color: $green;
+  & > b {
+    background-color: $green;
+  }
+}
+.directory-listing-item-member-orange {
+  color: $orange_color;
+  & > b {
+    background-color: $orange_color;
+  }
+}
+.directory-listing-item-member-red {
+  & > b {
+    background-color: #f04949;
+  }
+}
+.directory-listing-item-member-grey {
+  color: #a9a9ab;
+}
+.directory-group-empty-img,.directory-invite-relatives-img {
+  float: left;
+  margin-right: 20px;
+  width: 225px;
+}
+.list-select-group-for-contact .directory-listing-item-info {
+  margin-left: 35px;
+  margin-right: 0;
+}
+.directory-item-repeat + .directory-item-repeat .directory-item-table {
+  border-top: 1px solid $gray_color;
+}
+
+.directory-listing-error-block {
+  text-align: center;
+}
+.directory-listing-error-block>div {
+  display: inline-block;
+  text-align: left;
+}
+.directory-item-table-cell-info {
+  display: table-cell;
+  word-break: break-all;
+  /* Non standard for webkit */
+  word-break: break-word;
+  max-width: 50%;
+  span {
+    display: block;
+    position: relative;
+    .ellipsis {
+      @include ellipsis();
+      width: 100%;
+      position: absolute;
+    }
+  }
+}
+.directory-item-table-cell-info,
+.directory-item-table-cell-info h2 {
+  font-size: 100%;
+  margin   : 0;
+}
+.directory-item-table-cell-info h2 {
+  line-height: normal;
+}
+.invit-decld-or-dltd {
+  color: $lighter_main_font_25;
+}
+.list-select-group-for-contact .directory-listing-item-checkbox {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.textarea-with-icon {
+  border-radius: $gui_standard_border_radius;
+  background-color: $gray_color;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+  label {
+    color: $main_font_color;
+    //font-size: 14px;
+    left: 10px;
+    line-height: 1;
+    position: absolute;
+    top: 10px;
+  }
+  textarea {
+    padding-left: 8px;
+  }
+}
+.textarea-with-icon.textarea-with-icon-nobmargin {
+  margin-bottom: 0;
+}
+.import-contacts-buttons{
+  i.fa{
+    font-size: 1.4em;
+  }
+  .btn:hover{
+    &.button-import-gmail:hover,
+    &.button-import-yahoo:hover,
+    &.button-import-outlook:hover,
+    &.button-import-facebook:hover{
+      color: $white;
+    }
+  }
+  .button-import-gmail:hover{
+    background-color: $gmail_color;
+  }
+  .button-import-yahoo:hover{
+    background-color: $yahoo_color;
+  }
+  .button-import-outlook:hover{
+    background-color: $outlook_color;
+  }
+  .button-import-facebook:hover{
+    background-color: $facebook_color;
+  }
+}
+
+.invite-email-delete {
+  display: table-cell;
+
+  font-size: 20px;
+  vertical-align: middle;
+  width: 30px;
+}
+.invite-email-field {
+  margin-left: 40px;
+}
+.invite-add-mail-txt {
+  color: $green;
+}
+
+.import-invite fc-toolbar{
+  font-size: 0.85em;
+  margin-right: 0.5em;
+}
+
+/* 480px */
+@media only screen and (min-width: 480px) {
+
+  .directory-listing-item-checkbox.margin-top-xs {
+    margin-top: 15px;
+
+  }
+  .directory-item-table,
+  .directory-item-table h2 {
+    line-height: 1 !important;
+
+  }
+
+  .directory-item-table>.table-cell {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    vertical-align: middle;
+
+  }
+  .directory-item-table-cell-picture {
+    width: 50px;
+    &.avatar{
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .avatar-rounded{
+      height: 50px;
+      width: 50px;
+      float: left;
+    }
+  }
+  .directory-item-table-cell-info,
+  .directory-item-table-cell-info h2 {
+    font-size: 100%;
+    margin: 0;
+
+  }
+  .directory-item-table-cell-info span {
+    display: block;
+
+  }
+  .directory-item-table-cell-info h2+span {
+    font-size: 0.9em;
+    margin-top:0.25em;
+    color: $lighter_main_font_25;
+  }
+  .directory-item-table-cell-info span span.ellipsis {
+    display: block;
+    @include ellipsis;
+
+  }
+  .directory-item-table-cell-info {
+    h2{
+      height: 1em;
+      position: relative;
+      a,
+      > span {
+        @include ellipsis();
+        color: $main_font_color;
+        position: absolute;
+        max-width: 100%;
+      }
+    }
+  }
+  .directory-item-table-cell-message {
+    display: table-cell;
+    text-align: center;
+    &.invitation-date {
+      color: $lighter_main_font_25;
+      text-align: right;
+      padding-right: 0.5em;
+    }
+
+  }
+ /* .directory-item-table-cell-options {
+    text-align: right;
+    width: 50px;
+
+  }*/
+  .invite-email-delete {
+    font-size: 24px;
+    width: 40px;
+
+  }
+  .invite-email-field {
+    margin-left: 50px;
+
+  }
+  .textarea-with-icon textarea{
+    font-size: 16px;
+  }
+}
+/* /// 480px */
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+  .import-invite fc-toolbar{
+    display: none;
+  }
+
+  .directory-listing-item-info {
+    margin-left: 70px;
+    margin-right: 40px;
+
+  }
+  .directory-listing-item-info>h2 {
+    margin-bottom: 5px;
+
+  }
+  .directory-listing-item-info>h2.nobm {
+    margin-bottom: 0;
+
+  }
+  .directory-listing-item-member>i {
+    margin-top: 14px;
+
+  }
+  .directory-listing-item-member>b {
+    border-radius: 10px;
+    height: 20px;
+    margin-top: 15px;
+    width: 20px;
+
+  }
+  .directory-listing-fixed-bar {
+    background-color: $white;
+    box-sizing: border-box;
+    max-width: 728px;
+    padding-right: 30px;
+    position: fixed;
+    width: 60.66666667%;
+
+  }
+  .directory-listing-invitation-text {
+    margin-right: 130px;
+    word-wrap: break-word;
+    hyphens: auto;
+
+  }
+  .directory-listing-invitation-button {
+    display: block;
+    float: right;
+    text-align: right;
+    width: 120px;
+
+  }
+  .directory-listing-invite {
+    padding-top: 160px;
+
+  }
+  .directory-listing-item-checkbox {
+    margin-top: 15px;
+
+  }
+  .directory-listing-item-checkbox-no-tm {
+    margin-top: 0;
+
+  }
+  .directory-listing-groups .directory-listing-item-checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+
+  }
+  .directory-listing-error-block .fa-exclamation-triangle {
+    margin-top: 15px;
+
+  }
+  /* .textarea-with-icon {
+    padding-left: 30px;
+  } */
+
+  .text-and-button-table {
+    display: table;
+    width: 100%;
+
+  }
+  .text-and-button-table>div {
+    display: table-cell;
+    vertical-align: middle;
+
+  }
+  .text-and-button-table>div.text-and-button-table-button {
+    text-align: right;
+    padding-left: 20px;
+
+  }
+  .invite-email-delete {
+    font-size: 28px;
+    width: 50px;
+
+  }
+}
+
+/* 992px */
+@media only screen and (min-width: 992px) {
+  .directory-item-table>.table-cell {
+      padding-bottom: 20px;
+      padding-top: 20px;
+  }
+
+  .directory-item-table-cell-info span span.ellipsis, .directory-item-table-cell-info h2 span.ellipsis {
+      //width: auto;
+  }
+  .textarea-with-icon textarea{
+    font-size: 18px;
+  }
+}
+
+@import "groups/groups";
+@import "invitations/invitations";
+@import "remove/DirectoryRemove";
+@import "invite/DirectoryInvite";

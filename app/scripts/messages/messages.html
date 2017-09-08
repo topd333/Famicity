@@ -1,0 +1,42 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar data-user-id="userId">-->
+      <!--<h2 class="pull-left pointer" data-translate ui-sref="u.messages.welcome" ui-sref-opts="{reload: true}">MY_MESSAGES_TITLE</h2>-->
+<!---->
+      <!--<a ng-if="!showMode" class="btn btn-icon pull-right" ui-sref="u.messages.add"><i class="fc fc-plus"></i></a>-->
+<!---->
+      <!--<a ng-if="showMode && currentId" class="btn btn-icon pull-right" ng-click="openReplyMessagePopup()" data-translate><i class="fa fa-reply"></i></a>-->
+      <!--<a ng-if="showMode && currentId" class="btn btn-icon pull-right" ng-click="openDeleteMessagePopup()"><i class="fa fa-trash-o"></i></a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column" ng-class="showMode ? 'hidden-xs' : ''">
+          <div class="table messages-write-message hidden-xs">
+            <fc-left-column-block-header ui-sref="u.messages.add" data-show-btn="true" data-style-apply="">
+              <h3 data-translate>WRITE_MESSAGE</h3>
+              <span><a class="btn-plus">+</a></span>
+            </fc-left-column-block-header>
+          </div>
+          <br />
+          <div ng-if="messages.length > 0" class="left-column-block message-index-left-list">
+            <fc-left-column-block-header class="hidden-xs">
+              <h3 data-translate>MY_INBOX</h3>
+            </fc-left-column-block-header>
+
+            <span ng-show="!messages.length" class="item-sub-delimiter"></span>
+            <p ng-show="!messages.length" ng-bind-html="EMPTY_MESSAGES_LIST_MSG | translate"></p>
+
+            <div fc-messages-list data-messages="messages" data-current-id="currentId" data-show-message="showMessage" data-control="messagesListControl" user-id="userId"></div>
+          </div>
+        </div>
+
+        <div ui-view="message">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div ng-show="isConnected">
+  <div class="chat-panel pointer" ng-show="!displayUserList" ng-click="showChat()">
+    <div class="chat-panel-header">
+      <i class="fa fa-user"></i><sup><i class="fa fa-circle"></i></sup> {{ 'CHAT.INSTANT_CHAT' | translate }} ({{
+      connectedNumber }})
+    </div>
+  </div>
+  <div class="chat-panel-open" ng-show="displayUserList">
+    <div class="chat-panel-open-header">
+      <div class="table">
+        <div class="table-cell left-text v-align-middle" data-translate>CHAT.INSTANT_CHAT</div>
+        <div class="table-cell align-right text-center">
+          <!-- <a href="" ng-click="configureChat()"><i class="fa fa-cog white-close-icon"></i></a> &nbsp; -->
+          <a href="" ng-click="hideChat()"><i class="fa fa-minus white-close-icon"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="chat-users-list">
+      <div class="table chat-table">
+        <!-- <div class="table-row chat-user-list-header">
+          <div class="table-cell v-align-middle">
+            &nbsp;Statut : en ligne
+          </div>
+        </div> -->
+        <div class="table-row chat-main chat-user-list-list"
+             ng-repeat="user in users | orderBy:['-status', 'userName'] | filter: ignoreDiacritics">
+          <div class="table-cell">
+            <div class="table">
+              <a class="table-row" href="javascript:void(0)" ng-click="openConversation(user.userId, true)">
+                <div class="table-cell chat-user-picture v-align-middle"><img ng-src="{{ openOnce ? user.avatarUrl : ''}}">
+                </div>
+                <div class="table-cell chat-user-name v-align-middle">{{ user.userName }}</div>
+                <div class="table-cell chat-user-circle v-align-middle"><i class="fa fa-circle"
+                                                                           ng-class="user.status ? 'online' : 'offline'"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="empty-space"></div>
+        <div class="chat-main chat-user-list-list chat-empty-list" ng-show="users.length == 0">
+          <div class="table-cell">
+            {{ 'CHAT.NO_CONTACT' | translate}}<br/>
+            <a ui-sref="u.directory.invite({user_id: userId})" data-translate>CHAT.INVITE_THEM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-panel-open-search input-group">
+      <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+      <input type="text" data-translate data-translate-attr-placeholder="CHAT.SEARCH" ng-model="search.query">
+    </div>
+  </div>
+
+  <div class="chat-notification pointer" ng-show="notification.visible"
+       ng-click="openConversation(notification.userId, true)">
+    <div class="table">
+      <div class="table-cell v-align-middle">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="table-cell">
+        {{notification.userName}}&nbsp;{{ 'CHAT.WENT_ONLINE' | translate }}
+      </div>
+    </div>
+  </div>
+
+  <!-- begin individual conversations -->
+  <div class="chat-individual-conversations clearfix">
+
+
+    <fc-chat-window ng-repeat="conversation in conversations | orderBy:'position'"></fc-chat-window>
+
+    <div ng-show="minimized > 0" class="chat-window-more-holder pull-right">
+      <div class="chat-window-more" ng-click="showUsers = true">
+        <div class="chat-window-more-tri-down-holder">
+          <div class="chat-window-more-tri-down" ng-show="showUsers">
+            <div class="clearfix" ng-show="conversation.stacked" ng-repeat="conversation in conversations">
+              <a class="pull-left chat-window-more-name" href="" ng-click="unstackConversation(conversation.id)">
+                <span ng-show="conversation.unread">{{ conversation.unread }}</span>
+                {{ conversation.user.userName }}
+              </a>
+              <a class="pull-right" href="" ng-click="closeConversation(conversation.id)">
+                <i class="fa fa-times"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="" class="pointer" is-active="minimized > 0" fc-outside-click="showUsers = false">
+          <span ng-show="stackedUnread" class="unread">{{ stackedUnread }}</span>
+          <i class="fa fa-comments-o"></i> {{ minimized }}
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- // end individual conversations -->
+</div>

@@ -1,0 +1,40 @@
+<div class="wrapper" ng-init="init()">
+  <div class="content">
+
+    <fc-header-bar user-id="viewedUserId">
+      <h2 class="pull-left" translate></h2>  <!-- TODO -->
+    </fc-header-bar>
+
+    <div class="container-fluid column-holder">
+
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <div class="clearfix hidden-xs">
+              <div ncy-breadcrumb class="hidden-xs"></div>
+            </div>
+            <br />
+            <div class="notification-list likes table">
+              <div class="table-row" ng-repeat="like in likesList | orderBy: '-create_date'">
+                <fc-notification-item
+                  avatar-url="like.user.avatar_url"
+                  text-key="likeText"
+                  type="'like'"
+                  number-of-users="1"
+                  user-id="like.user.id"
+                  user-name="like.user.user_name"
+                  date="like.create_date">
+                </fc-notification-item>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

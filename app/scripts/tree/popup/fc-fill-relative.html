@@ -1,0 +1,196 @@
+<div class="tree-popup-form">
+  <span class="hint" ng-bind-html="::currentForm.hint|translate:{firstName:treeUserProfile.first_name}"></span>
+
+  <form data-fc-form-submit data-submit-method="submitBasicForm()" data-form-in-progress="formInProgress" novalidate
+        class="standard-form standard-form-nomargin" name="form.basicForm">
+
+    <div class="tree-popup-photo-and-checkboxes">
+      <div class="tree-popup-photo">
+        <div ng-show="isUploadedPhoto">
+          <div class="popup-uploaded-photo">
+            <img alt="" id="thumb-uploader-directive-img"/>
+          </div>
+          <a href="" class="danger-color" ng-click="deleteRelativePhoto()" data-translate>DELETE</a>
+        </div>
+
+        <div ng-show="!isUploadedPhoto" id="tree-popup-photo" ng-class="{'pointer':!isUploadedPhoto}">
+          <a class="tree-popup-add-photo-area">
+            <i class="fa fa-camera"></i>
+            <span class="label" data-translate>ADD_PHOTO</span>
+          </a>
+        </div>
+      </div>
+      <div class="tree-popup-checkboxes-area">
+
+        <div class="field long">
+          <span class="standard-checkbox">
+            <input id="deceased" name="deceased" ng-model="currentForm.user.is_deceased" type="checkbox">
+            <label for="deceased" class="fa">
+              <span data-translate>DECEASED</span>
+            </label>
+          </span>
+        </div>
+
+        <fc-gender-input data-user="currentForm.user"></fc-gender-input>
+      </div>
+    </div>
+
+
+    <fieldset class="text-fields">
+
+      <div class="field">
+        <div class="input-group"
+             ng-class="{'has-error':(form.basicForm.last_name.$dirty || submitted) && form.basicForm.last_name.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i>
+            </span>
+          <label class="sr-only" for="last_name">{{'LAST_NAME'|translate}}*</label>
+         <!--  <input type="text" id="last_name" name="last_name" class="form-control" required
+                fc-auto-focus
+                data-ng-attr-placeholder="{{'LAST_NAME'|translate}}*"
+                ng-model="currentForm.user.last_name"
+                autocomplete="off"
+                data-typeahead-wait-ms="200"
+                data-typeahead="user_selected as user_selected.user_name for user_selected in getUsers($viewValue, 'last_name')"
+                data-typeahead-on-select="autocompleteSuccess($item, $model, $label)"
+                data-typeahead-focus-first="false"
+                data-typeahead-template-url="/template/typeahead/add_relative.html"/>-->
+          <input type="text" id="last_name" name="last_name" class="form-control" required
+                 fc-auto-focus
+                 data-ng-attr-placeholder="{{'LAST_NAME'|translate}}*"
+                 ng-model="currentForm.user.last_name"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group"
+             ng-class="{'has-error': (form.basicForm.first_name.$dirty || submitted) && form.basicForm.first_name.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i>
+            </span>
+          <label class="sr-only" for="first_name">{{'FIRST_NAME'|translate}}*</label>
+        <!--  <input type="text" id="first_name" name="first_name" class="form-control" required
+                 data-ng-attr-placeholder="{{'FIRST_NAME'|translate}}*"
+                 ng-model="currentForm.user.first_name"
+                 autocomplete="off"
+                 data-typeahead-wait-ms="200"
+                 data-typeahead="user_selected as user_selected.user_name for user_selected in getUsers($viewValue, 'first_name')"
+                 data-typeahead-on-select="autocompleteSuccess($item, $model, $label)"
+                 data-typeahead-focus-first="false"
+                 data-typeahead-template-url="/template/typeahead/add_relative.html"/>-->
+            <input type="text" id="first_name" name="first_name" class="form-control" required
+                   data-ng-attr-placeholder="{{'FIRST_NAME'|translate}}*"
+                   ng-model="currentForm.user.first_name"/>
+
+        </div>
+      </div>
+
+      <div ng-show="!(currentForm.user.sex=='Male' && !currentForm.user.is_deceased)" ng-style="{'visibility':currentForm.user.sex=='Female'?'visible':'hidden'}" class="field">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+          <label class="sr-only" for="basic-maiden_name" data-translate>MAIDEN_NAME</label>
+          <input class="form-control" id="basic-maiden_name" name="basic-maiden_name" data-translate
+                 data-translate-attr-placeholder="MAIDEN_NAME"
+                 ng-model="currentForm.user.user_info_attributes.maiden_name" type="text"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i> </span>
+          <label class="sr-only" for="basic-second_first_name" data-translate>SECOND_NAME</label>
+          <input class="form-control" id="basic-second_first_name" name="basic-second_first_name" data-translate
+                 data-translate-attr-placeholder="SECOND_NAME"
+                 ng-model="currentForm.user.user_info_attributes.middle_name" type="text"/>
+        </div>
+      </div>
+
+      <div class="field" ng-show="!currentForm.user.is_deceased">
+        <div class="input-group"
+             ng-class="{'has-error':(form.basicForm.email.$dirty||submitted) && form.basicForm.email.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i>
+            </span>
+          <label class="sr-only" for="email"></label>
+        <!--  <input class="form-control" id="email" name="email" type="email"
+                 data-translate data-translate-attr-placeholder="HIS_EMAIL_PLACEHOLDER"
+                 ng-model="currentForm.user.email"
+                 autocomplete="off"
+                 data-typeahead-wait-ms="200"
+                 data-typeahead="user_selected as user_selected.user_name for user_selected in getUsers($viewValue, 'email')"
+                 data-typeahead-on-select="autocompleteSuccess($item, $model, $label)"
+                 data-typeahead-focus-first="false"
+                 data-typeahead-template-url="/template/typeahead/add_relative.html"/>-->
+            <input class="form-control" id="email" name="email" type="email"
+                   data-translate data-translate-attr-placeholder="HIS_EMAIL_PLACEHOLDER"
+                   ng-model="invitationFormHolder.mail_address"/>
+        </div>
+      </div>
+
+      <div>
+        <div class="field">
+          <label class="sr-only" for="basic-birth-date" data-translate>BIRTH_DATE</label>
+          <fc-date-input
+            name="basic-birth-date" id="basic-birth-date"
+            data-locale="{{locale}}"
+            placeholder="{{'BIRTH_DATE_PLACEHOLDER'|translate}}"
+            ng-model="currentForm.user.birth_date"
+            data-not-found-message="{{'fc-date-input.DATE_INVALID'|translate}}"
+            data-click-to-confirm-message="fc-date-input.CLICK_TO_CONFIRM"
+            data-is-valid="currentForm.user.birthDateValid"
+            required>
+        </div>
+
+        <div class="field">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i> </span>
+            <label class="sr-only" for="basic-birth-place" data-translate>BIRTH_PLACE</label>
+            <input class="form-control" id="basic-birth-place" name="basic-birth-place" data-translate
+                   data-translate-attr-placeholder="BIRTH_PLACE"
+                   ng-model="currentForm.user.user_info_attributes.birth_place" type="text"/>
+          </div>
+        </div>
+
+        <div ng-show="currentForm.user.is_deceased" class="field">
+          <label class="sr-only" for="basic-deceased-date" data-translate>DATE_OF_DEATH</label>
+          <fc-date-input
+            name="basic-deceased-date" id="basic-deceased-date"
+            data-locale="{{locale}}"
+            placeholder="{{'DATE_OF_DEATH_PLACEHOLDER'|translate}}"
+            ng-model="currentForm.user.death_date"
+            data-not-found-message="{{'fc-date-input.DATE_INVALID'|translate}}"
+            data-click-to-confirm-message="fc-date-input.CLICK_TO_CONFIRM"
+            data-is-valid="currentForm.user.deathDateValid"
+            required>
+        </div>
+
+        <div ng-show="currentForm.user.is_deceased" class="field">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i> </span>
+            <label class="sr-only" for="death-place"></label>
+            <input class="form-control" id="death-place" name="death-place" data-translate
+                   data-translate-attr-placeholder="PLACE_OF_DEATH"
+                   ng-model="currentForm.user.user_info_attributes.death_place" type="text"/>
+          </div>
+        </div>
+      </div>
+
+    </fieldset>
+
+    <div class="field selected-user" ng-show="autocompleteUserId">{{'YOU_SELECTED'|translate}}
+      {{autocompleteUserName}},
+      <a href="#" class="green-link-color" ng-click="cancelAutocompleteSelect()" data-translate>CANCEL_LC</a>.
+    </div>
+
+    <div class="actions">
+      <div class="start">
+        <a ng-if="isDeletable()" href="" ng-click="onDelete()" class="deletion">
+          <i class="fa fa-trash-o"></i> {{'DELETE'|translate}}</a>
+      </div>
+      <div class="end">
+        <button class="btn btn-secondary" ng-click="cancel()" type="button" data-translate>CANCEL</button>
+        <button class="btn btn-primary" type="submit" ng-disabled="!isValid"
+                fc-form-submit submit-method="submitBasicForm()" form-in-progress="formInProgress"
+                ng-bind="currentForm.submit|translate:{firstName:treeUserProfile.first_name}"></button>
+      </div>
+    </div>
+
+  </form>
+</div>

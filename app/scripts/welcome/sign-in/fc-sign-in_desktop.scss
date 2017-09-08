@@ -1,0 +1,12 @@
+.signin {
+  background-image: url('/images/signin-bg-1200x1094.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  .wrapper {
+    .contents {
+      .form-container {
+        background: $formBackgroundGray;
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>DIRECTORY_LINK</h2>-->
+      <!--<a class="btn pull-right" ng-click="submit()" translate>SEND</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+
+          <!-- Left context icons -->
+          <div ng-show="viewedUserId && viewedUserId != userId" class="left-column-block">
+            <div fc-other-users-links></div>
+          </div>
+          <!-- /// Left context icons -->
+          <!-- <div ng-show="viewedUserId != userId" class="left-column-block">
+            <div class="left-column-block-header left-column-block-header-with-icon">
+              <div>
+                <h3 translate>GROUPS</h3>
+                <span><a href="#">+</a>
+                </span>
+              </div>
+            </div>
+            <div class="left-column-block-content">
+              jkfasdhfjkasd hfsdajkfsd f
+              <span>jfkasdhfasdjkf</span> sda fdsjkf asdfjkasdfhkj
+            </div>
+          </div> -->
+        </div>
+        <div class="col-sm-8 right-column right-column-directory">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <div class="text-and-button-table">
+              <div class="center-to-left-text" translate>INVITATION_FORM_INSTRUCTION</div>
+              <div class="text-and-button-table-button"><a class="btn btn-primary btn-lg hidden-xs pointer" ng-click="submit()" data-translate>SEND</a>
+              </div>
+            </div>
+
+            <form class="standard-form login-form c-width-1" name="invitationsForm">
+              <div ng-if="invitation.mail_address" class="form-group" ng-class="{'has-error': (invitationsForm.email.$dirty || submitted) && invitationsForm.email.$invalid}">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i>
+                  </span>
+                  <label class="sr-only" for="email" translate>EMAIL_ADDRESS</label>
+                  <input class="form-control" ng-model="invitation.newMailAddress" name="email" id="email" data-translate
+                         data-translate-attr-placeholder="EMAIL_ADDRESS" type="email" required/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="textarea-with-icon textarea-with-icon-nobmargin">
+                  <textarea class="form-control" id="message-text" data-translate
+                            data-translate-attr-placeholder="INVITE_FORM_MESSAGE_PLACEHOLDER"
+                            ng-model="invitation.comment"></textarea>
+                  <label for="message-text"><i class="fa fa-pencil"></i>
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

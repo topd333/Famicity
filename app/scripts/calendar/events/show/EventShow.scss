@@ -1,0 +1,17 @@
+.guest-list {
+  .counter {
+    clear: both;
+    padding: 0.5em 0;
+    &.attend {
+      @extend .green-rollover-link;
+    }
+    &.maybe {
+      @extend .color-orange-hover;
+    }
+    &.no {
+      @extend .color-red-hover;
+    }
+    &.no-answer {
+    }
+  }
+}

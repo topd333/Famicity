@@ -1,0 +1,113 @@
+<div class="wrapper">
+
+  <div class="content">
+    <div fc-mobile-header-profile basic-profile="basicProfile" viewed-user-id="viewedUserId" current-tab="currentTab"></div>
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+
+            <!-- Add album button -->
+            <fc-left-column-block-header ng-show="basicProfile.permissions.is_updatable" action="goToAddAlbum()" show-btn="true" style-apply="">
+              <h3 data-translate>ADD_ALBUM</h3>
+              <span><a class="btn-plus">+</a></span>
+            </fc-left-column-block-header>
+
+            <!-- User profile links -->
+            <div ng-show="viewedUserId != userId" class="left-column-block">
+              <div fc-other-users-links></div>
+            </div>
+
+            <!-- Shared albums -->
+
+            <div class="s-block" ng-show="sharedAlbums.length && !sharedAlbums[0].error"  style-apply="">
+              <fc-left-column-block-header class="s-block-header">
+                  <h3 translate>SHARED_ALBUMS</h3>
+              </fc-left-column-block-header>
+              <div class="s-block-content s-block-content-type2">
+                  <div ng-repeat="album in sharedAlbums">
+                      <div>
+                        <a ui-sref="u.albums-show({user_id: album.user.id, album_id: album.id})">
+                          <img ng-src="{{ album.cover_url }}">
+                        </a>
+                      </div>
+                      <div>
+                        <span><a ui-sref="u.albums-show({user_id: album.user.id, album_id: album.id})">{{ album.title }}</a></span>
+                        <span><a ui-sref="u.profile({user_id: album.user.id})">{{ album.user.user_name }}</a></span>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+
+        </div>
+
+        <div ng-show="albums.length > 0" class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div class="center-right-icons clearfix">-->
+                <!-- Fixes #5482 : do not open the add album popin -->
+                <!--<a ng-show="basicProfile.permissions.is_updatable" class="btn btn-icon btn-icon-primary pointer btn-plus" ui-sref="u.albums-create({user_id: viewedUserId})">+</a>-->
+              <!--</div>-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <!--<br />-->
+
+            <div class="albums-holder clearfix">
+              <a ng-repeat="album in albums" ng-class="{'empty-album-link': album.photos_count == 0}" ui-sref="u.albums-show({user_id: viewedUserId, album_id: album.id})">
+                <span ng-show="album.photos_count == 0"><i class="fa fa-camera"></i></span>
+                <div ng-show="album.photos_count > 0" class="image-content" afkl-lazy-image="{{:: album.cover_url }}">
+                </div>
+                <div class="topmost-content">{{ album.photos_count }}<br />{{ album.title }}</div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div ng-show="albums.length == 0" class="col-sm-8 right-column">
+          <div class="main-content">
+            <div ncy-breadcrumb class="hidden-xs"></div>
+
+            <div ng-show="basicProfile.permissions.is_updatable">
+              <h4 ng-if="viewedUserId != userId" class="center-text" translate data-translate-values="{userName: basicProfile.user_name}">EMPTY_ALBUM_USER_GALLERY_TITLE</h4>
+              <h4 ng-if="viewedUserId == userId" class="center-text" translate data-translate-values="{userName: basicProfile.user_name}">EMPTY_ALBUM_GALLERY_TITLE</h4>
+              <br />
+              <h5 class="center-text" translate>ALBUM_LIST_PAGE_ADD_ALBUM_INSTRUCTIONS</h5>
+              <br />
+              <br />
+              <div class="vertical-button-group import-contacts-buttons">
+                <div>
+                  <a class="btn btn-primary btn-lg button-min-width" ui-sref="u.albums-create({user_id: viewedUserId})"><span translate>CREATE_ALBUM</span></a>
+                </div>
+                <!-- Fixes #5482
+                  <div>
+                      <a class="gray-button-g button-with-image-icon button-min-width button-album-facebook" href="#"><span><i><i class="fa fa-facebook-square"></i></i><span translate>FACEBOOK_ALBUM</span></span></a>
+                  </div>
+                  <div>
+                      <a class="gray-button-g button-with-image-icon button-min-width button-album-picasa" href="#"><span><i><i class="ui_elem button-album-picasa-icon"></i></i><span translate>PICASA_ALBUM</span></span></a>
+                  </div>
+                  <div>
+                      <a class="gray-button-g button-with-image-icon button-min-width button-album-flickr" href="#"><span><i><i class="fa fa-flickr"></i></i><span translate>FLICKR_ALBUM</span></span></a>
+                  </div>
+                -->
+              </div>
+            </div>
+
+            <div class="table" ng-show="!basicProfile.permissions.is_updatable">
+              <div class="table-cell v-align-middle hidden-xs">
+                <img class="pic-in-text" src="/images/59-4-collage.jpg" />
+              </div>
+              <div class="table-cell v-align-top center-to-left-text">
+                <br class="visible-xs" />
+                {{ "NO_ALBUMS_SHARED_YET" | translate }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

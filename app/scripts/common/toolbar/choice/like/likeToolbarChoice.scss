@@ -1,0 +1,9 @@
+@include aboveMediumScreen() {
+  fc-toolbar {
+    fc-like {
+      .counter {
+        display: none;
+      }
+    }
+  }
+}

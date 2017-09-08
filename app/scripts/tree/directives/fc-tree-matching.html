@@ -1,0 +1,32 @@
+
+<div class="left-insert tree-matching-panel" ng-show="displayPanel">
+  <div class="left-insert-open-header">
+    <div class="table">
+      <div class="table-cell left-text v-align-middle" data-translate>TREE.MATCHING.TITLE</div>
+      <div class="table-cell right-text v-align-middle">
+        <a href="" ng-click="closePanel()"><i class="fa fa-times white-close-icon"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="left-insert-inside" id="tree-matching-panel-inside">
+
+    <div class="tree-matchings-list directory-listing table" id="tree-matchings-list"
+      ng-attr-infinite-scroll-disabled="infiniteScrollLoading || infiniteScrollDisabled || !displayPanel"
+      data-infinite-scroll="loadMoreElements()"
+      data-infinite-scroll-distance="1"
+      data-infinite-scroll-container="'#tree-matching-panel-inside'"
+      data-infinite-scroll-parent
+      data-infinite-scroll-immediate-check="false">
+      <div class="directory-item-repeat" ng-repeat="user in users">
+        <fc-tree-matching-item data-user="user"></fc-tree-matching-item>
+      </div>
+      <div class="table-row chat-main chat-user-list-list load-spinner" ng-show="infiniteScrollLoading">
+        <i class="fa fa-spinner fa-pulse fa-fw"></i>
+      </div>
+      <div class="empty-list" ng-show="!users || users.length == 0">
+        &nbsp;{{ 'TREE.MATCHING.NOTHING' | translate }}
+      </div>
+    </div>
+
+  </div>
+</div>

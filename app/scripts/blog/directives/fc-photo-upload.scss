@@ -1,0 +1,25 @@
+.blog-post-add-picture {
+  clear: both;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  $photoMaxSize: 12em;
+  > * {
+    display: table-cell;
+    > * {
+      display: inline-block;
+    }
+    text-align: center;
+    vertical-align: bottom;
+  }
+  .blog-post-add-picture-mc {
+    width: auto;
+    vertical-align: bottom;
+    padding: 0;
+  }
+  img {
+    max-width: $photoMaxSize;
+    max-height: $photoMaxSize;
+  }
+  margin-top: 0.5em;
+}

@@ -1,0 +1,39 @@
+<div class="comment">
+  <div class="inline" ng-class="{editing:isEditing, creating:isCreating}">
+    <form class="inline-form clearfix" data-fc-form-submit ng-submit="submit()" data-activate-on-then="true" data-form-in-progress="formInProgress" novalidate>
+      <div class="author">
+        <fc-avatar data-user="::user"></fc-avatar>
+      </div>
+
+      <div class="inline-contents">
+        <div class="button-edit" title="{{:: 'EDIT' | translate }}" tooltip="{{:: 'EDIT' | translate }}" data-tooltip-append-to-body="true" data-tooltip-placement="bottom" ng-click="edit()" ng-show="object.permissions.is_updatable && !isEditing && !isCreating">
+          <i class="fa fa-pencil-square-o pointer"></i>
+        </div>
+        <div class="item-info" ng-if="!isCreating">
+          <h4>
+            <a ui-sref="u.profile({user_id: object.author_id})">{{::object.author_name}}</a>&nbsp;<i class="fa fa-caret-right"></i>
+          </h4>&nbsp;<h5>{{::object.created_date*1000|timeOrDateFilter}}</h5>
+        </div>
+        <div class="text">
+          <div class="field">
+            <div class="field-input" ng-click="isCreating && edit()">
+              <label ng-show="!isEditing && isCreating"><i class="fa fa-pencil"></i>&nbsp;&nbsp;{{::editLabel}}</label>
+              <fc-editor data-is-editing="isEditing||isCreating" data-model="formHolder" data-submit="submit()" data-cancel="cancel()" ng-focus="isEditing=true" required ng-minlength="1"></fc-editor>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="start" ng-if="!isCreating">
+            <fc-like ng-if="!isEditing" data-object="object" data-view-mode="default" data-list-page="::likesUrl(object)"></fc-like>
+            <a class="deletion" ng-if="onDelete && isEditing" href="" ng-click="onDelete({commentId:object.id})"><i class="fa fa-trash-o"></i>
+              <span data-translate>DELETE</span></a>
+          </div>
+          <div class="end" ng-if="isEditing || isCreating">
+            <button class="btn btn-secondary" ng-click="cancel()" type="button" translate>CANCEL</button>
+            <button class="btn btn-primary" type="submit" ng-disabled="!isValid" ng-bind="::'SUBMIT'|translate"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

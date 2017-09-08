@@ -1,0 +1,3 @@
+<div ng-show="!isEditing" ng-bind-html="model.htmlValue | trustedHtml"></div>
+<textarea id="{{::id}}" ng-required="required" rows="{{rows}}" fc-autosize class="editor" ng-show="isEditing"
+          ng-model="model.textValue" ng-focus="onFocus()"></textarea>

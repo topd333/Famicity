@@ -1,0 +1,205 @@
+.modal,
+.modal-open .modal {
+  display: block;
+  overflow-y: scroll;
+}
+
+.modal-dialog {
+  min-width: 0;
+  margin-top: 100px;
+}
+//.modal-open{
+//  padding-right: 15px;
+//}
+.modal-backdrop,
+.modal-backdrop.in {
+  background-color: rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+.popin-overlay {
+  background-color: $white;
+  bottom: 0;
+  display: none;
+  left: 0;
+  opacity: 0.9;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9998;
+}
+
+.popin-overlay.popin-overlay-on,
+.popin-holder.popin-holder-on {
+  display: block;
+}
+
+.popin-holder {
+  display: none;
+  padding-left: 3%;
+  padding-right: 3%;
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  width: 100%;
+  z-index: 9999;
+}
+
+.popin-dialog {
+  background-color: $white;
+  border: 1px solid $green;
+  display: block;
+  margin: 0 auto;
+  // min-width: 280px;
+  // width: 90%;
+  .import-contacts-buttons a.button-min-width {
+    width: 240px;
+  }
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  .fc-close {
+    padding-top: 5px;
+    padding-right: 10px;
+    font-size: 1em;
+    float: right;
+  }
+}
+.popin-dialog-orange-border {
+  border: 1px solid $orange_color;
+
+}
+.popin-dialog-decoration {
+  background-color: $green;
+  height: 2px;
+  width: 40%;
+
+}
+.popin-dialog-orange-border .popin-dialog-decoration {
+  background-color: $orange_color;
+
+}
+.popin-fake-text-field {
+  background-color: $gray_color;
+  border-radius: $gui_standard_border_radius;
+  height: 40px;
+  width: 100%;
+
+}
+
+.popin-dialog>form>div,
+.popin-dialog>form>div.form-group {
+  margin-bottom: 10px;
+}
+
+
+.popin-dialog>form {
+  @extend .fcity-clearfix;
+  padding: 10px 20px 20px;
+}
+
+.popin-dialog h3 {
+  box-sizing: border-box;
+  font-size : 120%;
+  padding   : 0 20px;
+  text-align: center;
+}
+
+@import "../../../../scripts/common/util/yes_no_popin";
+
+#invitation-alert-modal {
+  .directory-item {
+    border-top-width: 0;
+  }
+  .intro {
+    margin: 1em 0;
+  }
+  .accept-all {
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .green-button;
+    margin: 2em;
+  }
+}
+
+
+.popin-dialog {
+  max-width: 36em;
+}
+
+@media only screen and (min-width: 480px) {
+
+  #reply-message-modal {
+    .popin-dialog {
+      min-width: 25em;
+    }
+  }
+
+  .popin-dialog h3 {
+    padding: 0 40px;
+
+  }
+  .popin-dialog>form {
+    padding: 25px 40px 40px;
+
+  }
+  .popin-fake-text-field {
+    height: 45px;
+
+  }
+  .popin-content .directory-item-table-cell-message.invitation-date {
+    display: none;
+  }
+}
+/* /// 480px */
+
+@include aboveMediumScreen() {
+
+  #reply-message-modal {
+    .popin-dialog {
+      min-width: 31.25em;
+    }
+  }
+
+  .popin-dialog h3 {
+    padding: 0 50px;
+
+  }
+  .popin-dialog>form {
+    padding: 30px 50px 50px;
+
+  }
+
+  .popin-dialog .popin-content {
+    margin: 30px 50px 0;
+  }
+
+  .form-p2 ul.photo-add-options {
+    margin-top: 50px;
+
+  }
+  .form-p2 ul.photo-add-options li {
+    display: block;
+    float: left;
+    margin-right: 60px;
+
+  }
+  .form-p3 h2 {
+    margin-bottom: 50px;
+    margin-top: 70px;
+
+  }
+  .form-skip-step-layer {
+    left: 105%;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+    white-space: nowrap;
+
+  }
+}
+
+/* 992px */
+@media only screen and (min-width: 992px) {
+  .popin-fake-text-field {
+    height: 50px;
+  }
+}

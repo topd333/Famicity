@@ -1,0 +1,54 @@
+/* Modification of Bootstrap tooltips */
+
+.tooltip-inner {
+  background-color: #82b6dd;
+  color: $white;
+  font-size: 14px;
+
+}
+.tooltip.top .tooltip-arrow,
+.tooltip.top-left .tooltip-arrow,
+.tooltip.top-right .tooltip-arrow {
+  border-top-color: #82b6dd;
+
+}
+.tooltip.right .tooltip-arrow {
+  border-right-color: #82b6dd;
+
+}
+.tooltip.left .tooltip-arrow {
+  border-left-color: #82b6dd;
+
+}
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: #82b6dd;
+
+}
+.tooltip.bottom-left .tooltip-arrow,
+.tooltip.bottom-right .tooltip-arrow {
+  border-bottom-color: $white;
+
+}
+.tooltip-red .tooltip-inner {
+  background-color: #f14949;
+  font-size: 14px;
+
+}
+.tooltip.tooltip-red.top .tooltip-arrow,
+.tooltip.tooltip-red.top-left .tooltip-arrow,
+.tooltip.tooltip-red.top-right .tooltip-arrow {
+  border-top-color: #f14949;
+
+}
+.tooltip.tooltip-red.right .tooltip-arrow {
+  border-right-color: #f14949;
+
+}
+.tooltip.tooltip-red.left .tooltip-arrow {
+  border-left-color: #f14949;
+
+}
+.tooltip.tooltip-red.bottom .tooltip-arrow {
+  border-bottom-color: #f14949;
+
+}

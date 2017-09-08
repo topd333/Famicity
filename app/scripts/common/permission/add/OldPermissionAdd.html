@@ -1,0 +1,117 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" ng-bind-html="pageTitleKey | translate"></h2>-->
+      <!--<a class="btn pull-right" ng-click="submitPermission()" data-translate>Ok</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+          <!-- <div class="left-column-block" ng-if="isShowLeftMenu">
+            <div class="left-column-block-header left-column-block-header-with-icon">
+              <div>
+                <h3>Albums partagés</h3>
+                <span></span>
+              </div>
+            </div>
+            <div class="left-column-block-content"></div>
+          </div> -->
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <div class="clearfix">
+              <div class="directory-listing-invitation-button hidden-xs"><a class="btn btn-primary btn-lg"
+                                                                            ng-click="submitPermission()"
+                                                                            data-translate>SUBMIT</a>
+              </div>
+              <p class="directory-listing-invitation-text">{{ introductionTextKey | translate }}</p>
+            </div>
+            <fc-old-permission-tab></fc-old-permission-tab>
+            <div ng-if="tabActive=='group'">
+              <div>
+                <div class="clearfix hidden-xs">
+                  <p ng-if="permission_type == 'permissions'" class="directory-listing-invitation-text" data-translate>
+                    PERMISSION_GROUP_SUMMARY</p>
+
+                  <p ng-if="permission_type == 'exclusions'" class="directory-listing-invitation-text" data-translate>
+                    EXCLUSION_GROUP_SUMMARY</p>
+                </div>
+              </div>
+              <!-- <p class="visible-xs">Fake text Fake text  Fake text  Fake text  Fake text  Fake text  Fake text  Fake text Fake text  Fake text</p> -->
+              <div fc-select-group-list ng-hide="groups.length == 0"></div>
+            </div>
+            <div ng-if="tabActive == 'user'">
+              <div ng-if="!import">
+                <div class="clearfix hidden-xs">
+                  <p ng-if="users.length && permission_type == 'permissions'" class="directory-listing-invitation-text"
+                     data-translate>PERMISSION_USER_SUMMARY</p>
+
+                  <p ng-if="users.length && permission_type == 'exclusions'" class="directory-listing-invitation-text"
+                     data-translate>EXCLUSION_USER_SUMMARY</p>
+
+                  <p ng-if="!users.length" class="directory-listing-invitation-text" data-translate>
+                    PERMISSION_USER_EMPTY</p>
+                </div>
+                <fc-user-list
+                     data-disable-search-field="false"
+                     selected-users="selectedUsers"
+                     ng-model="users"
+                     load-more="loadMore"
+                     filter="filter"
+                     selection-mode="true"
+                     show-alert="true"
+                     mode="default"
+                     message="AUTOMATIC_INVITATION_ALERT_POPUP_TITLE_RIGHT"></fc-user-list>
+                <div class="text-center"><button ng-if="permission_type == 'permissions'" class="btn btn-primary btn-lg" ng-click="proposeImport()" translate>IMPORT_ADDRESSES_BOOK</button></div>
+              </div>
+              <div ng-if="import" class="contact-import">
+                <fc-import-services-buttons></fc-import-services-buttons><br/>
+                <div class="button-centring-div"><button class="btn btn-danger btn-lg button-min-width" ng-click="cancelImport()" translate>CANCEL</button></div>
+              </div>
+            </div>
+            <div ng-if="tabActive == 'email'">
+              <p data-translate="MAIL_PERMISSIONS_INSTRUCTIONS"></p>
+              <form novalidate class="standard-form standard-form-nomargin login-form c-width-1" name="emailInvitationsForm">
+                <div class="table">
+                  <div class="table-row" ng-repeat="mailField in emailInputs">
+                    <div class="invite-email-delete table-cell table-cell-pb15 pointer">
+                      <a ng-click="removeMailField($index)"><i class="fa fa-trash-o danger-color"></i></a>
+                    </div>
+                    <div class="invite-email-field table-cell table-cell-pb15" ng-form="subForm">
+                      <div class="input-group" ng-class="{'has-error': (subForm.email.$dirty || submitted) && subForm.email.$invalid}">
+                        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                        <input class="form-control" data-ng-attr-id="{{ 'email' + $index }}" name="email"
+                               ng-model="mailField.email" data-translate data-translate-attr-placeholder="EMAIL_ADDRESS"
+                               type="email" autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="table-row ">
+                    <div class="table-cell">
+
+                    </div>
+                    <div class="table-cell">
+                      <div class="button-centring-div">
+                        <a class="standard-icon-nf standard-icon-green-nf btn btn-icon btn-icon-primary pointer" ng-click="addMailField()">+</a>
+                        <div class="invite-add-mail-txt" translate>ADD_MAIL</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

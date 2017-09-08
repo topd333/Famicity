@@ -1,0 +1,19 @@
+<fc-toolbar-choice class="fc-toolbar-choice visible-choice"
+                   data-tooltip-placement="{{choice.tooltipPlacement||tooltipPlacement}}"
+                   tooltip="{{::(allowTooltip?choice.tooltip:'')|translate}}" ng-repeat="choice in choices|limitTo:max"
+                   template-url="{{choice.templateUrl}}" ng-mouseenter="menuVisible=false"></fc-toolbar-choice>
+<div class="more-choices fc-toolbar-choice" ng-if="choices.length > max">
+  <a href="" ng-click="menuVisible=!menuVisible" class="more-choices">
+    <span class="fc-toolbar-icon more" ng-class="{selected:menuVisible}" ng-mouseenter="menuVisible=true">
+      <span class="center-icon">...</span>
+    </span>
+    <span ng-if="remainingNotificationsCount" class="fa-stack fa-stack-3x notification-count">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <span class="fa-stack-1x">{{remainingNotificationsCount}}</span>
+    </span>
+  </a>
+
+  <div ng-show="menuVisible" class="remaining-choices arrow_box" ng-mouseleave="menuVisible=false">
+    <fc-toolbar-choice ng-repeat="choice in remainingChoices" class="remaining-choice" data-allow-tooltip="false" template-url="{{choice.templateUrl}}"></fc-toolbar-choice>
+  </div>
+</div>

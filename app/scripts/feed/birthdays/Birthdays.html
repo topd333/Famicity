@@ -1,0 +1,64 @@
+<div class="wrapper">
+
+  <div class="content">
+
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>BIRTHDAYS</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary user-id="userId"></fc-user-summary>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content main-content-homepage" infinite-scroll="loadMoreElements()" ng-attr-infinite-scroll-disabled="infiniteScrollLoading || infiniteScrollDisabled" infinite-scroll-distance="2">
+            <div class="s-block-header-with-icon" ng-if="todayBirthdaysList.length"><span class="wcs-g-icon wcs-g-icon-green"><i class="fa fa-gift"></i></span><h2 translate>TODAY_BIRTHDAYS</h2>
+            </div>
+            <div ng-if="todayBirthdaysList.length" class="s-block-content s-block-content-type1">
+              <div ng-repeat="user in todayBirthdaysList">
+                <div class="table-cell">
+                  <!-- <a ui-sref="u.profile({user_id: user.id})"><img ng-src="{{ user.avatar_url }}"></a> -->
+                  <fc-avatar data-user="user"></fc-avatar>
+                </div>
+                <div>
+                  <span><i class="fa fa-gift"></i> <a ui-sref="u.profile({user_id: user.id})">{{ user.user_name }}</a>
+                  </span>
+                  <span data-translate data-translate-values="{age: user.age}">TODAY_X_YEARS_OLD</span>
+                </div>
+                <div><a ui-sref="u.messages.add({users: [user.id]})"><i class="fa fa-envelope-o"></i></a>
+                </div>
+              </div>
+            </div>
+            <!--<div class="s-block-header-with-icon"><span class="wcs-g-icon wcs-g-icon-green"><i class="fa fa-gift"></i></span><h2 translate>BIRTHDAYS_TO_COME</h2>-->
+            <!--</div>-->
+            <div>
+              <div ng-repeat="user in birthdaysList">
+                <span ng-if="user.group_by_CHANGED" class="s-block-subheader">{{ user.group_date | date: "fullDate" | capitalize }}</span>
+                <div class="s-block-content s-block-content-type2">
+                  <div>
+                    <div>
+                      <fc-avatar class="avatar-size40" data-user="user"></fc-avatar>
+                      <!-- <a ui-sref="u.profile({user_id: user.id})"><img ng-src="{{ user.avatar_url }}"></a> -->
+                    </div>
+                    <div>
+                      <div><i class="fa fa-gift"></i> <a ui-sref="u.profile({user_id: user.id})">{{ user.user_name }}</a>
+                      </div>
+                      <div data-translate data-translate-values="{NUM: user.age, GENDER: user.sex.toLowerCase()}" data-translate-interpolation="messageformat">CELEBRATE_HIS_HER_X_YEARS</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item-sub-delimiter" ng-show="infiniteScrollLoading"></div>
+          <div class="center-text" ng-show="infiniteScrollLoading"><a class="green-link-color" translate>LOADING</a></div>
+          <div class="item-sub-delimiter" ng-show="infiniteScrollLoading"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

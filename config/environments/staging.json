@@ -1,0 +1,14 @@
+{
+  "api_url": "https://api-staging.famicity.com",
+  "oauth_url": "https://auth-staging.famicity.com",
+  "push_url": "https://push-staging.famicity.com",
+  "static1_url": "https://static1-staging.famicity.com",
+  "static2_url": "https://static2-staging.famicity.com",
+  "static3_url": "https://static3-staging.famicity.com",
+  "environment": "staging",
+  "api_key_monitoring": "66ecd36792032bad66fbef33e3748b17",
+  "piwikAppId": 12,
+  "oauthClients": {
+    "facebook": 1540693166179207
+  }
+}

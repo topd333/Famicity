@@ -1,0 +1,233 @@
+@import 'colors';
+
+// Main colors
+$main_blue_color: #82b6dd;
+
+$indigo: #909dc5;
+$indigo_hover: #6f7da6;
+$purple: #cc96d9;
+$purple_hover: #b484bf;
+$amande: #bed996;
+$amande_hover: #a6c974;
+$salmon: #fd877b;
+$salmon_hover: #e07065;
+$turquoise: #84CACC;
+$calendar_purple: #c8add0;
+
+// Green
+$lighter_green_19: lighten($green, 19); // #bed785
+$ligher_green_44: lighten($green, 44); //#F3F8E2;
+$lighter_green_47: lighten($green, 47); // #f7faf0
+$colorGreenLightest: #eef7da;
+$darker_green_5: darken($green, 5); // #a1c54f
+$darker_green_10: darken($green, 10); // #abcc62
+$calendar_green: #dbebad;
+
+$selectionHoverColor: $colorGreenLightest;
+
+// Gray
+$gray_color: $grey1; // #e6e6e6
+$darker_gray_5: darken($gray_color, 5); // #d9d9d9
+$darker_gray_10: darken($gray_color, 10); // #cdcdcd
+$darker_gray_20: darken($gray_color, 20); // #b3b3b3
+$lighter_gray_3: lighten($gray_color, 3); // #eeeeee
+
+// Orange
+$orange_color: #fdbb33;
+$darker_orange_5: darken($orange_color, 5);
+$darker_orange_10: darken($orange_color, 10);
+
+// Blue
+$tooltip_blue: $main_blue_color;
+$blue_color: #3598db;
+$blue_lighter_32: lighten($blue_color, 32); // #c0dff4
+$calendar_blue: #68bfea;
+$mid_dark_blue: #aaa;
+$dark_blue: #666;
+
+// Yellow
+$yellow_color: #fbbd36;
+
+// Story colors
+$story_color_dark: #6e7ba5;
+$story_color_medium: #909EC5;
+$story_color_light: #D7DDEB;
+
+// Font colors
+$main_font_color: #6a7178; // #6a7178
+$lighter_main_font_4: lighten($main_font_color, 4); // #747b83
+$lighter_main_font_25: lighten($main_font_color, 25); // #acb1b6
+$lighter_main_font_47: lighten($main_font_color, 47); // #e7e8ea
+$lighter_main_font_54: lighten($main_font_color, 54); // #fafbfb
+$darker_main_font_4: darken($main_font_color, 4); // #60676d
+$darker_main_font_23: darken($main_font_color, 23); //#33363a
+
+// Basic
+$white: #fff;
+$black : #000;
+
+// Bootstrap
+
+// .btn-primary
+$btn_primary_background_color: $green;
+$btn_primary_border_color: $btn_primary_background_color;
+$btn_primary_hover_background_color: $green5;
+$btn_primary_hover_border_color: $green5;
+$btn_primary_disabled_background_color: $green;
+$btn_primary_disabled_border_color: $btn_primary_disabled_background_color;
+
+// .btn-danger
+$btn_danger_background_color: $red2;
+$btn_danger_border_color: $btn_danger_background_color;
+$btn_danger_hover_background_color: $red3;
+$btn_danger_hover_border_color: $red3;
+$btn_danger_disabled_background_color: $red1;
+$btn_danger_disabled_border_color: $btn_danger_disabled_background_color;
+
+// .btn-warning
+$btn_warning_background_color: $orange2;
+$btn_warning_border_color: $btn_warning_background_color;
+$btn_warning_hover_background_color: $orange3;
+$btn_warning_hover_border_color: $orange3;
+$btn_warning_disabled_background_color: $orange1;
+$btn_warning_disabled_border_color: $btn_warning_disabled_background_color;
+
+// .btn-secondary
+$btn_secondary_background_color: $main_font_color;
+$btn_secondary_border_color: $btn_secondary_background_color;
+$btn_secondary_color: $white;
+$btn_secondary_hover_background_color: #535456;
+$btn_secondary_hover_border_color: #474849;
+$btn_secondary_hover_color: $btn_secondary_color;
+$btn_secondary_disabled_background_color: $main_font_color;
+$btn_secondary_disabled_border_color: $btn_secondary_disabled_background_color;
+$btn_secondary_disabled_color: $btn_secondary_color;
+
+// .btn-input
+$btn_input_background_color: $grey1;
+$btn_input_border_color: $btn_input_background_color;
+$btn_input_color: $darker_main_font_4;
+$btn_input_hover_background_color: $grey2;
+$btn_input_hover_border_color: $grey2;
+$btn_input_disabled_background_color: $gray_color;
+$btn_input_disabled_border_color: $btn_input_disabled_background_color;
+
+// Header
+$header_home_bottom_color: #5bbae8;
+$header_profile_bottom_color: #a575b3;
+$header_tree_bottom_color: $green;
+$header_messages_bottom_color: #b1b1b1;
+$header_contacts_bottom_color: #f65d4d;
+$header_albums_bottom_color: #ffc044;
+$header_diary_bottom_color: #fc448c;
+$header_blog_bottom_color: #6b6c6e;
+$sub-header_color: $grey1;
+
+// Footer
+$footer_background_color: #323232;
+
+// GUI border radius
+$gui_standard_border_radius: 4px;
+
+// Brand colors
+$gmail_color: #db4437; $google_color: #db4437;
+$yahoo_color: #400191;
+$twitter_color: #55acee;
+$outlook_color: #006cc4;
+$facebook_color: #3a5795;
+
+$facebook_hover_color: #43609c;
+$picasa_hover_color: #9e5bb8;
+$flickr_hover_color: #0165c7;
+
+// Welcome + presentation
+$headerHeight: 2em;
+$maxContentWidth: 53em;
+$bulletBorder: 0.1em solid;
+$bulletSelectedColor: steelblue;
+//$marginRight: 5%;
+$sliderSelectedBackground: white;
+$sliderUnselectedBackground: rgba(255, 255, 255, 0.7);
+$sliderWidth: 10%;
+
+@import "layers";
+$layerPresentation: $layerBanner + 1;
+
+// TODO: Remove below
+$px4: 0.285rem;
+// 16px * 0.285  =  4px at 1em root size
+$px5: 0.3125rem;
+// 16px * 0.3125 =  5px at 1em root size
+$px6: 0.375rem;
+// 16px * 0.285  =  6px at 1em root size
+$px10: 0.625rem;
+// 16px * 0.625  = 12px at 1em root size
+$px12: 0.75rem;
+// 16px * 0.75   = 12px at 1em root size
+$px14: 0.875rem;
+// 16px * 0.875  = 14px at 1em root size
+$px18: 1.125rem;
+// 16px * 1.125  = 18px at 1em root size
+$px20: 1.25rem;
+// 16px * 1.125  = 20px at 1em root size
+$px22: 1.375rem;
+// 16px * 1.5    = 22px at 1em root size
+$px24: 1.5rem;
+// 16px * 1.5    = 24px at 1em root size
+$px26: 1.625rem;
+// 16px * 1.625    = 26px at 1em root size
+$px28: 1.75rem;
+// 16px * 1.75   = 28px at 1em root size
+$px30: 1.875rem;
+// 16px * 1.875  = 30px at 1em root size
+$px36: 2.25rem;
+// 16px * 2.25   = 36px at 1em root size
+$px40: 2.5rem;
+// 16px * 2.5    = 40px at 1em root size
+$px50: 3.125rem;
+// 16px * 3.125  = 50px at 1em root size
+
+
+$breakingPointSmall: 33.75em; // 540px/16px 540px is the current largest mobile width (XPeria Z Ultra)
+$breakingPointMedium: 48em; // 768px/16px
+$breakingPointLarge: 64em; // 1024px/16px
+
+$fieldBorderRadius: 0.3em;
+$formInputBackground: $gray_color;
+$placeHolderColor: $grey3;
+
+$fieldHeight: 6mm;
+$fieldMargin: $fieldHeight / 2;
+$fieldPadding: 2mm;
+$fieldFullHeight: $fieldPadding + $fieldHeight + $fieldPadding;
+@mixin fieldSizing() {
+  line-height: 1;
+  min-height: $fieldFullHeight;
+}
+@mixin inputSizing() {
+  @include fieldSizing();
+  line-height: $fieldHeight;
+  padding: $fieldPadding;
+}
+@mixin buttonSizing() {
+  @include fieldSizing();
+  padding: $fieldPadding $fieldPadding * 2;
+}
+
+// TODO: Too small for touch. Remove and merge with fieldHeight
+$fieldHeightSmall: 1.5em;
+$fieldPaddingSmall: 0.2em;
+$fieldFullHeightSmall: $fieldPaddingSmall + $fieldHeightSmall + $fieldPaddingSmall;
+@mixin fieldSizingSmall() {
+  line-height: $fieldHeightSmall;
+  min-height: $fieldFullHeightSmall;
+}
+@mixin inputSizingSmall() {
+  line-height: $fieldHeightSmall;
+  min-height: $fieldFullHeightSmall;
+  padding: $fieldPaddingSmall;
+}
+@mixin buttonSizingSmall() {
+  @include inputSizingSmall();
+  padding: $fieldPaddingSmall $fieldPaddingSmall * 2;
+}

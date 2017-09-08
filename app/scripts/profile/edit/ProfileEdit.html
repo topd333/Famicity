@@ -1,0 +1,179 @@
+<div class="wrapper profile edit">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>PROFILE</h2>-->
+      <!--<a class="btn pull-right" ng-click="submitBasicData()" translate>SUBMIT</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary profile="null"></fc-user-summary>
+        </div>
+        <div class="col-sm-8 right-column right-column-directory">
+          <div class="main-content">
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+
+            <div class="clearfix hidden-xs">
+              <div class="directory-listing-invitation-button hidden-xs">
+                <button class="btn btn-primary btn-lg green-button-standard pointer" fc-form-submit
+                        data-submit-method="submitBasicData()" data-form-in-progress="formInProgress"
+                        ng-bind="'SUBMIT' | translate"></button>
+              </div>
+              <p class="directory-listing-invitation-text" data-translate>PROFILE_EDIT_PAGE_EXPLANATION</p>
+            </div>
+
+            <form class="standard-form login-form profile-form-1" id="intro_form" name="profileBasicForm">
+              <div class="container-fluid no-padding">
+                <div class="row checkbox-form-group" ng-if="viewedUserId != userId">
+                  <div class="col-sm-6">
+                    <span class="standard-checkbox">
+                      <input id="deceased" name="deceased" ng-model="user.is_deceased" type="checkbox">
+                      <label for="deceased" class="fa"><span data-translate>DECEASED</span>
+                      </label>
+                    </span>
+                  </div>
+                </div>
+                <div class="row checkbox-form-group">
+                  <fc-gender-input class="col-sm-6" data-user="user"
+                                   data-form-name="profileBasicForm"></fc-gender-input>
+                </div>
+
+                <div class="clearfix row">
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="input-group"
+                             ng-class="{'has-error': (profileBasicForm.lastName.$dirty || submitted) && profileBasicForm.lastName.$invalid}">
+                          <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                          <label class="sr-only" for="last-name">{{ "LAST_NAME" | translate }}*</label>
+                          <input class="form-control" id="last-name"
+                                 ng-attr-placeholder="{{ 'LAST_NAME' | translate }}*"
+                                 name="lastName" type="text" ng-model="user.last_name" required/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="input-group"
+                             ng-class="{'has-error': (profileBasicForm.firstName.$dirty || submitted) && profileBasicForm.firstName.$invalid}">
+                          <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                          <label class="sr-only" for="first-name">{{ "FIRST_NAME" | translate }}*</label>
+                          <input class="form-control" id="first-name"
+                                 ng-attr-placeholder="{{ 'FIRST_NAME' | translate }}*" name="firstName" type="text"
+                                 ng-model="user.first_name" required/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div ng-style="{'visibility':user.sex=='Female'?'visible':'hidden'}" class="col-sm-6">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                          <label class="sr-only" for="maiden-name">{{ "MAIDEN_NAME" | translate }}</label>
+                          <input class="form-control" id="maiden-name" data-translate
+                                 data-translate-attr-placeholder="MAIDEN_NAME" ng-model="user.maiden_name" type="text"/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                          <label class="sr-only" for="middle-name" data-translate>MIDDLE_NAME</label>
+                          <input class="form-control" id="middle-name" data-translate
+                                 data-translate-attr-placeholder="MIDDLE_NAME" ng-model="user.middle_name" type="text"/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="birth">
+                      <div class="form-group col-sm-6">
+                          <label class="sr-only" for="birth-date">{{ "BIRTH_DATE" | translate }}*</label>
+                          <fc-date-input
+                            name="birthDate" id="birth-date"
+                            data-locale="{{locale}}"
+                            placeholder="{{'BIRTH_DATE_PLACEHOLDER'|translate}}*"
+                            ng-model="user.birth_date"
+                            data-not-found-message="{{'fc-date-input.DATE_INVALID'|translate}}"
+                            data-click-to-confirm-message="fc-date-input.CLICK_TO_CONFIRM"
+                            data-is-valid="birthDateValid"
+                            required>
+                          </fc-date-input>
+
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+                            <label class="sr-only" for="birthplace" data-translate>BIRTH_PLACE</label>
+                            <input class="form-control" id="birthplace" data-translate
+                                   data-translate-attr-placeholder="BIRTH_PLACE" ng-model="user.birth_place"
+                                   type="text"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="occupation" ng-show="!user.is_deceased">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                            <label class="sr-only" for="company" data-translate>COMPANY</label>
+                            <input class="form-control" id="company" data-translate
+                                   data-translate-attr-placeholder="COMPANY" ng-model="user.company" type="text"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-sm-6">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                            <label class="sr-only" for="post" data-translate>CURRENT_POSITION</label>
+                            <input class="form-control" id="post" data-translate
+                                   data-translate-attr-placeholder="CURRENT_POSITION" ng-model="user.job" type="text"/>
+                          </div>
+                      </div>
+                    </div>
+
+                    <div class="death" ng-show="user.is_deceased">
+                      <div class="form-group col-sm-6">
+                        <label class="sr-only" for="basic-deceased-date"
+                               data-translate>DATE_OF_DEATH_PLACEHOLDER</label>
+                        <fc-date-input
+                          name="birthDate" id="basic-deceased-date"
+                          data-locale="{{locale}}"
+                          placeholder="{{'DATE_OF_DEATH_PLACEHOLDER'|translate}}"
+                          ng-model="user.death_date"
+                          data-not-found-message="{{'fc-date-input.DATE_INVALID'|translate}}"
+                          data-click-to-confirm-message="fc-date-input.CLICK_TO_CONFIRM"
+                          data-is-valid="deathDateValid"
+                          required>
+                        </fc-date-input>
+                      </div>
+
+                      <div class="form-group col-sm-6">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+                          <label class="sr-only" for="death-place" data-translate>PLACE_OF_DEATH</label>
+                          <input class="form-control" id="death-place" name="deathPlace" data-translate
+                                 data-translate-attr-placeholder="PLACE_OF_DEATH" ng-model="user.death_place"
+                                 type="text"/>
+                        </div>
+                      </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.yes-no-popin {
+  font-size: 1em;
+  h4 {
+    font-size: 1em;
+    text-align: left;
+    padding: 0 30px;
+    padding-top: 10px;
+  }
+  .popin-dialog > form {
+    margin: 20px 30px 0;
+    padding: 0;
+  }
+  .form-group {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    button {
+      line-height: $fieldHeightSmall;
+    }
+  }
+}

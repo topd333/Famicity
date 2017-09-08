@@ -1,0 +1,76 @@
+.browser {
+  background-color: #e3dad5;
+  .content {
+    @include centeredVertically();
+    h1 {
+      margin: 0 auto 1em;
+    }
+  }
+  .browser-window {
+    line-height: 1;
+    margin: 0 auto;
+  }
+  .browser-window-head {
+    display: block;
+  }
+  .browser-window-body {
+    background-color: #f9f9f9;
+    ul {
+      display: inline-block;
+      line-height: 1.2;
+    }
+    .browser-icon-text {
+      border-radius: 2px;
+      background-color: #f4f4f4;
+      color: $main_font_color;
+      display: block;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      padding: 8px;
+    }
+  }
+}
+
+/* below 480px */
+@media only screen {
+
+  .browser .browser-window {
+    width: 276px;
+  }
+
+  .browser .browser-window-body {
+    border-radius: 0 0 6px 6px;
+    padding: 20px;
+  }
+
+}
+
+/* 480px */
+@media only screen and (min-width: 480px) {}
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+
+  .browser .welcome-message {
+    width: 520px;
+  }
+
+  .browser .browser-window {
+    width: 490px;
+  }
+
+  .browser .browser-window-body {
+    border-radius: 0 0 10px 10px;
+    ul {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    ul li {
+      display: inline-block;
+      margin-right: 80px;
+    }
+    ul li:last-child {
+      margin-right: 0;
+    }
+  }
+}

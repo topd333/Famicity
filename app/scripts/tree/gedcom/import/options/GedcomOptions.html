@@ -1,0 +1,46 @@
+<div class="options">
+  <p><span data-translate>GEDCOM.IMPORT.OPTIONS.FILENAME</span> {{gedcomImport.preloaded_file.name}}</p>
+
+  <h3 data-translate>GEDCOM.IMPORT.OPTIONS.SUBTITLE</h3>
+
+  <div ng-if="!gedcomImport.optionsToShow" class="status"><i class="fa fa-spinner fa-pulse"></i></div>
+
+  <form class="standard-form login-form" ng-if="gedcomImport.optionsToShow">
+    <div class="choices">
+      <div class="choice">
+          <span class="standard-radiobutton">
+            <input id="priority_to" checked name="import-choice" type="radio" ng-model="gedcomImport.options.priorityTo"
+                   value="gedcom"/>
+            <span class="radio-element"></span>
+          </span>
+        <label class="gedcom-deceased-label left-text" for="priority_to" data-translate>GEDCOM.IMPORT.OPTIONS.CHOICE.OVERRIDE</label>
+      </div>
+      <div class="choice">
+          <span class="standard-radiobutton">
+            <input id="keep" name="import-choice" type="radio" ng-model="gedcomImport.options.priorityTo" value="famicity"/>
+            <span class="radio-element"></span>
+          </span>
+        <label for="keep" class="gedcom-deceased-label left-text"
+               data-translate>GEDCOM.IMPORT.OPTIONS.CHOICE.KEEP</label>
+      </div>
+      <div ng-if="gedcomImport.optionsToShow.erase_tree" class="choice">
+        <span class="standard-radiobutton">
+          <input id="erase-tree" name="import-choice" type="radio" ng-model="gedcomImport.options.priorityTo" value="erase"/>
+            <span class="radio-element"></span>
+        </span>
+        <label class="gedcom-deceased-label left-text" for="erase-tree" data-translate>GEDCOM.IMPORT.OPTIONS.CHOICE.REPLACE</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary large-button" ng-click="startUpload()" ng-disabled="!gedcomImport.preloaded_file"
+              data-translate>
+        GEDCOM.IMPORT.OPTIONS.IMPORT
+      </button>
+      <a class="btn btn-secondary large-button" ui-sref="gedcom-import-wizard.file"
+         data-translate>GEDCOM.IMPORT.OPTIONS.BACK</a>
+    </div>
+
+  </form>
+
+</div>

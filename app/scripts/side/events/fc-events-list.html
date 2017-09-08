@@ -1,0 +1,33 @@
+<div class="s-block" ng-if="nextEvents.next.length">
+  <fc-left-column-block-header data-show-btn="false">
+    <h3 translate>UPCOMING_EVENTS</h3>
+    <span>+{{:: nextEvents.count_left }} <i class="fa fa-angle-right"></i>
+    </span>
+  </fc-left-column-block-header>
+  <div class="s-block-content s-block-content-type2" ng-show="::nextEvents.next.length">
+    <div ng-repeat="event in ::nextEvents.next">
+      <div>
+        <fc-avatar class="avatar-size40" data-user="{id: event.author_id, avatar_url: event.author_avatar_url}"></fc-avatar>
+      </div>
+      <div>
+        <span><a class="green-link-color" ui-sref="u.event-show({user_id: userId, event_id: event.id})">{{:: event.name }}</a>
+        </span>
+        <span ng-if="::event.all_day == false">
+          {{:: $moment(event.start_date, 'X').calendar() }}
+        </span>
+        <span ng-if="::event.all_day == true">
+          {{:: $moment(event.start_date, 'X').calendar({withoutTime: true}) }}
+        </span>
+      </div>
+      <div>
+        <a ui-sref="u.event-show({user_id: userId, event_id: event.id})">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="s-block-empty" ng-show="::nextEvents.next.length == 0">
+    <img src="/images/homepage-left-content-image-1.jpg">
+    <p data-translate>EMPTY_EVENTS_LIST_PLACEHOLDER</p>
+  </div>
+</div>

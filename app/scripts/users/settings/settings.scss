@@ -1,0 +1,24 @@
+.terms-text{
+  text-align: justify;
+}
+
+.reset-pwd-internal {
+  .content{
+    width: 50%;
+    text-align: left;
+  }
+}
+
+.change-pass-instr {
+  color: $lighter_main_font_25;
+}
+
+.sett-social-nets-note {
+  color: $green;
+}
+
+@import "account/SettingsAccount";
+@import "locale/SettingsLocale";
+@import "privacy/SettingsPrivacy";
+@import "notifications/SettingsNotifications";
+@import "auth-providers/SettingsAuthProviders";

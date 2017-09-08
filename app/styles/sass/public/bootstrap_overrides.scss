@@ -1,0 +1,56 @@
+.container {
+  max-width: 100%;
+}
+
+.public {
+  .tooltip-inner {
+    background-color: #f4f4f4;
+    border-radius: 0;
+    color: $main_font_color;
+    font-size: 13px;
+    text-align: left;
+    width: 120px;
+  }
+
+  .tooltip.top .tooltip-arrow,
+  .tooltip.top-left .tooltip-arrow,
+  .tooltip.top-right .tooltip-arrow {
+    border-top-color: #f4f4f4;
+  }
+
+  .tooltip.right .tooltip-arrow {
+    border-right-color: #f4f4f4;
+  }
+
+  .tooltip.left .tooltip-arrow {
+    border-left-color: #f4f4f4;
+  }
+
+  .tooltip.bottom .tooltip-arrow,
+  .tooltip.bottom-left .tooltip-arrow,
+  .tooltip.bottom-right .tooltip-arrow {
+    border-bottom-color: $white;
+  }
+}
+
+.alert-dismissable button.close,
+.alert-dismissable button.close:hover,
+.alert-dismissable button.close:focus {
+  color: $white;
+  opacity: 1.0;
+}
+
+.form-inline .input-group .input-group-addon {
+	width: 1%;
+}
+
+.form-control {
+  box-shadow: none;
+  border-style: none;
+  font-size: 1em;
+}
+
+// Px-to-rem redefinitions
+.btn {
+  border-radius: 0.3em;
+}

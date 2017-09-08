@@ -1,0 +1,33 @@
+@import "variables";
+
+@mixin glow() {
+  text-decoration: none;
+  transition: all 0.2s ease;
+  &:hover {
+//    text-shadow: 0 0 5px white;
+  }
+}
+
+$arrowSize: 16px; // Avoid ems to avoid approximations
+@mixin arrow($section2Background) {
+  border:$arrowSize solid $section2Background;
+  border-bottom:none;
+  border-color:transparent $section2Background transparent $section2Background;
+  position:absolute;
+  left:47%;
+  top:-$arrowSize;
+  &:before, &:after {
+    content:'';
+    position:absolute;
+    width:51vw;
+    bottom:0;
+    height:$arrowSize;
+    background:$section2Background;
+  }
+  &:before {
+    right:$arrowSize;
+  }
+  &:after {
+    left:$arrowSize;
+  }
+}

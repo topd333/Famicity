@@ -1,0 +1,26 @@
+<div class="f-block-header" ng-class="{'hidden-xs': showComments == 'true'}">
+
+  <div class="f-block-header-left" ng-class="{ 'f-block-header-left-with-icon': showIcon }">
+
+    <span>
+      <a ui-sref="u.blog.query({user_id: object.user_concerned_id || object.author_id})">
+        <span ng-show="showIcon" class="f-block-icon-text" data-translate>HEADER.JOURNAL</span>
+        <span ng-show="showIcon" class="f-block-icon">
+          <i class="fa fa-pencil"></i>
+        </span><!-- Keep comments: fixes #5702 --></a><!-- --><br ng-show="showIcon">
+    </span>
+
+    <div>
+      <span ng-show="object.user_concerned_name">
+        {{ object.user_concerned_is_deceased ? 'BIOGRAPHY_OF' : 'DIARY_OF' | translate }}
+      </span>
+
+      <h3><a ui-sref="u.profile({user_id: object.user_concerned_id || object.author_id})">
+        {{ object.user_concerned_name || object.author_name }}
+      </a></h3>
+      <span class="at">{{ object.updated_date * 1000 | timeOrDatePrefixFilter }} {{ object.updated_date * 1000 | timeOrDateFilter }}</span>
+      <span ng-show="object.user_concerned_name">{{ "BY" | translate }} {{ object.author_name }}</span>
+    </div>
+
+  </div>
+</div>

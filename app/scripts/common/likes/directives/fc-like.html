@@ -1,0 +1,16 @@
+<span class="unselectable">
+  <a class="icon" ng-click="toggleLike()" data-tooltip-placement="left" data-tooltip-append-to-body="true"
+     tooltip="{{object.is_liked_by_me?'I_DISLIKE':'I_LIKE'|translate}}" href="">
+    <i class="fa {{object.is_liked_by_me?'fa-heart likes-color':'fa-heart-o'}}"></i>
+  </a>
+  <a class="counter" ng-href="{{::listPageUrl}}" data-tooltip-placement="right"
+     data-tooltip-append-to-body="true" data-ng-attr-tooltip="{{::'SEE_WHO_LIKED_THAT'|translate}}" ng-show="object.likes_count">
+    <span class="count-only">
+      {{object.likes_count}}
+    </span>
+    <span class="count-full" data-translate data-translate-values="{LIKE:object.likes_count}"
+          data-translate-interpolation="messageformat">
+      fc-like.LIKE
+    </span>
+  </a>
+</span>

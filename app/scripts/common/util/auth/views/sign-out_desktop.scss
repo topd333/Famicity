@@ -1,0 +1,18 @@
+.sign-out {
+  .app-icons {
+    clear: none;
+    padding-top: 10em;
+    > * {
+      clear: none;
+      padding-top: 0;
+    }
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .main-img {
+    float: right;
+  }
+}

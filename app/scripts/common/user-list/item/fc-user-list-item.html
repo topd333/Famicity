@@ -1,0 +1,142 @@
+<div ng-if="!user.separator && selectionMode" class="table-cell checkbox-cell">
+    <span class="directory-listing-item-checkbox  directory-listing-item-checkbox-no-tm standard-checkbox standard-checkbox-no-bm">
+      <input ng-click="checkboxTriggered(user)" id="c{{::user.id}}" ng-model="user.selected" value="{{::user.id}}"
+             type="checkbox"/>
+      <label for="c{{::user.id}}" class="fa"></label>
+    </span>
+</div>
+<fc-avatar ng-if="!user.separator && user.avatar_url" class="table-cell directory-item-table-cell-picture hidden-xs"
+           data-user="::(user.other_user || user.user_concerned ||user)"></fc-avatar>
+<!-- Information -->
+<div ng-if="!user.separator" class="directory-item-table-cell-info">
+  <h2 ng-if="::selectionMode == false && (user.other_user.user_name || user.user_concerned.user_name || user.user_name) && mode == 'sent_invit'">
+    <a ui-sref="u.profile({user_id: user.other_user.id || user.user_concerned.id})">{{::user.other_user.user_name||user.user_concerned.user_name || user.user_name }}</a>
+  </h2>
+  <h2 ng-if="::selectionMode == false && mode == 'received_invit'">
+    <a ui-sref="u.profile({user_id: user.user.id})">{{:: user.user.user_name }}</a>
+  </h2>
+  <h2 ng-if="::selectionMode == false && user.user_name && (mode != 'sent_invit' && mode != 'received_invit')">
+    <a ui-sref="u.profile({user_id: user.id})">{{:: user.user_name }}</a>
+  </h2>
+  <h2 ng-if="::selectionMode && user.user_name">
+    <span>{{:: user.user_name }}</span>
+  </h2>
+  <!-- <span data-bo-if="(mode != 'sent_invit' && mode != 'received_invit' && mode != 'directory') && user.email"><span class="ellipsis"><i class="fa fa-envelope-o"></i> {{ user.email }}</span></span> -->
+  <span ng-if="(!user.separator && mode == 'sent_invit' && (user.other_user.email || user.user_concerned.email || user.email))">
+    <span class="ellipsis"><i class="fa fa-envelope-o"></i> {{:: user.other_user.email || user.user_concerned.email || user.email }}</span>
+  </span>
+  <span ng-if="::(!user.separator && mode == 'received_invit' && user.user.email)">
+    <span class="ellipsis"><i class="fa fa-envelope-o"></i> {{::user.user.email}}</span>
+  </span>
+  <span ng-if="::(!user.separator && mode != 'sent_invit' && mode != 'received_invit')">
+    <span ng-switch="::user.warning_type" class="warning-type">
+      <span class="danger-color" ng-switch-when="1" data-translate>DIRECTORY.WARNING.INVALID_EMAIL</span>
+      <span class="danger-color" ng-switch-when="2" data-translate>DIRECTORY.WARNING.NO_ANSWER</span>
+      <span class="danger-color" ng-switch-when="3" data-translate>DIRECTORY.WARNING.NO_GROUP</span>
+      <span ng-switch-default>
+        <span ng-if="user.global_state=='active' && !user.is_linked_to_member && !user.is_blocked_by_me && !(user.type && user.type == 'famicity')" data-translate>DIRECTORY.AMONG_MY_CLOSES</span>
+        <span
+                ng-if="user.global_state=='active' && !user.is_linked_to_member && !user.is_blocked_by_me && (user.type && user.type == 'famicity') && !user.is_invited_by_me"
+                data-translate data-translate-values="{GENDER: user.sex.toLowerCase()}"
+                data-translate-interpolation="messageformat">DIRECTORY.NOT_AMONG_MY_CLOSES</span>
+        <span ng-if="user.global_state == 'active' && !user.is_linked_to_member && user.is_blocked_by_me"
+              data-translate>DIRECTORY.BLOCKED</span>
+        <span ng-if="user.global_state == 'active' && user.is_linked_to_member && !user.is_invited_by_me"
+              data-translate data-translate-values="{GENDER: user.sex.toLowerCase()}"
+              data-translate-interpolation="messageformat">DIRECTORY.NOT_AMONG_MY_CLOSES</span>
+        <span ng-if="user.global_state != 'active' && !user.is_invited_by_me">{{ user.email }}</span>
+        <span ng-if="user.is_invited_by_me == true">{{'DIRECTORY.INVITATION_SENT_ON'|translate}}&nbsp;{{ $moment.fromServer(user.invitation.send_date).format('L') }}</span>
+      </span>
+    </span>
+  </span>
+</div>
+<!-- Actions -->
+<div ng-if="!user.separator" ng-switch="::mode" class="actions">
+  <div ng-switch-when="directory" class="directory-action">
+    <span ng-if="::!user.warning_type">
+      <!-- is a close -->
+      <i
+              ng-if="user.global_state == 'active' && !user.is_invited_by_me && !user.is_linked_to_member && !user.is_blocked_by_me && !(user.type && (user.type == 'famicity' || user.type == 'directory'))"
+              class="fa fa-envelope-o pointer ok-color"
+              ui-sref="u.messages.add({users: [user.id]})"
+              data-tooltip-append-to-body="true"
+              data-tooltip-placement="bottom"
+              tooltip-animation="false"
+              data-tooltip="{{:: 'SEND_A_MESSAGE' | translate}}"></i>
+      <!-- is invited by me -->
+      <i ng-if="(user.is_invited_by_me)"
+         class="fa fa-share-square-o pointer warning-color"
+         ui-sref="u.directory.resend-invitation({invitation_id: user.invitation.id})"
+         data-tooltip-append-to-body="true"
+         data-tooltip-placement="bottom"
+         data-tooltip="{{::'DIRECTORY.RESEND_INVITATION'|translate}}"></i>
+      <!-- can be invited by me -->
+      <i ng-if="((user.global_state!='active'||user.is_linked_to_member)||(user.type && (user.type == 'famicity' || user.type == 'directory'))) && !user.is_invited_by_me && !user.is_blocked_by_me"
+              class="fa fa-user-plus pointer ok-color"
+              ng-click="invite(user, me)"
+              data-tooltip-append-to-body="true"
+              data-tooltip-placement="bottom"
+              data-tooltip="{{:: 'INVITE' | translate}}"></i>
+      <!-- is blocked -->
+      <i ng-if="(user.is_blocked_by_me)"
+         class="fa fa-minus-circle pointer"
+         ng-click="authorize(user)"
+         data-tooltip-append-to-body="true"
+         data-tooltip-placement="bottom"
+         data-tooltip="{{:: 'UNBLOCK' | translate}}"></i>
+    </span>
+    <span ng-switch="::user.warning_type">
+      <i ng-switch-when="1"
+         class="fa fa-exclamation-triangle pointer danger-color"
+         ui-sref="u.directory.resend-invitation({invitation_id: user.invitation.id})"
+         data-tooltip-append-to-body="true"
+         data-tooltip-placement="bottom"
+         data-tooltip="{{:: 'DIRECTORY.RESEND_INVITATION' | translate}}"></i>
+      <i ng-switch-when="2"
+         class="fa fa-exclamation-triangle pointer danger-color"
+         ui-sref="u.directory.resend-invitation({invitation_id: user.invitation.id})"
+         data-tooltip-append-to-body="true"
+         data-tooltip-placement="bottom"
+         data-tooltip="{{:: 'DIRECTORY.RESEND_INVITATION' | translate}}"></i>
+      <i ng-switch-when="3"
+         class="fa fa-exclamation-triangle pointer danger-color"
+         ui-sref="u.directory.groups({user_id: user.id})"
+         data-tooltip-append-to-body="true"
+         data-tooltip-placement="bottom"
+         data-tooltip="{{:: 'DIRECTORY.ADD_GROUP' | translate}}"></i>
+    </span>
+
+  </div>
+
+  <div ng-switch-when="received_invit" class="received-invite">
+    <div class="directory-item-table-cell-message invitation-date hidden-xs">
+      <i class="fa fa-envelope-o"></i> {{::"RECEIVED_THE_X"|translate:{date:$moment(user.created_date,'X').format('L')} }}
+    </div>
+    <div class="directory-item-table-cell-invit-buttons">
+      <button ng-disabled="user.accepted || user.pending" ng-if="!user.declined"
+              class="button-invitations accept" ng-class="{disabled: user.accepted || user.pending}"
+              ng-click="acceptUserInvitation(user, me)">
+        {{user.accepted?'DIRECTORY.INVITATION.ACCEPTED':'ACCEPT' | translate }}
+      </button>
+      <button ng-disabled="user.declined || user.pending" ng-if="!user.accepted"
+              class="button-invitations decline" ng-class="{disabled: user.declined || user.pending}"
+              ng-click="destroyInvitation(user, me)">
+        {{user.declined?'DIRECTORY.INVITATION.DECLINED':'DECLINE' | translate }}
+      </button>
+    </div>
+  </div>
+  <div ng-switch-when="sent_invit" class="send-invite">
+    <div class="table-cell directory-item-table-cell-message invitation-date hidden-xs">
+      <i class="fa fa-share-square-o"></i> {{::"THE_X"|translate:{date:$moment(user.created_date,'X').format('L')} }}
+    </div>
+    <div class="directory-item-table-cell-invit-buttons">
+      <button ng-if="!user.declined" class="button-invitations revive"
+              ui-sref="u.directory.resend-invitation({invitation_id: user.id})" data-translate>REVIVE
+      </button>
+      <button ng-disabled="user.declined || user.pending"
+              class="button-invitations delete" ng-class="{disabled: user.declined || user.pending}"
+              ng-click="destroyInvitation(user, me)">{{user.declined?'DIRECTORY.INVITATION.DELETED':'DELETE' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

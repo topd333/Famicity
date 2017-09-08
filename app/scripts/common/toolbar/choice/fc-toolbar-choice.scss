@@ -1,0 +1,26 @@
+fc-toolbar-choice, .fc-toolbar-choice {
+  a{
+    position: relative;
+  }
+  .fc-toolbar-icon {
+    @extend .wcs-g-icon;
+    i.fa, i.fc {
+      line-height: 1;
+    }
+    &.selected {
+      background-color: $green;
+      color: $white;
+    }
+  }
+}
+.fc-toolbar-icon {          // Low-specificity to ease overriding
+  @extend .wcs-g-icon-gray;
+  @extend .wcs-g-icon-green-rollover;
+  color: $white;
+  &.more {
+    font-weight: bold;
+  }
+}
+
+@import "like/likeToolbarChoice";
+@import "comment/commentToolbarChoice";

@@ -1,0 +1,34 @@
+<div>
+    <div class="f-block-header">
+        <a ui-sref="user-profile-view({user_id: album.user_concerned_id || album.author_id})"><img ng-src="{{ album.user_concerned_avatar_url || album.author_avatar_url }}" /></a>
+        <div class="f-block-header-left f-block-header-left-with-icon ">
+            <span><a ui-sref="u.albums-index({user_id: album.user_concerned_id || album.author_id})">
+                <span class="f-block-icon-text" translate>ALBUMS_LINK</span> <span class="f-block-icon">
+                    <i class="fa fa-picture-o"></i>
+                </span><br>
+                <a ng-show="::album.permissions.is_updatable" ui-sref="u.albums-update({user_id: album.user_concerned_id || album.author_id, album_id: album.id})"><i class="fa fa-cog"></i></a>
+            </a></span>
+            <div>
+                <h3><a class="green-link-color" ui-sref="user-profile-view({user_id: album.user_concerned_id || album.author_id})">{{ album.user_concerned_name || album.author_name }}</a> <span ng-show="album.user_concerned_name">{{ "BY" | translate }} <a class="green-link-color" ui-sref="user-profile-view({user_id: album.author_id})">{{ album.author_name }}</a></span></h3>
+                <span class="at">{{ album.updated_date * 1000 | timeOrDatePrefixFilter }} {{ album.updated_date * 1000 | timeOrDateFilter }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="item-sub-delimiter"></div>
+    <div class="blog-feed-album">
+        <div class="center-text album-title">{{ album.title }}</div><br />
+        <div class="album-images-holder">
+            <a ng-repeat="photo in album.last_photos" ui-sref="u.albums-show({user_id: album.user_concerned_id || album.author_id, album_id: album.id})"><div class="image-content"><img ng-src="{{ photo.url_thumb }}" /></div></a>
+        </div>
+        <p class="album-description">{{ album.description }}</p>
+    </div>
+    <div class="item-sub-delimiter"></div>
+    <div class="comments-like-row">
+      <span class="comments"><i class="fa fa-comment-o"></i> <span class="hidden-xs" data-translate
+                                                                   data-translate-values="{NUM: album.comments_count}"
+                                                                   data-translate-interpolation="messageformat">X_COMMENTS</span><span
+        class="visible-xs-inline">{{ album.comments_count }}</span></span>
+      <fc-like data-object-type="album" data-object="album" data-view-mode="default" data-list-page="listPageUrl"></fc-like>
+    </div>
+    <div fc-comments></div>
+</div>

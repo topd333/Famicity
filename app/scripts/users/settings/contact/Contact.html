@@ -1,0 +1,64 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 ng-if="isMenuPage" class="pull-left" data-translate>SETTINGS.TITLE</h2>-->
+      <!--<h2 ng-if="!isMenuPage" class="pull-left" data-translate>MY_ACCOUNT</h2>-->
+      <!--<a class="btn pull-right" ng-click="submit()" data-translate>OK</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-settings-menu data-current-section="contact"></fc-settings-menu>
+        </div>
+        <div class="col-sm-8 right-column homepage-right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb></div>-->
+            <!--</div>-->
+            <div class="center-to-left-text">
+              <div data-translate>CONTACT_US_TEXT</div>
+              <form data-fc-form-submit data-submit-method="submit()" data-form-in-progress="formInProgress" novalidate name="contactForm" class="standard-form login-form c-width-1" id="intro_form" method="POST">
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                    <input fc-auto-focus class="form-control" id="message-subject" data-ng-attr-placeholder="{{ 'MESSAGE_SUBJECT' | translate }}" type="text" ng-model="message.title" required/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="textarea-with-icon textarea-with-icon-nobmargin">
+                    <textarea class="form-control" id="message-text" data-ng-attr-placeholder="{{ 'WRITE_HERE_YOUR_MESSAGE' | translate }}" ng-model="message.body" required></textarea>
+                    <label for="message-text"><i class="fa fa-pencil"></i></label>
+                  </div>
+                </div>
+                <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-primary green-button button-force-full-width hidden-xs" ng-bind="'SEND' | translate"></button>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <br/>
+      <br/>
+      <div class="row">
+        <div class="col-sm-4 hidden-xs"></div>
+        <div class="col-sm-8">
+          <div class="help-footnote text-content center-text" data-translate>HELP_PAGE_SOCIAL_SC</div>
+          <div class="face-twit-function-icons">
+            <div class="face-twit-function-icons-row1 clearfix">
+              <a class="ui_elem face-twit-function-icon-twitter" href="https://twitter.com/famicity" target="_blank" title="Twitter"></a>
+              <a class="ui_elem face-twit-function-icon-facebook" href="https://facebook.com/famicity" target="_blank" title="Facebook"></a>
+              <a class="ui_elem face-twit-function-icon-pinterest" href="https://pinterest.com/famicity" target="_blank" title="Pinterest"></a>
+            </div><div class="face-twit-function-icons-row2 clearfix">
+              <a class="ui_elem face-twit-function-icon-mail" ui-sref="u.settings-contact" title="Famicity"></a>
+              <a class="ui_elem face-twit-function-icon-famicity" href="http://blog.famicity.com" target="_blank" title="Blog famicity"></a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="gedcom import wizard">
+    <fc-wizard-step></fc-wizard-step>
+
+    <div ng-switch="gedcomImport.status">
+      <h2 ng-switch-when="success" data-translate>GEDCOM.IMPORT.SUCCESS.TITLE</h2>
+      <h2 ng-switch-when="error" class="error" data-translate>GEDCOM.IMPORT.FAILED.TITLE</h2>
+      <h2 ng-switch-default data-translate>GEDCOM.IMPORT.TITLE</h2>
+    </div>
+
+    <div ui-view="content" class="content">
+    </div>
+
+    <div ng-if="canSkip" ng-click="skip()" class="skip-step"><a data-translate>SKIP_STEP_LINK</a></div>
+
+  </div>
+</div>

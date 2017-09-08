@@ -1,0 +1,49 @@
+<div class="wrapper tree">
+
+  <div class="content tree">
+    <fc-header-bar user-id="userId">
+       <h2 class="pull-left" data-translate>TREE.MY_TREE</h2>
+    </fc-header-bar>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- <p ng-if="tree_content.tree_is_lock" class="warning-banner" translate>TREE_BLOCKED_BY_GEDCOM_ALERT_MSG</p> -->
+        <p ng-if="tree_content.tree_is_lock" class="warning-banner" data-translate>
+          TREE_BLOCKED</p>
+
+        <div class="main-content">
+          <div class="toolbar-container main-container">
+            <fc-toolbar class="main-toolbar" choices="toolbarChoices" tooltip-placement="bottom" max="2"></fc-toolbar>
+          </div>
+          <div class="toolbar-container zoom-container">
+            <fc-toolbar class="zoom-toolbar" choices="zoombarChoices"></fc-toolbar>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="tree_content.can_show_gedcom_popup && !tree_content.can_show_tree_popup && userId == viewedUserId"
+         class="popup-blue-dialog invisible-xs">
+      <div class="popup-content">
+        <p data-translate>IMPORT_GEDCOM_POPUP_MSG</p>
+
+        <div class="center-text">
+          <a class="popup-blue-dialog-button pointer" ng-click="removeGedcomPopup(true)" translate>YES</a><a
+          class="popup-blue-dialog-button pointer" ng-click="removeGedcomPopup(false)" translate>NO</a>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="tree_content.can_show_tree_popup && userId == viewedUserId" class="popup-blue-dialog big invisible-xs">
+      <img ng-click="removeIntroPopup()" class="top-right-menu close-btn pointer" src="/images/x.png"/>
+
+      <div class="popup-content">
+        <h3 data-translate="TREE_INTRO_POPUP_TITLE"></h3>
+
+        <p ng-bind-html="'TREE_INTRO_POPUP_CONTENT' | translate: {'userId': userId, 'settingsId': settingsId}"></p>
+        <img class="img-responsive" src="/images/img-info-bulle.png"/>
+      </div>
+    </div>
+
+    <fc-tree main-user-id="viewedUserId"></fc-tree>
+  </div>
+</div>

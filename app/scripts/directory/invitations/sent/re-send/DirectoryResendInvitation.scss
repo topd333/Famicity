@@ -1,0 +1,7 @@
+@include aboveMediumScreen() {
+  .directory.invitations.sent.revive {
+    .action-submit {
+      display: none;  // Only on smaller screens header bar
+    }
+  }
+}

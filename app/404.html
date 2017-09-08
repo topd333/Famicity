@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=no-js.html" />
+  </noscript>
+  <meta charset="utf-8">
+  <meta name="fragment" content="!">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta name="apple-itunes-app" content="app-id=860645997">
+  <meta name="google-play-app" content="app-id=com.famicity.famicity">
+  <meta name="description" content="Démarrez votre histoire et transmettez la !">
+
+  <meta name="prerender-status-code" content="404">
+  <meta name="robots" content="noindex">
+
+  <!-- build:css(.tmp) /styles/css/browser.css -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="/styles/css/bootstrap.css" >
+  <link rel="stylesheet" type="text/css" href="/styles/css/base.css">
+  <link rel="stylesheet" type="text/css" href="/styles/css/browser-sprite.css">
+  <link rel="stylesheet" type="text/css" href="/styles/css/famicity.css">
+  <!-- endbuild -->
+
+  <title>Famicity - 404</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+</head>
+
+<body class="error404 public">
+
+  <fc-language-switcher class="lang lang-pos"></fc-language-switcher>
+  <div class="top-right-linkbar">
+    <a href="/sign-in" class="fr">Se connecter</a>
+    <a href="/sign-in" class="en">Sign in</a>
+  </div>
+
+  <div class="wrapper">
+    <div class="content">
+      <div class="centered">
+        <div class="home-above-form">
+          <div class="ui_elem famicity-logo"><a ui-sref="base"></a></div>
+          <h1 class="fr">Halala !</h1>
+          <h1 class="en">Oooops</h1>
+        </div>
+        <h2 class="fr">Cette page n'existe pas.</h2>
+        <h2 class="en">This page does not exist.</h2>
+        <h3 class="fr">Heureusement, vous pouvez retourner sur vos actualités.</h3>
+        <h3 class="en">Keep it cool, you can go back to the homepage.</h3>
+        <div>
+          <a class="btn btn-primary btn-lg green-button-min-width fr" href="/">Retourner sur Famicity</a>
+          <a class="btn btn-primary btn-lg green-button-min-width en" href="/">Go back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+  window.onload = function() {
+  'use strict';
+  var i = 0, fr = null, en = null;
+
+  var language = window.navigator.userLanguage || window.navigator.language;
+
+  if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function(obj, start) {
+      for (var i = (start || 0), j = this.length; i < j; i++) {
+        if (this[i] === obj) { return i; }
+        }
+        return -1;
+      }
+    }
+
+    if(document.getElementsByClassName) {
+      fr = document.getElementsByClassName('fr'); // IE9+
+      en = document.getElementsByClassName('en'); // IE9+
+    } else {
+      fr = document.querySelectorAll('.fr'); // IE8
+      en = document.querySelectorAll('.en'); // IE8
+    }
+
+    if(language.indexOf('fr') === -1) {
+      for(i=0; i < fr.length; i++) {
+        fr[i].style.display = 'none';
+      }
+      for(i=0; i < en.length; i++) {
+        en[i].style.display = en[i].tagName.toUpperCase() === 'A' ? 'inline' : 'block';
+      }
+    } else {
+      for(i=0; i < fr.length; i++) {
+        fr[i].style.display =  fr[i].tagName.toUpperCase() === 'A' ? 'inline' : 'block';
+      }
+      for(i=0; i < en.length; i++) {
+        en[i].style.display = 'none';
+      }
+    }
+  };
+</script>
+</body>
+</html>

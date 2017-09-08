@@ -1,0 +1,18 @@
+.permission {
+  @include buttonSizingSmall();
+  border-radius: $fieldBorderRadius;
+  color: white;
+  &.allowed {
+    background: $green;
+  }
+  &.disallowed {
+    background: $red;
+  }
+  .fc-close {
+    font-size: 0.7em;
+    vertical-align: middle;
+    &:hover{
+      font-weight: bold;
+    }
+  }
+}

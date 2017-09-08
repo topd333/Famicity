@@ -1,0 +1,33 @@
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  //overflow: hidden;
+
+  input[type="text"] {
+    @include inputSizingSmall();
+    display: inline-block;
+    border: none;
+    padding: 0;
+    &:focus {
+      outline: 0;
+    }
+  }
+  input[placeholder] {
+    text-overflow: ellipsis;
+  }
+  input::placeholder {
+    text-overflow: ellipsis;
+  }
+  .proposals {
+    @extend .autocomplete-list;
+    position: absolute;
+    z-index: $layerPopup;
+    max-height: 17.6em;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @import "fc-permission-proposal";
+  }
+}

@@ -1,0 +1,6 @@
+<div class="fc-pattern form-control" ng-class="{error:match.length<=0}">
+  <span class="placeholder form-control">{{inputPlaceHolder}}</span>
+  <input ng-show="readOnly=='false'" class="form-control" type="{{inputType}}"
+         ng-model="value" ng-change="update()" ng-focus="focused()" ng-blur="blurred()">
+  <span ng-show="readOnly=='true'" class="output form-control">{{value}}</span>
+</div>

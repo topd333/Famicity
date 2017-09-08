@@ -1,0 +1,73 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <fc-progress-bullet-bar ng-attr-data-nb-steps="fromInvitation ? 2 : showInvitationStep ? 4 : 3"
+                            data-current-step="1"></fc-progress-bullet-bar>
+
+    <div class="form-block">
+
+      <form ng-submit="submit()" novalidate class="standard-form login-form" id="intro_form" name="introForm">
+
+        <h5>{{ "WIZARD_PROFILE_PAGE_SUBTITLE" | translate }}</h5>
+
+        <div class="form-group"
+             ng-class="{'has-error': (introForm.gender.$dirty || submitted) && introForm.gender.$invalid}">
+          <span class="standard-radiobutton">
+              <input id="male" name="gender" ng-model="user.sex" type="radio" value="Male" required/>
+              <span class="radio-element"></span>
+          </span>
+          <label for="male" class="fa">{{ "MAN" | translate }}*</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="standard-radiobutton">
+              <input id="female" name="gender" ng-model="user.sex" type="radio" value="Female" required/>
+              <span class="radio-element"></span>
+          </span>
+          <label for="female" class="fa">{{ "WOMAN" | translate }}*</label>
+        </div>
+        <div class="form-group" ng-if="provider">
+          <div class="input-group"
+               ng-class="{'has-error': (introForm.lastName.$dirty || submitted) && introForm.lastName.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+            <label class="sr-only" for="email">{{ "EMAIL" | translate }}*</label>
+            <input class="form-control" id="email" name="email" ng-model="user.email"
+                   ng-attr-placeholder="{{ 'EMAIL' | translate }}*" type="email" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group"
+               ng-class="{'has-error': (introForm.lastName.$dirty || submitted) && introForm.lastName.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+            <label class="sr-only" for="last-name">{{ "LAST_NAME" | translate }}*</label>
+            <input class="form-control" id="last-name" name="lastName" ng-model="user.last_name"
+                   ng-attr-placeholder="{{ 'LAST_NAME' | translate }}*" type="text" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group"
+               ng-class="{'has-error': (introForm.firstName.$dirty || submitted) && introForm.firstName.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+            <label class="sr-only" for="first-name">{{ "FIRST_NAME" | translate }}*</label>
+            <input class="form-control" id="first-name" name="firstName" ng-model="user.first_name"
+                   ng-attr-placeholder="{{ 'FIRST_NAME' | translate }}*" type="text" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="birth-date">{{ "BIRTH_DATE" | translate }}*</label>
+          <fc-date-input name="birthDate" id="birth-date"
+               data-locale="{{locale}}"
+               placeholder="{{'BIRTH_DATE_PLACEHOLDER'|translate}}*"
+               ng-model="user.birth_date"
+               data-not-found-message="{{'fc-date-input.DATE_INVALID'|translate}}"
+               data-click-to-confirm-message="fc-date-input.CLICK_TO_CONFIRM"
+               show-output="true"
+               required>
+          </fc-date-input>
+
+        </div>
+        <h6>* {{ "MANDATORY_FIELDS" | translate }}</h6>
+        <button class="btn btn-primary" id="form-button" type="submit">{{ "CONTINUE" | translate }}</button>
+      </form>
+
+    </div>
+  </div>
+</div>

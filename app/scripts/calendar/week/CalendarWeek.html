@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>HEADER.DIARY</h2>-->
+      <!--<a class="btn btn-icon pull-right" ui-sref="u.event-add({user_id: viewedUserId})">+</a>-->
+      <!--<a class="btn btn-icon pull-right" ng-click="getCurrentDay()"><i class="fa fa-calendar-o"></i></a>-->
+    <!--</fc-header-bar>-->
+    <div class="col-lg-12 mt-10 visible-xs" ng-init="init()">
+      <div class="pull-left">
+        <a class="callendar-top-buttons1" ng-class="{'callendar-top-buttons1-active': calendarTemplate == 'week'}" href="" ng-click="viewWeek()"><i class="fa fa-calendar-o"></i> {{ 'WEEK' | translate }}</a> &nbsp;
+        <a class="callendar-top-buttons1" ng-class="{'callendar-top-buttons1-active': calendarTemplate == 'month'}" href="" ng-click="viewMonth()"><i class="fa fa-calendar"></i> {{ 'MONTH' | translate }}</a>
+      </div>
+      <div class="center-right-icons clearfix">
+        <a class="btn btn-icon btn-icon-primary" ng-click="prevWeek()"><i class="fa fa-angle-left"></i></a>
+        <a class="btn btn-icon btn-icon-primary" ng-click="nextWeek()"><i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+    <div class="calendar-container">
+      <br>
+      <div class="clearfix hidden-xs">
+        <div class="pull-left">
+          <a class="callendar-top-buttons1" ng-class="{'callendar-top-buttons1-active': calendarTemplate == 'week'}" href="" ng-click="viewWeek()"><i class="fa fa-calendar-o"></i> {{ 'WEEK' | translate }}</a> &nbsp;
+          <a class="callendar-top-buttons1" ng-class="{'callendar-top-buttons1-active': calendarTemplate == 'month'}" href="" ng-click="viewMonth()"><i class="fa fa-calendar"></i> {{ 'MONTH' | translate }}</a>
+        </div>
+        <div class="pull-right">
+          <a class="callendar-top-buttons2 pull-left" href="" ng-click="getCurrentDay()" data-translate>TODAY</a>
+          <span class="pull-left"> &nbsp;&nbsp;&nbsp; </span>
+          <a class="btn btn-icon btn-icon-primary previous-icon-button-big pull-left" href="" ng-click="prevWeek()"><i class="fa fa-angle-left"></i></a>
+          <span class="pull-left">&nbsp;&nbsp;&nbsp;</span>
+          <span class="pull-left calendar-week-monthyear">{{ $moment(beginWeekDay).format('D MMMM') }} - {{ $moment(endWeekDay).format('D MMMM YYYY') }}</span>
+          <span class="pull-left">&nbsp;&nbsp;&nbsp;</span><a class="btn btn-icon btn-icon-primary next-icon-button-big pull-left" href="" ng-click="nextWeek()"><i class="fa fa-angle-right"></i></a>
+          <span class="pull-left"> &nbsp;&nbsp;&nbsp; </span><a class="btn btn-icon btn-icon-primary next-icon-button-big" href="" ng-click="createEvent()">+</a>
+        </div>
+      </div>
+      <br />
+
+      <fc-build-calendar template="week"></fc-build-calendar>
+    </div>
+  </div>
+</div>

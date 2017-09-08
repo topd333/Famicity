@@ -1,0 +1,6 @@
+<div class="autocomplete" >
+  <input type="text" ng-model="inputModel.text" ng-keydown="keyTrap($event)" ng-keypress="keyChar($event)" ng-attr-placeholder="{{placeholder}}" ng-blur="validate()">
+  <div class="proposals" ng-show="showProposals && proposals && proposals.length">
+    <fc-permission-proposal data-object="proposal" on-select="select(proposal)" ng-class='{selected:proposal==currentProposal}' ng-repeat='proposal in proposals|limitTo:max'></fc-permission-proposal>
+  </div>
+</div>

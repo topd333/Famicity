@@ -1,0 +1,152 @@
+.error404 {
+  .content {
+    @include centeredVertically();
+    background-color: rgba(255,255,255,0.6);
+    .home-above-form {
+      h1 {
+        color: $green;
+        font-weight: bold;
+        margin: 0;
+      }
+      h2, h3 {
+        color: $white;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.error500 {
+  h1 {
+    color: $green;
+    font-weight: bold;
+    margin: 0;
+  }
+  h2, h3 {
+    color: $lighter_main_font_4;
+    margin: 0 auto;
+  }
+}
+
+.page-js {
+  background-color: #e3dad5;
+}
+
+/* below 480px */
+@media only screen {
+
+  .error404 h1 {
+    font-size: 34px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+  }
+
+  .error404 h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .error404 h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .error500 h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+  }
+
+  .error500 h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    max-width: 90%;
+  }
+
+  .error500 h3 {
+    font-size: 14px;
+    margin-bottom: 20px;
+    max-width: 90%;
+  }
+
+  .page-js h1 {
+    font-size: 22px;
+    margin: 10px auto 30px auto;
+    max-width: 80%;
+  }
+
+  .page-js h3 {
+    font-size: 14px;
+    margin: 0 auto 20px auto;
+    max-width: 80%;
+  }
+
+}
+
+/* 480px */
+@media only screen and (min-width: 480px) {
+
+  .error404 h1 {
+    font-size: 46px;
+  }
+  .error404 h2 {
+    font-size: 36px;
+  }
+  .error404 h3 {
+    font-size: 24px;
+  }
+  .error500 h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+  .error500 h2 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 45px;
+
+  }
+  .error500 h3 {
+    font-size: 14px;
+
+  }
+  .page-js h1 {
+    font-size: 32px;
+    margin: 10px auto 40px;
+
+  }
+  .page-js h3 {
+    font-size: 18px;
+  }
+
+}
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+
+  .error500 h1 {
+    font-size: 46px;
+    margin-bottom: 15px;
+  }
+
+  .error500 h2 {
+    font-size: 30px;
+    line-height: 1.3;
+    margin-bottom: 45px;
+    width: 500px;
+  }
+
+  .error500 h3 {
+    font-size: 20px;
+    width: 500px;
+  }
+
+  .page-js h1 {
+    font-size: 32px;
+    margin: 10px auto 40px auto;
+  }
+
+  .page-js h3 {
+    font-size: 18px;
+  }
+
+}

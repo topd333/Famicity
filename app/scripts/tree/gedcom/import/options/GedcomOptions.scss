@@ -1,0 +1,38 @@
+.gedcom.wizard.import {
+  .options{
+    h3 {
+      text-align: center;
+      margin-top: 2em;
+      font-size: 1em;
+      font-weight: bold;
+      color: $green;
+    }
+    .status {
+      text-align: center;
+    }
+    .warning {
+      font-style: italic;
+      color: $red;
+    }
+    form {
+      .choices {
+        .choice {
+          display: table;
+          > * {
+            vertical-align: top;
+            display: table-cell;
+          }
+          margin-bottom: 1.5em;
+        }
+        margin: 1em 0 2em;
+      }
+      label {
+        font-weight: normal;
+      }
+      .back-to-tree {
+        width: 80%;
+        max-width: 26em;
+      }
+    }
+  }
+}

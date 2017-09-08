@@ -1,0 +1,32 @@
+.wizard {
+  .invite-after-import-from-services {
+    .intro {
+      margin-bottom: 2em;
+    }
+    .upper-button {   // TODO: Remove the whole button from HTML
+      //display: none;
+    }
+    fieldset {
+      text-align: left;
+      //@include borderedFieldset();
+    }
+    //fieldset + fieldset {
+    //  margin-top: 1em;
+    //}
+    .directory-listing {
+      //overflow: auto;
+      //max-height: 27vh;
+      position: relative;
+      //top: 0;
+      //left: 0;
+      //padding: 1em;
+      //border-radius: 0.25em;
+    }
+    .actions {
+      margin-top: 1em;
+      .end {
+        text-align: right;
+      }
+    }
+  }
+}

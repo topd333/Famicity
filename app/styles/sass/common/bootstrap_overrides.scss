@@ -1,0 +1,98 @@
+.modal-open {
+  overflow: hidden !important;
+}
+
+.modal-dialog {
+  min-width: 600px;
+  width: auto;
+}
+
+input.form-control,
+textarea.form-control {
+  border-style: none;
+  box-shadow: none;
+  transition: none;
+}
+
+.form-control {
+  @include inputSizing();
+}
+input.form-control {
+  height: auto;
+}
+
+.form-group {
+  .input-group {
+    //font-size: 15px;
+  }
+  &.buttons {
+    text-align: right;
+    .btn {
+      //font-size: 15px;
+      line-height: $fieldHeight;
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+// Use font-awesome instead of glyphicons
+
+//@import "../../../bower_components/font-awesome/css/font-awesome.css";
+//.glyphicon {
+//  @extend .fa;
+//  &.glyphicon-chevron-right {
+//    @extend .fa-chevron-right;
+//  }
+//  &.glyphicon-chevron-left {
+//    @extend .fa-chevron-left;
+//  }
+//  &.glyphicon-chevron-up {
+//    @extend .fa-chevron-up;
+//  }
+//  &.glyphicon-chevron-down {
+//    @extend .fa-chevron-down;
+//  }
+//}
+
+.btn {
+  font-size: 1em;
+  border-radius: $px4;
+  padding: 0.4em 0.7em;
+}
+
+.btn-lg{
+  font-size: 1em;
+  line-height: 1.4;
+  padding-bottom: 0.625em;
+  padding-top: 0.625em;
+}
+
+.btn-icon {
+  font-size: 1em;
+  padding: 0 $px5;
+}
+
+// TODO: padding 0 sets incorrect container-fluid size
+@media (min-width: 1250px) {
+  .container-fluid{
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+}
+
+.input-group .form-control:not(:first-child):not(:last-child) { // Avoid rounding right of left-sided .input-group-addon, but still rounds following input at its right side
+  border-radius: $fieldBorderRadius;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-control::placeholder {
+  color: $placeHolderColor;
+}
+.btn-options-choice > * {
+  @include ellipsis;
+}
+.has-error .form-control {
+   box-shadow: none;
+}

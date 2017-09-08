@@ -1,0 +1,41 @@
+<div class="calendar-container visible-xs">
+   <br>
+   <table class="calendar-month-view-xs">
+      <tr class="calendar-month-view-xs-dayname">
+        <td translate>{{ daysName[0][0] + daysName[0][1]  }}</td>
+        <td translate>{{ daysName[1][0] }}</td>
+        <td translate>{{ daysName[2][0] }}</td>
+        <td translate>{{ daysName[3][0] }}</td>
+        <td translate>{{ daysName[4][0] }}</td>
+        <td translate>{{ daysName[5][0] }}</td>
+        <td translate>{{ daysName[6][0] }}</td>
+      </tr>
+      <tr class="calendar-month-view-xs-monthname" ng-repeat-start="m in monthsMobile track by $index">
+         <td></td>
+         <td></td>
+         <td></td>
+         <td colspan="2">{{ m.unixMonth | date: 'MMM yyyy' }}</td>
+         <td></td>
+         <td></td>
+         <td></td>
+      </tr>
+      <tr class="calendar-month-view-xs-dateslot" ng-repeat="days in m.daysMonth">
+         <td ng-repeat="d in days">
+             <span ng-class="{'calendar-month-view-xs-rdn': currentDate == d.day && currentWeek == d.week && isCurrentMonth == true}" ng-show="d.month == $parent.m.month">
+                 <a href='' ng-click="viewWeekMobile(d, $index, $parent.days)">{{ d.day }}</a>
+             </span>
+             <br>
+             <span ng-show="monthEvents[$parent.$index][$index].length < 2 && d.month == $parent.m.month" ng-click="viewWeekMobile(d, $index, $parent.days)" class="pointer">
+                <i class="fa fa-gift" ng-show="monthEvents[$parent.$index][$index][0] == true"></i>
+             </span>
+             <span ng-show="monthEvents[$parent.$index][$index].length == 2 && d.month == $parent.m.month" ng-click="viewWeekMobile(d, $index, $parent.days)" class="pointer">
+                <i class="fa fa-gift" ng-show="monthEvents[$parent.$index][$index][0] == true"></i>
+                <i class="fa fa-circle" ng-show="monthEvents[$parent.$index][$index][1] == true"></i>
+             </span>
+         </td>
+      </tr>
+      <tr ng-repeat-end ng-if="$index != $last">
+         <td colspan="7"></td>
+      </tr>
+   </table>
+</div>

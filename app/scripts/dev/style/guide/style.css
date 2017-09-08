@@ -1,0 +1,271 @@
+html, body {
+  text-align: left;
+  position: relative;
+}
+
+.container {
+  margin-left: 0;
+}
+#menu {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .container {
+    margin-left: 15em;
+    margin-bottom: 3em;
+  }
+  #menu {
+    display: block;
+  }
+}
+
+#menu {
+  position: fixed;
+  margin-top: 1em;
+}
+
+/* Deco */
+.left-links {
+  margin-top: 1.5em;
+  border: solid 1px #e5e5e5;
+  border-radius: 3px;
+  font-size: 1em;
+  line-height: 1em;
+}
+
+.navbar-inner {
+  background: #96bd3e;
+  color: white;
+  height: 2.5em;
+  font-size: 1.5em;
+  line-height: 2.5em;
+  padding-left: 1.2em;
+}
+
+.nav {
+  margin-left: 2em;
+}
+
+.nav > li > a {
+  padding: 0.5em 0.8em;
+  text-decoration: initial;
+}
+
+.nav li > a + .nav > li > a {
+  padding: 0.2em 0;
+}
+
+.nav li > a + .nav {
+  /* display: none; */
+  color: #bbb;
+  margin-left: 1em;
+  font-size: 0.9em;
+}
+
+.nav li .nav li {
+  display: list-item;
+  margin-left: 1em;
+  font-size: 0.9em;
+}
+
+.nav li.active > .nav {
+  display: block;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.nav li.active > .nav li a {
+  border-color: transparent;
+  color: #bbb;
+}
+
+.nav li.active > .nav li.active a {
+  border-left: solid 2px transparent;
+  color: #555;
+}
+
+.nav li.active > .nav li a:hover,
+.nav li.active > .nav li a:focus, {
+  color: #96bd3e;
+}
+
+.nav li.active a {
+  border-left: solid 2px #96bd3e;
+  margin-left: -1px;
+}
+
+.nav li a:hover, .nav li a:focus {
+  color: #96bd3e;
+  background-color: inherit;
+}
+
+/*
+.guide-result{
+  border: solid 1px #e5e5e5;
+  border-radius: 3px 3px 0 0;
+  width: 100%;
+  clear: both;
+  margin-bottom: -0.4em;
+  padding: 1em 1em 1.5em;
+}
+*/
+.guide-result {
+  /*  background-color: #eee;
+    background-image: linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white),
+    linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white);*/
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  border: solid 1px #e5e5e5;
+  clear: both;
+  padding: 1em 1em 1.5em;
+  text-align: left;
+}
+
+.guide-result:before,
+.guide-result:after {
+  content: " ";
+  display: table;
+}
+
+.guide-result:after {
+  clear: both;
+}
+
+.transparent .guide-result {
+  background-color: #eee;
+  background-image: linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white),
+  linear-gradient(45deg, white 25%, transparent 25%, transparent 75%, white 75%, white);
+}
+
+pre {
+  padding: 16px;
+  overflow: auto;
+  line-height: 1.45;
+  border: 1px solid #e5e5e5;
+  background-color: #f7f7f7;
+  border-top: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  border-radius: 3px;
+  max-width: 100%;
+  max-height: 33vh;
+}
+
+pre code {
+  border-radius: 0;
+  padding: 0;
+}
+
+code {
+  background-color: #f7f7f7;
+  padding: 0.2em;
+  font-size: 0.85em;
+  border-radius: 3px;
+}
+
+/* tree fix*/
+.tr-com {
+  position: relative;
+}
+
+#tree {
+  background: none;
+}
+
+.tree .main-container .main-toolbar, .tree .main-container .zoom-toolbar, .tree .zoom-container, .tree .zoom-container .zoom-toolbar {
+  position: relative;
+}
+.tree .zoom-container {
+  bottom: 0;
+}
+
+/* avatar fix*/
+
+
+#guide {
+  position: relative;
+}
+
+#guide > h1 {
+  border-bottom: solid 1px #e5e5e5;
+  margin-top: 1em;
+  font-weight: 600;
+}
+
+#guide > h2 {
+  font-size: 1.7em;
+  font-weight: 600;
+}
+
+#guide > h3 {
+  font-size: 1.4em;
+}
+
+#guide > h4 {
+  font-size: 1.2em;
+}
+
+#guide > h5 {
+  font-size: 1.1em;
+}
+
+/* color palette */
+.color-group {
+  width: 10em;
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+}
+
+.color-group li {
+  color: white;
+  height: 2.5em;
+  line-height: 2.5em;
+  padding: 0 1em;
+}
+
+.color-group li .name {
+  display: block;
+  margin-bottom: 0.1em;
+  font-weight: bold;
+}
+
+.color-group li.main-color .hex, .color-group li.main-color .shade {
+  line-height: 1em;
+}
+
+.color-group li.dark {
+  color: black;
+}
+
+.color-group li.main-color {
+  height: 4em;
+  margin-bottom: 0.4em;
+}
+
+.color-group .hex {
+  float: right;
+}
+
+.color-group .shade {
+  float: left;
+}
+
+#tcb_form {
+  padding-left: 2em;
+  margin-bottom: 1.5em;
+}
+
+#tcb_form label {
+  font-weight: normal;
+}
+
+#toggle_checkerboard {
+  margin-top: 0;
+}
+
+#toggle_checkerboard + label {
+  font-size: 0.8em;
+  vertical-align: middle;
+}

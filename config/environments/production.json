@@ -1,0 +1,14 @@
+{
+  "api_url": "https://api2.famicity.com",
+  "oauth_url": "https://auth.famicity.com",
+  "push_url": "https://push.famicity.com",
+  "static1_url": "https://devstatic1.famicity.com",
+  "static2_url": "https://devstatic2.famicity.com",
+  "static3_url": "https://devstatic3.famicity.com",
+  "environment": "production",
+  "api_key_monitoring": "66ecd36792032bad66fbef33e3748b17",
+  "piwikAppId": 2,
+  "oauthClients": {
+    "facebook": 1524999891081868
+  }
+}

@@ -1,0 +1,20 @@
+.settings.locale.calendar {
+  .menu {
+    display: block;
+  }
+  .first-day-select {
+    margin-top: 1em;
+  }
+}
+@include aboveMediumScreen() {
+  .settings.locale.calendar {
+    .action-submit {
+      display: none;
+    }
+    .content-view {
+      .left-column {
+        margin-top: -$fcMenuHeight;
+      }
+    }
+  }
+}

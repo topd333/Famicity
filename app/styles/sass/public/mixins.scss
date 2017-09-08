@@ -1,0 +1,12 @@
+/* Sign-in button in the public pages*/
+.sign-in-pos {
+  top: 1em;
+  right: 1em;
+  position: absolute;
+  z-index: 10;
+  a {
+    font-size: 0.8em;
+    padding: 0.6em 1.4em;
+    text-decoration: none;
+  }
+}

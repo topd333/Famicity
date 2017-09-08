@@ -1,0 +1,23 @@
+<div class="wrapper" ng-init="init()">
+  <div class="content">
+    <fc-header-bar user-id="userId">
+      <h2 class="pull-left" data-translate>404</h2>
+    </fc-header-bar>
+    <div class="container-fluid column-holder">
+      <div class="row error-block clearfix">
+        <div class="col-md-offset-0 col-md-6 col-xs-offset-2 col-xs-8 image">
+          <img class="img-responsive" alt="404" src="/images/arbre404.png"/>
+        </div>
+        <div class="col-md-offset-0 col-md-6 col-xs-offset-1 col-xs-10 text">
+          <h1 translate>404_PAGE_TITLE</h1>
+          <section translate class="second-title">404_PAGE_SECOND_TITLE</section>
+        </div>
+      </div>
+      <br/>
+      <div class="go-back-block">
+        <section translate>404_PRIVATE_PAGE_ERROR_MESSAGE</section>
+        <a class="btn btn-primary btn-lg green-button-min-width" ui-sref="u.home" translate>RETURN_TO_HOME</a>
+      </div>
+    </div>
+  </div>
+</div>

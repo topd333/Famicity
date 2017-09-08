@@ -1,0 +1,11 @@
+rules:
+  no-unused-expressions: 0
+extends:
+  - 'thou-shalt-not/node'
+globals:
+  moment: 0
+  browser: false
+  by: false
+  jasmine: false
+  $: false
+  $$: false

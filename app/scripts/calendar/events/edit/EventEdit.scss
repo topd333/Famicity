@@ -1,0 +1,10 @@
+@include aboveMediumScreen() {
+  .calendar.event.edit {
+    .menu {
+      display: none;      // Don't display menu single 'OK' button on desktop width (there is already a desktop one)...
+    }
+    .left-column {
+      margin-top: 0;      // ...So we don't need to adjust the left column
+    }
+  }
+}

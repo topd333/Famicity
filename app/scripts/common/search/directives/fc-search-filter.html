@@ -1,0 +1,22 @@
+<div class="s-block">
+  <fc-left-column-block-header data-show-btn="false">
+    <h3 translate>SEARCH.FILTER.TITLE</h3>
+  </fc-left-column-block-header>
+  <div class="left-text">
+    <div>
+      {{ 'SEARCH.FILTER.SEARCH_AMONG' | translate }}
+    </div>
+    <div class="standard-checkbox">
+      <input id="closes" type="checkbox" ng-model="filter.relative" class="ng-valid ng-dirty">
+      <label class="fa" for="closes"><span class="ng-binding" data-translate>SEARCH.FILTER.CLOSES</span></label>
+    </div>
+    <div class="standard-checkbox">
+      <input id="directory" type="checkbox" ng-model="filter.directory" class="ng-valid ng-dirty">
+      <label class="fa" for="directory"><span class="ng-binding" data-translate>SEARCH.FILTER.DIRECTORY</span></label>
+    </div>
+    <div class="standard-checkbox">
+      <input id="members" type="checkbox" ng-model="filter.famicity" class="ng-valid ng-dirty">
+      <label class="fa" for="members"><span class="ng-binding" data-translate>SEARCH.FILTER.MEMBERS</span></label>
+    </div>
+  </div>
+</div>

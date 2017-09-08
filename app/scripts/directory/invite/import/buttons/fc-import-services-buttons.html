@@ -1,0 +1,51 @@
+<div ng-show="status && status.started !== false">
+  <h2 data-translate>WIZARD.find-friends.PENDING</h2>
+</div>
+
+<div class="vertical-button-group import-contacts-buttons" ng-if="!loading">
+  <h2 ng-if="showIntro" data-translate>WIZARD_FIND_FRIENDS_PAGE_TITLE</h2>
+
+  <p>{{ error }}</p>
+
+  <p ng-if="showIntro" data-translate>PROFILE_IMPORT_PAGE_INTRODUCTION</p>
+
+  <div>
+    <a class="btn btn-input btn-lg button-with-image-icon button-min-width button-import-gmail" href=""
+       ng-click="startExternalImport('GMAIL')">
+    <span>
+      <i class="ui_elem button-import-gmail-icon-gray"></i>
+      <span data-translate>CONNECT_TO_GMAIL</span>
+    </span>
+    </a>
+  </div>
+  <div>
+    <a class="btn btn-input btn-lg button-with-image-icon button-min-width button-import-yahoo" href=""
+       ng-click="startExternalImport('YAHOO')">
+    <span>
+      <i class="fa fa-yahoo"></i>
+      <span data-translate>CONNECT_TO_YAHOO</span>
+    </span>
+    </a>
+  </div>
+  <div>
+    <a class="btn btn-input btn-lg button-with-image-icon button-min-width button-import-outlook" href=""
+       ng-click="startExternalImport('WINDOWSLIVE')">
+    <span>
+      <i class="ui_elem button-import-outlook-icon-gray"></i>
+      <span data-translate>CONNECT_TO_OUTLOOK</span>
+    </span>
+    </a>
+  </div>
+</div>
+<div class="status" ng-if="loading">
+  <div ng-show="status !== 'sync_in_progress'">
+    <div><span data-translate data-translate-values="{provider: provider}">CONTACTING_PROVIDER</span></div>
+    <div class="loader"><i class="fa fa-spinner fa-pulse fa-fw"></i></div>
+  </div>
+  <div ng-show="status === 'sync_in_progress'">
+    <div ng-show="contacts_count && total_contacts_count"><em>{{contacts_count}}</em> / {{total_contacts_count}} {{'CONTACTS_IMPORTED'|translate}}</div>
+    <div class="loader"><i class="fa fa-spinner fa-pulse fa-fw"></i></div>
+  </div>
+</div>
+
+<h3 ng-show="status && status.started !== false" data-translate>WIZARD.find-friends.HOLD</h3>

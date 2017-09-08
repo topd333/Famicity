@@ -1,0 +1,36 @@
+<!--<fc-header-bar user-id="userId">-->
+<!-- <h2 class="pull-left" translate>INTERNAL_MENU_ITEM_DIRECTORY</h2> -->
+<!--<a class="btn btn-icon pull-right" ui-sref="u.directory.list" data-translate>CANCEL</a>-->
+<!--</fc-header-bar>-->
+
+<div class="main-content">
+
+  <!--<div class="clearfix hidden-xs">-->
+  <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+  <!--</div>-->
+
+  <div ng-if="users">
+    <div class="remove-header">
+      <span data-translate>DIRECTORY.SELECT_TO_DELETE</span>
+      <button class="btn btn-danger button-inserted-right" ng-click="destroy()" data-translate>DELETE</button>
+    </div>
+    <fc-user-list
+      data-disable-search-field="false"
+      ng-model="users"
+      load-more="loadMore"
+      filter="filter"
+      selection-mode="true"
+      mode="default"
+      show-alert="false"
+      ng-hide="emptyUsers"
+      selected-users="selected">
+    </fc-user-list>
+
+    <button class="btn btn-danger button-inserted-right" ng-click="destroy()" data-translate>DELETE</button>
+
+  </div>
+  <div ng-if="!users || !users.length">
+    {{ 'DIRECTORY.NO_USER_TO_DELETE' | translate }}
+  </div>
+
+</div>

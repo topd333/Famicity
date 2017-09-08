@@ -1,0 +1,8 @@
+<div class="col-sm-4 left-column homepage-left-column hidden-xs">
+  <fc-story-detail ng-if="::me.settings.locale=='fr'" data-story="::currentStory" ng-if="hasFewContacts === false"></fc-story-detail>
+  <fc-events-list></fc-events-list>
+  <fc-birthday-list></fc-birthday-list>
+  <fc-last-connected-list ng-if="hasFewContacts === false"></fc-last-connected-list>
+  <fc-few-contacts ng-if="hasFewContacts === true"></fc-few-contacts>
+  <fc-suggest-invitations ng-if="hasFewContacts === true && suggestions.length"></fc-suggest-invitations>
+</div>

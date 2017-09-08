@@ -1,0 +1,17 @@
+#tree {
+  @include page($white);
+  .image {
+    width: 100%;
+    height: 20em;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 2em;
+  }
+}
+
+@include onTouchScreen() {
+  #tree {
+    @include page($grey7);
+  }
+}

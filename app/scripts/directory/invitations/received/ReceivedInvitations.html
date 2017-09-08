@@ -1,0 +1,16 @@
+<div class="main-content">
+
+  <div ng-if="receivedInvitations.length && receivedInvitations[0].error" data-translate>DIRECTORY.INVITATION.RECEIVED_ERROR</div>
+
+  <fc-user-list ng-if="receivedInvitations.length && !receivedInvitations[0].error"
+    data-me="me"
+    ng-model="receivedInvitations"
+    load-more="null"
+    filter="filter"
+    selection-mode="false"
+    mode="received_invit"
+    show-alert="false"
+    delete-mode="remove"
+    selected-users="selectedUsers">
+  </fc-user-list>
+</div>

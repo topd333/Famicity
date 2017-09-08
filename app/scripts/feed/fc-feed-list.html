@@ -1,0 +1,38 @@
+<fc-post-add data-user="::user" data-story="::story" data-on-add="addPost(post)" class="fc-post-add"></fc-post-add>
+
+<div fc-feed-empty ng-if="!story && elements.length == 0"></div>
+
+<fc-tooltip-popup ng-if="::hasNoContact">
+  <p data-translate>HOME.HAS_FEW_CONTACTS.TOOLTIP.MAIN</p>
+
+  <p class="center-text"><span data-translate>HOME.HAS_FEW_CONTACTS.TOOLTIP.INVITE_THEM</span><a
+    ui-sref="u.directory.invite({user_id: userId})" data-translate>HOME.HAS_FEW_CONTACTS.TOOLTIP.CLICK_HERE</a></p>
+</fc-tooltip-popup>
+
+<div class="feed-elements" ng-show="elements.length"
+     data-infinite-scroll="loadMoreElements()"
+     ng-attr-infinite-scroll-disabled="infiniteScrollLoading || infiniteScrollDisabled"
+     data-infinite-scroll-distance="2">
+  <div class="feed-element" ng-repeat="element in elements">
+    <fc-feed-post ng-if="element.post" data-post="element.post" data-user="user" data-show-icon="true" data-story="story" data-on-remove="removePost(postId)" index="::$index"></fc-feed-post>
+    <div ng-if="::element.event" fc-feed-event data-object="::element.event" data-user="::user" data-answer="eventAnswer(answer, eventId)"></div>
+    <div ng-if="::element.album" fc-feed-album data-object="::element.album" data-user="::user" index="::$index"></div>
+    <div ng-if="::element.avatar" fc-feed-avatar data-feed-avatar="::element.avatar" data-user="::user" ></div>
+    <div ng-if="::element.user" fc-feed-user data-object="::element.user" data-user="::user"></div>
+  </div>
+</div>
+
+<fc-tooltip-popup class="empty-story-list" ng-if="story">
+  <h3 data-translate>STORY.WHAT_IS_IT.TITLE</h3>
+
+  <p data-translate>STORY.WHAT_IS_IT.TEXT</p>
+  <div class="text-center">
+    <button class="btn" ui-sref="u.messages.add({storyId: story.id, defaultPermissions: true})" data-translate>
+      STORY.WHAT_IS_IT.LINK
+    </button>
+  </div>
+</fc-tooltip-popup>
+
+<div class="item-sub-delimiter" ng-show="infiniteScrollLoading"></div>
+<div class="center-text" ng-show="infiniteScrollLoading"><a class="green-link-color" translate>LOADING</a></div>
+<div class="item-sub-delimiter" ng-show="infiniteScrollLoading"></div>

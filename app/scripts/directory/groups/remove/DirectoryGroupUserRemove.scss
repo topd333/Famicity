@@ -1,0 +1,7 @@
+@include aboveMediumScreen() {
+  .directory.groups.remove {
+    .action-remove {
+      display: none;
+    }
+  }
+}

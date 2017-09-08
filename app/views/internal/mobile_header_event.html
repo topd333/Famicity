@@ -1,0 +1,24 @@
+<div class="visible-xs">
+    <div class="mobile-header-event-info table">
+        <div class="table-cell v-align-middle left-text">
+            <br/><span>{{ 'EVENT_NAME_SC' | translate }}&nbsp;</span>{{ event.name }}
+            <br/><span>{{ 'EVENT_START_SC'| translate }}&nbsp;</span><span ng-if="event.all_day == false">{{ event.start_date * 1000 | date: 'short'}}</span><span ng-if="event.all_day == true">{{ event.start_date * 1000 | date: 'shortDate'}}</span>
+            <br/><span>{{ 'EVENT_END_SC'| translate }}&nbsp;</span><span ng-if="event.all_day == false">{{ event.end_date * 1000 | date: 'short'}}</span><span ng-if="event.all_day == true">{{ event.end_date * 1000 | date: 'shortDate'}}</span>
+        </div>
+
+    </div>
+    <br>
+    <div class="profile-tabs table left-text">
+        <a class="table-cell v-align-bottom" ng-class="{'selected': tabActive == 'comments'}" ng-click="tabActive = 'comments'">
+            <span class="profile-info-tab-name" translate>COMMENTS_LINK</span>
+        </a>
+        <a class="table-cell v-align-bottom" ng-class="{'selected': tabActive == 'album'}" ng-click="tabActive = 'album'">
+
+            <span class="profile-info-tab-name" translate>ALBUMS_LINK</span>
+        </a>
+        <a class="table-cell v-align-bottom" ng-class="{'selected': tabActive == 'info'}" ng-click="tabActive = 'info'">
+
+            <span class="profile-info-tab-name" translate>INFOS_LINK</span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="f-block">
+
+  <!--<div fc-feed-header data-object="post" data-user="user"></div>-->
+
+  <fc-inline
+    user="user"
+    author="author"
+    object="post"
+    edit-copy="post.editCopy"
+    story="story"
+    edit-label="{{'EDIT'|translate}}"
+    required="{text:true}"
+    on-edit="editPost(objectId,userId)"
+    on-update="updatePost(editCopy,textVal,userId,required)"
+    on-delete="deletePost()"
+    on-cancel="cancelPostEdition()"
+    labels="{title:'fc-post.TITLE', text:'fc-post.TEXT', date:'fc-post.DATE'}"
+    show-options="true"
+    form-status="post.formStatus"
+    list-likes-page="listLikesPage"
+    no-lazy="index < 10"
+    >
+  </fc-inline>
+
+  <!--<div class="f-block-content f-block-content-type1" ng-class="{'hidden-xs': showComments == 'true'}">-->
+  <!--<div ng-if="post.title" class="center-text">{{ post.title }}</div>-->
+  <!--<br />-->
+  <!--<div class="center-text post-picture" ng-if="post.photo_url_normal">-->
+  <!--<img class="max-sized-full pointer" ng-src="{{ post.photo_url_normal }}" ng-click="openFullScreenImage()" />-->
+  <!--</div>-->
+  <!--<p ng-bind-html="post.content_html | trustedHtml"></p>-->
+  <!--</div>-->
+  <!--<div class="item-sub-delimiter"></div>-->
+
+  <!--<fc-comment-and-like data-object="post" data-list-page="listPageUrl" data-user="user"></fc-comment-and-like>-->
+
+  <!--<div class="slideshow single-picture" ng-show="slideshowMode">-->
+  <!--<div class="navbar">-->
+  <!--<p class="slideshow-close-btn fa fa-times pointer" ng-click="closeSlideshowMode()"></p>-->
+  <!--</div>-->
+  <!--&lt;!&ndash;<img class="slideshow-img" ng-src="{{ photo.url_original }}" />&ndash;&gt;-->
+  <!--<div class="royalSlider rsDefault">-->
+  <!--</div>-->
+  <!--</div>-->
+</div>

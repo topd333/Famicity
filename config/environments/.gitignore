@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+
+!development.json
+!production.json
+!sandbox.json
+!staging.json

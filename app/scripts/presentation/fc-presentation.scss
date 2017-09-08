@@ -1,0 +1,121 @@
+// Modifications on the welcome page
+.contents {
+  max-width: $maxContentWidth;
+  display: table;
+  margin: auto;
+}
+
+@mixin page($backgroundColor) {
+  .arrow {
+    //@include arrow($backgroundColor);
+    @include arrow($white);
+  }
+  //background: $backgroundColor;
+  background: linear-gradient(to top, $grey7, $white);
+}
+
+.presentation {
+  background-color: $white;
+  // Mobile-first settings:
+  .page-start {
+    width: 100%;
+
+    * {
+      color: inherit;
+    }
+    .top {
+      a {
+        @include glow()
+      }
+    }
+    .contents {
+      width: 100%;
+      .centered {
+        margin: auto;
+      }
+    }
+  }
+  .page {
+    @extend .page-start;
+    position: relative;
+    z-index: $layerPresentation;
+    width: 100%;
+
+    color: #6C6F76;
+    em {
+      color: #93BC4A;
+      font-style: normal;
+    }
+
+    .contents {
+      margin: auto;
+      padding: 0;
+      .centered {
+        max-width: $maxContentWidth;
+      }
+      .desktop-image{
+        display: none;
+      }
+      .mobile-image{
+        display: block;
+      }
+      .image {
+        img {
+          width: 100%;
+        }
+      }
+      .text {
+        padding: 0 1em;
+      }
+      p {
+        margin: 1.5em 0;
+      }
+      .text {
+        text-align: left;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 1.7em;
+    margin: 0;
+    padding: 0.5em 0 0 0;
+    font-weight: normal;
+    text-align: left;
+  }
+  h2 {
+    font-weight: normal;
+    font-size: 1.5em; // Reset, shouldn't be necessary
+  }
+  li, p {
+    font-size: 1em; // Reset, shouldn't be necessary
+    text-align: left;
+  }
+
+  .slider {
+    display: none;
+  }
+  #what-img-3, #what-img-4, #what-img-5 {
+    display: none;
+  }
+}
+@import "banner/banner";
+@import "what/slide-what";
+@import "tree/slide-tree";
+@import "share/slide-share";
+@import "fusion/slide-fusion";
+@import "privacy/slide-privacy";
+@import "engage/slide-engage";
+
+  @import "../presentation/fc-presentation_large";
+//@include onTouchScreen() {
+  @import "../presentation/fc-presentation_touch";
+//}
+//@include onNoTouchScreen() {
+//  @import "../presentation/fc-presentation_no-touch";
+//}
+
+footer {
+  position: relative;
+  z-index: $layerBanner + 1;
+}

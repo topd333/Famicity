@@ -1,0 +1,18 @@
+<div class="f-block">
+  <div class="f-block-content f-block-content-type2">
+    <div><span class="ui_elem famicity-small-square-logo"></span> <span data-translate>FAMICITY</span></div>
+    <div ng-show="object.id != user.id">
+      <a class="pointer" ui-sref="u.messages.add({users: [object.id]})" tooltip-placement="bottom" tooltip-append-to-body="true" tooltip="{{:: 'CLICK_TO_SEND_MESSAGE' | translate }}"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
+    </div>
+    <div>
+      <h3><a ui-sref="u.profile({user_id: object.id})">{{:: object.user_name }}</a></h3>
+      &nbsp;<span data-translate>JOINED_FAMICITY</span>&nbsp;<span class="center">{{:: object.created_date * 1000 | timeOrDateFilter:{prefix: true} }}</span>
+    </div>
+  </div>
+
+  <div class="comments-like-row unselectable">
+    <fc-comments-count data-object="object" data-list-page="listCommentsPage"></fc-comments-count>
+    <fc-like data-object="object" data-view-mode="default" data-list-page="listPageUrl"></fc-like>
+  </div>
+  <fc-comment-list data-object="object" data-user="user"></fc-comment-list>
+</div>

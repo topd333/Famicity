@@ -1,0 +1,28 @@
+<div id="change-answer-event-modal">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3 data-translate>EVENT_NEW_ANSWER</h3>
+
+      <form action="javascript:;" class="standard-form login-form" id="intro_form">
+        <h6 class="center-text" ng-click="$close()" data-translate data-translate-values="{ user_name: object.author_name }">THE_EVENT_OF_X</h6>
+        <div class="form-group">
+          <a href="" class="btn btn-input btn-lg green-onhover button-inherit-width"
+             ng-click="eventAnswer('yes'); $close()" data-translate>EVENT_ANSWER_YES_LONG</a>
+        </div>
+        <div class="form-group">
+          <a href="" class="btn btn-input btn-lg orange-onhover button-inherit-width"
+             ng-click="eventAnswer('maybe'); $close()" data-translate>EVENT_ANSWER_MAYBE_LONG</a>
+        </div>
+        <div class="form-group">
+          <a href="" class="btn btn-input btn-lg red-onhover button-inherit-width"
+             ng-click="eventAnswer('no'); $close()" data-translate>EVENT_ANSWER_NO_LONG</a>
+        </div>
+        <div class="form-group">
+          <a href="" class="btn btn-secondary btn-lg button-inherit-width" ng-click="$close()" data-translate>CANCEL</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

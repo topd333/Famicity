@@ -1,0 +1,18 @@
+<div ng-init="init()">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3 ng-if="!uploadSuccess" translate>GEDCOM_UPLOAD_ONGOING</h3>
+      <h3 ng-if="uploadSuccess" translate>GEDCOM_NOT_VALIDATED</h3>
+
+      <form action="javascript:;" class="standard-form login-form" id="intro_form" method="POST">
+        <div class="form-group">
+          <button class="btn btn-secondary" ng-click="cancel()" type="submit" data-translate>CONTINUE_MY_IMPORT</button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-danger" type="submit" ng-click="confirm()" data-translate>CANCEL_MY_IMPORT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

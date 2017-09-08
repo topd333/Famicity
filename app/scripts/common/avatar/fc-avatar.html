@@ -1,0 +1,6 @@
+<a ui-sref="u.profile({user_id:avatar.user.id})" class="avatar" ng-class="::{'link-disabled': avatar.linkDisabled, 'fc fc-unknown_m': !avatar.user.avatar_url}">
+  <div ng-if="::avatar.user.avatar_url"
+       title="{{::(!avatar.user.id ? '' : avatar.user.user_name ? 'AVATAR.SEE_PROFILE_OF' : 'AVATAR.SEE_PROFILE') | translate:{user: avatar.user.user_name} }}"
+       afkl-lazy-image="{{avatar.user.avatar_url}}" afkl-lazy-image-options="{nolazy: !avatar.lazy, alt: 'Avatar', offset: 200}"
+       class="{{'avatar-rounded avatar-border-' + avatar.getStatus()}}"></div>
+</a>

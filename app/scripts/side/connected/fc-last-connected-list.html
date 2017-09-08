@@ -1,0 +1,21 @@
+<div class="s-block" ng-show="::lastConnected.length">
+  <fc-left-column-block-header class="s-block-header">
+    <h3 translate>LAST_CONNECTED</h3>
+  </fc-left-column-block-header>
+
+  <div class="s-block-content s-block-content-type2">
+    <div ng-repeat="user in ::lastConnected">
+      <div>
+        <fc-avatar class="avatar-size40" data-user="user"></fc-avatar>
+      </div>
+      <div>
+        <span><a class="green-link-color" ui-sref="u.profile({user_id: user.id})">{{:: user.user_name }}</a></span>
+        <span>{{:: $moment(user.last_signin_date, 'X').calendar({withoutTime: true}) }}</span>
+      </div>
+      <div>
+        <a ui-sref="u.messages.add({users: [user.id]})"><i class="fa fa-envelope-o"></i></a>
+      </div>
+    </div>
+  </div>
+
+</div>

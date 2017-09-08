@@ -1,0 +1,52 @@
+.rights-icon-an {
+  color: $white;
+  display: inline-block;
+  font-size: 22px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  width: 40px;
+  i {
+    line-height: 40px;
+  }
+}
+.rights-icon-an-authorized {
+  background-color: $green;
+}
+.rights-icon-an-nonauthorized {
+  background-color: #f14949;
+}
+.rights-icon-an-authorized-text {
+  color: $green;
+}
+.rights-icon-an-nonauthorized-text {
+  color: #f14949;
+}
+//.rights-item-info {
+//  display: inline-block;
+//  padding-top: 15px;
+//  margin-left: 15px;
+//}
+.rights-item-option-icons {
+  font-size: 24px;
+  padding-top: 10px;
+  a {
+    color: $green;
+  }
+}
+.rights-item-group-icon-xs {
+  font-size: 24px;
+  vertical-align: middle;
+}
+.directory-listing-item-picture img{
+  float: left;
+  height: 50px;
+  width: 50px;
+}
+.directory-listing-item-picture .avatar{
+  display: inline;
+}
+
+.permitted-groups-list {
+  word-wrap: break-word;
+}

@@ -1,0 +1,54 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 ng-if="isMenuPage" class="pull-left" translate>SETTINGS</h2>-->
+      <!--<h2 ng-if="!isMenuPage" class="pull-left" translate>MY_ACCOUNT</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-settings-menu data-current-section="social_networks"></fc-settings-menu>
+        </div>
+        <div class="col-sm-8 right-column homepage-right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb></div>-->
+            <!--</div>-->
+            <p>
+              {{ 'SETTINGS.SOCIAL_NETWORKS.INFO' | translate}}
+            </p>
+            <p class="sett-social-nets-note">
+              {{ 'SETTINGS.SOCIAL_NETWORKS.NOTE' | translate}}
+            </p>
+
+            <table class="table table-responsive">
+              <tr ng-repeat="provider in providers">
+                <td><span><i ng-attr-class="fa fa-{{ provider.name }} {{ provider.name }}-color"></i>&nbsp;{{ provider.name }}</span></td>
+                <td style="text-align: right;" ng-if="loading"><i class="fa fa-spinner fa-pulse fa-fw"></i></td>
+                <td style="text-align: right;" ng-if="!loading">{{ provider.shown_account_url || 'CONNECT' | translate }}</td>
+                <td style="white-space: nowrap; width: 1px;">
+                  <div ng-attr-class="onoffswitch {{ language }}">
+                    <input type="checkbox"
+                      ng-attr-disabled="{{ loading }}"
+                      ng-attr-name="{{ provider.name }}"
+                      ng-attr-id="{{ provider.name }}"
+                      class="onoffswitch-checkbox"
+                      ng-model="provider.enabled"
+                      ng-attr-checked="provider.enabled"
+                      ng-change="toggle()">
+                    <label class="onoffswitch-label" ng-attr-for="{{ provider.name }}">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

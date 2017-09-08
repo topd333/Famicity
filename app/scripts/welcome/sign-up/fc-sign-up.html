@@ -1,0 +1,87 @@
+<div><!-- This extra div avoid multiple directives per element -->
+  <div class="wrapper" id="welcome" fc-scroll data-page-scrolling="{{pageScrolling}}" data-anchor-id="ref-welcome">
+    <div class="public-header">
+      <div class="sign-in-pos hidden-xs">
+        <a class="btn btn-primary home-signin" ui-sref="public.base.sign-in({locale: locale})" data-translate>WELCOME.SIGN_IN</a>
+      </div>
+    </div>
+    <div class="contents-limits">
+      <div class="contents" id="welcome-contents">
+        <div class="centered">
+
+          <div class="form-container">
+            <div class="home-above-form">
+              <div ng-if="showLogo" class="ui_elem famicity-logo">
+                <a ui-sref="public.base" ui-sref-opts="{reload:true}"></a>
+              </div>
+              <h2 data-translate data-values="{first_name: inviterFirstName}">{{introText}}</h2>
+
+              <h3 ng-show="introText2" data-translate>{{introText2}}</h3>
+            </div>
+
+
+            <form class="login-form" fc-form-submit data-submit-method="submit(false)"
+                  data-form-in-progress="formInProgress" novalidate
+                  ng-class="{'standard-form':isLandingPage, 'mt-0 m-form-1':isLandingPage}" id="login-form"
+                  name="loginForm">
+              <!--<span ng-if="isLandingPage" class="font-size15">{{ introText | translate: {"first_name": inviterFirstName} }}</span>-->
+              <fieldset>
+                <div class="field input-group"
+                     ng-class="{'has-error':(loginForm.loginEmail.$dirty || submitted) && loginForm.loginEmail.$invalid}">
+                  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                  <label class="sr-only" for="login-email" data-translate>YOUR_EMAIL</label>
+                  <input type="email" class="form-control" id="login-email" name="loginEmail" fc-stop-propagation="keydown"
+                         ng-model="signUp.sessionUsername"
+                         what="username"
+                         data-translate
+                         data-translate-attr-placeholder="YOUR_EMAIL" required/>
+                </div>
+                <h6 ng-if="showSpamMsg" data-translate>ANTI_SPAM_MSG</h6>
+
+                <div class="field input-group"
+                     ng-class="{'has-error': (loginForm.loginPassword.$dirty || submitted) && loginForm.loginPassword.$invalid}">
+                  <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                  <label class="sr-only" for="login-password" data-translate>YOUR_PASSWORD</label>
+                  <input type="password" id="login-password" name="loginPassword" class="form-control"
+                         fc-stop-propagation="keydown"
+                         ng-model="signUp.sessionPass"
+                         what="password"
+                         ng-keypress="checkCaps($event)"
+                         data-translate
+                         data-translate-attr-placeholder="YOUR_PASSWORD"/>
+                </div>
+              </fieldset>
+
+              <p class="conditions" ng-bind-html="'SUBSCRIPTION_CONDITIONS'|translate:{'btn':(btnText)}"></p>
+              <button fc-form-submit data-form-in-progress="formInProgress"
+                      class="field btn btn-primary button-inherit-width" id="form-button" type="submit"
+                      ng-bind-html="btnText">
+              </button>
+              <div class="gedcom-import" ng-if="canUploadFile && !isLandingPage">
+                <a class="pointer import-gedcom-link" fc-form-submit data-submit-method="submit(true)"
+                   data-form-in-progress="formInProgress" ng-bind="'IMPORT_MY_GEDCOM'|translate"></a>
+                <i class="fa fa-question-circle font-size110" data-tooltip-placement="right"
+                   ng-attr-tooltip-html-unsafe="{{'GEDCOM_TOOLTIP'|translate}}"></i>
+              </div>
+
+              <div class="content-delimiter">
+                <span class="rule"></span>
+                <span class="text" data-translate>OR</span>
+                <span class="rule"></span>
+              </div>
+              <fc-hello></fc-hello>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+
+      <fc-language-switcher ng-if="showcase" class="lang lang-pos"></fc-language-switcher>
+
+    </div>
+    <fc-presentation ng-if="showcase"></fc-presentation>
+
+    <fc-public-footer ng-if="showcase" data-locale="{{locale}}"></fc-public-footer>
+  </div>
+</div>

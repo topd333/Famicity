@@ -1,0 +1,50 @@
+.gedcom.wizard.import {
+  .steps {
+    display: inline-block;
+    .progress-icon {
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+      font-size: 13em;
+    }
+    .details {
+      display: inline-block;
+      text-align: left;
+
+      .sequence {
+        display: table;
+        .item {
+          display: table-row;
+          > * {
+            display: table-cell;
+            padding: 0.25em 0;
+          }
+          .label {
+            padding-right: 1em;
+          }
+          &.reached {
+            color: $green;
+          }
+        }
+      }
+      .wait-message {
+        @include centeredVertically();
+        .centered {
+          height: 14em;
+        }
+        .form-group {
+          display: table-row;
+        }
+      }
+    }
+    .form-group {
+      margin-top: 2em;
+    }
+    .cancel {
+      border: none;
+      width: 80%;
+      max-width: 23em;
+    }
+    text-align: center;
+  }
+}

@@ -1,0 +1,9 @@
+@include aboveMediumScreen() {
+  fc-toolbar {
+    .fc-comments-count {
+      //.counter {
+        display: none;
+      //}
+    }
+  }
+}

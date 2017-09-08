@@ -1,0 +1,41 @@
+.standard-form {
+  .fc-pattern {
+    position: relative;
+    min-height: $fieldHeight + $fieldPadding * 2;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    &.error {
+      border-color: red;
+    }
+    padding: 0;
+    > * {
+      top: 0;
+      border: none;
+      position: absolute;
+      width: 100%;
+      display: inline-block;
+      height: 100%;
+      bottom: 0;
+      font-size: 1em;
+    }
+    input.form-control {
+      background: none;
+      background-color: transparent;
+    }
+    .placeholder {
+      //margin-top: 2px;
+      line-height: $fieldHeight;
+      border-radius: 0;
+      color: $placeHolderColor;
+    }
+    .output {
+      line-height: $fieldHeight;
+      padding: $fieldPadding;
+      background: none;
+      color: #555555;
+      background-color: transparent;
+    }
+  }
+}
+

@@ -1,0 +1,111 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" data-translate>CHANGE_PHOTOS_ORDER</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+
+          <!-- Left context icons -->
+          <div class="left-column-block">
+            <div class="left-column-block-content left-navigation-icons">
+              <a ui-sref="u.albums-comments({user_id: viewedUserId, album_id: albumId})">
+                <i class="fa fa-comments-o"></i><span
+                data-translate>ALBUM_COMMENTS </span><b>{{album.comments_count}}</b>
+              </a>
+              <!-- <a class="clearfix">
+                  <i><i class="fa fa-comments-o"></i></i><b>{{ album.photo_comments_count }}</b><span translate>COMMENTED_PHOTOS</span>
+              </a> -->
+              <a ng-show="album.permissions.is_updatable && photos.length"
+                 ng-class="{'visible-md': album.permissions.is_updatable && photos.length > 0, 'visible-lg': album.permissions.is_updatable && photos.length > 0}"
+                 ui-sref="u.albums-order({user_id: viewedUserId, album_id: albumId})">
+                <i class="fa fa-sitemap"></i><span data-translate>CHANGE_PHOTOS_ORDER</span>
+              </a>
+
+            </div>
+          </div>
+          <!-- /// Left context icons -->
+          <!-- Album info -->
+          <div class="left-column-block">
+            <fc-left-column-block-header action="goToEditPage()" show-btn="album.permissions.is_updatable">
+              <h3 data-translate>ALBUM_INFORMATIONS</h3>
+              <span><a>+</a></span>
+            </fc-left-column-block-header>
+            <div class="left-column-block-content" ng-show="album.description || album.location || album.event_date">
+              <p ng-show="album.description">
+                <span data-translate>ALBUM_NAME_SC</span><br/><span class="left-column-names">{{ album.title }}</span>
+              </p>
+
+              <p ng-show="album.description"><br/><span data-translate>ALBUM_DESCRIPTION_SC</span><br/>
+                <span class="left-column-names">{{ album.description }}</span></p>
+
+              <p ng-show="album.location">
+                <br/><span data-translate>PLACES_SC</span><br/><span
+                class="left-column-names">{{ album.location }}</span>
+              </p>
+
+              <p ng-show="album.event_date">
+                <br/><span data-translate>ALBUM_DATE_SC</span><br/><span class="left-column-names">{{ $moment.fromServer(album.event_date).format('L') }}</span>
+              </p>
+            </div>
+          </div>
+          <div ng-show="album.permissions.is_updatable" class="left-column-block">
+            <fc-left-column-block-header action="goToEditRightsPage()" show-btn="true">
+              <h3 data-translate>MY_RIGHTS_TITLE</h3>
+              <span><a>+</a></span>
+            </fc-left-column-block-header>
+            <div class="left-column-block-content">
+              <div ng-if="permissions.length || exclusions.length">
+                <div ng-if="permissions.length">
+                  <p data-translate>ALBUM_SHARE_WITH</p>
+                  <span class="left-column-names" ng-repeat="perm in permissions" ng-if="perm.group_name != undefined">
+                    {{ perm.group_name}}<span ng-if="$last == false">,&nbsp;</span>
+                  </span>
+                  <span class="left-column-names" ng-repeat="perm in permissions" ng-if="perm.user_name != undefined">
+                    {{ perm.user_name }}<span ng-if="$last == false">,&nbsp;</span>
+                  </span>
+                  <br/><br/>
+                </div>
+                <div ng-if="exclusions.length">
+                  <p data-translate>ALBUM_NOT_SHARE_WITH</p>
+                  <span class="left-column-names" ng-repeat="exclu in exclusions" ng-if="exclu.group_name != undefined">
+                    {{ exclu.group_name}}<span ng-if="$last == false">,&nbsp;</span>
+                  </span>
+                  <span class="left-column-names" ng-repeat="exclu in exclusions" ng-if="exclu.user_name != undefined">
+                    {{ exclu.user_name }}<span ng-if="$last == false">,&nbsp;</span></span>
+                </div>
+              </div>
+              <div ng-if="permissions.length == 0 && exclusions.length == 0">
+                <p ng-bind-html="'EMPTY_ALBUM_PERMISSION' | translate: '{ url: \'/users/\' + viewedUserId+ \'/albums/\' + album.id+ \'/edit?tab=permission\'}'"></p>
+              </div>
+            </div>
+          </div>
+          <!-- /// Album info -->
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <div class="clearfix hidden-xs">
+              <div class="directory-listing-invitation-button hidden-xs">
+                <a class="btn btn-primary btn-lg pointer" ng-click="confirmOrder()" data-translate>SUBMIT</a></div>
+              <p class="directory-listing-invitation-text"><span data-translate>PHOTOS_SORT_PAGE_INTRODUCTION</span></p>
+            </div>
+            <br/>
+
+            <div ui-sortable="sortableOptions" ng-model="photos" class="album-order-holder clearfix">
+              <img ng-repeat="photo in photos" class="image-content" ng-src="{{ photo.url_thumb }}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

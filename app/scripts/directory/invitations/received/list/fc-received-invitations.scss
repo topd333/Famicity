@@ -1,0 +1,15 @@
+fc-invitations-received {
+  .accept-all {
+    margin: 2em;
+  }
+  .invitations-all-user-list {
+    max-width: 50em;
+    margin: auto;
+    .directory-item-repeat .directory-item {
+      border-top-width: 0;
+    }
+    .directory-item-repeat + .directory-item-repeat .directory-item {
+      border-top-width: 1px;
+    }
+  }
+}

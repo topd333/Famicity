@@ -1,0 +1,42 @@
+<div class="f-block-header">
+    <div class="author">
+      <fc-avatar data-user="::{id: object.user_concerned_id || object.author_id, avatar_url: object.user_concerned_avatar_url || object.author_avatar_url}"></fc-avatar>
+    </div>
+
+    <div class="f-block-header-left f-block-header-left-with-icon">
+      <span><a ui-sref="u.albums-index({user_id: object.user_concerned_id || object.author_id})">
+        <span class="f-block-icon-text" translate>ALBUMS_LINK</span>
+        <span class="f-block-icon"> <i class="fa fa-picture-o"></i></span><br>
+        <a ng-show="::object.permissions.is_updatable" ui-sref="u.albums-update({user_id: object.user_concerned_id || object.author_id, album_id: object.id})"><i class="fa fa-cog"></i></a>
+      </a></span>
+
+      <div>
+        <h3>
+          <a class="green-link-color" ui-sref="u.profile({user_id: object.user_concerned_id || object.author_id})">{{::object.user_concerned_name||object.author_name}}</a>
+          <span ng-show="::object.user_concerned_name">
+            {{ "BY" | translate }} <a class="green-link-color" ui-sref="u.profile({user_id: object.author_id})">{{::object.author_name}}</a>
+          </span>
+        </h3>
+        <span class="at">{{:: object.updated_date * 1000 | timeOrDatePrefixFilter }} {{:: object.updated_date * 1000 | timeOrDateFilter }}</span>
+      </div>
+    </div>
+  <div class="item-sub-delimiter"></div>
+  <div class="blog-feed-album">
+    <div class="center-text album-title">{{ object.title }}</div>
+    <br/>
+
+    <div class="album-images-holder">
+      <a ng-repeat="photo in object.last_photos" ui-sref="u.albums-show({user_id: object.user_concerned_id || object.author_id, album_id: object.id})">
+        <div class="image-content"><div afkl-lazy-image="{{:: photo.url_thumb}}" afkl-lazy-image-options="{nolazy: index < 10}"></div></div>
+        <div class="image-content"><img data-layzr="{{:: photo.url_thumb }}"/></div>
+      </a>
+    </div>
+    <p class="album-description">{{:: object.description }}</p>
+  </div>
+  <div class="comments-like-row">
+    <fc-comments-count data-object="object" data-list-page="listCommentsPage"></fc-comments-count>
+    <fc-like data-object="object" data-view-mode="default" data-list-page="listPageUrl"></fc-like>
+  </div>
+
+  <fc-comment-list data-object="object" data-user="user"></fc-comment-list>
+</div>

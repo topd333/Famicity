@@ -1,0 +1,88 @@
+<!--<fc-header-bar user-id="userId">-->
+    <!--&lt;!&ndash; <h2 class="pull-left" translate>INTERNAL_MENU_ITEM_DIRECTORY</h2> &ndash;&gt;-->
+    <!--<a class="btn btn-icon pull-right" ui-sref="u.directory.remove-several"><i class="fa fa-trash-o"></i></a>-->
+    <!--<a class="btn btn-icon txt-icon pull-right" ui-sref="u.directory.add">+</a>-->
+    <!--<a class="btn btn-icon pull-right" ui-sref="u.directory.import-from-services"><i class="fa fa-refresh"></i></a>-->
+    <!--<a class="btn btn-icon pull-right" ui-sref="u.directory.invite"><i class="fa fa-users"></i></a>-->
+<!--</fc-header-bar>-->
+
+<div>
+
+  <ul ng-class="{'hidden-directory-submenu': selectionMode}" class="standard-tabs standard-tabs-full-width standard-tabs-3 clearfix visible-xs">
+    <li class="standard-tabs-activetab"><span><a><i class="fa fa-user"></i></a></span>
+    </li>
+    <li><span><a ui-sref="u.directory.user-groups({user_id: userId})"><i class="fa fa-users"></i></a></span>
+    </li>
+    <li><span><a ui-sref="u.directory.mobile-invitations-menu({user_id: userId})"><i class="fa fa-share-square-o"></i></a></span>
+    </li>
+  </ul>
+  <div class="main-content">
+
+    <!--<div class="clearfix hidden-xs">-->
+      <!--<div class="center-right-icons clearfix">-->
+        <!--<a tooltip-append-to-body="true" tooltip-placement="bottom" ng-attr-tooltip="{{ 'INVITE_FROM_MY_DIRECTORY' | translate }}" class="btn btn-icon btn-icon-primary" ui-sref="u.directory.invite"><i class="fc fc-users-plus"></i></a>-->
+        <!--<a tooltip-append-to-body="true" tooltip-placement="bottom" ng-attr-tooltip="{{ 'IMPORT_ADDRESSES_BOOK' | translate }}" class="btn btn-icon btn-icon-primary" ui-sref="u.directory.import-from-services"><i class="fc fc-import"></i></a>-->
+        <!--<a tooltip-append-to-body="true" tooltip-placement="bottom" ng-attr-tooltip="{{ 'ADD_RELATIVE' | translate }}" class="btn btn-icon btn-icon-primary" ui-sref="u.directory.add"><i class="fc fc-plus"></i></a>-->
+        <!--<a tooltip-append-to-body="true" tooltip-placement="bottom" ng-attr-tooltip="{{ 'DIRECTORY.DELETE_SEVERAL' | translate }}" class="btn btn-icon btn-icon-danger" ui-sref="u.directory.remove-several"><i class="fa fa-trash-o"></i></a>-->
+        <!--&lt;!&ndash; <a class="btn btn-icon btn-icon-danger pointer" ng-click=""><i class="fa fa-trash-o"></i></a> &ndash;&gt;-->
+      <!--</div>-->
+      <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+    <!--</div>-->
+
+    <fc-tooltip-popup ng-if="numberOfInvitations">
+      <strong data-translate data-translate-values="{'number': numberOfInvitations}"
+              data-translate-interpolation="messageformat">DIRECTORY.INVITATION.PENDING_NUMBER</strong>
+      <p class="center-text">
+        {{ 'DIRECTORY.INVITATION.AWAITING' | translate}}
+        <a ui-sref="u.directory.received-invitations" data-translate>HOME.HAS_FEW_CONTACTS.TOOLTIP.CLICK_HERE</a>
+      </p>
+    </fc-tooltip-popup>
+
+    <fc-tooltip-popup ng-if="numberOfInvitations <= 0 && numberOfActives < 10 && true">
+      <i data-translate>DIRECTORY.INVITATION.BETTER_NOT_ALONE</i><br/>
+      <span class="center-text" ng-bind-html="'DIRECTORY.INVITATION.BETTER_NOT_ALONE_INVITE_THEM' | translate | trustedHtml"></span>
+      <a ui-sref="u.directory.invite" data-translate>HOME.HAS_FEW_CONTACTS.TOOLTIP.CLICK_HERE</a>
+    </fc-tooltip-popup>
+
+    <div ng-hide="!emptyUsers">
+      <h5 data-translate>EMPTY_DIRECTORY_TITLE</h5>
+      <br />
+
+      <div class="vertical-button-group import-contacts-buttons">
+        <div>
+          <button class="btn btn-input btn-lg button-with-image-icon button-min-width"
+                  ui-sref="u.directory.import-from-services({user_id: userId})"><span data-translate>IMPORT_ADDRESSES_BOOK</span>
+          </button>
+        </div>
+        <div>
+          <a class="btn btn-input btn-lg button-with-image-icon button-min-width" ui-sref="u.directory.add"><span
+            data-translate>ADD_RELATIVE</span></a>
+        </div>
+      </div>
+    </div>
+
+    <fc-user-list
+      class="contacts"
+      data-disable-search-field="false"
+      data-me="me"
+      ng-model="users"
+      load-more="loadMore"
+      filter="filter"
+      selection-mode="selectionMode"
+      mode="directory"
+      show-alert="false"
+      ng-hide="emptyUsers"
+      selected-users="selectedUsers">
+    </fc-user-list>
+
+    <div ng-hide="emptyUsers" class="vertical-button-group import-contacts-buttons">
+      <br />
+      <div class="center-text" ui-sref="u.directory.import-from-services">
+        <button class="btn btn-primary btn-lg button-with-image-icon button-min-width" data-translate>
+          IMPORT_ADDRESSES_BOOK
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

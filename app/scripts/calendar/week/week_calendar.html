@@ -1,0 +1,113 @@
+  <div style="height:1000px;">
+    <table class="calendar-week-view-table" style="height:100%;">
+      <tbody>
+        <tr>
+          <td class="calendar-week-view-time"><span></span>
+          </td>
+          <td style="height:42px; width: 12.5%;border-left: 1px solid #e7e7e7;" class="calendar-week-view-daynamecell" ng-class="{'calendar-week-view-active-cell': currentDayIndex == 0 && isCurrentWeek == true}">{{daysName[0] | capitalize}}</td>
+          <td style="height:42px; width: 12.5%;" class="calendar-week-view-daynamecell" ng-class="{'calendar-week-view-active-cell': currentDayIndex == 1 && isCurrentWeek == true}">{{daysName[1] | capitalize}}</td>
+          <td style="height:42px; width: 12.5%;" class="calendar-week-view-daynamecell" ng-class="{'calendar-week-view-active-cell': currentDayIndex == 2 && isCurrentWeek == true}">{{daysName[2] | capitalize}}</td>
+          <td style="height:42px; width: 12.5%;" class="calendar-week-view-daynamecell" ng-class="{'calendar-week-view-active-cell': currentDayIndex == 3 && isCurrentWeek == true}">{{daysName[3] | capitalize}}</td>
+          <td style="height:42px; width: 12.5%;" class="calendar-week-view-daynamecell" ng-class="{'calendar-week-view-active-cell': currentDayIndex == 4 && isCurrentWeek == true}">{{daysName[4] | capitalize}}</td>
+          <td style="height:42px; width: 12.5%;" class="calendar-week-view-daynamecell" ng-class="{'calendar-week-view-active-cell': currentDayIndex == 5 && isCurrentWeek == true}">{{daysName[5] | capitalize}}</td>
+          <td style="height:42px; width: 12.5%;border-right: 1px solid #e7e7e7;" class="calendar-week-view-daynamecell" ng-class="{'calendar-week-view-active-cell': currentDayIndex == 6 && isCurrentWeek == true}">{{daysName[6] | capitalize}}</td>
+        </tr>
+        <tr>
+          <!-- <td class="calendar-week-view-time"><div><span data-translate>DAY_COMPLETE</span></div></td> -->
+          <td style="height:17px;" class="calendar-week-view-time"><span></span>
+          </td>
+          <td style="border-bottom: 1px solid #e7e7e7;" class="calendar-week-view-datecell" ng-class="{'other-month': d.isOtherMonth == false}" ng-repeat="d in daysWeek">{{ d.day }}</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="allday" ng-attr-style="height: {{ maxTop }}px"><span data-translate>DAY_COMPLETE</span>
+            </div>
+          </td>
+          <td colspan="7" ng-attr-style="height: {{ maxTop }}px">
+            <div style="position: relative; width: 100%; height: 100%;">
+              <table style="width: 100%;height: 100%; position: absolute; top:0; left: 0;">
+                <tbody>
+                  <tr>
+                    <td style="height: 100%;">
+                      <div style="position: relative; height: 100%; width: 100%;">
+                        <!-- All day Events -->
+                        <div ng-repeat="e in allDays">
+                          <div class="week-event-common week-event-allday" style="background-color: {{e.event.color}}; left: {{ e.event.padding | multiplicationOp:14.3:2 }}%; top: {{ e.event.top | multiplicationOp:21:2 }}px; width: {{ e.event.width | multiplicationOp:14.3:2 }}%;" ng-click="showEvent(e.event.id)"
+                          class="pointer" ng-if="e.event.is_birthday == null" ng-class="getColorText(e.event.color)">
+                          <span>{{ e.event.name }}</span>
+                        </div>
+                          <div class="week-event-common week-event-birthday"
+                               style="left: {{ e.event.padding | multiplicationOp:14.3:2 }}%; width: {{ e.event.width | multiplicationOp:14.3:2 }}%; top: {{ e.event.top | multiplicationOp:21:2 }}px;"
+                               ng-if="e.event.is_birthday == true" ng-click="showBirthDay(e.event.id)"
+                        class="pointer">
+                        <span><i class="fa fa-gift"></i>&nbsp;{{ e.event.name }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table style="width: 100%; height: 100%; position: absolute; left: 0; top: 0;">
+            <tbody>
+              <tr>
+                <!-- style="width: 14.28%;" -->
+                <td style="width: 14.28%;" class="calendar-week-view-timedatecell" ng-class="{'calendar-week-view-active-cell': currentDayIndex == ($index) && (isCurrentWeek == true)}" ng-repeat="d in range(7) track by $index">
+                  <div class="calendar-week-view-timedatecell-bb pointer" ng-click="createEventAllDay($index)"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div style="height:50px; border-right-style: solid; border-right-width: 1px; border-right-color: rgb(231, 231, 231); padding-left:40px; border-collapse: collapse" ng-repeat="h in range(24) track by $index">
+          <span>
+            {{ $moment().hour($index).minutes(0).format("LT") }}
+          </span>
+          <span ng-show="$index == $moment().hour()"></span>
+        </div>
+      </td>
+      <td colspan="7" style="vertical-align: top;">
+        <div style="position: relative; width: 100%;  border-top-style: solid; border-top-width: 1px; border-top-color: rgb(231, 231, 231);">
+
+          <div style="width: 100%; height: 100%; position: absolute; top:0; left: 0;">
+            <table style="width: 100%; height: 100%; ">
+              <tbody>
+                <tr>
+                  <!-- height: 1px; is a fix for IE: http://connect.microsoft.com/IE/feedbackdetail/view/809874/ie-11-table-cell-padding-collapses-on-hover -->
+                  <td ng-repeat="dayEvents in weekEvents" style="position: relative; width=13%; height: 100%;">
+                    <div style="position: absolute; top: 0; height: 100%; width: 100%;" ng-if="dayEvents.length == 0">
+                      <div style="position: absolute;"></div>
+                    </div>
+                    <div style="position: relative; top: 0; height: 100%; width: 90%;">
+                      <div class="week-event-common week-event pointer" ng-class="getColorText(e.event.color)" ng-attr-style="background-color: {{e.event.color}}; left: {{ e.event.left }}%; top: {{ e.event.index_hour | multiplicationOp:4.17:2 }}%; width: {{ e.event.width }}%; height: {{e.event.duration | multiplicationOp:4.17:2 }}%"
+                      ng-repeat="e in dayEvents" ng-click="showEvent(e.event.id)" tooltip-html-unsafe="{{e.event.content_html}}" tooltip-trigger="mouseenter" tooltip-append-to-body="true">
+                      <span ng-hide="e.event.split > 2" class>{{ e.event.start_hour }}<br />{{ e.event.name }}</span>
+                      <span ng-show="e.event.split > 2" class>...</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <table style="width: 100%; /*height: 100%;*/ /*position: absolute;*/ /*left: 0;*/ /*top: 0;*/">
+          <tbody>
+            <tr ng-repeat="h in range(24) track by $index">
+              <!-- style="width: 14.28%;" -->
+              <td style="width: 14.28%;" class="calendar-week-view-timedatecell pointer" ng-class="{'calendar-week-view-active-cell': currentDayIndex == ($index) && (isCurrentWeek == true)}" ng-repeat="d in range(7) track by $index">
+                <div class="calendar-week-view-timedatecell-bb" ng-click="createEventInterval($index, $parent.$index)"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>

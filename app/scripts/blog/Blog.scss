@@ -1,0 +1,12 @@
+@include aboveMediumScreen() {
+  .blog {
+    .left-column {
+      margin-top: 0;
+    }
+    .menu {
+      display: none;
+    }
+  }
+}
+
+@import "story/StoryGet";

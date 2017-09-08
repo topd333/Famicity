@@ -1,0 +1,28 @@
+<div class="visible-xs">
+    <div class="mobile-header-profile-info-top table">
+        <div class="table-cell v-align-middle left-text">
+            <div class="profile-header-name">{{ user.user_name || basicProfile.user_name }}</div>
+        </div>
+        <div class="table-cell profile-header-img">
+          <a ui-sref="u.profile-photos({user_id: viewedUserId})">
+            <img ng-src="{{ user.user_name || basicProfile.avatar_url }}">
+          </a>
+        </div>
+    </div>
+    <div class="profile-tabs table left-text">
+        <a class="table-cell v-align-bottom" ng-class="{'selected': currentTab == 'blog'}" ui-sref="u.blog.query({user_id: viewedUserId})">
+
+            <span class="profile-info-tab-name" translate>NEWS</span>
+        </a>
+        <a class="table-cell v-align-bottom" ng-class="{'selected': currentTab == 'albums'}" ui-sref="u.albums-index({user_id: viewedUserId})">
+
+            <span class="profile-info-tab-name" translate>ALBUMS_LINK</span>
+        </a>
+        <a class="table-cell v-align-bottom" ng-class="{'selected': currentTab == 'profile'}" ui-sref="u.profile({user_id: viewedUserId})">
+
+            <span class="profile-info-tab-name" translate>INFORMATION_TAB_TITLE</span>
+        </a>
+
+
+    </div>
+</div>

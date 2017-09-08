@@ -1,0 +1,29 @@
+.blog-post-add-picture-mc {
+  padding-left: 10px;
+  vertical-align: middle;
+  width: 100%;
+  span {
+    color: $darker_gray_20;
+  }
+}
+.blog-post-add-picture-rc {
+  vertical-align: bottom;
+  a {
+    color: #ff454c;
+    text-decoration: underline;
+  }
+}
+.blog-my-profile-sort-bar {
+  margin: 10px auto;
+  text-align: right;
+  a {
+    color: $green;
+    text-decoration: underline;
+  }
+}
+
+.blog-mb-20 {
+  margin-bottom: 20px !important;
+}
+
+

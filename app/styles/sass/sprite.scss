@@ -1,0 +1,815 @@
+/********** Sprites */
+/* Base mdpi */
+
+body.landing-page-mcdo {
+  background-color: #586422;
+}
+
+@mixin backgroundCover($imageUrl) {
+  background-image: url($imageUrl);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+body.browser {
+  @include backgroundCover('../../images/browser-bg-1200x1094.jpg');
+}
+body.browser {
+  @include backgroundCover('../../images/browser-bg-1200x1094.jpg');
+}
+.ui_elem {
+  @include backgroundCover('../../images/sprite@small@mdpi.png');
+  background-repeat: no-repeat;
+  background-size: 1000px 250px;
+  display: inline-block;
+}
+.famicity-logo {
+  background-position: -0px -0px;
+  height: 56px;
+  width: 203px;
+}
+@import "../../scripts/directory/invite/import/buttons/fc-import-services-buttons";
+
+@media only screen {
+  .ui_elem {
+    @include backgroundCover('../../images/sprite@small@mdpi.png');
+    background-size: 1000px 250px;
+    display: inline-block;
+  }
+  .famicity-logo {
+    background-position: -0px -0px;
+    height: 56px;
+    width: 203px;
+  }
+  body .applestore-icon a {
+    background-position: -0px -56px;
+    height: 36px;
+    width: 119px;
+  }
+  body .googleplay-icon a {
+    background-position: -0px -95px;
+    height: 36px;
+    width: 119px;
+  }
+  body .round-famicity-logo {
+    background-position: -125px -85px;
+    height: 42px;
+    width: 43px;
+  }
+  .famicity-logo-private {
+    background-position: -126px -85px;
+    height: 44px;
+    width: 45px;
+  }
+
+  .profile-badges-icon1 {
+    background-position: -178px -136px;
+    height: 36px;
+    width: 33px;
+  }
+  .profile-badges-icon2 {
+    background-position: -216px -136px;
+    height: 36px;
+    width: 43px;
+  }
+  .profile-badges-icon3 {
+    background-position: -263px -136px;
+    height: 36px;
+    width: 33px;
+  }
+  .profile-badges-complete-icon1 {
+    background-position: -297px -136px;
+    height: 36px;
+    width: 33px;
+  }
+  .profile-badges-complete-icon2 {
+    background-position: -329px -135px;
+    height: 36px;
+    width: 43px;
+  }
+  .profile-badges-complete-icon3 {
+    background-position: -373px -136px;
+    height: 36px;
+    width: 33px;
+  }
+  .button-webcam-icon-gray {
+    background-position: -713px -97px;
+    height: 28px;
+    width: 24px;
+  }
+  a:hover .button-webcam-icon-gray {
+    background-position: -743px -97px;
+    height: 28px;
+    width: 24px;
+  }
+  .button-album-picasa-icon {
+    background-position: -772px -106px;
+    height: 19px;
+    width: 19px;
+  }
+  a:hover .button-album-picasa-icon {
+    background-position: -795px -106px;
+    height: 19px;
+    width: 19px;
+  }
+  .famicity-small-square-logo {
+    background-position: -178px -136px;
+    height: 40px;
+    width: 40px;
+  }
+  .albums-photo-frame {
+    background-position: -819px -3px;
+    height: 160px;
+    width: 156px;
+  }
+  .face-twit-function-icon-twitter {
+		background-position:  -279px -135px;
+		height: 52px;
+		width: 52px;
+	}
+	.face-twit-function-icon-facebook {
+		background-position:  -338px -135px;
+		height: 52px;
+		width: 52px;
+	}
+	.face-twit-function-icon-pinterest {
+		background-position:  -397px -135px;
+		height: 52px;
+		width: 52px;
+	}
+	.face-twit-function-icon-mail {
+		background-position:  -456px -136px;
+		height: 52px;
+		width: 52px;
+	}
+	.face-twit-function-icon-famicity {
+		background-position:  -515px -136px;
+		height: 52px;
+		width: 52px;
+	}
+}
+/* /// Base mdpi */
+/* Base retina */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi) {
+  .ui_elem {
+    @include backgroundCover('../../images/sprite@small@2x.png');
+    background-size: 975px 250px;
+    display: inline-block;
+  }
+  .famicity-logo {
+    background-position: -1px -1px;
+    height: 52px;
+    width: 200px;
+  }
+  body .applestore-icon a {
+    background-position: -0px -57px;
+    height: 36px;
+    width: 119px;
+  }
+  body .googleplay-icon a {
+    background-position: -0px -94px;
+    height: 36px;
+    width: 119px;
+  }
+  body.public-content .round-famicity-logo {
+    background-position: -125px -85px;
+    height: 40px;
+    width: 41px;
+  }
+  .famicity-logo-private {
+    background-position: -123px -83px;
+    height: 44px;
+    width: 45px;
+  }
+  .button-import-gmail-icon,
+  a:hover .button-import-gmail-icon-gray {
+    background-position: -420px -97px;
+    height: 28px;
+    width: 26px;
+  }
+  .button-import-yahoo-icon,
+  a:hover .button-import-yahoo-icon-gray {
+    background-position: -453px -105px;
+    height: 19px;
+    width: 32px;
+  }
+  .button-import-outlook-icon,
+  a:hover .button-import-outlook-icon-gray {
+    background-position: -492px -98px;
+    height: 26px;
+    width: 27px;
+  }
+  .button-import-applemail-icon,
+  a:hover .button-import-applemail-icon-gray {
+    background-position: -525px -98px;
+    height: 26px;
+    width: 26px;
+  }
+  .button-import-gmail-icon-gray {
+    background-position: -559px -97px;
+    height: 28px;
+    width: 26px;
+  }
+  .button-import-yahoo-icon-gray {
+    background-position: -592px -105px;
+    height: 19px;
+    width: 32px;
+  }
+  .button-import-outlook-icon-gray {
+    background-position: -631px -98px;
+    height: 26px;
+    width: 27px;
+  }
+  .button-import-applemail-icon-gray {
+    background-position: -664px -98px;
+    height: 26px;
+    width: 26px;
+  }
+  .button-webcam-icon-gray {
+    background-position: -698px -98px;
+    height: 26px;
+    width: 22px;
+  }
+  a:hover .button-webcam-icon-gray {
+    background-position: -723px -98px;
+    height: 26px;
+    width: 22px;
+  }
+  .button-album-picasa-icon {
+    background-position: -751px -106px;
+    height: 19px;
+    width: 19px;
+  }
+  a:hover .button-album-picasa-icon {
+    background-position: -776px -106px;
+    height: 19px;
+    width: 19px;
+  }
+  .famicity-small-square-logo {
+    background-position: -172px -135px;
+    height: 40px;
+    width: 40px;
+  }
+  .albums-photo-frame {
+    background-position: -806px -3px;
+    height: 160px;
+    width: 156px;
+  }
+  .face-twit-function-icon-twitter {
+		background-position:  -265px -133px;
+		height: 52px;
+		width: 52px;
+	}
+	.face-twit-function-icon-facebook {
+		background-position:  -324px -133px;
+		height: 52px;
+		width: 52px;
+	}
+	.face-twit-function-icon-pinterest {
+		background-position:  -383px -133px;
+		height: 52px;
+		width: 52px;
+	}
+	.face-twit-function-icon-mail {
+		background-position:  -443px -133px;
+		height: 52px;
+		width: 52px;
+	}
+	.face-twit-function-icon-famicity {
+		background-position:  -502px -133px;
+		height: 52px;
+		width: 52px;
+	}
+}
+/* /// Base retina */
+/* 480px mdpi */
+
+@media only screen and (min-width: 480px) {
+  .famicity-logo {
+    background-position: -205px -0px;
+    height: 74px;
+    width: 278px;
+  }
+}
+/* /// 480px mdpi */
+/* 480px retina */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 480px),
+only screen and (min-resolution: 192dpi) and (min-width: 480px) {
+  .famicity-logo {
+    background-position: -206px -0px;
+    height: 76px;
+    width: 278px;
+  }
+}
+/* /// 480px retina */
+/* 768px mdpi */
+
+@media only screen and (min-width: 768px) {
+  .famicity-logo {
+    background-position: -485px -0px;
+    height: 84px;
+    width: 312px;
+  }
+  .famicity-logo-private {
+    background-position: -100px -133px;
+    height: 68px;
+    width: 68px;
+  }
+  .main-menu-tree-icon {
+    background-position: -136px -56px;
+    height: 24px;
+    width: 24px;
+  }
+  .selected .main-menu-tree-icon,
+  a:hover .main-menu-tree-icon {
+    background-position: -244px -135px;
+    height: 24px;
+    width: 24px;
+  }
+  .left-menu-tree-icon {
+    background-position: -244px -135px;
+    height: 26px;
+    width: 24px;
+  }
+  .gedcom-deco-tree-icon {
+    background-position: -135px -56px;
+    height: 26px;
+    width: 24px;
+  }
+  .close-popup-icon {
+    background-position: -575px -136px;
+    height: 15px;
+    width: 15px;
+  }
+}
+/* /// 768px mdpi */
+/* 768px retina */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 768px),
+only screen and (min-resolution: 192dpi) and (min-width: 768px) {
+  .famicity-logo {
+    background-position: -487px -0px;
+    height: 84px;
+    width: 312px;
+  }
+  .famicity-logo-private {
+    background-position: -99px -133px;
+    height: 68px;
+    width: 68px;
+  }
+  .main-menu-tree-icon {
+    background-position: -135px -56px;
+    height: 24px;
+    width: 24px;
+  }
+  a:hover .main-menu-tree-icon {
+    background-position: -231px -134px;
+    height: 24px;
+    width: 24px;
+  }
+  .left-menu-tree-icon {
+    background-position: -229px -134px;
+    height: 26px;
+    width: 24px;
+  }
+  .close-popup-icon {
+    background-position: -562px -134px;
+    height: 15px;
+    width: 15px;
+  }
+}
+/* /// 768px retina */
+/* 992px mdpi */
+
+@media only screen and (min-width: 992px) {
+  .famicity-logo-private {
+    background-position: -15px -134px;
+    height: 78px;
+    width: 78px;
+  }
+  body.form-p2 .photo-add-webcam-icon {
+    background-position: -362px -96px;
+    height: 32px;
+    width: 26px;
+  }
+  body.form-p2 a:hover .photo-add-webcam-icon {
+    background-position: -397px -96px;
+    height: 32px;
+    width: 26px;
+  }
+  .webcam-icon-profile {
+    background-position: -397px -96px;
+    height: 32px;
+    margin: 4px 5px 0 5px;
+    width: 26px;
+  }
+}
+/* /// 992px mdpi */
+/* 992px retina */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 992px),
+only screen and (min-resolution: 192dpi) and (min-width: 992px) {
+  .famicity-logo-private {
+    background-position: -17px -134px;
+    height: 78px;
+    width: 78px;
+  }
+  body.form-p2 .photo-add-webcam-icon {
+    background-position: -352px -93px;
+    height: 32px;
+    width: 26px;
+  }
+  body.form-p2 a:hover .photo-add-webcam-icon {
+    background-position: -383px -93px;
+    height: 32px;
+    width: 26px;
+  }
+  .webcam-icon-profile {
+    background-position: -383px -93px;
+    height: 32px;
+    margin: 4px 5px 0 5px;
+    width: 26px;
+  }
+}
+/* /// 992px retina */
+/********** /// Sprites */
+/********** Backgrounds */
+
+div.header-underline {
+  @include backgroundCover('../../images/header-underline.png');
+  background-size: 100% 2px;
+  display: block;
+  height: 2px;
+  width: 100%;
+}
+body.help .header-image {
+  @include backgroundCover('../../images/help-header-bg.jpg');
+  height: 100px;
+}
+body.terms .header-image {
+  @include backgroundCover('../../images/terms-header-bg.jpg');
+  height: 98px;
+}
+body.about .header-image {
+  @include backgroundCover('../../images/about-header-bg.jpg');
+  height: 250px;
+}
+.private-home-page-photo-new {
+  @include backgroundCover('../../images/private-home-mobile-960x410.jpg');
+  height: 205px;
+}
+/* 480px mdpi */
+
+$colorSky: #BFD4F1;
+
+@media only screen and (max-width: 480px) {
+  body {
+    &.public {
+      &.signin {
+        //@include backgroundCover(''/images/signin-bg-480x768.jpg');
+        background-color: $colorSky;
+      }
+      &.forgotten-password-s1,
+      &.forgotten-password-s2 {
+        @include backgroundCover('../../images/forgotten-password-s1-bg-480x768.jpg');
+      }
+      &.reset-password-s1,
+      &.reset-password-s2 {
+        @include backgroundCover('../../images/forgotten-password-s1-bg-480x768.jpg');
+      }
+      &.browser {
+        @include backgroundCover('../../images/browser-bg-480x768.jpg');
+      }
+      &.notifications {
+        @include backgroundCover('../../images/notifications-bg-480x351.jpg');
+      }
+      &.contact-us-s1 {
+        @include backgroundCover('../../images/contact-us-s1-bg-480x335.jpg');
+      }
+      &.contact-us-s3 {
+        @include backgroundCover('../../images/contact-us-s3-bg-480x320.jpg');
+      }
+      &.error404 {
+        @include backgroundCover('../../images/404-bg-480x343.jpg');
+      }
+      &.error500 {
+        @include backgroundCover('../../images/500-bg-480x320.jpg');
+      }
+      &.page-js {
+        @include backgroundCover('../../images/page-js-bg-480x344.jpg');
+      }
+      &.gedcom-deco {
+        @include backgroundCover('../../images/famillecity/gedcom-deco-bg-480x320.jpg');
+      }
+      &.famillecity .header-image {
+        @include backgroundCover('../../images/famillecity/famillecity-bg-480x320.jpg');
+      }
+      &.landing-page-mcdo {
+        @include backgroundCover('../../images/landing-mcdo-bg-480x768.jpg');
+      }
+    }
+  }
+}
+/* 480px retina */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 480px),
+only screen and (min-resolution: 192dpi) and (max-width: 480px) {
+  body {
+    &.public  {
+      &.signin {
+        //@include backgroundCover(''/images/signin-bg-960x1536.jpg');
+        background-color: $colorSky;
+      }
+      &.forgotten-password-s1,
+      &.forgotten-password-s2 {
+        @include backgroundCover('../../images/forgotten-password-s1-bg-960x1536.jpg');
+      }
+      &.reset-password-s1,
+      &.reset-password-s2 {
+        @include backgroundCover('../../images/forgotten-password-s1-bg-960x1536.jpg');
+      }
+      &.browser {
+        @include backgroundCover('../../images/browser-bg-960x1539.jpg');
+      }
+      &.notifications {
+        @include backgroundCover('../../images/notifications-bg-960x702.jpg');
+      }
+      &.contact-us-s1 {
+        @include backgroundCover('../../images/contact-us-s1-bg-960x669.jpg');
+      }
+      &.contact-us-s3 {
+        @include backgroundCover('../../images/contact-us-s3-bg-960x640.jpg');
+      }
+      &.error404 {
+        @include backgroundCover('../../images/404-bg-960x686.jpg');
+      }
+      &.error500 {
+        @include backgroundCover('../../images/500-bg-960x639.jpg');
+      }
+      &.page-js {
+        @include backgroundCover('../../images/page-js-bg-960x688.jpg');
+      }
+      &.gedcom-deco {
+        @include backgroundCover('../../images/famillecity/gedcom-deco-bg-960x640.jpg');
+      }
+      &.famillecity .header-image {
+        @include backgroundCover('../../images/famillecity/famillecity-bg-960x640.jpg');
+      }
+      &.landing-page-mcdo {
+        @include backgroundCover('../../images/landing-mcdo-bg-960x1536.jpg');
+      }
+    }
+  }
+}
+/* 768px mpd */
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  body {
+    &.public {
+      &.homepage {
+        //@include backgroundCover('/images/homepage-bg-768x700.jpg');
+        &.signin {
+          @include backgroundCover('/images/signin-bg-768x700.jpg');
+        }
+        &.forgotten-password-s1,
+        &.forgotten-password-s2 {
+          @include backgroundCover('../../images/forgotten-password-s1-bg-768x700.jpg');
+        }
+        &.reset-password-s1,
+        &.reset-password-s2 {
+          @include backgroundCover('../../images/forgotten-password-s1-bg-768x700.jpg');
+        }
+        &.browser {
+          @include backgroundCover('../../images/browser-bg-768x700.jpg');
+        }
+        &.notifications {
+          @include backgroundCover('../../images/notifications-bg-768x562.jpg');
+        }
+        &.contact-us-s1 {
+          @include backgroundCover('../../images/contact-us-s1-bg-768x535.jpg');
+        }
+        &.contact-us-s3 {
+          @include backgroundCover('../../images/contact-us-s3-bg-768x512.jpg');
+        }
+        &.error404 {
+          @include backgroundCover('../../images/404-bg-768x548.jpg');
+        }
+        &.error500 {
+          @include backgroundCover('../../images/500-bg-768x511.jpg');
+        }
+        &.page-js {
+          @include backgroundCover('../../images/page-js-bg-768x551.jpg');
+        }
+        &.gedcom-deco {
+          @include backgroundCover('../../images/famillecity/gedcom-deco-bg-768x512.jpg');
+        }
+        &.famillecity .header-image {
+          @include backgroundCover('../../images/famillecity/famillecity-bg-768x511.jpg');
+        }
+        &.landing-page-mcdo {
+          @include backgroundCover('../../images/landing-mcdo-bg-768x700.jpg');
+        }
+      }
+    }
+  }
+}
+/* 768px retina */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 481px) and (max-width: 768px),
+only screen and (min-resolution: 192dpi) and (min-width: 481px) and (max-width: 768px) {
+  .body {
+    &.public {
+      &.homepage {
+        //@include backgroundCover('/images/homepage-bg-1536x1400.jpg');
+      }
+      &.signin {
+        @include backgroundCover('/images/signin-bg-1536x1400.jpg');
+      }
+      &.forgotten-password-s1,
+      &.forgotten-password-s2 {
+        @include backgroundCover('../../images/forgotten-password-s1-bg-1536x1400.jpg');
+      }
+      &.reset-password-s1,
+      &.reset-password-s2 {
+        @include backgroundCover('../../images/forgotten-password-s1-bg-1536x1400.jpg');
+      }
+      &.browser {
+        @include backgroundCover('../../images/browser-bg-1536x1400.jpg');
+      }
+      &.notifications {
+        @include backgroundCover('../../images/notifications-bg-1536x1123.jpg');
+      }
+      &.contact-us-s1 {
+        @include backgroundCover('../../images/contact-us-s1-bg-1536x1071.jpg');
+      }
+      &.contact-us-s3 {
+        @include backgroundCover('../../images/contact-us-s3-bg-1536x1025.jpg');
+      }
+      &.error404 {
+        @include backgroundCover('../../images/404-bg-1536x1097.jpg');
+      }
+      &.error500 {
+        @include backgroundCover('../../images/500-bg-1536x1023.jpg');
+      }
+      &.page-js {
+        @include backgroundCover('../../images/page-js-bg-1536x1101.jpg');
+      }
+      &.gedcom-deco {
+        @include backgroundCover('../../images/famillecity/gedcom-deco-bg-1536x1024.jpg');
+      }
+      &.famillecity .header-image {
+        @include backgroundCover('../../images/famillecity/famillecity-bg-1536x1023.jpg');
+      }
+      &.landing-page-mcdo {
+        @include backgroundCover('../../images/landing-mcdo-bg-1536x1400.jpg');
+      }
+    }
+  }
+}
+/* 992px mpd */
+
+@media only screen and (min-width: 769px) {
+  body {
+    &.public {
+      &.homepage {
+        @include backgroundCover('/images/homepage-bg-1200x800.jpg');
+      }
+      &.signin {
+        @include backgroundCover('/images/signin-bg-1200x1094.jpg');
+      }
+      &.forgotten-password-s1,
+      &.forgotten-password-s2 {
+        @include backgroundCover('../../images/forgotten-password-s1-bg-1200x1094.jpg');
+      }
+      &.reset-password-s1,
+      &.reset-password-s2 {
+        @include backgroundCover('../../images/forgotten-password-s1-bg-1200x1094.jpg');
+      }
+      &.browser {
+        @include backgroundCover('../../images/browser-bg-1200x1094.jpg');
+      }
+      &.notifications {
+        @include backgroundCover('../../images/notifications-bg-1200x878.jpg');
+      }
+      &.contact-us-s1 {
+        @include backgroundCover('../../images/contact-us-s1-bg-1200x837.jpg');
+      }
+      &.contact-us-s3 {
+        @include backgroundCover('../../images/contact-us-s3-bg-1200x801.jpg');
+      }
+      &.error404 {
+        @include backgroundCover('../../images/404-bg-1200x857.jpg');
+      }
+      &.error500 {
+        @include backgroundCover('../../images/500-bg-1200x799.jpg');
+      }
+      &.page-js {
+        @include backgroundCover('../../images/page-js-bg-1200x861.jpg');
+      }
+      &.gedcom-deco {
+        @include backgroundCover('../../images/famillecity/gedcom-deco-bg-1200x800.jpg');
+      }
+      &.famillecity .header-image {
+        @include backgroundCover('../../images/famillecity/famillecity-bg-1200x799.jpg');
+      }
+      &.landing-page-mcdo {
+        @include backgroundCover('../../images/landing-mcdo-bg-1200x800.jpg');
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  body.homepage {
+    @include backgroundCover('/images/homepage-bg-1800x1200.jpg');
+  }
+
+  body.landing-page-mcdo {
+    @include backgroundCover('../../images/landing-mcdo-bg-1800x1200.jpg');
+  }
+}
+
+/* 992px retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 769px),
+only screen and (min-resolution: 192dpi) and (min-width: 769px) {
+  body {
+    &.public {
+      &.homepage {
+        @include backgroundCover('/images/homepage-bg-2400-1600.jpg');
+      }
+      &.signin {
+        /* TODO */
+        @include backgroundCover('/images/signin-bg-1960x1400.jpg');
+      }
+      &.forgotten-password-s1,
+      &.forgotten-password-s2 {
+        /* TODO */
+        @include backgroundCover('../../images/forgotten-password-s1-bg-1960x1400.jpg');
+      }
+      &.reset-password-s1,
+      &.reset-password-s2 {
+        /* TODO */
+        @include backgroundCover('../../images/forgotten-password-s1-bg-1960x1400.jpg');
+      }
+      &.browser {
+        /* TODO */
+        @include backgroundCover('../../images/browser-bg-1960x1400.jpg');
+      }
+      &.notifications {
+        @include backgroundCover('../../images/notifications-bg-2400x1755.jpg');
+      }
+      &.contact-us-s1 {
+        @include backgroundCover('../../images/contact-us-s1-bg-2400x1673.jpg');
+      }
+      &.contact-us-s3 {
+        @include backgroundCover('../../images/contact-us-s3-bg-2400x1601.jpg');
+      }
+      &.error404 {
+        @include backgroundCover('../../images/404-bg-2400x1714.jpg');
+      }
+      &.error500 {
+        @include backgroundCover('../../images/500-bg-2400x1598.jpg');
+      }
+      &.page-js {
+        @include backgroundCover('../../images/page-js-bg-2400x1721.jpg');
+      }
+      &.gedcom-deco {
+        @include backgroundCover('../../images/famillecity/gedcom-deco-bg-2400x1600.jpg');
+      }
+      &.famillecity .header-image {
+        @include backgroundCover('../../images/famillecity/famillecity-bg-2400x1598.jpg');
+        background-position: center center;
+      }
+      &.landing-page-mcdo {
+        @include backgroundCover('../../images/landing-mcdo-bg-2400x1600.jpg');
+      }
+    }
+  }
+}
+/********** /// Backgrounds */
+@media
+only screen {
+
+	.famillecity-stricken  {
+		background-image:  url(../../images/famillecity/famillecity-stricken-mdpi.png);
+		height: 76px;
+		width: 355px;
+	}
+
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi)
+{
+
+	.famillecity-stricken  {
+		background-image:  url(../../images/famillecity/famillecity-stricken-2x.png);
+		height: 76px;
+		width: 355px;
+	}
+
+}

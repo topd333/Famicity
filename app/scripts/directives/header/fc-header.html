@@ -1,0 +1,91 @@
+<header class="header-new hidden-xs" ng-class="{ disabled: menuDisabled }">
+  <div class="header-top-strip clearfix">
+    <div>
+      <a class="logo pull-left" ui-sref="u.feed"><img alt="logo" ng-src="{{configuration.static2Url + '/images/logos/header-logo_white.png'}}" />
+      </a>
+      <div class="pull-right clearfix">
+        <div class="header-top-strip-icons table">
+         <!-- <a class="table-cell v-align-middle notifications-header-link" href="" ng-click="showMatchings()" tooltip="{{ 'TREE.MATCHING.TITLE' | translate }}" tooltip-placement="bottom" tooltip-append-to-body="true">
+            <i class="fc fc-matching"></i>
+            <span ng-show="matchingsCount && matchingsCount > 0" class="fa-stack fa-stack-3x notification-count">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <span class="fa-stack-1x">{{ matchingsCount }}</span>
+            </span>
+          </a>-->
+          <a class="table-cell v-align-middle notifications-header-link" href="" ng-click="showNotifications()" tooltip="{{ 'INTERNAL_HEADER.TOOLTIPS.NOTIFICATIONS' | translate }}" tooltip-placement="bottom" tooltip-append-to-body="true">
+            <i class="fa fa-bell"></i>
+            <span ng-show="unreadNotifications && unreadNotifications > 0" class="fa-stack fa-stack-3x notification-count">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <span class="fa-stack-1x">{{ unreadNotifications }}</span>
+            </span>
+          </a>
+          <div class="table-cell v-align-middle header-search">
+             <form ng-submit="doSearch()">
+              <input type="text"
+                data-translate data-translate-attr-placeholder="INTERNAL_HEADER.SEARCH.PLACEHOLDER"
+                ng-model="search.query"
+                ng-model-options="{debounce: 500}"
+                data-typeahead="user.user_name for users in getUsers($viewValue)"
+                data-typeahead-wait-ms="500"
+                data-typeahead-on-select="autocompleteSuccess($item)"
+                data-typeahead-template-url="/template/typeahead/search-template.html"
+                data-typeahead-focus-first="false"
+                data-typeahead-min-length="2">
+            </form>
+            <button type="button" class="btn-search" ng-click="doSearch()">
+              <i class="fa fa-search font-size110"></i>
+            </button>
+          </div>
+          <a class="table-cell v-align-middle" ui-sref="u.helps-private({user_id: userId})" tooltip="{{ 'INTERNAL_HEADER.TOOLTIPS.HELP' | translate }}" tooltip-placement="bottom" tooltip-append-to-body="true"><i class="fa fa-question-circle font-size110"></i></a>
+          <a class="table-cell v-align-middle" ui-sref="u.settings" tooltip="{{ 'INTERNAL_HEADER.TOOLTIPS.SETTINGS' | translate }}" tooltip-placement="bottom" tooltip-append-to-body="true"><i class="fa fa-cog font-size110"></i></a>
+          <a class="table-cell v-align-middle header-poweroff-icon pointer" ui-sref="u.sign-out" tooltip="{{ 'INTERNAL_HEADER.TOOLTIPS.SIGN_OUT' | translate }}" tooltip-placement="bottom" tooltip-append-to-body="true"><i class="fa fa-power-off font-size110"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-main-icons-block">
+    <div class="header-main-icons-bb"></div>
+    <div class="header-main-icons-holder">
+      <div>
+        <div class="table header-main-icons top-navigation-icons">
+          <div class="table-row header-main-icons-row">
+            <a class="table-cell" ui-sref="u.feed" ui-sref-opts="{reload: true}"><i class="fa fa-home"></i><span
+              data-translate>HEADER.HOME</span></a>
+            <a class="table-cell" ui-sref="u.profile({user_id: userId})" ui-sref-opts="{reload: true}"><i
+              class="fa fa-user"></i><span data-translate>HEADER.PROFILE</span></a>
+            <a class="table-cell" ui-sref="u.tree({user_id: userId})" ui-sref-opts="{reload: true}"><i
+              class="fc fc-tree"></i><span data-translate>HEADER.TREE</span></a>
+            <a class="table-cell" ui-sref="u.messages.welcome" ui-sref-opts="{reload: true}">
+              <i class="fa fa-envelope-o">
+                <span ng-show="unreadMessages > 0" class="fa-stack fa-stack-3x notification-count">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <span class="fa-stack-1x">{{ unreadMessages }}</span>
+                </span>
+              </i>
+              <span data-translate>HEADER.MAIL</span>
+            </a>
+            <a class="table-cell" ui-sref="u.directory.list" ui-sref-opts="{reload: true}"><i
+              class="fa fa-book"></i><span data-translate>HEADER.DIRECTORY</span></a>
+            <a class="table-cell" ui-sref="u.albums-index({user_id: userId})" ui-sref-opts="{reload: true}"><i
+              class="fa fa-picture-o"></i><span data-translate>HEADER.ALBUMS</span></a>
+            <a class="table-cell" ui-sref="u.calendar" ui-sref-opts="{reload: true}"><i class="fa fa-calendar"></i><span
+              data-translate>HEADER.DIARY</span></a>
+            <a class="table-cell" ui-sref="u.blog.query({user_id: userId})" ui-sref-opts="{reload: true}"><i
+              class="fa fa-pencil"></i><span data-translate>HEADER.JOURNAL</span></a>
+          </div>
+          <div class="table-row header-main-icon-bb-row">
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+            <div class="table-cell"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-blur"></div>
+</header>

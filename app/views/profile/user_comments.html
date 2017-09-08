@@ -1,0 +1,32 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <fc-header-bar user-id="userId">
+      <h2 class="pull-left" translate>COMMENTS.TITLE</h2>
+    </fc-header-bar>
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+
+            <div class="clearfix hidden-xs">
+              <div ncy-breadcrumb class="hidden-xs"></div>
+            </div>
+
+            <br/>
+
+            <div class="center-text">
+              <fc-comment-list data-object="object" data-user="user"></fc-comment-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

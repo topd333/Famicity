@@ -1,0 +1,11 @@
+<fieldset ng-form="permissionsForm" class="permissions">
+  <legend>Permissions</legend>
+  <div class="field" ng-if="allow && permissions.allowed!==undefined">
+    <div class="field-label"><label data-translate>fc-permissions.SHARE_WITH</label></div>
+    <fc-permission-edit data-allowed="true" allow-add="allowAddAllowed(group)" selected-permissions="permissions.allowed" all></fc-permission-edit>
+  </div>
+  <div class="field" ng-if="disallow && permissions.disallowed!==undefined">
+    <div class="field-label"><label data-translate>fc-permissions.EXCEPT</label></div>
+    <fc-permission-edit data-allowed="false" allow-add="allowAddExcluded(group)" selected-permissions="permissions.disallowed"></fc-permission-edit>
+  </div>
+</fieldset>

@@ -1,0 +1,37 @@
+<div class="wrapper" ng-init="init()">
+  <div class="content">
+
+    <header>
+      <div class="ui_elem round-famicity-logo">
+        <a ui-sref="public.base({locale: locale})" ng-if="userId == undefined"></a>
+        <a ui-sref="u.home" ng-id="userId != undefined"></a>
+      </div>
+      <h1 translate><span class="fa fa-question-circle"></span>COOKIES_TITLE</h1>
+      <div class="top-right-linkbar">
+        <div class="visible-xs xs-top-right-linkbar-content"><a href="#"><i class="fa fa-flag"></i></a> &nbsp; / &nbsp; <a href="#"><i class="fa fa-lock"></i></a>
+        </div>
+        <div class="hidden-xs" ng-if="userId == undefined"><span class="lang" data-fc-language-switcher></span> &nbsp; / &nbsp; <a ui-sref="public.base.sign-in({locale: locale})" translate>CONNECT_LINK</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="header-image bg-image-cover"></div>
+    <div class="header-underline"></div>
+
+    <div class="container-fluid">
+
+      <div class="col-sm-12">
+        <h2 translate>COOKIES_NOTIFICATION_TITLE</h2>
+
+        <p class="cookie-information" data-translate>COOKIES_INFORMATION_1</p>
+
+        <p class="cookie-information" data-translate>COOKIES_INFORMATION_2</p>
+        <strong class="cookie-information" data-translate>COOKIES_INFORMATION_3</strong>
+      </div>
+    </div>
+
+  </div>
+
+  <div fc-public-footer data-locale="{{locale}}"></div>
+
+</div>

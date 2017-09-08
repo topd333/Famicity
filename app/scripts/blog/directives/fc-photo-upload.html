@@ -1,0 +1,13 @@
+<div class="blog-post-add-picture" ng-show="formStatus.isShowPhoto && formStatus.isEditing">
+  <div class="blog-post-add-picture-lc" ng-show="formStatus.isUploadedPhoto || object.photo_url_thumb">
+    <img src="{{object.photo_url_thumb}}" class="qq-thumbnail-selector"/>
+  </div>
+  <div class="blog-post-add-picture-mc" ng-show="formStatus.isUploadedPhoto">
+    {{postPhoto.name}}&nbsp;:
+    <span ng-show="postPhoto.size<1000000">{{postPhoto.size/1024|number:2}} ko</span><span ng-if="postPhoto.size>=1000000">{{postPhoto.size/1048576|number:2}} Mo</span>
+  </div>
+  <div class="blog-post-add-picture-rc pointer" ng-show="formStatus.isUploadedPhoto || object.photo_url_thumb">
+    <a ng-click="formStatus.isUploadedPhoto ? deletePostPhoto() : deletePhoto()"><i class="fa fa-trash-o"></i>
+      {{'DELETE'|translate}}</a>
+  </div>
+</div>

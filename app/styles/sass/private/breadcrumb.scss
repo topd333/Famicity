@@ -1,0 +1,38 @@
+/* Breadcrumb (modification of Boostrap breadcrumbs) */
+
+.breadcrumb-holder {
+  text-align: left;
+
+}
+.breadcrumb {
+  background-color: transparent;
+  border-radius: 0;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding-left: 0;
+  a,
+  a:hover {
+    color: $darker_main_font_4;
+  }
+}
+//.breadcrumb.breadcrumb>li+li:before {
+//  color: $darker_main_font_23;
+//  content: '\003e';
+//}
+.breadcrumb.breadcrumb>li.display-inlineb-visible-md+li:before {
+  display: none;
+}
+
+@media only screen and (min-width: 992px) {
+  .breadcrumb.breadcrumb>li.display-inlineb-visible-md+li:before {
+    display: inline;
+  }
+}
+
+.breadcrumb.breadcrumb>.active {
+  color: $white;
+}
+
+.breadcrumb.breadcrumb li:first-child a {
+  color: $green;
+}

@@ -1,0 +1,56 @@
+$colorSelected: $green;
+$colorUnselected: #ddd;
+$tabsCount: 2;
+
+.tabs {
+  > input {
+    display: none;
+  }
+  .tab-titles {
+    overflow-x: hidden;
+  }
+  .tab-title {
+    cursor: pointer;
+    font-weight: normal;
+    display: block;
+    float: left;
+    padding: 0.2em 0.5em;
+    text-align: center;
+    background: white;
+//    width: 100%/$tabsCount;
+    width: 48%;
+    margin-right: 1em;
+    border-radius: 0.4em;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    margin-bottom: 1em;
+    &:hover {
+      color: $colorSelected;
+    }
+  }
+  .tab {
+    clear: both;
+    color: $colorSelected;
+    display: none;             // Don't display tab content by default
+  }
+
+  // Display relevant tab content when some radio is selected
+  > input:nth-of-type(1):checked ~ .tab:nth-of-type(1),
+  > input:nth-of-type(2):checked ~ .tab:nth-of-type(2),
+  > input:nth-of-type(3):checked ~ .tab:nth-of-type(3),
+    // Default if none is selected
+  > input:nth-of-type(2):not(:checked) ~ input:nth-of-type(3):not(:checked) ~ .tab:nth-of-type(1) {
+    display: block;
+  }
+}
+
+// Highlight relevant tab title
+#tab-A:checked ~ label:nth-of-type(1),
+#tab-B:checked ~ label:nth-of-type(2),
+#tab-C:checked ~ label:nth-of-type(3),
+  // Default title highlight if none is selected
+#tab-B:not(:checked) ~ #tab-C:not(:checked) ~ label:nth-of-type(1) {
+  color: $colorSelected;
+  border: $green 1px solid;
+}

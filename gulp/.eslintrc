@@ -1,0 +1,4 @@
+extends:
+  - 'thou-shalt-not/node'
+  - 'thou-shalt-not/es6/off'
+  - 'thou-shalt-not/angular/off'

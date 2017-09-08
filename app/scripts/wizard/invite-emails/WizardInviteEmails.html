@@ -1,0 +1,38 @@
+<div class="invite-emails">
+
+  <div class="holder-for-form-width">
+
+    <h2 data-translate>WIZARD.invite-emails.TITLE</h2>
+
+    <h3 data-translate data-translate-values="{invitationsCount:formData.invited.length}"
+        data-translate-interpolation="messageformat">
+      {{!formData.invited.length?'WIZARD.invite-emails.SUBTITLE.START':'WIZARD.invite-emails.SUBTITLE.THEN'}}</h3>
+
+    <form ng-submit="invite()" novalidate class="standard-form login-form" name="inviteEmailsForm">
+      <div class="field input-group"
+           ng-class="{'has-error':(inviteEmailsForm.inviteEmail.$dirty || submitted) && inviteEmailsForm.inviteEmail.$invalid}">
+        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+        <label class="sr-only" for="invite-email" data-translate>WIZARD.invite-emails.PLACEHOLDER</label>
+        <input type="email" class="form-control" ng-model="formData.email" id="invite-email" name="inviteEmail"
+               data-translate
+               data-translate-attr-placeholder="WIZARD.invite-emails.PLACEHOLDER" required/>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" data-translate>WIZARD.invite-emails.ACTION.INVITE
+        </button>
+        <button ng-show="formData.invited.length" ui-sref="wizard-tree-info" class="btn btn-secondary"
+                ui-sref="wizard-find-friends" data-translate>
+          WIZARD.invite-emails.ACTION.NEXT
+        </button>
+      </div>
+    </form>
+    <div ng-show="formData.invited.length" class="summary">
+      <h4 data-translate>WIZARD.invite-emails.SUMMARY</h4>
+      <ul>
+        <li ng-repeat="email in formData.invited">{{email}}</li>
+      </ul>
+    </div>
+  </div>
+  <div ng-show="!formData.invited.length" ui-sref="wizard-tree-info" class="skip-step"><a
+    data-translate>SKIP_STEP_LINK</a></div>
+</div>

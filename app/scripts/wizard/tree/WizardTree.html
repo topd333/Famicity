@@ -1,0 +1,26 @@
+<div class="tree">
+
+  <div class="holder-for-form-width">
+
+    <h2>
+      <fc-trees-count key="WIZARD.tree.TITLE" data-prop="max_tree_users_count"></fc-trees-count>
+    </h2>
+
+    <h3 data-translate ng-show="canUseTree && canUploadFile">WIZARD.tree.SUBTITLE</h3>
+
+    <div ng-if="!canUseTree" data-translate>WIZARD.tree.WARNING_MOBILE</div>
+    <form class="standard-form login-form" name="treeMenuForm">
+      <div class="form-group">
+        <button ng-show="canUseTree" class="btn btn-primary" ng-click="goToTree()" data-translate>
+          WIZARD.tree.ACTION.MANUAL
+        </button>
+        <button ng-show="!canUseTree" class="btn btn-primary" ng-click="goToHome()" data-translate>
+          WIZARD.tree.ACTION.START
+        </button>
+        <button ng-show="canUploadFile" class="btn btn-secondary" ui-sref="gedcom-import-wizard({user_id:userId})"
+                data-translate>WIZARD.tree.ACTION.IMPORT
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

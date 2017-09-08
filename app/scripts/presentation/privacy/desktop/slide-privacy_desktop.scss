@@ -1,0 +1,22 @@
+@include aboveMediumScreen() {
+  .presentation {
+    #privacy {
+      .contents {
+        h1 {
+          text-align: left;
+        }
+        .text {
+          width: 50%;
+        }
+        .image {
+          display: block;
+          height: 60vh;
+          width: 50%;
+          float: right;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+}

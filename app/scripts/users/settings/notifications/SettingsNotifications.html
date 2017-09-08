@@ -1,0 +1,142 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>NOTIFICATIONS_SETTINGS_PAGE_TITLE</h2>-->
+      <!--<a class="btn pull-right" ng-click="submit()" translate>OK</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-settings-menu data-current-section="notifications"></fc-settings-menu>
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <div class="text-and-button-table">
+              <div class="center-to-left-text" translate>NOTIFICATIONS_PAGE_INSTRUCTIONS</div>
+              <div class="text-and-button-table-button hidden-xs">
+                <fc-menu-trigger action="submitAction"></fc-menu-trigger>
+              </div>
+            </div>
+
+            <br>
+            <div>
+              {{ "SETTINGS.EMAIL_NOTIFICATIONS.NOTIFICATIONS_FILTERS_TITLE1" | translate }}
+              <br>
+              <br>
+              <div class="standard-checkbox">
+                <input id="newsletter_notifications" type="checkbox" ng-model="notifications.newsletter_mails" />
+                <label for="newsletter_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.FAMICITY_NEWSLETTERS</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="birthdays_mails_notifications" type="checkbox" ng-model="notifications.birthday_reminder_mails" />
+                <label for="birthdays_mails_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.BIRTHDAY_REMINDERS</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="event_reminder_mails" type="checkbox" ng-model="notifications.event_reminder_mails" />
+                <label for="event_reminder_mails" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_REMINDER</span>
+                </label>
+              </div>
+              <!-- <div class="standard-checkbox">
+                <input id="community_mails_notifications" type="checkbox" ng-model="notifications.community_mails" />
+                <label for="community_mails_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.HELP_MAIL</span>
+                </label>
+              </div> -->
+              <br> {{ "SETTINGS.EMAIL_NOTIFICATIONS.NOTIFICATIONS_FILTERS_TITLE2" | translate }}
+              <br>
+              <br>
+              <div class="standard-checkbox">
+                <input id="new_post_notifications" type="checkbox" ng-model="notifications.new_post_mails" />
+                <label for="new_post_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.NEW_PUBLICATION</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="new_album_notifications" type="checkbox" ng-model="notifications.new_album_mails" />
+                <label for="new_album_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.NEW_ALBUM</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="comment_answers_notifications" type="checkbox" ng-model="notifications.comment_answer_all_mails" />
+                <label for="comment_answers_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.NEW_COMMENT</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="messages_mails_notifications" type="checkbox" ng-model="notifications.new_message_mails" />
+                <label for="messages_mails_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.NEW_MAIL</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="subscribe_invitation_notifications" type="checkbox" ng-model="notifications.subscribe_invitation_mails" />
+                <label for="subscribe_invitation_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.INVITAION_RESPONSE</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="event_invitation_notifications" type="checkbox" ng-model="notifications.event_invitation_mails" />
+                <label for="event_invitation_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_INVITATION</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="event_accept_notifications" type="checkbox" ng-model="notifications.event_accept_mails" />
+                <label for="event_accept_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_RESPONSE</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="event_update_notifications" type="checkbox" ng-model="notifications.event_update_mails" />
+                <label for="event_update_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_CHANGE</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="event_destroy_notifications" type="checkbox" ng-model="notifications.event_destroy_mails" />
+                <label for="event_destroy_notifications" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_DESTROY</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="like_mails" type="checkbox" ng-model="notifications.like_mails" />
+                <label for="like_mails" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.LIKE</span>
+                </label>
+              </div>
+              <div class="standard-checkbox">
+                <input id="avatar_mails" type="checkbox" ng-model="notifications.avatar_mails" />
+                <label for="avatar_mails" class="fa">
+                  <span translate>SETTINGS.EMAIL_NOTIFICATIONS.AVATAR</span>
+                </label>
+              </div>
+              <!-- <div class="standard-radiobutton">
+                <input id="day_report" type="radio" ng-model="notifications.week_report_mails" ng-value="false" />
+                <span class="radio-element"></span>
+              </div>
+              <label for="day_report" class="fa"  translate>NOTIFICATIONS_PER_DAY</label>
+
+              <div class="standard-radiobutton">
+                <input id="week_report_mails" type="radio" ng-model="notifications.week_report_mails" ng-value="true" />
+                <span class="radio-element"></span>
+              </div>
+              <label for="week_report_mails" class="fa"  translate>NOTIFICATIONS_PER_WEEK</label>              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,400 @@
+.cp-center-right-icons {
+  display: inline-block;
+  float: none;
+}
+
+.top-paging {
+  border : 1px solid $green;
+  color  : $green;
+  padding: $px5;
+}
+
+.mobile-bottom-icons a.numbered-icon>span {
+  background-color: $green;
+  border-radius: 12px;
+
+  display: block;
+  height: $px24;
+  line-height: $px24;
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  width: $px24;
+}
+
+.mobile-bottom-icons a.numbered-icon {
+  position: relative;
+}
+
+.top-left-menu {
+  font-size: $px14;
+  margin-left: $px10;
+  padding-top: $px10;
+}
+
+.center-left-icons a+a {
+  margin-left: $px10;
+}
+
+.center-right-icons > span {
+  padding-right: 0; // TODO: fc-like workaround. Avoid that.
+}
+
+.center-right-icons .btn-icon + .btn-icon,
+.center-right-icons span.icon-link-wrapper + a {
+  margin-left: $px5;
+}
+
+.btn.btn-icon {
+  border-radius: 0;
+}
+
+.btn-icon .btn-icon {
+  margin-left: -$px5;   // Work around to cancel icon-in-icon like component issue
+}
+
+.center-right-icons a.center-right-x-icon {
+  font-size: $px40;
+  text-decoration: none;
+}
+
+.center-right-icons a.center-right-edit-icon {
+  line-height: 42px;
+}
+
+.center-right-icons a.min-width,
+.center-left-icons a.min-width {
+  min-width: $px40;
+}
+
+$btn-iconSize: 1.5em;
+
+.center-left-icons a i,
+.center-right-icons a i,
+a.standard-icon i {
+  line-height: $btn-iconSize;
+}
+
+.center-left-icons a,
+.center-right-icons a,
+.center-right-icons span.icon-link-wrapper>span,
+a.standard-icon,
+a.standard-icon-nf {
+  display: inline-block;
+  height: $btn-iconSize;
+  width: $btn-iconSize;
+  text-align : center;
+}
+
+.btn-plus {
+   line-height: $btn-iconSize;
+}
+.center-left-icons a,
+.center-right-icons a {
+  &.btn-plus {
+    line-height: $btn-iconSize;
+  }
+}
+a.standard-icon-green-nf {
+  background-color: $green;
+  color: $white;
+}
+.center-right-icons span.icon-link-wrapper>span{
+  border-style: none;
+  padding: 0;
+}
+.create-event-short-field-holder {
+  width: 48%;
+}
+// .center-left-icons span,
+// .center-right-icons span {
+//   font-size: 18px;
+//   line-height: 32px;
+// }
+
+.center-left-icons,
+.center-right-icons,
+.standard-icon,
+.standard-icon-nf {
+  font-size: $px24;
+}
+
+.center-right-icons-centered-holder {
+  text-align: center;
+  width: 100%;
+}
+
+.top-icons-right {
+  margin-right: $px10;
+  padding-top: $px10;
+}
+
+.top-right-menu {
+  font-size: $px14;
+  margin-right: $px10;
+  padding-top: $px10;
+}
+.mobile-bottom-icons .info-icon.active {
+  background-color: $green;
+}
+
+.mobile-bottom-icons {
+  display: inline-block;
+}
+
+.mobile-bottom-icons-holder {
+
+  text-align: center;
+}
+
+.mobile-bottom-icons-layer {
+
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.top-right-menu>div i {
+  line-height: $px30;
+}
+
+.top-right-menu>div i {
+  font-size: $px24;
+  line-height: $px30;
+}
+
+.top-right-menu>div a + span {
+  padding: 0 $px10;
+}
+
+.content-bottom-icons {
+  padding-bottom: $px50;
+}
+
+.top-right-menu>div a + b {
+  padding: 0 2px 0 $px5;
+}
+.mobile-icons-bottom {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+
+}
+.mobile-icons-bottom>div {
+  padding-bottom: $px30;
+}
+
+.previous-icon-button-big,
+.next-icon-button-big,
+.previous-icon-button-small,
+.next-icon-button-small {
+  display: inline-block;
+  text-align: center;
+
+}
+/*.previous-icon-button-big.disabled,*/
+/*.next-icon-button-big.disabled {*/
+/*background-color: $gray_color;*/
+/*cursor: default;*/
+/*}*/
+
+.previous-icon-button-big:hover,
+.next-icon-button-big:hover {
+  color: $white;
+
+}
+
+.previous-icon-button-big.btn.disabled,
+.previous-icon-button-big.btn[disabled],
+.next-icon-button-big.btn.disabled,
+.next-icon-button-big.btn[disabled] {
+  color: $darker_gray_10;
+  opacity: 1;
+}
+
+.previous-icon-button-big,
+.next-icon-button-big {
+  font-size: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  width: 1.5em;
+
+}
+
+/* Green mobile icons */
+
+.context-icons-xs-holder {
+  border: 1px solid $green;
+
+}
+.context-icons-xs {
+  display: table;
+  margin: $px10 auto;
+
+}
+.context-icons-xs>div {
+  display: table-cell;
+  vertical-align: bottom;
+
+}
+.context-icons-xs>div+div {
+  padding-left: $px5;
+
+}
+.context-icons-xs a>span {
+  border-bottom: 2px solid $gray_color;
+  display: block;
+  margin-bottom: 2px;
+  text-align: center;
+
+}
+.context-icons-xs a>i {
+  background-color: $gray_color;
+  color: $white;
+  font-size: $px24;
+  height: $px40;
+  line-height: $px40;
+  text-align: center;
+  width: $px40;
+
+}
+.context-icons-xs a:hover>i {
+  background-color: $green;
+
+}
+.context-icons-xs a:hover>span {
+  border-bottom: 2px solid $green;
+  color: $green;
+
+}
+.context-icons-xs a.red-rollover:hover>i {
+  background-color: #f14949;
+
+}
+.context-icons-xs a.orange-rollover:hover>i {
+  background-color: $orange_color;
+
+}
+.context-icons-xs a.orange-rollover:hover>span {
+  border-bottom: 2px solid $orange_color;
+  color: $orange_color;
+
+}
+.context-icons-xs a+a {
+  margin-left: $px5;
+}
+
+/* / Green mobile icons */
+
+/* Begin WCS icons */
+
+.wcs-g-icon {
+  //background-color: $gray_color;
+  //color: $darker_main_font_4;
+  display: inline-block;
+  font-size: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  //margin-right: $px10;
+  position: relative;
+  text-align: center;
+  width: 1.5em;
+  i {
+    line-height: $px40;
+  }
+}
+
+.wcs-g-icon i.icon-items-count {
+  background-color: #f04949;
+  border-radius: 50%;
+  display: block;
+  font-style: normal;
+  position: absolute;
+  color: #fff;
+
+}
+.wcs-g-icon-gray {
+  background-color: $gray_color;
+}
+a:hover .wcs-g-icon-green-rollover,
+.wcs-g-icon-green {
+  background-color: $green;
+  color: $white;
+
+}
+a:hover .wcs-g-icon-red-rollover,
+.wcs-g-icon-red {
+  background-color: #f14949;
+  color: $white;
+}
+a:hover .wcs-g-icon-orange-rollover,
+.wcs-g-icon-orange {
+  color: $white;
+  background-color: $orange_color;
+}
+
+.wcs-g-icon i.fa,
+.wcs-g-icon i.fc {
+  //font-size: $px24;
+  line-height: 1;
+}
+.wcs-g-icon i.fa-edit {
+  line-height: 42px;
+
+}
+.wcs-g-icon-plus {
+  line-height: $px36;
+}
+
+.wcs-g-icon-image {
+	line-height: 1;
+	vertical-align: middle;
+}
+
+.wcs-g-icon-image>span {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.wcs-g-icon-image>span>span {
+	display: table-cell;
+	height: 100%;
+	line-height: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+
+@media only screen and (min-width: 768px) {
+  .wcs-g-icon {
+    //height: $px40;
+    //line-height: $px40;
+    //width: $px40;
+
+  }
+  .wcs-g-icon i.icon-items-count {
+    height: $px24;
+    line-height: $px24;
+    right: -8px;
+    top: -8px;
+    width: $px24;
+
+  }
+
+}
+/* End WCS icons */
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+  .content-bottom-icons {
+    padding-bottom: 0;
+  }
+  .cp-center-right-icons {
+    display: block;
+    float: right;
+  }
+}
+
+

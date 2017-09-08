@@ -1,0 +1,10 @@
+<a href="" ng-click="choice.onActive(context)">
+  <span class="fc-toolbar-icon {{choice.style}}" ng-class="{selected:choice.state}">
+    <i class="{{choice.icon}}"></i><span>{{choice.label|translate}}</span>
+  </span>
+  <span class="label">{{choice.tooltip|translate}}</span>
+  <span ng-if="choice.notificationsCount" class="fa-stack fa-stack-3x notification-count">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <span class="fa-stack-1x">{{choice.notificationsCount}}</span>
+  </span>
+</a>

@@ -1,0 +1,15 @@
+<div class="home-external-icons">
+
+  <button type="button" class="field btn button-inherit-width facebook-icon" ng-click="login('facebook')">
+    <span class="fa fa-facebook"></span> {{'FACEBOOK_CONNECT'|translate}}
+  </button>
+  <div class="warning for-sign-up">
+    {{'FACEBOOK_WARNING'|translate}}&nbsp;<i class="fa fa-question-circle" data-tooltip-placement="right" ng-attr-tooltip-html-unsafe="{{'FACEBOOK_WARNING_TOOLTIP'|translate}}"></i>
+  </div>
+
+  <div ng-if="showAppIcons">
+    <div class="content-delimiter-short"></div>
+    <fc-app-icons data-locale="{{locale}}"></fc-app-icons>
+  </div>
+
+</div>

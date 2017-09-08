@@ -1,0 +1,10 @@
+<div tabindex="-1" class="clearfix">
+  <div class="pull-left">
+    <fc-avatar data-user="match.model" data-disable-link="true"></fc-avatar>
+    <!-- <img class="avatar-size45" ng-src="{{ match.model.avatar_url }}"> -->
+  </div>
+  <div>
+    <div class="add-relative-username" ng-bind-html="match.model.user_name | typeaheadHighlight:query"></div>
+    <div class="add-relative-mail" ng-if="match.model.email"><i class="fa fa-envelope-o"></i>&nbsp;<span ng-bind-html="match.model.email | typeaheadHighlight:query"></span></div>
+  </div>
+</div>

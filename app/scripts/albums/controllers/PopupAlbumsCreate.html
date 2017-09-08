@@ -1,0 +1,32 @@
+<div id="add-album-modal" ng-init="init()">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3>{{ "CREATE_ALBUM_POPUP_TITLE" | translate }}</h3>
+      <br />
+      <!-- Fixes #5482
+        <h5 class="center-text" data-translate>CREATE_ALBUM_POPUP_INSTRUCTION</h5>
+      -->
+      <div class="vertical-button-group import-contacts-buttons">
+        <div>
+          <a class="btn btn-primary btn-lg button-min-width pointer" ng-click="goToCreateAlbum()"><span>{{ "CREATE_ALBUM" | translate }}</span></a>
+        </div>
+        <!-- Fixes #5482
+          <div>
+              <a class="gray-button-g button-with-image-icon button-min-width" href="#"><span><i><i class="fa fa-facebook-square"></i></i><span>{{ "FACEBOOK_ALBUM" | translate }}</span></span></a>
+          </div>
+          <div>
+              <a class="gray-button-g button-with-image-icon button-min-width" href="#"><span><i><i class="fa fa-book"></i></i><span>{{ "PICASA_ALBUM" | translate }}</span></span></a>
+          </div>
+          <div>
+              <a class="gray-button-g button-with-image-icon button-min-width" href="#"><span><i><i class="fa fa-flickr"></i></i><span>{{ "FLICKR_ALBUM" | translate }}</span></span></a>
+          </div>
+        -->
+        <div>
+          <a class="btn btn-secondary btn-lg button-min-width pointer" ng-click="$close()" type="submit"><span>{{ "CANCEL" | translate }}</span></a>
+        </div>
+      </div>
+      <br/>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>DELETE_MY_ACCOUNT</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-settings-menu data-current-section="unsubscription"></fc-settings-menu>
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <div class="center-to-left-text">
+              <p>{{"UNSUBSCRIPTION.CONTACT"|translate}} <a href="" ui-sref="u.settings-contact" translate>CONTACT_US_LINK</a></p>
+              <p data-translate>UNSUBSCRIPTION.INSTRUCTIONS</p>
+              <br/>
+              <form data-fc-form-submit data-submit-method="deleteAccount()" data-form-in-progress="formInProgress" novalidate name="unsubscriptionForm" class="standard-form login-form c-width-1" id="intro_form" method="POST">
+                <div class="form-group">
+                  <div class="textarea-with-icon textarea-with-icon-nobmargin" ng-class="{'has-error': (unsubscriptionForm.reason.$dirty || submitted) && unsubscriptionForm.reason.$invalid}">
+                    <textarea class="form-control" id="message-text" name="reason" data-ng-attr-placeholder="{{ 'WRITE_HERE_YOUR_MESSAGE' | translate }}" ng-model="reason" required></textarea>
+                    <label for="message-text"><i class="fa fa-pencil"></i>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button ui-sref="u.profile({'user_id': userId})" class="btn btn-primary button-force-full-width" type="button" translate>I_STAY</button>
+                </div>
+                <div class="form-group">
+                  <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-secondary button-force-full-width" ng-bind="'DELETE_MY_ACCOUNT' | translate"></button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

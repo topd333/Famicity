@@ -1,0 +1,10 @@
+<div class="wrapper">
+
+  <fc-wizard-step></fc-wizard-step>
+
+  <div ui-view="content" class="content">
+  </div>
+
+  <div ng-if="canSkip" ng-click="skip()" class="skip-step"><a data-translate>SKIP_STEP_LINK</a></div>
+
+</div>

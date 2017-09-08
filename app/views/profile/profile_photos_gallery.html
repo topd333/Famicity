@@ -1,0 +1,68 @@
+<div class="wrapper" ng-init="init()">
+
+    <div class="content">
+        <fc-header-bar user-id="userId">
+            <h2 class="pull-left" translate>MY_GALLERY</h2>
+        </fc-header-bar>
+
+        <div class="container-fluid column-holder">
+            <div class="row">
+                <div class="col-sm-4 left-column hidden-xs">
+                    <div class="left-column-block">
+                        <div class="my-profile-photo">
+                            <br />
+
+                          <h1 class="standard-page-heading my-profile-photo-h1 hidden-xs" data-translate>
+                            MY_PROFILE_PICTURE_TITLE</h1>
+                            <img class="left-block-profile-picture" ng-src="{{ userProfileGet.avatar_url }}" />
+
+                          <p class="clearfix" data-translate>PREVIEW_OF_MY_PROFILE_PICTURE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 right-column right-column-directory">
+
+                    <div class="main-content">
+
+                        <div class="clearfix hidden-xs">
+                            <div ncy-breadcrumb class="hidden-xs"></div>
+                        </div>
+
+                        <div class="clearfix">
+
+                          <div class="pull-right hidden-xs"><a class="btn btn-primary btn-lg" data-translate>SUBMIT</a>
+                          </div>
+                            <br class="visible-xs" />
+
+                          <p class="center-to-left-text" data-translate>PROFILE_MY_GALLERY_PAGE_INTRODUCTION</p>
+
+                        </div>
+                        <br />
+                        <div class="avatar-gallery-holder">
+                            <a href="#"><img src="/images/placeholders/avatar-gallery-1.jpg" /></a>
+                            <a href="#"><img src="/images/placeholders/avatar-gallery-2.jpg" /></a>
+                            <a class="selected" href="#">
+                                <div class="avatar-radiobutton">
+                                                            <span class="standard-radiobutton">
+                                                                <input id="a1" name="avatar" type="radio" checked="checked" />
+                                                                <span class="radio-element"></span>
+                                                            </span>
+                                                            <label for="a1" class="fa"></label>
+                                </div>
+                                <img src="/images/placeholders/avatar-gallery-3.jpg" />
+                            </a>
+                            <a href="#"><img src="/images/placeholders/avatar-gallery-4.jpg" /></a>
+                            <a class="non-selected" href="#"><img src="/images/placeholders/avatar-gallery-1.jpg" /></a>
+                            <a class="non-selected" href="#"><img src="/images/placeholders/avatar-gallery-2.jpg" /></a>
+                            <a href="#"><img src="/images/placeholders/avatar-gallery-3.jpg" /></a>
+                            <a href="#"><img src="/images/placeholders/avatar-gallery-4.jpg" /></a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

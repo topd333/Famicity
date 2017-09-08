@@ -1,0 +1,37 @@
+<div class="s-block story-s-block text-left clearfix" ng-if="::story.id">
+  <fc-left-column-block-header class="s-block-header story-header">
+    <h3 data-translate data-translate-values="{month: story.month, vowel: story.vowel}"
+        data-translate-interpolation="messageformat">STORY.LEFT_BLOCK.TITLE</h3>
+  </fc-left-column-block-header>
+  <h4>{{:: story.title }}</h4>
+  <div class="clearfix story-details">
+    <img class="img-responsive pull-left" alt="{{:: 'STORY.LEFT_BLOCK.TITLE' | translate:{month: story.month, vowel: story.vowel}:'messageformat' }}" ng-src="{{::story.photo_url}}" />
+    <div class="pull-right">
+      {{:: story.description }}
+      <a class="read-more" href="{{ story.blog_link }}" target="_blank" data-translate>STORY.LEFT_BLOCK.READ_MORE</a>
+    </div>
+  </div>
+
+  <button class="btn btn-story i-participate" ng-click="participate()" data-translate="">STORY.LEFT_BLOCK.I_PARTICIPATE</button>
+
+  <div class="they-participated">
+    <div class="title">
+      <i data-translate>STORY.LEFT_BLOCK.THEY_PARTICIPATED</i>
+    </div>
+    <div class="buttons">
+      <button class="btn not-closes disabled" disabled>
+        <span class="button-content">
+          <span class="count">{{:: story.users_participation_count }}</span>
+          {{:: 'STORY.LEFT_BLOCK.FAMICITY_PARTICIPATED' | translate }}
+        </span>
+      </button>
+      <button class="btn closes" ui-sref="u.story.get({id: story.id})" ui-sref-opts="{reload: true}">
+        <span class="button-content">
+          <span class="count">{{:: story.closes_participation_count }}</span>
+          {{:: 'STORY.LEFT_BLOCK.CLOSES_PARTICIPATED' | translate }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+</div>

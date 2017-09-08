@@ -1,0 +1,19 @@
+<div class="comments-wrapper">
+  <div>
+    <a ng-show="object.last_comments.length < object.comments_count && !object.comments"
+       class="show-more-comments pointer" ng-click="showMoreComments()"><i class="fa fa-caret-up"></i><span data-translate>COMMENTS.SHOW_OLD</span></a>
+
+    <div class="comments-list" ng-if="object.comments.length > 0 || object.last_comments.length">
+
+      <div ng-if="object.comments" ng-repeat="comment in object.comments">
+        <fc-comment ng-attr-id="comment-{{::comment.id}}" data-object="comment" data-user="{id:comment.author_id,avatar_url:comment.author_avatar_url}" data-on-delete="deleteComment(commentId)" data-on-edit="editComment(commentId,userId)" data-on-update="updateComment(editCopy,textVal,userId)" edit-label="{{::'COMMENTS.EDIT'|translate}}"></fc-comment>
+      </div>
+      <div ng-if="!object.comments" ng-repeat="comment in object.last_comments">
+        <fc-comment ng-attr-id="comment-{{::comment.id}}" data-object="comment" data-user="{id:comment.author_id,avatar_url:comment.author_avatar_url}" data-on-delete="deleteComment(commentId)" data-on-edit="editComment(commentId,userId)" data-on-update="updateComment(editCopy,textVal,userId)"></fc-comment>
+      </div>
+
+    </div>
+  </div>
+
+  <fc-comment data-on-create="addComment(text)" data-user="::user" edit-label="{{'ADD_A_COMMENT'|translate}}"></fc-comment>
+</div>

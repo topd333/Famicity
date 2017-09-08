@@ -1,0 +1,37 @@
+<div>
+  <div class="f-block-header clearfix">
+    <div class="f-block-header-left f-block-header-left-nolmargin f-block-header-left-with-icon clearfix">
+      <span>
+        <a ui-sref="u.profile-photos({user_id: feedAvatar.user_concerned_id || feedAvatar.author_id})">
+          <span class="f-block-icon-text" translate>PROFILE_PHOTOS</span> <span class="f-block-icon">
+              <i class="fa fa-picture-o"></i>
+          </span><br>
+        </a>
+      </span>
+
+      <div>
+        <div ng-if="::!feedAvatar.user_concerned_id">
+          <a class="green-link-color" ui-sref="u.profile({user_id: feedAvatar.author_id})">{{::feedAvatar.author_name}}</a>
+          <span data-translate data-translate-values="{GENDER:feedAvatar.author_gender.toLowerCase()}"
+                data-translate-interpolation="messageformat">CHANGED_PROFILE_PICTURE</span>
+        </div>
+        <div ng-if="::feedAvatar.user_concerned_id"
+             ng-bind-html="::'X_CHANGED_PROFILE_PICTURE_OF_Y' | translate: {user_concerned_id: feedAvatar.user_concerned_id, concerned_user_name: feedAvatar.user_concerned_name, author_id: feedAvatar.author_id, author_name: feedAvatar.author_name} | trustedHtml"></div>
+        <span class="at">{{:: feedAvatar.updated_date * 1000 | timeOrDatePrefixFilter }} {{ feedAvatar.updated_date * 1000 | timeOrDateFilter }}</span>
+      </div>
+
+    </div>
+  </div>
+  <a ui-sref="u.profile-photos-item({user_id: feedAvatar.user_concerned_id || feedAvatar.author_id, photo_id: feedAvatar.id})">
+    <div class="center-text"><div class="max-sized-full" afkl-lazy-image="{{:: feedAvatar.url_normal }}"></div></div>
+  </a>
+
+  <div class="comments-like-row">
+    <span class="comments"><i class="fa fa-comment-o"></i> <span class="hidden-xs" data-translate
+                                                                 data-translate-values="{NUM: feedAvatar.comments_count}"
+                                                                 data-translate-interpolation="messageformat">X_COMMENTS</span><span
+      class="visible-xs-inline">{{ feedAvatar.comments_count }}</span></span>
+    <fc-like data-object="feedAvatar" data-view-mode="default" data-list-page="listPageUrl"></fc-like>
+  </div>
+  <fc-comment-list data-object="feedAvatar" data-user="user"></fc-comment-list>
+</div>

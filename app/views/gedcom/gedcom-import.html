@@ -1,0 +1,116 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <fc-header-bar user-id="userId">
+      <h2 class="pull-left" translate>IMPORT_MY_GEDCOM</h2>
+    </fc-header-bar>
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-gedcom-left-menu></fc-gedcom-left-menu>
+        </div>
+        <div ng-show="canUpload" class="col-sm-8 right-column">
+          <div class="main-content">
+            <div ncy-breadcrumb class="hidden-xs"></div>
+            <form action="javascript:;" class="standard-form standard-form-nomargin login-form" id="intro_form" method="POST">
+              <div class="table">
+                <div class="table-cell"><img class="pic-in-text-left" src="/images/collage-ged.jpg">
+                </div>
+                <div class="table-cell v-align-top">
+                  <div class="gedcom-file-browse-instructions" translate>BROWSE_FILE_INSTRUCTION</div>
+                  <div ng-show="preloaded_file">
+                    <div class="col-sm-9">
+                      <div class="form-group">
+                        <div class="" ng-class="{'has-error': (profileBasicForm.lastName.$dirty || submitted) && profileBasicForm.lastName.$invalid}">
+                          <label class="sr-only" for="last-name" translate>GEDCOM_UPLOADER_PLACEHOLDER</label>
+                          <input class="form-control" id="last-name" ng-attr-placeholder="{{ 'GEDCOM_PLACEHOLDER' | translate }}*" name="lastName" type="text" ng-model="preloaded_file.name" disabled />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 gedcom-zero-padding">
+                      <a class="btn btn-danger btn-lg" ng-click="deletePreloadedFile()" translate>DELETE</a>
+                    </div>
+                  </div>
+                  <div ng-show="!preloaded_file" id="uploadBtn" class="clearfix row">
+                    <div class="col-sm-9">
+                      <div class="form-group">
+                        <div class="" ng-class="{'has-error': (profileBasicForm.lastName.$dirty || submitted) && profileBasicForm.lastName.$invalid}">
+                          <label class="sr-only" for="last-name" translate>GEDCOM_UPLOADER_PLACEHOLDER</label>
+                          <input class="form-control" id="last-name" ng-attr-placeholder="{{ 'GEDCOM_PLACEHOLDER' | translate }}*" name="lastName" type="text" disabled />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3 gedcom-zero-padding">
+                      <a class="btn btn-secondary btn-lg" translate>BROWSE</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <br>
+              <p class="danger-color" translate>USER_NAME_SHOULD_MATCH_ALERT</p>
+              <div class="table">
+                <div ng-if="optionsToShow.priority_to" class="row match-row">
+                  <div class="table-cell">
+                    <span class="standard-checkbox">
+                      <input id="deceased" name="deceased" type="checkbox" ng-model="upload_settings.priority_to" />
+                      <label for="deceased" class="fa"><span></span>
+                    </label>
+                    </span>
+                  </div>
+                  <div class="table-cell v-align-top">
+                    <label class="gedcom-deceased-label" for="deceased" data-translate>GEDCOM_CONFLICT_RESOLUTION_OPTION_LABEL</label>
+                    <br>
+                    <br>
+                  </div>
+                </div>
+
+                <div ng-if="optionsToShow.erase_tree" class="row">
+                  <div class="table-cell">
+                    <span class="standard-checkbox">
+                      <input id="deceased" name="deceased" type="checkbox" ng-model="upload_settings.erase_tree" />
+                      <label for="deceased" class="fa"><span></span>
+                    </label>
+                    </span>
+                  </div>
+                  <div class="table-cell v-align-top">
+                    <label class="gedcom-deceased-label" for="deceased"
+                           data-translate>GEDCOM_IMPORT_OPTION_ERASE_TREE</label>
+                    <br>
+                    <br>
+                  </div>
+                </div>
+              </div>
+              <div class="c-width-1">
+                <div class="form-group">
+                  <a class="btn btn-primary btn-lg button-inherit-width pointer" ng-click="startUpload()" translate>IMPORT</a>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+        <div ng-show="!canUpload && !pendingImport" class="col-sm-8 right-column">
+          <div class="main-content">
+            <div ncy-breadcrumb class="hidden-xs"></div>
+            <br>
+            <form action="javascript:;" class="standard-form standard-form-nomargin login-form" id="intro_form" method="POST">
+              <div class="table">
+                <div class="table-cell"><img class="pic-in-text-left" src="/images/collage-ged.jpg">
+                </div>
+                <div class="table-cell v-align-top" ng-bind-html="'IMPORT_GEDCOM_ONGOING_INSTRUCTIONS_PAGE' | translate: {date: uploadFile.created_date}"></div>
+              </div>
+              <br>
+              <div class="c-width-1">
+                <a class="btn btn-secondary btn-lg button-inherit-width pointer" ng-click="cancelImport(true)" translate>CANCEL_IMPORT</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

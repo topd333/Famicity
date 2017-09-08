@@ -1,0 +1,30 @@
+<div class="table-cell notification-item" ng-class="{'unread' : unread, 'clickable': clickable}">
+  <div class="table">
+    <div class="table-row">
+      <div class="table-cell notification-user-picture v-align-middle" ng-if="!numberOfUsers || numberOfUsers < 2" ng-class="type">
+        <a ng-if="!disableUserLink" ui-sref="u.profile({ 'user_id': userId })"><img ng-src="{{ avatarUrl }}"></a>
+        <img ng-if="disableUserLink" ng-src="{{ avatarUrl }}">
+        <div class="icons fa-stack">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-stack-1x"></i>
+        </div>
+      </div>
+      <div ng-if="numberOfUsers && numberOfUsers > 1" class="table-cell notification-picture v-align-middle">
+        <i class="fa" ng-class="type"></i>
+      </div>
+      <div class="v-align-middle notification-info">
+        <span class="notification-date" ng-attr-title="{{ $moment(date, 'X').calendar() }}">{{ $moment(date, 'X').calendar({timeOrDate: true}) }}</span>
+        <div style="line-height: 18px;">
+          <a ng-if="!disableUserLink && userId != currentUserId" class="notification-user-name" ui-sref="u.profile({ 'user_id': userId })">{{ userName }}</a>
+          <a ng-if="!disableUserLink && userId == currentUserId" class="notification-user-name"
+             ui-sref="u.profile({ 'user_id': userId })" data-translate>YOU</a>
+          <span ng-if="disableUserLink && userId != currentUserId" class="notification-user-name">{{ userName }}</span>
+
+        </div>
+        <!--  -->
+        <div ng-if="text" class="notification-text v-align-middle">{{ text }}</div>
+        <div ng-if="textKey" class="notification-text v-align-middle">{{ textKey | translate }}</div>
+      </div>
+    </div>
+  </div>
+</div>

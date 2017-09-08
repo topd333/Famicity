@@ -1,0 +1,40 @@
+<div class="success">
+
+  <table class="stats">
+    <thead>
+      <tr>
+        <th class="gedcom">{{'GEDCOM.IMPORT.SUCCESS.GEDCOM.TITLE'|translate}}<br/><i class="icon fc fc-file-check"></i></th>
+        <th class="import">{{'GEDCOM.IMPORT.SUCCESS.IMPORT.TITLE'|translate}}<br/><i class="icon fc fc-file-user"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="gedcom">
+        <div class="count">{{gedcomImport.count_members_gedcom|number}}</div>
+        <span data-translate data-translate-values="{count:gedcomImport.count_members_gedcom}" data-translate-interpolation="messageformat">GEDCOM.IMPORT.SUCCESS.GEDCOM.PROFILE_COUNT</span>
+      </td>
+      <td class="import">
+        <div class="count">{{gedcomImport.count_users_created|number}}</div>
+        <span data-translate data-translate-values="{count:gedcomImport.count_users_created}" data-translate-interpolation="messageformat">GEDCOM.IMPORT.SUCCESS.IMPORT.CREATED_PROFILE_COUNT</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="gedcom">
+        <div class="count">{{gedcomImport.count_members_in_ged_tree|number}}</div>
+        <span data-translate data-translate-values="{count:gedcomImport.count_members_in_ged_tree}" data-translate-interpolation="messageformat">GEDCOM.IMPORT.SUCCESS.GEDCOM.LINKED_PROFILE_COUNT</span>
+      </td>
+      <td class="import">
+        <div class="count">{{gedcomImport.count_members_match|number}}</div>
+        <span data-translate data-translate-values="{count:gedcomImport.count_members_match}" data-translate-interpolation="messageformat">GEDCOM.IMPORT.SUCCESS.IMPORT.ALREADY_THERE_COUNT</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <a class="see-my-tree btn btn-primary btn-lg" ui-sref="u.tree({user_id: userId, ts: gedcomImport.id})" ui-sref-opts="{reload: true}"
+            data-translate>GEDCOM.IMPORT.SUCCESS.SEE_MY_TREE
+    </a>
+  </div>
+
+</div>

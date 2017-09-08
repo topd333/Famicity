@@ -1,0 +1,37 @@
+#what {
+  @include page($white);
+
+  a {
+    text-decoration: none;
+  }
+  .contents {
+    .centered {
+      transition: all 1s;
+    }
+    padding-bottom: 0;
+    margin-bottom: -2em;
+  }
+  &:target {
+    .contents {
+      .centered {
+        vertical-align: middle;
+      }
+    }
+  }
+  p  {
+    color: #A6A6A6;
+  }
+
+  .image {
+    position: relative;
+    height: 22em;
+    width: 100%;
+    background-size: cover;
+  }
+  .platforms {
+    display: none;  // Will not load image as using font
+  }
+  .app-icons {
+    display: none;  // TODO: Redesign them using CSS to avoid image loading
+  }
+}

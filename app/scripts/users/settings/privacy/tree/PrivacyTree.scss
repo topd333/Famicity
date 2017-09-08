@@ -1,0 +1,17 @@
+.settings.privacy.tree {
+  fc-menu {
+    display: block; // Cancel tree page menu removal
+  }
+}
+@include aboveMediumScreen() {
+  .settings.privacy.tree {
+    .action-submit {
+      display: none;
+    }
+    .content-view {
+      .left-column {
+        margin-top: -$fcMenuHeight;
+      }
+    }
+  }
+}

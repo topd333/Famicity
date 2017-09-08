@@ -1,0 +1,43 @@
+<div class="table directory-item-table pointer">
+  <fc-avatar ng-if="!isOpen" data-link-disabled="true" class="avatar-size40 table-cell directory-item-table-cell-picture" data-user="user"></fc-avatar>
+  <div ng-if="!isOpen" class="table-cell directory-item-table-cell-info" ng-click="open(user.id)">
+    <h2 class="tree-matching-user-name">{{ user.user_name }}</h2>
+    <span ng-if="user.email">
+      <i class="fa fa-envelope-o"></i>&nbsp;{{ user.email }}
+    </span>
+  </div>
+  <div ng-if="isOpen" class="active clearfix">
+    <div>
+      <fc-avatar data-link-disabled="true" class="table-cell directory-item-table-cell-picture" data-user="user"></fc-avatar>
+    </div>
+    <div class="primary-information">
+      {{ user.first_name }}
+      {{ user.middle_name }}
+      <strong>{{ user.last_name }}</strong>
+    </div>
+    <div ng-if="user.maiden_name" class="maiden-name secondary-information">
+      {{ user.maiden_name }}
+    </div>
+    <div ng-if="user.birth_date || user.birth_place" class="secondary-information">
+      <i class="fa fa-gift"></i>
+      {{ $moment.fromServer(user.birth_date).format('L') }}!--
+      --><span ng-if="user.birth_date">,&nbsp;</span>{{ 'TREE.SEARCH.IN' | translate:({place: user.birth_place}) }}</span>
+    </div>
+    <div class="invitation-invitation">
+      {{ 'TREE.MATCHING.WISH_INVITE' | translate:{gender: user.sex}:'messageformat' }}
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+      <label class="sr-only" ng-attr-for="{{ 'tree-matching-' + user.id }}" data-translate>EMAIL</label>
+      <input class="form-control" ng-attr-id="{{ 'tree-matching-' + user.id }}" data-translate
+             data-translate-attr-placeholder="EMAIL" ng-model="invitationEmail"/>
+    </div>
+
+    <div class="actions">
+      <div class="end">
+        <button class="btn btn-secondary" ng-click="dismiss()" data-translate>TREE.MATCHING.DO_NOT_INVITE</button>
+        <button class="btn btn-primary" ng-click="invite()" data-translate>INVITE</button>
+      </div>
+    </div>
+  </div>
+</div>

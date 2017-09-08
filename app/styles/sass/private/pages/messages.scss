@@ -1,0 +1,271 @@
+.message-index-header-left {
+  font-size: 16px;
+  margin-right: 40px;
+  text-align: left;
+}
+
+.message-index-header-left h2 {
+  color: $green;
+  display: inline;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.message-index-header-left span,
+.message-index-header-left span a {
+  color: #a4a4a4;
+}
+
+.message-index-more-messages span {
+  display: block;
+
+  margin-top: -10px;
+  text-decoration: underline;
+}
+
+.message-index-left-list {
+  text-align: left;
+}
+
+.message-index-left-list h3 {
+  color: $green;
+  font-size: 18px;
+}
+
+.message-index-left-list .pagination {
+  margin-bottom: 10px;
+}
+
+.message-index-left-list .message {
+  border-top: 1px solid $gray_color;
+  color: $lighter_main_font_25;
+  font-size: 16px;
+  line-height: 1;
+  padding: 10px 5px;
+}
+
+.message-index-left-list .message.active {
+  background-color: #e0eaee;
+}
+
+h3.homepage-ann-h3-m {
+  color: $green;
+  font-size: 15px;
+  margin: 0;
+}
+
+.message-index-left-list .message > span:first-child {
+
+  color: $green;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.message-index-left-list .message > h4 {
+
+  color: $main_font_color;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 90px 0 20px;
+}
+
+.message-index-left-list .message > div > span:first-child {
+  color: $main_font_color;
+  font-size: 20px;
+}
+
+.message-index-left-list .message > div > span:nth-child(2) {
+  background-color: $green;
+  border-radius: 2px;
+  color: $white;
+  display: block;
+  margin-right: 10px;
+  margin-top: 2px;
+  padding: 2px 4px;
+}
+
+.message-index-left-list .message > div > span:nth-child(3) {
+  display: block;
+  margin: 5px 40px 0 20px;
+  line-height: 1.2;
+  @include ellipsis;
+}
+
+.message-index-left-list .message > div > span.message-index-left-list-nof-empty {
+  background-color: transparent;
+}
+
+.message-index-left-list .message .message-index-left-list-nom {
+  margin-left: 0 !important;
+}
+
+.message-index-left-list .message h4 span {
+  display: inline;
+
+  font-weight: normal;
+}
+
+.msg-item-header {
+  border-bottom: 1px solid $gray_color;
+}
+
+.msg-item-header .table-cell {
+  padding-bottom: 15px;
+}
+
+.msg-item-header h2 {
+  display: inline;
+  font-size: 125%;
+  font-weight: bold;
+}
+
+.msg-item-entries-caret {
+  margin-bottom: -8px;
+}
+
+.msg-item-entry {
+  margin-top: 10px;
+}
+
+.msg-item-entry .table {
+  border-radius: 4px;
+  width: 75%;
+}
+
+.msg-item-entry .table-cell {
+  line-height: 1.2;
+  padding: 10px;
+
+}
+
+.msg-item-entry-in {
+  .table {
+    background-color: #cce9f7;
+    margin-right: auto;
+  }
+  .msg-item-sender {
+    color: $blue_color;
+  }
+  a.generatedLink {
+    color: #369be1;
+  }
+}
+
+.msg-item-entry-out {
+  .table {
+    background-color: #ebf5d3;
+    margin-left: auto;
+  }
+  .msg-item-sender {
+    color: $green;
+  }
+}
+
+.msg-item-update-date {
+  color: $lighter_main_font_25;
+}
+
+.msg-entry-avatar.table-cell {
+  padding-right: 0;
+  width: 3.2em;
+  .avatar{
+    width: 2.5em;
+    height: 2.5em;
+  }
+  .fc-logo{
+    color: $green;
+    font-size: 1.45em;
+    background: $white;
+    border-radius: 50%;
+    border: solid 2px $green;
+    padding: 0.25em;
+    position: relative;
+    top: 0.4em;
+  }
+}
+
+.msg-list .msg-list-item {
+  padding-bottom: 1px;
+
+  padding-top: 1px;
+}
+
+.msg-list .msg-list-item:nth-child(even) .table {
+  background-color: #fafbfd;
+}
+
+.msg-list .msg-list-item + .msg-list-item {
+  border-top: 1px solid $gray_color;
+}
+
+.msg-list .msg-dot {
+  width: 30px;
+
+}
+
+.msg-list .table-cell {
+  overflow: hidden;
+  padding-top: 5px;
+}
+
+.msg-list .table + .table .table-cell {
+  padding-bottom: 5px;
+  padding-top: 2px;
+}
+
+.msg-list .table-cell.msg-ellipsis {
+
+  max-width: 100px;
+}
+
+.msg-list .table-cell.msg-ellipsis p {
+  margin-bottom: 0;
+  @include ellipsis;
+  width: 100%;
+}
+
+.msg-list .msg-time {
+  padding-right: 5px;
+}
+
+.msg-list .msg-angle {
+  padding-right: 10px;
+}
+
+.msg-list .msg-angle * {
+  vertical-align: middle;
+}
+
+.msg-list .msg-item-number {
+  background-color: $green;
+  border-radius: 4px;
+  color: $white;
+  display: inline-block;
+  padding: 2px 4px;
+}
+
+.left-column-block-message-list {
+  margin-top: 10px;
+}
+
+// TODO: remove when harmonized
+@media only screen and (min-width: 480px) {
+  .message-add .textarea-with-icon textarea,
+  .message-add .input-group,
+  .message-add .input-group input,
+  .message-add .fake-input {
+    font-size: 1em;
+  }
+  .message-add a.fake-input.fake-input-expandable-height span {
+    line-height: 1.8em;
+    margin-top: 0.8em;
+  }
+}
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+  .message-index-header-left {
+    margin-right: 140px;
+
+  }
+}

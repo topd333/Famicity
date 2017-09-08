@@ -1,0 +1,57 @@
+blockquote {
+  float: left;
+  $quotePadding: 1.5em;
+  padding-right: 0;
+  border: none;
+  width: 100% - $sliderWidth - $sliderWidth;
+  p {
+    text-indent: -$quotePadding;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    &:before {
+      font-family: 'famicity';
+      content: "\e60e\00a0";
+    }
+    &:after {
+      font-family: 'famicity';
+      content: "\00a0\e60f";
+    }
+  }
+  cite {
+    font-style: italic;
+  }
+}
+
+#engage {
+  @include page($white);
+
+  h1 {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .quotes {
+    display: none;
+  }
+  .form-container {
+    width: 100%;
+    display: inline-block;
+    .btn {
+      border-radius: 0.2em;
+      border: none;
+      width: 100%;
+      line-height: $fieldHeight;
+      max-width: $formWidthMax;
+      color: $white;
+      margin: 1em 0;
+      display: inline-block;
+      a {
+        text-decoration: none;
+      }
+      text-decoration: none;
+      &.btn-secondary {
+        margin-top: 0;
+      }
+    }
+  }
+}

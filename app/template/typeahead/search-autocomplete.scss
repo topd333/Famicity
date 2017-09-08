@@ -1,0 +1,57 @@
+.autocomplete-holder {
+  width: 120%;
+  top: 0 !important;
+  .avatar {
+    height: 3.15em;
+    width: 3.15em;
+    .avatar-rounded{
+      margin-right: 10px;
+      display: inline-block;
+    }
+  }
+}
+.autocomplete-list > a {
+  & > div {
+    padding: 0.625em 0 0.3125em 0.3125em;
+    border-top: solid 1px $lighter_gray_3;
+    &:focus {
+      outline: 0;
+    }
+    &.see-more {
+      padding: 0.625em;
+      background-color: $green;
+      color: white;
+      text-decoration: underline;
+    }
+    &.empty, &.error {
+      color: $main_font_color;
+      background-color: white;
+      cursor: default;
+    }
+    &.in-tree {
+      color: $main_font_color;
+      background: $colorGreenLightest;
+      i {
+        line-height: 1;
+        font-size: 2.5em;
+        color: $green;
+      }
+      .pull-left {
+        width: 20%;
+        margin-bottom: 0.2em;
+      }
+      .pull-right {
+        margin-top: 0.2em;
+        width: 80%;
+      }
+    }
+  }
+  &.active {
+    .see-more {
+      background-color: $lighter_green_19;
+    }
+    .in-tree {
+      background: rgba(150, 189, 62, 0.2);
+    }
+  }
+}

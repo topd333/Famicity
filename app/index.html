@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html ng-controller="MainController" ng-cloak lang="{{ locale }}">
+
+<head>
+  <base href="/">
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=no-js.html"/>
+  </noscript>
+
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="fragment" content="!">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0,maximum-scale=1,user-scalable=no,width=device-width">
+  <meta name="apple-itunes-app" content="app-id=860645997">
+  <meta name="google-play-app" content="app-id=com.famicity.famicity">
+  <meta name="google" content="notranslate"/>
+  <meta name="description" lang="{{ locale }}" content="{{ description }}">
+  <title ng-bind="PageTitle.title()">Famicity</title>
+  <meta http-equiv="Content-Language" content="{{ locale }}">
+  <link ng-if="alternates" rel="alternate" href="{{ alternates.en }}" hreflang="en"/>
+  <link ng-if="alternates" rel="alternate" href="{{ alternates.fr }}" hreflang="fr"/>
+  <link ng-if="homepage" rel="alternate" href="{{ homepage }}" hreflang="x-default"/>
+  <link ng-if="homepage" rel="alternate" href="android-app://com.famicity.famicity/https/www.famicity.com"/>
+
+  <link href='//fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  <!-- build:css(.tmp) /styles/css/famicity.min.css -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/bower_components/famicity_font/famicity_font.css">
+  <link rel="stylesheet" href="/styles/css/bootstrap.css">
+  <link rel="stylesheet" href="/libs/jquery.smartbanner/jquery.smartbanner.css">
+  <link rel="stylesheet" href="/styles/css/parallax-sprite.css">
+  <link rel="stylesheet" href="/styles/css/royalslider.css">
+  <link rel="stylesheet" href="/styles/css/rs-default-inverted.css">
+  <link rel="stylesheet" href="/styles/css/famicity.css">
+  <link rel="stylesheet" href="/bower_components/ngImgCrop/compile/unminified/ng-img-crop.css">
+  <!-- endbuild -->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+</head>
+
+<body class="{{pageId}} {{pageType}} notranslate">
+
+<!-- alert popin -->
+<div ng-repeat="notif in notifications" class="notification-animation alert alert-popin" ng-class="notif.type">
+  <span ng-bind-html="notif.text"></span>
+  <button ng-if="notif.dismissable" type="button" class="close" aria-hidden="true"
+          ng-click="notif.undo()">&times;</button>
+</div>
+
+<div class="spinner" ng-show="showLoading">
+  <img ng-src="{{configuration.static2Url + '/images/tree-loader_180.gif'}}" alt="spinner"/>
+</div>
+
+<fc-header ng-if="pageType=='private'"></fc-header>
+<fc-info-bar ng-if="pageType == 'private'"></fc-info-bar>
+<div class="menu wrapper" ng-if="pageType=='private'">
+  <div class="content">
+    <fc-menu></fc-menu>
+  </div>
+</div>
+
+<div id="scroll" afkl-image-container>
+  <fc-cookies></fc-cookies>
+  <div id="content-view" class="content-view" data-ui-view fc-state-loader data-autoscroll></div>
+</div>
+
+<fc-notifications ng-if="pageType == 'private'"></fc-notifications>
+<fc-chat ng-if="pageType == 'private'"></fc-chat>
+
+<script>
+  if (!document.addEventListener || !('withCredentials' in new XMLHttpRequest())) {
+    var arr, result, url;
+    url = window.location.href;
+    arr = url.split('/');
+    result = arr[0] + '//' + arr[2];
+    window.location.replace(result + '/browser.html');
+  }
+</script>
+<script> window.prerenderReady = false; </script>
+<script src="//www.googleadservices.com/pagead/conversion_async.js" charset="utf-8"></script>
+<script src="//cdn.socket.io/socket.io-1.3.6.js"></script>
+
+@@thirdPartyLibs
+
+<!-- build:js(.tmp) /scripts/famicity.min.js -->
+<script src="/libs/fine-uploader.js"></script>
+<script src="/libs/cropper.js"></script>
+<script src="/libs/jquery.parallax-1.1.3.js"></script>
+
+<script src="/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+<script src="/bower_components/angular-translate/angular-translate.js"></script>
+<script src="/libs/messageformat-0.2.2.js"></script>
+<script src="/bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+<script src="/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="/bower_components/angular-ui-router-i18n/i18nUrlMatcherFactory.js"></script>
+<script src="/bower_components/moment/moment.js"></script>
+<script src="/bower_components/moment/locale/fr.js"></script>
+<script src="/bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+<script src="/bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
+<script src="/bower_components/jstimezonedetect/jstz.js"></script>
+<script src="/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="/bower_components/isMobile/isMobile.js"></script>
+<script src="/bower_components/hello/src/hello.js"></script>
+<script src="/bower_components/hello/src/modules/facebook.js"></script>
+<script src="/bower_components/ngImgCrop/compile/unminified/ng-img-crop.js"></script>
+<script src="/bower_components/afkl-lazy-image/release/lazy-image.js"></script>
+
+<script src="/libs/requestAnimationFrame-polyfill.js"></script>
+
+<script src="/libs/ui-bootstrap-custom.js"></script>
+
+<!-- photo slider -->
+<script src="/libs/royalslider/jquery.royalslider.js"></script>
+<script src="/libs/royalslider/jquery.rs.active-class.js"></script>
+<script src="/libs/royalslider/jquery.rs.animated-blocks.js"></script>
+<script src="/libs/royalslider/jquery.rs.auto-height.js"></script>
+<script src="/libs/royalslider/jquery.rs.autoplay.js"></script>
+<script src="/libs/royalslider/jquery.rs.bullets.js"></script>
+<script src="/libs/royalslider/jquery.rs.deeplinking.js"></script>
+<script src="/libs/royalslider/jquery.rs.fullscreen.js"></script>
+<script src="/libs/royalslider/jquery.rs.global-caption.js"></script>
+<script src="/libs/royalslider/jquery.rs.nav-auto-hide.js"></script>
+<script src="/libs/royalslider/jquery.rs.tabs.js"></script>
+<script src="/libs/royalslider/jquery.rs.thumbnails.js"></script>
+<script src="/libs/royalslider/jquery.rs.video.js"></script>
+<script src="/libs/royalslider/jquery.rs.visible-nearby.js"></script>
+
+<script src="/libs/jquery.smartbanner/jquery.smartbanner.js"></script>
+<script src="/libs/jquery.autosize.js"></script>
+
+<!-- these are used to order album photos -->
+<script src="/libs/jquery-ui-1.10.4.custom.js"></script>
+<script src="/libs/sortable.js"></script>
+<script src="/libs/hand-1.3.8.js"></script>
+
+<script src="/libs/debug.js"></script>
+<!-- bugsnag.js -->
+<script src="/libs/bug_handler.js"></script>
+
+<!-- inject:js -->
+<!-- endinject -->
+
+<!-- endbuild -->
+
+<script src="/scripts/config/config.js"></script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  (function() {
+    'use strict';
+    var u = '//analytics.famicity.com';
+    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+    g.type = 'text/javascript';
+    g.async = true;
+    g.defer = true;
+    g.src = u + '/piwik.js';
+    s.parentNode.insertBefore(g, s);
+  })();
+</script>
+<noscript><p><img src="//analytics.famicity.com/piwik.php?idsite=42" style="border:0;" alt=""/></p></noscript>
+<!-- End Piwik Code -->
+
+</body>
+</html>

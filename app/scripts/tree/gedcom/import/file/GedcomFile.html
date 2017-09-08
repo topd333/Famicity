@@ -1,0 +1,24 @@
+<div class="upload">
+
+  <h3 data-translate>GEDCOM.IMPORT.UPLOAD.SUBTITLE</h3>
+
+  <form class="standard-form login-form">
+    <div id="uploadBtn">
+      <div class="form-group">
+        <div class="file-name"
+             ng-class="{'has-error': (profileBasicForm.lastName.$dirty || submitted) && profileBasicForm.lastName.$invalid}">
+          <label class="sr-only" for="filename" data-translate>GEDCOM.IMPORT.UPLOAD.PLACEHOLDER</label>
+          <input class="form-control" id="filename"
+                 ng-attr-placeholder="{{ 'GEDCOM.IMPORT.UPLOAD.PLACEHOLDER' | translate }}*" name="filename"
+                 type="text" ng-model="preloaded_file.name"/>
+        </div>
+        <a class="browse btn btn-primary pointer" data-translate>BROWSE</a>
+      </div>
+    </div>
+  </form>
+
+  <div class="form-group" ng-if="!fromAnotherWizard">
+    <a class="btn btn-secondary large-button" ui-sref="u.tree({user_id: userId})"
+       data-translate>GEDCOM.IMPORT.UPLOAD.BACK_TO_TREE</a>
+  </div>
+</div>

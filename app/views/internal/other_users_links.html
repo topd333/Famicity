@@ -1,0 +1,38 @@
+<div ng-if="basicProfile.permissions.is_readable" class="left-column-block-content right-function-icons">
+    <a ng-if="basicProfile.global_state != 'directory' && basicProfile.global_state != 'unknown' && allowSeeHisProfile()" class="clearfix" ui-sref="u.profile({user_id: viewedUserId})">
+      <i><i class="fa fa-user"></i></i><span data-translate data-translate-values="{ GENDER: basicProfile.sex }"
+                                             data-translate-interpolation="messageformat">SEE_HIS_PROFILE</span>
+    </a>
+    <a ng-if="basicProfile.global_state != 'directory' && basicProfile.global_state != 'unknown'" class="clearfix" ui-sref="u.albums-index({user_id: viewedUserId})">
+      <i><i class="fa fa-picture-o"></i></i><span data-translate data-translate-values="{ GENDER: basicProfile.sex }"
+                                                  data-translate-interpolation="messageformat">SEE_HIS_ALBUMS</span>
+    </a>
+    <a ng-if="basicProfile.global_state != 'directory' && basicProfile.global_state != 'unknown'" class="clearfix" ui-sref="u.blog.query({user_id: viewedUserId})">
+        <i><i class="fa fa-pencil"></i></i>
+        <span>
+          {{ (basicProfile.is_deceased ? 'SEE_HIS_BIO' : 'SEE_HIS_DIARY') | translate: { GENDER: basicProfile.sex } : "messageformat" }}
+        </span>
+    </a>
+    <a ng-if="basicProfile.can_see_tree" class="clearfix" ui-sref="u.tree({user_id: viewedUserId})">
+      <i><i class="fa fa-leaf"></i></i><span data-translate data-translate-values="{ GENDER: basicProfile.sex }"
+                                             data-translate-interpolation="messageformat">SEE_HIS_TREE</span>
+    </a>
+    <!-- TODO : remove basicProfile.global_state == 'active' test when we will be able to send message to directory of managed profiles  -->
+    <a ng-if="basicProfile.global_state == 'active'" class="clearfix pointer" ui-sref="u.messages.add({users: [viewedUserId]})">
+        <i><i class="fa fa-envelope-o"></i></i><span translate>SEND_A_MESSAGE</span>
+    </a>
+    <a ng-if="basicProfile.global_state == 'active'" ng-click="block(user)" class="clearfix pointer red-rollover">
+        <i><i class="fa fa-minus-circle"></i></i><span translate>BLOCK_USER</span>
+    </a>
+    <a ng-if="basicProfile.global_state != 'active' && basicProfile.global_state != 'unknown' && basicProfile.global_state != 'deceased' && !user.is_invited_by_me && basicProfile.global_state != 'profile'" ng-click="invite(user)" class=" pointer clearfix">
+      <i><i class="fa fa-share-square-o"></i></i><span translate>INVITE_THIS_PERSON</span>
+    </a>
+
+    <a ng-if="basicProfile.global_state != 'active' && basicProfile.global_state != 'unknown' && basicProfile.global_state != 'deceased' && user.is_invited_by_me && basicProfile.global_state != 'profile'" ui-sref="u.directory.resend-invitation({invitation_id: user.concerned_invitation.id})" class="clearfix orange-rollover">
+      <i><i class="fa fa-share-square-o"></i></i><span translate>REVIVE_INVITATION</span>
+    </a>
+
+    <a ng-if="basicProfile.global_state == 'directory'" ng-click="openDeleteDirectoryUserAlert()" class="clearfix pointer red-rollover">
+      <i><i class="fa fa-trash"></i></i><span translate>DELETE_CONTACT</span>
+    </a>
+</div>

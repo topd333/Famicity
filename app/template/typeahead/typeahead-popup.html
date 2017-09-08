@@ -1,0 +1,9 @@
+<div class="autocomplete-holder" ng-show="isOpen()" ng-style="{top: position.top+'px'}" style="display: block;" role="listbox" aria-hidden="{{!isOpen()}}">
+    <div class="autocomplete-outer">
+      <div class="autocomplete-list">
+        <a ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{match.id}}">
+          <div typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+        </a>
+      </div>
+    </div>
+</div>

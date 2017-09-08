@@ -1,0 +1,46 @@
+<div class="main-content">
+
+  <!--<div ng-hide="selectionMode" class="clearfix">-->
+    <!--<div class="center-right-icons clearfix hidden-xs">-->
+      <!--<a class="center-right-edit-icon btn btn-icon btn-icon-primary" ng-click="openGroupAddOptionsPopup()"><i class="fa fa-pencil-square-o"></i></a>-->
+      <!--<a class="center-right-plus-icon btn btn-icon btn-icon-primary" ng-click="openGroupAddBasicOptionsPopup()">+</a>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;<div ncy-breadcrumb class="hidden-xs"></div>&ndash;&gt;-->
+  <!--</div>-->
+  <!--<br />-->
+
+  <div ng-hide="::users.length">
+    <div class="clearfix">
+      <img alt="" class="pic-in-text-left hidden-xs" src="/images/group-empty-photo.jpg" />
+      <br class="visible-xs" />
+
+      <p class="text-next-to-pic-right" data-translate>GROUP_ADD_OPTION_EXPLANATION2</p>
+    </div>
+
+    <br />
+    <div class="vertical-button-group import-contacts-buttons">
+      <div>
+        <a class="btn btn-primary btn-lg button-min-width" ui-sref="u.directory.user-group-add({group_id: group.id})"
+           data-translate>ADD_CONTACTS</a>
+      </div>
+      <div>
+        <a class="btn btn-secondary btn-lg button-min-width" ui-sref="u.directory.add({user_id: me.id})"
+           data-translate>CREATE_CONTACT</a>
+      </div>
+    </div>
+  </div>
+
+  <fc-user-list
+    ng-if="!emptyUsers"
+    ng-model="users"
+    load-more="loadMore"
+    filter="filter"
+    selection-mode="false"
+    mode="directory"
+    show-alert="false"
+    selected-users="selectedUsers"
+    data-disable-search-field="false">
+  </fc-user-list>
+
+</div>

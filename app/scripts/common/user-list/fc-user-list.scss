@@ -1,0 +1,63 @@
+fc-user-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  .alert-holder {
+    position: absolute;
+    display: table;
+    top: 0;
+    height: 25vh;
+    width: 100%;
+    .centered {
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      .loading-alert {
+        display: inline-block;
+        text-align: center;
+        padding: 1em;
+        border-radius: 0.25em;
+        background: rgba(240, 240, 250, 0.5);
+      }
+    }
+
+  }
+  .user-list {
+    display: table;
+    width: 100%;
+  }
+  .removable-item {
+    overflow: hidden;
+
+    height: 4.6875em;
+    transition: height 0.3s ease-in;
+    &.removed {
+      height:0;
+      * {
+        border: none;
+        overflow: hidden;
+        height: 0;
+        padding: 0;
+      }
+    }
+  }
+  &.contacts {
+    .directory-item-table-cell-info {
+      max-width: 80%;
+    }
+    .actions {
+      width: 20%;
+    }
+  }
+  &.invite-contacts {
+    .directory-item-table-cell-info {
+      max-width: 80%;
+    }
+    .actions {
+      width: 10%;
+    }
+  }
+}
+
+@import "item/fc-user-list-item";

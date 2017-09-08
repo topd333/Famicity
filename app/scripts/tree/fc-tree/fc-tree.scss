@@ -1,0 +1,607 @@
+.tree {
+  // TODO: Future work below for smooth borders, but requires to lower z-index on users
+  //box-shadow: 0 0 2em 0.25em $white inset;
+  //.fc-toolbar-icon {
+  //  box-shadow: 0 0 2em 0.25em $white;
+  //}
+  #scroll {
+    .content-view {
+      height: 100%;
+    }
+    height: 100%;
+  }
+}
+
+.warning-banner {
+  background: #f04949;
+  color: #ffffff;
+  a, a:hover{
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.tr-com {
+  cursor: pointer;
+  position: absolute;
+}
+
+.tr-com.us {
+  min-height: 80px;
+  width: 64px;
+  $avatarSize: 60px;
+  background-color: $white;
+  z-index: 3;                 // Need this level to detect click on tree members
+  .tr-us {
+    img {
+      width: $avatarSize;
+      height: $avatarSize;
+    }
+  }
+}
+
+.tr-te {
+  font-size: 10px;
+  text-align: center;
+  padding-top: 1px;
+}
+
+.detailed {
+  .tr-com.us {
+    //    position: relative;
+    $marginSize: 8px;
+    $avatarSize: 95px;
+    $rightBlockWidth: 153px;
+
+    height: 120px;
+    width: 280px;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: $marginSize;
+    .tr-us {
+      float: left;
+      margin-right: 8px;
+      img {
+        width: $avatarSize;
+        height: $avatarSize;
+      }
+    }
+    &.tr-us-un {
+      .tr-us-info {
+        font-size: 14px;
+      }
+      .qm {
+        display: block;
+        float: left;
+        text-align: center;
+        color: $lighter_main_font_4;
+        border: solid 2px $lighter_main_font_4;
+        font-size: 3em;
+        line-height: 1.9em;
+        width: $avatarSize;
+        height: $avatarSize;
+      }
+    }
+    .tr-us-info {
+      text-align: left;
+      color: grey;
+      font-size: 12px;
+      float: right;
+      width: $rightBlockWidth;
+      .name {
+        // font size:0, to remove whitespaces
+        font-size: 0;
+        color: $green;
+        line-height: 1.3;
+        .first-name, .last-name, .maiden {
+          display: inline-block;
+          max-width: $rightBlockWidth;
+          @include ellipsis();
+        }
+        .first-name {
+          font-size: 14px;
+          margin-right: 4px;
+        }
+        .last-name {
+          font-size: 14px;
+          font-weight: bold;
+          overflow-wrap: break-word;
+          hyphens: auto;
+        }
+        .maiden {
+          color: grey;
+          overflow-wrap: break-word;
+          hyphens: auto;
+        }
+      }
+      .dates-and-places{
+        line-height: 1;
+      }
+      .dates {
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: $rightBlockWidth;
+        .birth + .death time:after {
+          content: ")";
+        }
+        .birth time + .death time:after {
+          content: ")";
+        }
+      }
+      .notif {
+        .fusions {
+          color: $green;
+          text-decoration: underline;
+        }
+      }
+    }
+    .tr-te {
+      font-size: 14px;
+      text-align: left;
+      &.actions {
+        .membership {
+          position: relative;
+          &.member {
+            color: $green;
+          }
+          &.invited {
+            color: $orange_color;
+          }
+          .circle {
+            margin-right: -0.1em;
+            font-size: 25px;
+            line-height: 0.8px;
+            position: relative;
+            Font-family: Arial, serif;
+            bottom: -2px;
+          }
+        }
+        button {
+          line-height: $fieldHeightSmall;
+        }
+        position: absolute;
+        left: $marginSize + $avatarSize + $marginSize + 3;
+        bottom: $marginSize;
+        right: $marginSize;
+        @include actions(2.5em);
+        .start {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.tr-us-ma img {
+  border: 2px solid #afd7ea;
+}
+
+.tr-us-fe img {
+  border: 2px solid #fcc6eb;
+}
+
+.tr-us-un img {
+  border: 2px solid #d9d9d9;
+}
+
+.tr-us-fi img {
+  box-shadow: 0 0 6px #89c532;
+  border: 1px solid #c6fcc6;
+}
+
+.tr-us {
+  padding: 2px;
+}
+
+.tree.wrapper {
+  overflow: hidden;
+  margin-top: -1em;
+  height: 100%;
+}
+
+.tree.content {
+  height: 100%;
+  max-width: none;
+  border-top: none;
+}
+
+.tree-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: move;
+}
+
+.tr-co {
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  cursor: move;
+}
+
+#tr-ba {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+
+#c-co.tree {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+@import "../popup/tree-popup";
+
+.main-popup-overlay {
+  background-color: $black;
+  bottom: 0;
+  left: 0;
+  opacity: 0.8;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1005;
+
+}
+
+.main-popup-overlay-white {
+  background-color: $white;
+
+}
+
+.main-popup-over-overlay {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1006;
+
+}
+
+.main-popup-over-overlay {
+  display: block;
+  height: 100%;
+  text-align: center;
+
+}
+
+.main-popup-over-overlay .main-popup-table {
+  display: table;
+  height: 100%;
+  width: 100%;
+
+}
+
+.main-popup-over-overlay .main-popup-tablecell {
+  display: table-cell;
+  height: 100%;
+  text-align: center;
+
+}
+
+.main-popup-over-overlay .main-popup-holder {
+  display: inline-block;
+  width: 100%;
+}
+
+.main-popup-over-overlay .main-popup-tabs li {
+  background-color: $white;
+  border-color: $green;
+  border-style: solid solid none solid;
+  border-width: 1px;
+  float: left;
+  font-size: 18px;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li + li {
+  margin-left: 1px;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li.active {
+  background-color: $green;
+  color: $white;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li.red {
+  border-color: #f04949;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li.red.active {
+  background-color: #f04949;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li i {
+  margin-right: 5px;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li a {
+  box-sizing: border-box;
+  color: $green;
+  display: block;
+  height: 100%;
+  padding: 4px 10px;
+  width: 100%;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li.active a {
+  color: $white;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li.red a,
+.main-popup-over-overlay .main-popup-tabs li.red a i.fa {
+  color: #f04949;
+
+}
+
+.main-popup-over-overlay .main-popup-tabs li.red.active a,
+.main-popup-over-overlay .main-popup-tabs li.red.active a i.fa {
+  color: $white;
+
+}
+
+.main-popup-over-overlay .main-popup-window {
+  background-color: $white;
+  border: 1px solid $green;
+  display: table;
+  width: 660px;
+  /*  display: none; */
+
+}
+
+/*     .main-popup-over-overlay .main-popup-window.active {
+      display: table;
+  } */
+
+.main-popup-over-overlay .main-popup-window > div {
+  display: table-cell;
+  height: 100%;
+  text-align: center;
+
+}
+
+/* Tree popup add */
+
+.tree-popup-add {
+  height: 580px;
+
+}
+
+.tree-popup-add > div {
+  vertical-align: middle;
+
+}
+
+.tree-popup-add .add-tile {
+  border: 1px solid $green;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  color: $green;
+  display: inline-block;
+  height: 90px;
+  width: 90px;
+
+}
+
+.tree-popup-add .add-tile + .add-tile {
+  margin-left: 20px;
+
+}
+
+.tree-popup-add .add-tile > div {
+  display: table;
+  height: 100%;
+  width: 100%;
+
+}
+
+.tree-popup-add .add-tile > div > a {
+  -webkit-border-radius: $gui_standard_border_radius;
+  border-radius: $gui_standard_border_radius;
+  box-sizing: border-box;
+  color: $green;
+  display: table-cell;
+  font-size: 15px;
+  height: 100%;
+  line-height: 1.1;
+  /*padding: 5px;*/
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+
+}
+
+.tree-popup-add .add-tile > div > a:hover {
+  background-color: $green;
+  color: $white;
+
+}
+
+.tree-popup-add .add-tile.filled-tile > div > a {
+  padding: 0;
+  max-width: 88px;
+
+}
+
+.tree-popup-add .add-tile.filled-tile > div > a:hover {
+  background-color: transparent;
+  color: $green;
+
+}
+
+.tree-popup-add .add-tile > div > a > img {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  width: 88px;
+  height: 88px;
+  display: inline-block;
+  overflow: hidden;
+
+}
+
+.tree-popup-add .add-tile i {
+  display: block;
+  font-size: 24px;
+
+}
+
+.tree-popup-add .add-row-middle {
+  color: $green;
+  display: table;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  width: 100%;
+
+}
+
+.tree-popup-add .add-row-middle a {
+  color: $green;
+
+}
+
+.tree-popup-add .add-row-middle > div {
+  display: table-cell;
+  vertical-align: middle;
+
+}
+
+.tree-popup-add .add-row-middle-left {
+  text-align: right;
+  width: 230px;
+
+}
+
+.tree-popup-add .add-row-middle-center {
+  width: 200px;
+}
+
+.tree-popup-add .add-row-middle-center .smartImage {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+
+}
+
+.tree-popup-add .add-row-middle-right {
+  text-align: left;
+  width: 230px;
+}
+
+.fusions-side-list {
+  width: auto;
+}
+
+.invite-form {
+  margin: 0 auto;
+  max-width: 55%;
+  textarea {
+    font-size: 1em;
+  }
+  //.form-group, .input-group{
+  //margin-right: 1em;
+  //}
+  .actions {
+    @include actions(2.5em);
+  }
+}
+
+.tree-matching-user-name {
+  color: $main_font_color;
+}
+
+@import "../directives/fc-tree-search";
+
+@media only screen and (min-width: 480px) {
+  .directory-item-table-cell-info span {
+    //display: inline;
+  }
+}
+
+.tree-matching-panel {
+  font-size: 0.9em;
+  .empty-list {
+    font-size: 0.9em;
+    padding: 0.5em;
+  }
+  .directory-item-repeat {
+    // padding: 0.1em;
+    &:hover .directory-item-table {
+      background: $sub-header_color;
+    }
+  }
+  .active {
+    padding: 0.7em;
+    background: $ligher_green_44;
+    .primary-information {
+      clear: both;
+      margin-top: 1.5em;
+    }
+    .secondary-information {
+      color: $lighter_main_font_4;
+      font-size: 0.8em;
+      // & + .secondary-information{
+      //   margin-bottom: 0.5em;
+      // }
+    }
+    .invitation-invitation {
+      margin: 1em 0;
+      font-style: italic;
+    }
+    .maiden-name {
+      font-style: italic;
+    }
+    .directory-item-table-cell-picture {
+      &.avatar {
+        display: block;
+        margin: auto;
+      }
+      img {
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
+  .actions {
+    @import "../../common/fc-form-actions";
+    @include actions(2.5em);
+    margin-top: 0.5em;
+  }
+  form.login-form input {
+    font-size: 0.9em;
+  }
+  .input-group {
+    margin: 0.3em 0;
+  }
+}
+
+@include onSmallScreen() {
+  .tree {
+    fc-toolbar {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .left-insert .directory-item-table-cell-picture div {
+    margin-right: 10px;
+  }
+  .left-insert .directory-item-table > .table-cell {
+    padding: 5px 0;
+  }
+}

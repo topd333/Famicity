@@ -1,0 +1,79 @@
+
+fc-old-permission-list {
+  .directory-listing-item {
+    padding-bottom: 1em;
+    padding-top: 1em;
+  }
+  .directory-listing-group-icon {
+    float: left;
+    margin-left: 0.5em;
+    i.fa {
+      font-size: 2.75em;
+    }
+  }
+  .directory-listing-item-info {
+    &.rights-item-info h2 {
+      font-size: 1.1em;
+      line-height: 2.75em;
+      margin-bottom: 0;
+      .rights-item-group-icon-xs {
+        float: left;
+        font-size: 1.5em;
+        overflow-x: visible;
+        width: 1.75em;
+      }
+      .name {
+        // line-height: 1em;
+        // overflow-x: visible;
+        // white-space: normal;
+        // width: auto;
+        span {
+          line-height: 1.1em;
+          overflow-x: visible;
+          white-space: normal;
+          width: auto;
+          word-break: break-all;
+          /* Non standard for webkit */
+          word-break: break-word;
+        }
+      }
+    }
+  }
+  .rights-item-option-icons {
+    font-size: 1.5em;
+    line-height: 2em;
+    padding-right: 0.5em;
+    padding-top: 0;
+  }
+  .directory-listing-rights {
+    .directory-item-user {
+      .actions {
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+
+@include belowLargeScreen() {
+  fc-old-permission-list {
+    .directory-listing-item-info {
+      &.rights-item-info h2 {
+        .name {
+          display: block;
+          margin-left: 3em;
+        }
+      }
+    }
+  }
+}
+
+@include aboveMediumScreen() {
+  fc-old-permission-list {
+    .directory-listing-item-info {
+      &.rights-item-info {
+        margin-left: 50px;
+        padding-left: 1.5em;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <div data-fc-progress-bullet-bar data-nb-steps="3" data-current-step="3"></div>
+
+    <div class="form-block">
+      <form class="gedcom-upload-form standard-form standard-form-nomargin login-form">
+        <p class="center-text" translate>BROWSE_FILE_INSTRUCTION</p>
+        <div ng-show="preloaded_file" class="c-width-1">
+          <div class="form-group">
+            <div class="" ng-class="{'has-error': (profileBasicForm.lastName.$dirty || submitted) && profileBasicForm.lastName.$invalid}">
+              <label class="sr-only" for="last-name" translate>GEDCOM_UPLOADER_PLACEHOLDER</label>
+              <input class="form-control" id="last-name" ng-attr-placeholder="{{ 'GEDCOM_PLACEHOLDER' | translate }}*" name="lastName" type="text" ng-model="preloaded_file.name" disabled />
+            </div>
+          </div>
+          <div class="form-group">
+            <a class="btn btn-danger btn-lg button-inherit-width pointer" ng-click="deletePreloadedFile()" translate>DELETE</a>
+          </div>
+        </div>
+        <div ng-show="!preloaded_file" id="uploadBtn" class="c-width-1">
+          <div class="form-group">
+            <div class="" ng-class="{'has-error': (profileBasicForm.lastName.$dirty || submitted) && profileBasicForm.lastName.$invalid}">
+              <label class="sr-only" for="last-name" translate>GEDCOM_UPLOADER_PLACEHOLDER</label>
+              <input class="form-control" id="last-name" ng-attr-placeholder="{{ 'GEDCOM_PLACEHOLDER' | translate }}*" name="lastName" type="text" />
+            </div>
+          </div>
+          <div class="form-group">
+            <a class="btn btn-secondary btn-lg button-inherit-width pointer" translate>BROWSE</a>
+          </div>
+        </div>
+      </form>
+      <br>
+
+      <p class="danger-color" translate>USER_NAME_SHOULD_MATCH_ALERT</p>
+
+      <div ng-if="optionsToShow.priority_to" class="row">
+        <div class="table-cell">
+          <span class="standard-checkbox">
+            <input id="deceased" name="deceased" type="checkbox" ng-model="upload_settings.priority_to" />
+            <label for="deceased" class="fa"><span></span>
+          </label>
+          </span>
+        </div>
+        <div class="table-cell v-align-top">
+          <label class="gedcom-deceased-label left-text" for="deceased" data-translate>GEDCOM_CONFLICT_RESOLUTION_OPTION_LABEL</label>
+          <br>
+          <br>
+        </div>
+      </div>
+      <div ng-if="optionsToShow.erase_tree" class="row">
+        <div class="table-cell">
+          <span class="standard-checkbox">
+            <input id="deceased" name="deceased" type="checkbox" ng-model="upload_settings.erase_tree" />
+            <label for="deceased" class="fa"><span></span>
+          </label>
+          </span>
+        </div>
+        <div class="table-cell v-align-top">
+          <label class="gedcom-deceased-label left-text" for="deceased"
+                 data-translate>GEDCOM_IMPORT_OPTION_ERASE_TREE</label>
+          <br>
+          <br>
+        </div>
+      </div>
+
+      <div class="c-width-1">
+        <div class="form-group">
+          <a class="btn btn-primary btn-lg button-inherit-width pointer" ng-click="startUpload()" translate>IMPORT_MY_GEDCOM</a>
+        </div>
+      </div>
+
+
+      <div ng-show="!uploadOngoing" ng-click="nextStep()" class="skip-step"><a data-translate>SKIP_STEP_LINK</a>
+      </div>
+    </div>
+
+
+  </div>
+</div>

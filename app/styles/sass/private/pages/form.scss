@@ -1,0 +1,341 @@
+form.w90to100 {
+  margin-left: auto;
+
+  margin-right: auto;
+  width: 90%;
+}
+
+form.c-width-1,
+.c-width-1 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+  width: 90%;
+
+}
+
+input.form-control {
+  border-radius: $fieldBorderRadius;
+}
+
+input.form-control, .fc-pattern .placeholder {
+  padding: $fieldPadding;
+}
+
+form.login-form {
+  position: relative;
+
+}
+
+form.login-form input[type=submit],
+form.login-form button {
+  white-space: normal;
+  width: 100%;
+
+}
+
+form.login-form input[qq-button-id],
+input[qq-button-id] {
+  height: auto;
+
+}
+
+form .checkbox-form-group {
+  margin-bottom: 7px;
+
+}
+
+label {
+  /* to override bootstrap's margin-bottom 5*/
+  margin-bottom: 0;
+
+}
+
+.input-group, .textarea-with-icon, a.fake-input, .time-before-event {
+  border: solid 1px $grey2;
+  border-radius: $fieldBorderRadius;
+}
+
+.input-group-addon {
+  background-color: $white;
+  border-style: none;
+  color: $main_font_color;
+  padding: $fieldPadding;
+  border-radius: $fieldBorderRadius;
+
+}
+
+.input-group input {
+  border-left-style: none;
+
+}
+
+.standard-short-input-2 {
+  width: 70px;
+}
+
+.standard-short-input-1 {
+  width: 50px;
+}
+
+.standard-form h6 {
+  /* text-align: left; */
+  font-size: 14px;
+}
+
+.standard-form h5 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.standard-form {
+  margin-top: 30px;
+  text-align: left;
+  &.standard-form-nomargin {
+    margin-top: 0;
+  }
+  input[type=date],
+  input[type=email],
+  input[type=password],
+  input[type=text],
+  textarea,
+  .input-group-addon,
+  .fc-pattern .placeholder {
+    /* #f4f4f4; */
+    background-color: $formInputBackground;
+  }
+  textarea {
+    resize: none;
+  }
+}
+
+.standard-form .standard-checkbox label:before,
+.standard-form .standard-radiobutton label:before {
+  //border-style: none;
+
+}
+
+.standard-short-input-1,
+.standard-short-input-2,
+.standard-short-input-1s,
+.standard-short-input-2s {
+  display: inline-block;
+
+}
+
+.standard-form h6.centered {
+  text-align: center;
+}
+
+input.standard-short-input-1s {
+  width: 50px;
+
+}
+
+input.standard-short-input-2s {
+  width: 70px;
+
+}
+
+.placeholder-center {
+  color: $lighter_main_font_25;
+  text-align: center;
+
+}
+
+.placeholder-center::placeholder {
+  text-align: center;
+
+}
+
+input.placeholder-center:-moz-placeholder {
+  text-align: center;
+
+}
+
+.form-p1 .form-block, .form-p2 .form-block, .form-p3 .form-block, div.holder-for-form-width {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.form-p1 .form-block, .holder-for-form-width {
+  max-width: 23em;
+}
+
+.form-p1 {
+  .form-block.form-block-w {
+    max-width: 37.5em;
+  }
+}
+
+.form-p1 .form-progress-bar, .form-p2 .form-progress-bar, .form-p3 .form-progress-bar {
+  margin: 30px auto;
+  // max-width: 400px;
+  width: 50%;
+}
+
+.form-p2 {
+  ul.photo-add-options {
+    display: inline-block;
+    li:last-child {
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+    li {
+      & > a {
+        color: $main_font_color;
+        display: inline-block;
+        & > i {
+          background-color: #f4f4f4;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      & > a:hover {
+        color: $green;
+        & > i {
+          background-color: $green;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.directory-listing-invitation-button-private {
+  text-align: right;
+}
+
+.form-skip-step-layer {
+  margin-right: -30px;
+  margin-top: 20px;
+  position: relative;
+  white-space: nowrap;
+
+}
+
+.form-p3 h2 {
+  margin-bottom: 40px;
+  margin-top: 40px;
+
+}
+
+.form-p2 ul.photo-add-options .pao-enum-toggle-device-big {
+  display: none;
+}
+
+.form-p2 ul.photo-add-options .pao-enum-toggle-device-small {
+  display: inline;
+}
+
+.form-p2 ul.photo-add-options li.photo-add-webcam {
+  display: none;
+}
+
+.form-p2 ul.photo-add-options li > a > i {
+  border-radius: 30px;
+  font-size: 22px;
+  height: 60px;
+  line-height: 60px;
+  margin-bottom: 10px;
+  width: 60px;
+}
+
+.form-p2 ul.photo-add-options li {
+  margin-bottom: 30px;
+}
+
+.form-p2 ul.photo-add-options {
+  margin-top: 20px;
+}
+
+@import "../../../../scripts/wizard/fc-step/fc-wizard-step";
+
+/* 480px */
+@media only screen and (min-width: 480px) {
+
+  .standard-form {
+    margin-top: 20px;
+
+  }
+  .standard-form-nomargin {
+    margin-top: 0;
+
+  }
+  .standard-short-input-1 {
+    width: 60px;
+
+  }
+  .standard-short-input-2 {
+    width: 100px;
+
+  }
+
+  .form-p2 ul.photo-add-options li > a > i {
+    border-radius: 35px;
+    font-size: 30px;
+    height: 70px;
+    line-height: 72px;
+    margin-bottom: 10px;
+    width: 70px;
+
+  }
+  .form-p3 h2 {
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+  }
+
+}
+
+/* /// 480px */
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+  form.w90to100 {
+    width: 100%;
+
+  }
+  .standard-form h5 {
+    font-size: 18px;
+
+  }
+  .standard-form h6 {
+    font-size: 16px;
+    /* text-align: left; */
+
+  }
+}
+
+/* 992px */
+@media only screen and (min-width: 992px) {
+
+  .form-p2 ul.photo-add-options li.photo-add-webcam {
+    display: block;
+  }
+
+  .form-p2 ul.photo-add-options li.photo-add-webcam i {
+    display: table;
+    line-height: 1;
+  }
+
+  .form-p2 ul.photo-add-options li.photo-add-webcam i > span {
+    display: table-cell;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .form-p2 ul.photo-add-options .pao-enum-toggle-device-small {
+    display: none;
+  }
+
+  .form-p2 ul.photo-add-options .pao-enum-toggle-device-big {
+    display: inline;
+  }
+
+  .comments-wrapper {
+    min-width: 74%;
+  }
+}

@@ -1,0 +1,13 @@
+<fc-inline
+  data-on-create="createPost(object,required)"
+  data-on-cancel="createPostCreation()"
+  data-user="::user"
+  data-me="me"
+  data-author="::author"
+  data-story="::story"
+  data-form-status="formStatus"
+  data-required="::requiredFields"
+  data-labels="::{title:story?'STORY.LEFT_BLOCK.TITLE':'fc-post.TITLE', text:story?'STORY.TEXT_PLACEHOLDER':user.is_deceased?'fc-post.TEXT_BIO':'fc-post.TEXT', date:'fc-post.DATE'}"
+  edit-label="{{::story?'STORY.TEXT_PLACEHOLDER':user.is_deceased?'WRITE_BLOG_BIO':'WRITE_BLOG_POST'|translate:{month:story.month,vowel:story.vowel}:'messageformat'}}"
+  >
+</fc-inline>

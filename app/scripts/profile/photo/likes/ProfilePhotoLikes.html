@@ -1,0 +1,73 @@
+<div class="wrapper">
+  <div class="content">
+
+    <!--<fc-header-bar user-id="viewedUserId">-->
+      <!--<h2 class="pull-left" translate>THEY_LIKE_AVATAR</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+          <div class="left-column-block">
+              <div class="left-column-block-content">
+                  <a ng-if="avatar.likes_count" class="clearfix red-rollover" ui-sref="user-avatars-likes({user_id: viewedUserId, photo_id: avatar.id})">
+                    <i class="fa fa-heart"></i><span translate>THEY_LIKE_AVATAR </span><b>{{ avatar.likes_count }}</b>
+                  </a>
+                  <a ng-if="basicProfile.permissions.is_updatable" class="clearfix pointer" ng-click="setAsProfileImage()">
+                    <i><i class="fa fa-user"></i></i><span data-translate>SET_AS_PROFILE_PICTURE</span>
+                  </a>
+                  <a class="clearfix pointer" ng-href="{{ avatar.url_original }}" target="_blank">     <!-- TODO : this link should download the image we are viewing, not the profile image -->
+                      <i><i class="fa fa-download"></i></i><span>{{ "SAVE" | translate }}</span>
+                  </a>
+              </div>
+              <fc-left-column-block-header ng-if="avatar.description || avatar.taken_at || basicProfile.permissions.is_updatable">
+                <h3 data-translate>PHOTO_INFORMATION</h3>
+                <span><a>+</a></span>
+              </fc-left-column-block-header>
+              <div class="left-column-block-content" ng-show="avatar.description || avatar.taken_at">
+                <p ng-show="avatar.description">{{ "DESCRIPTION_SC" | translate }}<br/><span class="left-column-names">{{ avatar.description }}</span></p>
+                <p ng-show="avatar.taken_at">{{ "PHOTO_TAKEN_THE_SC" | translate }}<br/><span class="left-column-names">{{ avatar.taken_at | date: "shortDate" }}</span></p>
+                <div class="item-sub-delimiter" ng-show="basicProfile.permissions.is_updatable"></div>
+                <div ng-show="basicProfile.permissions.is_updatable">
+                  <a href="" ng-click="openAvatarPhotoDescriptionPopup()" class="left-column-bottom-link">
+                    <span translate>EDIT</span><i class="fa fa-pencil-square-o"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="left-column-block-content" ng-show="!avatar.description && !avatar.taken_at && basicProfile.permissions.is_updatable">
+                <p>
+                  <span data-translate>EMPTY_PHOTO_INFORMATION</span>
+                  <a href="" class="green-link-color" ng-click="openAvatarPhotoDescriptionPopup()" translate>EMPTY_PHOTO_CLICK_HERE</a>.
+                </p>
+              </div>
+
+          </div>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <div class="notification-list likes table">
+              <div class="table-row" ng-repeat="like in likesList | orderBy: '-create_date'">
+                <fc-notification-item
+                  avatar-url="like.user.avatar_url"
+                  text-key="likeText"
+                  type="'like'"
+                  number-of-users="1"
+                  user-id="like.user.id"
+                  user-name="like.user.user_name"
+                  date="like.create_date">
+                </fc-notification-item>
+              </div>
+            <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

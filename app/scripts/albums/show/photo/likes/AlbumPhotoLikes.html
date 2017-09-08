@@ -1,0 +1,87 @@
+<div class="wrapper">
+  <div class="content">
+
+    <!--<fc-header-bar user-id="viewedUserId">-->
+    <!--<h2 class="pull-left" translate>THEY_LIKE_PHOTO</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+          <div class="left-column-block">
+
+            <div class="left-column-block-content left-navigation-icons">
+              <a ng-if="photo.likes_count" class="red-rollover"
+                 ui-sref="u.albums-photos-likes({user_id: viewedUserId, album_id: albumId, photo_id: photo.id})">
+                <i><i class="fa fa-heart"></i></i><span translate>THEY_LIKE_PHOTO </span><b>{{ photo.likes_count }}</b>
+              </a>
+              <a ng-show="album.permissions.is_updatable" class="pointer" ng-click="setAsProfileImage()">
+                <i><i class="fa fa-user"></i></i><span data-translate>SET_AS_PROFILE_PICTURE</span>
+              </a>
+              <a class="pointer" ng-href="{{ photo.url_original }}" target="_blank">
+                <i><i class="fa fa-download"></i></i><span>{{ "SAVE" | translate }}</span>
+              </a>
+            </div>
+            <fc-left-column-block-header ng-show="photo.description || photo.photo_date || album.permissions.is_updatable">
+              <!--album.permissions.is_updatable-->
+              <h3 data-translate>PHOTO_INFORMATION</h3>
+              <span><a class="btn-plus">+</a></span>
+            </fc-left-column-block-header>
+            <div class="left-column-block-content" ng-show="photo.description || photo.photo_date">
+              <p ng-show="photo.description">
+                {{ "DESCRIPTION_SC" | translate }}
+                <br/>
+                <span class="left-column-names">{{ photo.description }}</span>
+              </p>
+
+              <p ng-show="photo.photo_date">
+                {{ "PHOTO_TAKEN_THE_SC" | translate }}
+                <br/>
+                <span class="left-column-names">{{ photo.photo_date | date: "shortDate" }}</span>
+              </p>
+
+              <div class="item-sub-delimiter" ng-show="album.permissions.is_updatable"></div>
+              <div ng-show="album.permissions.is_updatable">
+                <a href="" ng-click="openPhotoDescriptionPopup()" class="left-column-bottom-link">
+                  <span translate>EDIT</span><i class="fa fa-pencil-square-o"></i>
+                </a>
+              </div>
+            </div>
+            <div class="left-column-block-content"
+                 ng-show="!photo.description && !photo.photo_date && album.permissions.is_updatable">
+              <p>
+                <span data-translate>EMPTY_PHOTO_INFORMATION</span>
+                <a href="" class="green-link-color" ng-click="openPhotoDescriptionPopup()" translate>EMPTY_PHOTO_CLICK_HERE</a>.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <div class="notification-list likes table">
+              <div class="table-row" ng-repeat="like in likesList | orderBy: '-create_date'">
+                <fc-notification-item
+                  avatar-url="like.user.avatar_url"
+                  text-key="likeText"
+                  type="'like'"
+                  number-of-users="1"
+                  user-id="like.user.id"
+                  user-name="like.user.user_name"
+                  date="like.create_date">
+                </fc-notification-item>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

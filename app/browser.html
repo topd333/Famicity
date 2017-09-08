@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+
+  <!-- build:css(.tmp) /styles/css/browser.css -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="/styles/css/bootstrap.css" >
+  <link rel="stylesheet" type="text/css" href="/styles/css/base.css">
+  <link rel="stylesheet" type="text/css" href="/styles/css/browser-sprite.css">
+  <link rel="stylesheet" type="text/css" href="/styles/css/famicity.css">
+  <!-- endbuild -->
+
+  <title>Famicity</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+</head>
+<body class="browser public">
+
+<div class="wrapper">
+  <div class="content">
+
+    <div class="centered">
+      <div class="home-above-form">
+        <div class="ui_elem famicity-logo"></div>
+        <h1 class="welcome-message fr">Malheureusement, votre navigateur n'est pas assez récent et performant pour supporter Famicity. Nous vous recommandons de mettre à jour votre navigateur pour pouvoir profiter de Famicity.</h1>
+        <h1 class="welcome-message en">Unfortunately, your browser do not support nowadays technologies... Please update your browser to enjoy Famicity.</h1>
+      </div>
+      <div class="browser-window">
+        <div class="ui_elem_browser_page browser-window-head"></div>
+        <div class="browser-window-body">
+          <ul>
+            <li>
+              <span class="ui_elem_browser_page browser-firefox-icon"></span>
+									<span class="browser-icon-text">
+										<span class="fr">Mettre à jour<br /></span>
+										<span class="en">Update<br /></span>
+										<a href="http://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a>
+									</span>
+            </li>
+            <li>
+              <span class="ui_elem_browser_page browser-chrome-icon"></span>
+									<span class="browser-icon-text">
+										<span class="fr">Mettre à jour<br /></span>
+										<span class="en">Update<br /></span>
+										<a href="https://www.google.com/chrome/" target="_blank">Chrome</a>
+									</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  window.onload = function() {
+  'use strict';
+  var i = 0, fr = null, en = null;
+
+  var language = window.navigator.userLanguage || window.navigator.language;
+
+  if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function(obj, start) {
+      for (var i = (start || 0), j = this.length; i < j; i++) {
+        if (this[i] === obj) { return i; }
+        }
+        return -1;
+      }
+    }
+
+    if(document.getElementsByClassName) {
+      fr = document.getElementsByClassName('fr'); // IE9+
+      en = document.getElementsByClassName('en'); // IE9+
+    } else {
+      fr = document.querySelectorAll('.fr'); // IE8
+      en = document.querySelectorAll('.en'); // IE8
+    }
+
+    if(language.indexOf('fr') === -1) {
+      for(i=0; i < fr.length; i++) {
+        fr[i].style.display = 'none';
+      }
+      for(i=0; i < en.length; i++) {
+        en[i].style.display = 'block';
+      }
+    } else {
+      for(i=0; i < fr.length; i++) {
+        fr[i].style.display = 'block';
+      }
+      for(i=0; i < en.length; i++) {
+        en[i].style.display = 'none';
+      }
+    }
+  };
+</script>
+</body>
+</html>

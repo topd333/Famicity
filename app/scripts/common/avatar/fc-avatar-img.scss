@@ -1,0 +1,7 @@
+.fc {
+  $avatarSize: 4em;
+  &.fc-unknown_m, &.fc-unknown_f {
+    color: $gray_color;
+    font-size: $avatarSize;
+  }
+}

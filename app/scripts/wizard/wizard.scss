@@ -1,0 +1,31 @@
+@import '../../scripts/wizard/profile/WizardProfile';
+@import '../../scripts/wizard/invite-menu/WizardInviteMenu';
+@import '../../scripts/wizard/invite-emails/WizardInviteEmails';
+@import '../../scripts/wizard/find-friends/WizardFindFriends';
+@import '../directory/invite/import/after/InviteAfterImport';
+@import '../../scripts/wizard/tree/WizardTree';
+
+.wizard {
+  .wrapper {
+    margin: auto;
+    width: 90%;
+  }
+  margin: auto;
+  .menu {
+    display: none; // Don't display toolbar/breadcrumb in wizards
+  }
+}
+
+@include onSmallScreen() {
+  .wizard {
+    .holder-for-form-width {
+      width: 100%;
+    }
+    width: 100%;
+  }
+  .wizard.private {
+    .content-view {
+      padding-top: 0; // The wizard don't have top menu
+    }
+  }
+}

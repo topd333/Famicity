@@ -1,0 +1,10 @@
+@include aboveMediumScreen() {
+  .story-page {
+    .left-column {
+      margin-top: 0;
+    }
+    .menu {
+      display: none;
+    }
+  }
+}

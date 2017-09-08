@@ -1,0 +1,18 @@
+<div class="table">
+
+  <div ng-if="(fusionCtrl.fusion.sender.id == fusionCtrl.userId || fusionCtrl.fusion.other_user.id == fusionCtrl.userId)" class="table-cell v-align-top gedcom-espace-import-table-avatar">
+    <fc-avatar class="avatar-size45" user="fusionCtrl.fusion.sender"></fc-avatar>
+  </div>
+
+  <div ng-if="fusionCtrl.fusion.sender.id == fusionCtrl.userId || fusionCtrl.fusion.other_user.id == fusionCtrl.userId"
+       ng-switch="::fusionCtrl.fusion.state">
+    <div ng-switch-when="cancel" class="table-cell" ng-bind-html="'FUSION_CANCELED' | translate: {'other_user': fusionCtrl.fusion.sender.user_name, 'other_user_id': fusionCtrl.fusion.sender.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate')}"></div>
+    <div ng-switch-when="error" class="table-cell gedcom-message" ng-bind-html="'FUSION_FAILED' | translate: {'other_user': fusionCtrl.fusion.sender.user_name, 'other_user_id': fusionCtrl.fusion.sender.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate')}"></div>
+    <div ng-switch-when="refused" class="table-cell" ng-bind-html="'FUSION_REFUSED' | translate: {'other_user': fusionCtrl.fusion.sender.user_name, 'other_user_id': fusionCtrl.fusion.sender.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate')}"></div>
+    <div ng-switch-when="expired" class="table-cell" ng-bind-html="'FUSION_EXPIRED' | translate: {'other_user': fusionCtrl.fusion.sender.user_name, 'other_user_id': fusionCtrl.fusion.sender.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate')}"></div>
+    <div ng-switch-when="finish" class="table-cell" ng-bind-html="'FUSION_SUCCEEDED' | translate: {'other_user': fusionCtrl.fusion.sender.user_name, 'other_user_id': fusionCtrl.fusion.sender.id, 'date': (fusionCtrl.fusion.created_date * 1000 | date: 'shortDate')}"></div>
+    <!-- if there is an arror, add the concact-us button -->
+    <div ng-switch-when="error" class="table-cell right-text v-align-top gedcom-espace-import-table-button"><a class="btn btn-primary btn-md button-min-width2" ui-sref="u.settings-contact" translate>CONTACT_US_LINK</a></div>
+  </div>
+
+</div>

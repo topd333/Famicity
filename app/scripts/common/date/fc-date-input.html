@@ -1,0 +1,24 @@
+<div class="input-group" ng-class="{'has-error': !isValid}">
+  <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+  <div class="inputs">
+    <input ng-show="isTouch" type="date" class="form-control" ng-change="changedISO()"
+           ng-model="dateModel" id="dateInput-{{id}}" ng-focus="focused()">
+    <label class="label-as-input" for="dateInput-{{id}}" fc-pattern="datePatterns" data-placeholder="{{placeholder}}"
+           ng-model="patternModel"
+           data-on-change="parseDate(result,isBlur,value)"
+           data-locale="{{locale}}"
+           data-input-type="text"
+           data-read-only="{{isTouch ? true : false}}"></label>
+  </div>
+</div>
+<output ng-if="showOutput">
+  <span ng-show="blurMessage" class="error">{{blurMessage}}</span>
+  <span ng-show="!guesses.length">{{noGuessMessage}}</span>
+    <span ng-show="guesses.length">
+      <span ng-show="!selected" ng-repeat="guess in guesses">{{$index > 0 ? ('OR'|translate):''}}
+        <a class="guess" href="" ng-click="confirm(guess)"
+           title="{{clickToConfirmMessage|translate:'{format:guess.format.pattern}'}}">{{guess.str}}</a>
+      </span>
+    </span>
+  <span ng-show="selected" title="Confirmed as {{selected.format}} format">{{selected.str}}</span>
+</output>

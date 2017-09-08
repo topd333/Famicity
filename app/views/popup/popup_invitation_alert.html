@@ -1,0 +1,18 @@
+<div id="invitation-alert-modal" ng-init="init()">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3>{{ messageAlert | translate }}</h3>
+
+      <form action="javascript:;" class="standard-form login-form" id="intro_form" method="POST">
+        <div class="form-group">
+          <button class="btn btn-primary green-button" ng-click="$close()" type="submit" data-translate>SUBMIT</button>
+        </div>
+        <button class="btn btn-secondary" ng-click="$parent.cancelUserSelection(); $close()" type="submit"
+                data-translate>CANCEL
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

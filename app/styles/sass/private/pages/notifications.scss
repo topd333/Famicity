@@ -1,0 +1,210 @@
+@import "../../private/pages/chat";
+
+@mixin notifications-box-shadow($opacity: .3){
+  box-shadow: 0 1px 1px rgba(0, 0, 0, $opacity)
+}
+
+@mixin notifications-border($opacity: .2){
+  border: 1px solid rgba(0, 0, 0, $opacity);
+  border-bottom: none;
+}
+
+.left-insert {
+  background: white;
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  text-align: left;
+  top: 6.5em;
+  max-width: 18em;
+  z-index: 999;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 40px;
+  width: 15.5em;
+  @include chat-box-shadow();
+  .chat-table {
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+  }
+}
+.left-insert-open-header {
+  color: $white;
+  height: 40px;
+  font-size: 14px;
+  .table-cell {
+    background-color: $panel_background_color;
+    height: 40px;
+    padding: 6px;
+  }
+}
+.left-insert-inside{
+  overflow-y: auto;
+  height: 100%;
+}
+.notification-list{
+  overflow-y: auto;
+  height: auto;
+  .table{
+    padding: 5px;
+    padding-right: 0px;
+    border-bottom: solid 1px $sub-header_color;
+  }
+  .notification-item.clickable:hover > *{
+    background-color: $sub-header_color;
+    cursor: pointer;
+  }
+  &.table-row {
+    height: 45px;
+  }
+  .table-cell {
+    &.unread{
+      .table{
+        background-color: #FCFCFC;
+      }
+      border-right: solid 3px $green;
+    }
+  }
+  .notification-info{
+    margin-left: 42px;
+    text-align: left;
+    width: 182px;
+  }
+  .notification-user-name{
+    color: $green;
+    font-size: 13px;
+    line-height: 15px;
+  }
+  .notification-date{
+    color: $lighter_main_font_25;
+    font-size: 11px;
+    margin-top: 1px;
+    float: right;
+  }
+  .notification-text{
+    color: $lighter_main_font_25;
+    font-size: 13px;
+    line-height: 15px;
+    vertical-align: top;
+    max-width: 210px;
+  }
+  .notification-picture{
+    width: 41px;
+    text-align: center;
+    i{
+      border-radius: 50%;
+      color: $white;
+      padding: 7px;
+      line-height: 16px;
+      &.like{
+        background-color: $red;
+        &:before{ content: "\f004"; }
+      }
+      &.comment{
+        background-color: $green;
+        &:before{ content: "\f0e5"; }
+      }
+      &.birthday{
+        background-color: $green;
+        &:before{ content: "\f06b"; }
+      }
+    }
+
+  }
+  .notification-user-picture{
+    &, img{
+      height: 35px !important;
+      width: 35px !important;
+      float:left;
+      top: 3px;
+      margin-bottom: 6px;
+      padding: 0;
+    }
+    position: relative;
+    .icons{
+      position: absolute;
+      bottom: -8px;
+      right: -6px;
+      font-size: 0.6em;
+      color: $white;
+    }
+    &.profile i, &.avatar i{
+      &.fa-stack-1x:before{ content: "\f007"; }
+      &.fa-circle{ color: $header_profile_bottom_color; }
+    }
+    &.user i{
+      &.fa-stack-1x:before{ content: "\f007"; }
+      &.fa-circle{ color: $main_font_color; }
+    }
+    &.album i{
+      &.fa-stack-1x:before{ content: "\f03e"; }
+      &.fa-circle{ color: $header_albums_bottom_color; }
+    }
+    &.post i{
+      &.fa-stack-1x:before{ content: "\f040"; }
+      &.fa-circle{ color: $main_font_color; }
+    }
+    &.event i{
+      &.fa-stack-1x:before{ content: "\f073"; }
+      &.fa-circle{ color: $header_diary_bottom_color; }
+    }
+    &.invitation i{
+      &.fa-stack-1x:before{ content: "\f02d"; }
+      &.fa-circle{ color: $header_contacts_bottom_color; }
+    }
+    &.like i{
+      &.fa-stack-1x:before{ content: "\f004"; }
+      &.fa-circle{ color: $red; }
+    }
+    &.comment i{
+      &.fa-stack-1x:before{ content: "\f0e5"; }
+      &.fa-circle{ color: $green; }
+    }
+    &.birthday i{
+      &.fa-stack-1x:before{ content: "\f06b"; }
+      &.fa-circle{ color: $green; }
+    }
+    &.profile i, &.avatar i{
+      &.fa-stack-1x:before{ content: "\f007"; }
+      &.fa-circle{ color: $header_profile_bottom_color; }
+    }
+  }
+}
+
+.likes.notification-list {
+  .notification-user-name{
+    font-size: 15px;
+  }
+  .notification-date{
+    font-size: 13px;
+  }
+  .notification-text{
+    font-size: 15px;
+  }
+  .notification-user-picture{
+    &, img{
+      height: 45px;
+      width: 45px;
+    }
+  }
+  .notification-info {
+    margin-left: 55px;
+  }
+}
+
+.notification-count{
+  color: white;
+  position: absolute;
+  font-size: 0.625em;
+  top: 0.3em;
+  right: 0.3em;
+  .fa-circle{
+    color: $red;
+  }
+}
+
+.chat-user-list-list.load-spinner{
+  text-align: center;
+  display: block;
+}

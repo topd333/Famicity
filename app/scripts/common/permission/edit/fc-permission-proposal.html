@@ -1,0 +1,19 @@
+<div class="proposal" ng-click="onSelect()">
+  <div ng-if="!object.error" ng-switch="object.avatar_url != undefined">
+    <div ng-switch-when="false">
+      <div class="icon">
+        <div class="group"><i class="btn btn-icon btn-icon-primary fa fa-users"></i></div>
+      </div>
+      <div class="info">{{object.name}}</div>
+    </div>
+    <div ng-switch-when="true">
+      <fc-avatar class="icon" data-link-disabled="true" user='object'></fc-avatar>
+      <div class="info">{{object.name}}<br>{{object.email}}</div>
+    </div>
+  </div>
+  <div ng-if="object.error" class="link-disabled">
+    <div class="error">
+      <i class="fa fa-warning"></i>{{ 'ERROR_PLEASE_RETRY' | translate }}
+    </div>
+  </div>
+</div>

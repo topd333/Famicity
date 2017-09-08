@@ -1,0 +1,105 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" data-translate>DIARY</h2>-->
+      <!--<a ng-show="basicProfile.permissions.is_updatable" class="btn btn-icon txt-icon pull-right" ui-sref="u.blog-add({user_id: basicProfile.id})">+</a>-->
+    <!--</fc-header-bar>-->
+
+    <div fc-mobile-header-profile basic-profile="basicProfile" viewed-user-id="viewedUserId" current-tab="currentTab"></div>
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary profile="basicProfile"></fc-user-summary>
+          <!-- Left context icons -->
+          <div ng-show="viewedUserId != userId" class="left-column-block">
+            <div fc-other-users-links></div>
+          </div>
+          <!-- /// Left context icons -->
+          <!-- TODO: add javascript logic -->
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content main-content-blog">
+
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <div ng-show="!hasPost && !createPost">
+
+              <div ng-show="isCurrentUser">
+                <div class="table blog-mb-20">
+                  <div class="table-cell v-align-middle hidden-xs">
+                    <img class="pic-in-text" src="/images/collage-blog-empty.jpg">
+                  </div>
+                  <div class="table-cell v-align-top center-to-left-text"> {{'MY_BLOG_EMPTY_1'|translate}}</div>
+                </div>
+
+                <!--<div class="button-centring-div">-->
+                <!--<a class="btn btn-primary btn-lg button-min-width" ui-sref="u.blog-add({user_id: viewedUserId})" data-translate>ADD_POST</a>-->
+                <!--</div>-->
+              </div>
+
+              <div ng-show="!isCurrentUser">
+
+                <div ng-show="!basicProfile.permissions.is_updatable">
+                  <div class="table blog-mb-20">
+                    <div class="table-cell v-align-middle hidden-xs">
+                      <img class="pic-in-text" src="/images/collage-blog-empty.jpg">
+                    </div>
+                    <div class="table-cell v-align-top center-to-left-text">
+                      <br class="visible-xs"/>
+                      {{'HIS_BLOG_EMPTY_1'|translate}}
+                    </div>
+                  </div>
+                  <p data-translate data-translate-values="{GENDER:basicProfile.sex}">HIS_BLOG_EMPTY_2</p>
+
+                  <div class="button-centring-div">
+                    <a class="btn btn-primary btn-lg button-min-width" ui-sref="u.messages.add({users: [viewedUserId]})">
+                      {{'SEND_MESSAGE' | translate }}
+                    </a>
+                  </div>
+                </div>
+                <div ng-show="basicProfile.permissions.is_updatable">
+                  <div class="table blog-mb-20">
+                    <div class="table-cell v-align-middle hidden-xs">
+                      <img alt="" class="pic-in-text" src="/images/collage-blog-empty-bio.jpg">
+                    </div>
+                    <div class="table-cell v-align-top center-to-left-text">
+                      <br class="visible-xs"/>
+                      {{'BIO_BLOG_EMPTY_1'|translate}}
+                    </div>
+                  </div>
+                  <p data-translate data-translate-values="{GENDER: basicProfile.sex}"
+                     data-translate-interpolation="messageformat">BIO_BLOG_EMPTY_2</p>
+
+                  <div class="button-centring-div">
+                    <button class="btn btn-primary btn-lg button-min-width" ng-click="createPost=true">
+                      {{(basicProfile.is_deceased?'START_HIS_BIOGRAPHY':'START_HIS_DIARY')|translate:{GENDER:basicProfile.sex}:'messageformat'}}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div ng-if="createPost || (!hasPost && isCurrentUser) || (hasPost && (me.id === viewedUser.id || basicProfile.permissions.is_updatable))">
+              <fc-post-add data-me="me" data-author="me" data-user="viewedUser" data-story="story" data-on-add="addPost(post)" data-form-status="formStatus"></fc-post-add>
+            </div>
+
+            <div ng-if="hasPost">
+              <!-- TODO: add javascript logic -->
+              <div data-infinite-scroll="loadMorePosts()" ng-attr-infinite-scroll-disabled="infiniteScrollLoading || infiniteScrollDisabled" infinite-scroll-distance="1">
+                <fc-feed-post ng-repeat="post in posts" data-post="post" data-user="user" data-on-remove="removePost(postId)" index="::$index"></fc-feed-post>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

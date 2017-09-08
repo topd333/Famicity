@@ -1,0 +1,83 @@
+.profile {
+  #slide1 {
+    background: url("../../images/parallax/background/profile-visuel1-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide2 {
+    background: url("../../images/parallax/background/profile-visuel2-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide3 {
+    background: url("../../images/parallax/background/profile-visuel3-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide4 {
+    background: url("../../images/parallax/background/profile-visuel4-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide5 {
+    background: url("../../images/parallax/background/profile-visuel5-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+}
+
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+
+    .profile #slide1 {
+        background: url("../../images/parallax/background/profile-visuel1-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .profile #image-slide2 {
+        background: url("../../images/parallax/background/profile-visuel2-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .profile #image-slide3 {
+        background: url("../../images/parallax/background/profile-visuel3-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .profile #image-slide4 {
+        background: url("../../images/parallax/background/profile-visuel4-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .profile #image-slide5 {
+        background: url("../../images/parallax/background/profile-visuel5-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}
+
+/* 980px */
+@media only screen and (min-width: 980px) {
+
+    .profile #slide1 {
+        background: url("../../images/parallax/background/profile-visuel1-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .profile #image-slide2 {
+        background: url("../../images/parallax/background/profile-visuel2-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .profile #image-slide3 {
+        background: url("../../images/parallax/background/profile-visuel3-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .profile #image-slide4 {
+        background: url("../../images/parallax/background/profile-visuel4-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .profile #image-slide5 {
+        background: url("../../images/parallax/background/profile-visuel5-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}

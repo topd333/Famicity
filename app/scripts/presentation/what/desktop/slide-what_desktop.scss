@@ -1,0 +1,52 @@
+@include aboveMediumScreen() {
+  .presentation {
+    #what {
+      .contents {
+        h1 {
+          text-align: left;
+        }
+        .screenshots {
+          position: relative;
+          margin-left: 2em;
+          float: right;
+          width: 60%;
+          min-height: 40em;
+          > * {
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+          .desktop {
+            right: 0;
+            position: absolute;
+            height: 100%;
+            width: 92%;
+          }
+          .mobile {
+            position: absolute;
+            bottom: 14%;
+            left: 0;
+            width: 18%;
+            height: 30%;
+          }
+        }
+        .image {
+          width: 0;
+          height: 0;
+          display: none;
+        }
+        .platforms {
+          display: block;
+          text-align: left;
+          font-size: 3em;
+          color: $green;
+          margin-top: -0.25em;
+          margin-bottom: 0.25em;
+        }
+        .app-icons {
+          text-align: left;
+          display: block;
+        }
+      }
+    }
+  }
+}

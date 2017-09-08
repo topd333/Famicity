@@ -1,0 +1,117 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>MY_GEDCOM_SPACE</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-gedcom-left-menu></fc-gedcom-left-menu>
+        </div>
+
+        <div ng-if="!imports.length" class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <form action="javascript:;" class="standard-form standard-form-nomargin login-form" id="intro_form" method="POST">
+              <div class="table">
+                <div class="table-cell">
+                  <img class="pic-in-text-left" src="/images/collage-ged.jpg">
+                </div>
+                <div class="table-cell v-align-top" data-translate>EMPTY_GEDCOM_SPACE_INSTRUCTIONS</div>
+              </div>
+
+              <div class="c-width-1">
+                <div class="form-group">
+                  <a class="btn btn-primary btn-lg button-inherit-width" ui-sref="gedcom-import-wizard({user_id: userId})" translate>IMPORT_MY_GEDCOM_FILE</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div ng-if="imports.length" class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+<!--
+            <p ng-bind-html="'GEDCOM_SPACE_INSTRUCTIONS' | translate: {url: '/users/' + viewedUserId + '/helps/2324'}"></p>
+            <div ng-if="pendingImports.length" class="table gedcom-imports-side-list">
+              <div class="table-cell v-align-middle">
+                <span class="wcs-g-icon wcs-g-icon-green"><span class="gedcom-ged-icon-text">GED</span></span>
+              </div>
+              <span>&nbsp; </span>
+              &lt;!&ndash; TODO : remove this and set the margin in the css &ndash;&gt;
+              <div class="table-cell v-align-middle gedcom-local-heading" translate>PENDING_IMPORTS</div>
+            </div>-->
+            <div ng-if="imports.length" class="table gedcom-espace-import-table">
+              <div ng-repeat="import in imports" class="table-row">
+                <div class="table-cell v-align-top gedcom-espace-import-table-avatar">
+                  <fc-avatar class="avatar-size45" data-user="import.user"></fc-avatar>
+                </div>
+                <div class="table-cell">
+                  <span ng-if="import.user.id == userId && !import.file_name" ng-bind-html="'MY_GEDCOM_IMPORTATION' | translate: {date: $moment(import.created_date, 'X').format('L')}"></span>
+                  <span ng-if="import.user.id != userId && !import.file_name" ng-bind-html="'OTHER_USER_GEDCOM_IMPORTATION' | translate: {date: $moment(import.created_date, 'X').format('L'), other_user_id: import.user.id, other_user: import.user.user_name}"></span>
+                  <span ng-if="import.user.id == userId && import.file_name" ng-bind-html="'MY_GEDCOM_IMPORTATION_FILENAME' | translate: {date: $moment(import.created_date, 'X').format('L'), filename: import.file_name}"></span>
+                  <span ng-if="import.user.id != userId && import.file_name" ng-bind-html="'OTHER_USER_GEDCOM_IMPORTATION_FILENAME' | translate: {date: $moment(import.created_date, 'X').format('L'), other_user_id: import.user.id, other_user: import.user.user_name, filename: import.file_name}"></span>
+                  <br/>
+                  <span ng-if="import.state == 'initiate'" data-translate>DOWNLOAD_FINISHED_NOT_VALIDATED</span>
+                  <span ng-if="import.state == 'waiting_treatment'" data-translate>DOWNLOAD_FINISHED_PENDING_IMPORT</span>
+                  <span ng-if="import.state == 'in_progress'" data-translate>IMPORT_IN_PROGRESS</span>
+                  <span ng-if="import.state == 'finish'" data-translate>IMPORT_SUCCESS</span>
+                  <span ng-if="import.state == 'error'" class="danger-color" ng-bind-html="'IMPORT_FAILED' | translate: {userId: userId, settingsId: settingsId}"></span>
+                  <span ng-if="import.state == 'cancel'" data-translate>IMPORT_CANCELED</span>
+                </div>
+                <div class="table-cell right-text v-align-top gedcom-espace-import-table-button">
+                  <a ng-if="import.user.id == userId && import.state == 'waiting_treatment'" class="btn btn-secondary btn-md button-min-width2" ng-click="cancel(import.id)" translate>CANCEL</a>
+                  <a ng-if="import.user.id == userId && import.state == 'initiate'" class="btn btn-primary btn-md button-min-width2" ng-click="continue(import.id)" translate>CONTINUE</a>
+                  <a ng-if="import.user.id == userId && (import.state == 'finish' || import.state == 'error')" ui-sref="u.gedcom-details({user_id: import.user.id, gedcom_id: import.id})" class="btn btn-primary btn-md button-min-width2" data-translate>DETAILS</a></div>
+              </div>
+            </div>
+           <!-- <br ng-show="pendingImports.length && endedImports.length">
+            <div ng-show="pendingImports.length && endedImports.length" class="gedcom-espace-tables-delimiter"></div>
+            <br ng-show="pendingImports.length && endedImports.length">
+            <div ng-if="endedImports.length" class="table  gedcom-imports-side-list">
+              <div class="table-cell v-align-middle">
+                <span class="wcs-g-icon wcs-g-icon-green"><span class="gedcom-ged-icon-text">GED</span></span>
+              </div>
+              <span>&nbsp; </span>
+              &lt;!&ndash; TODO : remove this and set the margin in the css &ndash;&gt;
+              <div class="table-cell v-align-middle gedcom-local-heading" data-translate>FINISHED_IMPORTS</div>
+            </div>-->
+           <!-- <div ng-if="endedImports.length" infinite-scroll="loadMoreCompletedImports()" ng-attr-infinite-scroll-disabled="infiniteScrollLoading || infiniteScrollDisabled" infinite-scroll-distance="1" class="table gedcom-espace-import-table gedcom-espace-import-table1">
+              <div ng-repeat="import in endedImports" class="table-row">
+                <div class="table-cell v-align-top gedcom-espace-import-table-avatar">
+                  <fc-avatar class="avatar-size45" data-user="import.user"></fc-avatar>
+                </div>
+                <div class="table-cell">
+                  <span ng-if="import.user.id == userId && !import.file_name" ng-bind-html="'MY_GEDCOM_IMPORTATION' | translate: {date: $moment(import.created_date, 'X').format('L')}"></span>
+                  <span ng-if="import.user.id != userId && !import.file_name" ng-bind-html="'OTHER_USER_GEDCOM_IMPORTATION' | translate: {date: $moment(import.created_date, 'X').format('L'), other_user_id: import.user.id, other_user: import.user.user_name}"></span>
+                  <span ng-if="import.user.id == userId && import.file_name" ng-bind-html="'MY_GEDCOM_IMPORTATION_FILENAME' | translate: {date: $moment(import.created_date, 'X').format('L'), filename: import.file_name}"></span>
+                  <span ng-if="import.user.id != userId && import.file_name" ng-bind-html="'OTHER_USER_GEDCOM_IMPORTATION_FILENAME' | translate: {date: $moment(import.created_date, 'X').format('L'), other_user_id: import.user.id, other_user: import.user.user_name, filename: import.file_name}"></span>
+                  <br />
+                  <span ng-if="import.state == 'finish' && import.user.id == userId" ng-bind-html="'IMPORT_SUCCESS_DETAILS' | translate: {nb_profiles: import.count_members_gedcom}"></span>
+                  <span ng-if="import.state == 'finish' && import.user.id != userId" class="ok-color" data-translate>IMPORT_SUCCESS</span>
+                  <span ng-if="import.state == 'error'" class="danger-color" ng-bind-html="'IMPORT_FAILED' | translate: {userId: userId, settingsId: settingsId}"></span>
+                  <span ng-if="import.state == 'cancel'" data-translate>IMPORT_CANCELED</span>
+                </div>
+
+                <div class="table-cell right-text v-align-top gedcom-espace-import-table-button">
+                  &lt;!&ndash; <a ng-if="import.state == 'error'" class="btn btn-primary btn-md button-min-width2" ng-click="goToCreateMessage()" translate>CONTACT_US_LINK</a> &ndash;&gt;
+                  <a ui-sref="u.gedcom-details({user_id: import.user.id, gedcom_id: import.id})" class="btn btn-primary btn-md button-min-width2" data-translate>DETAILS</a>
+
+                </div>
+              </div>
+            </div>-->
+            <!--<br>-->
+            <!--<div class="item-sub-delimiter" ng-show="infiniteScrollLoading"></div>-->
+            <!--<div class="center-text" ng-show="infiniteScrollLoading"><a class="green-link-color" data-translate>LOADING</a>-->
+            <!--</div>-->
+            <!--<div class="item-sub-delimiter" ng-show="infiniteScrollLoading"></div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

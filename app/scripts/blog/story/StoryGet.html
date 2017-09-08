@@ -1,0 +1,31 @@
+<div class="wrapper">
+
+  <div class="content">
+
+    <!-- <fc-header-bar data-user-id="userId">
+      <h2 class="pull-left" translate>NEWS</h2>
+      <a class="btn btn-icon pull-right pointer">
+        <i class="fc fc-plus"></i>
+      </a>
+    </fc-header-bar> -->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column homepage-left-column hidden-xs">
+          <fc-story-detail data-story="story"></fc-story-detail>
+          <fc-story-list data-stories="lastStories"></fc-story-list>
+        </div>
+
+        <div class="col-sm-8 right-column homepage-right-column">
+          <div class="main-content">
+            <fc-feed-story-list data-user="me" data-elements="elements" data-story="story"></fc-feed-story-list>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

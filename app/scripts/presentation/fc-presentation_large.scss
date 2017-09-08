@@ -1,0 +1,135 @@
+$layerPresentationOver: $layerPresentation + 1;
+
+@mixin presentationHeaderDisabled() {
+  display: none;
+  z-index: $layerNever;
+  //opacity: 0;
+  //width: 0;
+}
+
+@include aboveMediumScreen() {
+  .presentation {
+
+    h1 {
+      font-size: 2em;
+    }
+
+    .header {
+      @include publicHeader();
+      .logo {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('/images/logos/header-logo.png');
+        width: 9em;
+        height: 5vh;
+      }
+      &.enabled {
+        z-index: $layerAlways;
+        //z-index: $layerPresentationOver;
+        //animation: fadeIn 1s;
+        //opacity: 1;
+        //width: 100%;
+        display: block;
+      }
+      &.disabled {
+        @include presentationHeaderDisabled();
+      }
+      @include presentationHeaderDisabled(); // Don't display presentation header by default
+    }
+
+    .page {
+      .contents {
+        //@include centeredVertically();
+        padding: $headerHeight 0; // Replaces vertical centering since the all-touch approach
+
+        max-width: $maxContentWidth;
+        margin: auto;
+        .desktop-image {
+          display: block;
+        }
+        .mobile-image {
+          display: none;
+        }
+      }
+    }
+    h1 {
+      text-align: center;
+    }
+
+    .contents {
+    }
+
+    li, p {
+      text-align: left;
+    }
+
+    .page {
+      //padding: 2em 0;
+      height: 100vh; // One screen per page
+    }
+
+    #what-img-3, #what-img-4 {
+      display: inline-block;
+    }
+
+    .slider {
+      display: block;
+      margin-bottom: 0;
+      font-size: 1.3em;
+      $bulletSize: 0.8em;
+      $bulletUnselectedColor: darkgray;
+      padding: 0;
+      transition: opacity 1s ease;
+      animation: fadeIn 1s;
+      position: fixed;
+      z-index: $layerPresentationOver;
+      top: 50%;
+      right: 0;
+      //margin-right: $marginRight;
+      margin-top: -10%;
+
+      a {
+        color: rgb(119, 136, 153);
+        font-size: 1em;
+        display: block;
+        height: $bulletSize;
+        width: $bulletSize;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 50%;
+        border: $bulletUnselectedColor $bulletBorder;
+        background: $sliderUnselectedBackground;
+        margin: 0.7em 0;
+        &:hover {
+          @include sliderSelect();
+        }
+      }
+    }
+
+    #what.targeted,
+    #share.targeted,
+    #tree.targeted,
+    #fusion.targeted,
+    #privacy.targeted,
+    #engage.targeted {
+      // What to display/hide when on presentation pages
+      ~ .header {
+        @extend .header.enabled;
+      }
+    }
+    #what.targeted ~ .slider #ref-what,
+    #share.targeted ~ .slider #ref-share,
+    #tree.targeted ~ .slider #ref-tree,
+    #fusion.targeted ~ .slider #ref-fusion,
+    #privacy.targeted ~ .slider #ref-privacy,
+    #engage.targeted ~ .slider #ref-engage {
+      @include sliderSelect();
+    }
+  }
+}
+@import "what/desktop/slide-what_desktop";
+@import "tree/desktop/slide-tree_desktop";
+@import "share/desktop/slide-share_desktop";
+@import "fusion/desktop/slide-fusion_desktop";
+@import "privacy/desktop/slide-privacy_desktop";
+@import "engage/desktop/slide-engage_desktop";

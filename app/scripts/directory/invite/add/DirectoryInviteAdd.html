@@ -1,0 +1,52 @@
+<div class="main-content">
+
+  <!--<div class="clearfix hidden-xs">-->
+    <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+  <!--</div>-->
+  <!--<br />-->
+
+  <p ng-if="!isReset" data-translate>ADD_CONTACT_INTRODUCTION</p>
+
+  <p ng-if="isReset" data-translate>DO_YOU_WANT_INVITE_SOMEONE_ELSE</p>
+  <div class="holder-for-form-width">
+    <form data-fc-form-submit data-submit-method="inviteContact()" data-form-in-progress="formInProgress" novalidate class="standard-form login-form" id="intro_form" name="addContactForm">
+
+      <div class="form-group">
+        <div class="input-group" ng-class="{'has-error': (addContactForm.lastName.$dirty || submitted) && addContactForm.lastName.$invalid}">
+          <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+          <label class="sr-only" for="last-name" data-translate>LAST_NAME</label>
+          <input fc-auto-focus class="form-control" ng-model="user.lastName" name="lastName" id="last-name"
+                 data-translate data-translate-attr-placeholder="LAST_NAME" type="text" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group" ng-class="{'has-error': (addContactForm.firstName.$dirty || submitted) && addContactForm.firstName.$invalid}">
+          <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+          <label class="sr-only" for="first-name" data-translate>FIRST_NAME</label>
+          <input class="form-control" ng-model="user.firstName" name="firstName" id="first-name" data-translate
+                 data-translate-attr-placeholder="FIRST_NAME" type="text" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group" ng-class="{'has-error': (addContactForm.email.$dirty || submitted) && addContactForm.email.$invalid}">
+          <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+          <label class="sr-only" for="email" data-translate>EMAIL</label>
+          <input class="form-control" ng-model="user.email" name="email" id="email" data-translate
+                 data-translate-attr-placeholder="EMAIL" type="email" required/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-primary green-button " id="add-and-invit" type="submit" ng-bind="'INVITE_ON_FAMICITY' | translate"></button>
+      </div>
+      <div class="center-text" data-translate>OR</div>
+      <div class="form-group center-text">
+        <a data-fc-form-submit data-submit-method="addContact()" data-form-in-progress="formInProgress" class="green-link-color underline pointer" id="simple-add" ng-bind="'ADD_TO_DIRECTORY' | translate"></a>
+      </div>
+
+      <h6 class="centered" ng-bind-html="'ADD_CONTACT_EXPLANATION_' + randomExplanationId | translate: {userId: userId} | trustedHtml"></h6>
+    </form>
+  </div>
+
+
+</div>

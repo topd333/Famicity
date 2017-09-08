@@ -1,0 +1,35 @@
+<div class="fc-profile-photo form-group" ng-class="{cropping:cropping}">
+
+  <div ng-show="isUploadedPhoto">
+    <div class="uploaded-photo" ng-click="toggleCropping()">
+      <img ng-src="{{thumbnail}}"  />
+    </div>
+    <a ng-show="!cropping" href="" class="danger-color" ng-click="deleteRelativePhoto()" data-translate>DELETE</a>
+  </div>
+
+  <h2 data-translate ng-show="cropping">fc-profile-photo.TITLE</h2>
+  <div class="crop-zone" ng-show="cropping">
+    <img ng-src="{{photoCropped}}" class="photo-cropped" />
+    <img-crop image="photoToCrop" result-image="photoCropped" area-details="cropDetails"></img-crop>
+    <div class="actions">
+      <div class="start">
+      </div>
+      <div class="end">
+        <button class="btn btn-secondary" ng-click="cancel()" type="button" data-translate>CANCEL</button>
+        <button class="btn btn-primary" ng-click="cropIt()" type="button" data-translate>SUBMIT</button>
+      </div>
+    </div>
+  </div>
+  <div ng-show="canUpload && !isUploadedPhoto && !cropping" class="upload-button" ng-class="{'pointer':!isUploadedPhoto}">
+    <a class="add-photo-area">
+      <i class="fa fa-camera"></i>
+      <span class="label">
+        <span ng-show="!uploadPercent" data-translate>ADD_PHOTO</span>
+      <!--<li class="photo-add-webcam"><a href="#"><i><span><span class="ui_elem photo-add-webcam-icon"></span></span></i><span>2. {{ "FROM_WEBCAM" | translate }}</span></a></li>-->
+      <!--<li class="photo-add-gallery"><a href="#"><i class="fa fa-user"></i><span><span class="pao-enum-toggle-device-small">2</span><span class="pao-enum-toggle-device-big">3</span>. {{ "FROM_GALLERY" | translate }}</span></a></li>-->
+        <span ng-show="uploadPercent">{{ uploadPercent }} %</span>
+        <a ng-show="uploadOngoing" class="cancel-button pointer" ng-click="cancelUpload()" data-translate>CANCEL</a>
+      </span>
+    </a>
+  </div>
+</div>

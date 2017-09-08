@@ -1,0 +1,97 @@
+.privacy {
+  #slide1 {
+    background: url("../../images/parallax/background/privacy-visuel1-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide2 {
+    background: url("../../images/parallax/background/privacy-visuel2-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide3 {
+    background: url("../../images/parallax/background/privacy-visuel3-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide4 {
+    background: url("../../images/parallax/background/privacy-visuel4-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide5 {
+    background: url("../../images/parallax/background/privacy-visuel5-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide6 {
+    background: url("../../images/parallax/background/privacy-visuel6-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+}
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+
+    .privacy #slide1 {
+        background: url("../../images/parallax/background/privacy-visuel1-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide2 {
+        background: url("../../images/parallax/background/privacy-visuel2-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide3 {
+        background: url("../../images/parallax/background/privacy-visuel3-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide4 {
+        background: url("../../images/parallax/background/privacy-visuel4-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide5 {
+        background: url("../../images/parallax/background/privacy-visuel5-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide6 {
+        background: url("../../images/parallax/background/privacy-visuel6-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}
+
+
+/* 980px */
+@media only screen and (min-width: 980px) {
+
+    .privacy #slide1 {
+        background: url("../../images/parallax/background/privacy-visuel1-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide2 {
+        background: url("../../images/parallax/background/privacy-visuel2-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide3 {
+        background: url("../../images/parallax/background/privacy-visuel3-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide4 {
+        background: url("../../images/parallax/background/privacy-visuel4-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide5 {
+        background: url("../../images/parallax/background/privacy-visuel5-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .privacy #image-slide6 {
+        background: url("../../images/parallax/background/privacy-visuel6-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}

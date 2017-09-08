@@ -1,0 +1,28 @@
+<div class="table directory-item-table pointer" ng-click="onClick(user.id)" ng-if="!user.error">
+  <fc-avatar data-link-disabled="true" class="avatar-size40 table-cell directory-item-table-cell-picture" data-user="user"></fc-avatar>
+
+  <div class="table-cell directory-item-table-cell-info">
+    <h2 title="{{ user.user_name }}">{{ user.user_name }}</h2>
+
+    <div ng-if="user.maiden_name">
+      <i data-translate>TREE.SEARCH.BORN</i>&nbsp;{{ user.maiden_name }}
+    </div>
+
+    <div ng-if="user.is_deceased">
+      <span><!--
+       -->({{ user.birth_date ? $moment.fromServer(user.birth_date).format('YYYY') : '?' }} - {{ user.death_date ? $moment.fromServer(user.death_date).format('YYYY') : '?' }})<!--
+   --></span><!--
+   --><span class="birth_place" ng-if="user.birth_place || user.death_place"><!--
+     -->{{ 'TREE.SEARCH.IN' | translate:({place: user.death_place || user.birth_place}) }}
+      </span>
+    </div>
+
+    <div ng-if="!user.is_deceased && (user.birth_date || user.birth_place)">
+      <i class="fa fa-gift"></i>
+      {{ user.birth_date && $moment.fromServer(user.birth_date).format('L') }}<!--
+       --><span class="birth_place" ng-show="user.birth_place"><!--
+       -->{{ 'TREE.SEARCH.IN' | translate:({place: user.birth_place}) }}</span>
+    </div>
+  </div>
+</div>
+<div ng-if="user.error" data-translate>ERROR_PLEASE_RETRY</div>

@@ -1,0 +1,28 @@
+#fusion {
+  @include page($grey7);
+
+  .image {
+    width: 100%;
+    height: 38vw;
+    max-height: 30em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .first-paragraph p {
+    text-align: center;
+  }
+  .text {
+    margin-bottom: 3em;
+  }
+  .tree-count {
+    font-size: 1em;
+    text-align: center;
+  }
+}
+
+@include onTouchScreen() {
+  #fusion {
+    @include page($grey7);
+  }
+}

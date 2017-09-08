@@ -1,0 +1,546 @@
+@include aboveMediumScreen() {
+  .calendar {
+    .menu {
+      display: none;
+    }
+    .left-column {
+      margin-top: 0;      // ...So we don't need to adjust the left column
+    }
+  }
+}
+
+@import "events/events";
+
+.week-event-common {
+  position: absolute;
+  z-index: 12;
+}
+.week-event {
+  border-right: solid 1px $gray_color;
+  @include ellipsis();
+}
+.week-event-allday {
+  border-right: solid 1px $gray_color;
+  font-size: 0.8em;
+  height: 21px;
+  line-height: 21px;
+}
+.week-event-birthday {
+  @include ellipsis();
+  font-size: 0.8em;
+  color: $green;
+  height: 42px;
+  line-height: 21px;
+  text-align: left;
+  padding-left: 2px;
+}
+.allday {
+  padding-bottom: 10px;
+  padding-left: 40px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: rgb(231, 231, 231);
+}
+.calendar-week-view-xs-days {
+  width: 100%;
+  td {
+    width: 14.285%;
+  }
+}
+
+.calendar-week-view-xs-dates td {
+  font-size     : 1.2em;
+  padding       : 4px;
+  vertical-align: middle;
+  div {
+    display: inline-block;
+  }
+  &.current-date div {
+    background-color: $lighter_green_19;
+    border-radius: 12px;
+    color: $white;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+  }
+  &.selected-day div {
+    background-color: $green;
+    border-radius: 12px;
+    color: $white;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+  }
+}
+.calendar-week-view-xs-today {
+  font-size: 1.125em;
+  margin-top: 5px;
+}
+.calendar-week-view-xs-events,
+.calendar-week-view-table,
+.calendar-month-view-xs {
+  width: 100%;
+}
+.calendar-week-view-xs-timecell {
+  vertical-align: top;
+  &>div {
+    font-size: 0.8em;
+    position: relative;
+    width: 10%;
+    &>span {
+      position: absolute;
+      top: -15px;
+    }
+  }
+}
+
+.calendar-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.callendar-top-buttons1,
+.callendar-top-buttons1:hover {
+  border: 1px solid $green;
+  color: $green;
+  display: inline-block;
+  height: 2.25em;
+  line-height: 2.25em;
+  width: 80px;
+  a{
+    color: white;
+    text-decoration: none;
+  }
+}
+.callendar-top-buttons2,
+.callendar-top-buttons2:hover {
+  border     : 1px solid $green;
+  color      : $green;
+  display    : inline-block;
+  height     : 2.25em;
+  line-height: 2.25em;
+  padding    : 0 5px;
+}
+a.callendar-top-buttons1-active,
+a.callendar-top-buttons1-active:hover {
+  background-color: $green;
+  color: $white;
+}
+.calendar-week-monthyear {
+  padding-top: 10px;
+  &.month {
+    text-transform: capitalize;
+    i {
+      margin-right: 0.4em;
+    }
+  }
+}
+.calendar-week-view-table {
+  margin-bottom: 4em;
+  tr td {
+    /*width: 13%;*/
+    line-height: 1;
+    overflow: hidden;
+    &:first-child {
+      /*width: 9%;*/
+      overflow: visible;
+      vertical-align: bottom;
+    }
+  }
+  .color-blue-event,
+  .color-green-event,
+  .color-purple-event{
+    &:hover{
+      opacity: 0.75;
+    }
+  }
+  .color-green-event {
+    color: $green;
+  }
+  .color-blue-event {
+    color: $blue_color;
+  }
+  .color-purple-event {
+    color: $lighter_main_font_54;
+  }
+}
+.calendar-week-view-daynamecell {
+  border-right: 1px solid $lighter_main_font_47;
+  border-top  : 1px solid $lighter_main_font_47;
+  padding     : 3px;
+}
+.calendar-week-view-datecell {
+  background-color: $lighter_green_19;
+  color: $white;
+  & + .calendar-week-view-datecell {
+    border-left: 1px solid $white;
+  }
+  &.other-month {
+    background-color: $gray_color;
+    color: $main_font_color;
+  }
+  &:last-child {
+    border-right: 1px solid $lighter_main_font_47;
+  }
+}
+
+
+.calendar-week-view-timedatecell {
+  border-right: 1px solid $lighter_main_font_47;
+  height: 50px;
+  vertical-align: bottom;
+  &>div {
+    height: 50px;
+    position: relative;
+    >span {
+      color: $lighter_green_19;
+      font-size: 0.8em;
+    }
+  }
+  &:last-child {
+    border-right: 1px solid $lighter_main_font_47;
+  }
+}
+
+.calendar-week-view-timedatecell-bb {
+  border-bottom: 1px solid $lighter_main_font_47;
+  bottom: 0;
+  left: 2px;
+  position: absolute;
+  right: 2px;
+}
+.calendar-week-view-time>div {
+  position: relative;
+}
+.calendar-week-view-time span {
+  bottom: -10px;
+  position: absolute;
+  right: 5px;
+}
+
+.calendar-week-view-active-cell {
+  background-color: $lighter_green_47;
+}
+.calendar-month-view-table {
+  border-color: $lighter_main_font_47;
+  border-style: solid solid none solid;
+  border-width: 1px;
+  width: 100%;
+  td+td {
+    border-left: 1px solid $lighter_main_font_47;
+  }
+  .border-none td+td {
+    border: none;
+  }
+}
+
+.calendar-month-view-dates>td {
+  padding: 0 2px;
+  width  : 14.2857%;
+  &>div {
+  background-color: $lighter_green_19;
+    color: $white;
+  }
+}
+
+.calendar-month-view-dayname>td {
+  width: 14.2857%;
+}
+
+.calendar-month-view-dayslots {
+  .month-row-content {
+    display    : block;
+    font-size  : 14px;
+    height     : 21px;
+    line-height: 21px;
+    padding    : 0 2px;
+    text-align : left;
+
+    top        : 0;
+    width      : 100%;
+    &>div {
+      padding-right: 40px;
+    }
+  }
+  .month-view-row {
+    width: 14.2857%;
+  }
+  td>div {
+    height: 105px;
+    position: relative;
+  }
+  .color-green-event {
+    color: $green;
+  }
+  .color-blue-event {
+    color: $blue_color;
+
+  }
+  .color-purple-event {
+    color: $purple;
+  }
+}
+
+.calendar-month-view-dayslots-holder {
+  bottom: 0;
+  display: block;
+  left: 0;
+  padding-top: 2px;
+  position: absolute;
+  right: 0;
+  text-overflow: hidden;
+  top: 0;
+  z-index: 2;
+  span {
+    display      : block;
+    font-size    : 0.8em;
+    line-height  : 1.2;
+    padding      : 0 2px;
+    text-align   : left;
+    @include ellipsis();
+    i.fa-circle.circle-blue {
+      color: $blue_color;
+      font-size: 0.625em;
+    }
+    i.fa-circle.circle-green {
+      color: $lighter_green_19;
+      font-size: 0.625em;
+    }
+  }
+}
+
+.calendar-month-view-timedatecell-bb {
+  border-bottom: 1px solid $lighter_main_font_47;
+  bottom: 0;
+
+  left: 2px;
+  position: absolute;
+  right: 2px;
+  z-index: 1;
+}
+.calendar-month-view-active-cell {
+  background-color: $lighter_green_47;
+}
+.calendar-month-view-dayslots-slottime {
+  float: right;
+  margin-right: -40px;
+  padding-right: 3px;
+}
+.calendar-month-view-dayslots-slotname {
+  float: left;
+  width: 100%;
+  @include ellipsis();
+}
+.calendar-month-view-dates>td.other-month>div {
+  background-color: $gray_color;
+  color: #6e7377;
+}
+.calendar-month-view-event {
+  color: $green;
+  font-size: 0.8em;
+  padding: 0 2px;
+  text-align: left;
+  @include ellipsis();
+}
+.calendar-month-view-xs-dayname>td {
+  border-bottom: 1px solid $lighter_main_font_4;
+  padding      : 5px;
+  width        : 14.2857%;
+}
+.calendar-month-view-xs-monthname {
+  color: $green;
+  font-size: 1.5em;
+  text-align: left;
+}
+.calendar-month-view-xs-monthname>td {
+  padding: 10px 10px 10px 0;
+}
+.calendar-month-view-xs-dateslot>td {
+  border-top    : 1px solid $lighter_main_font_47;
+  font-size     : 1.2em;
+  height        : 90px;
+  padding       : 5px;
+  vertical-align: top;
+}
+.calendar-month-view-xs-dateslot>td.calendar-month-view-xs-dateslot-ntb {
+  border-top-style: none;
+}
+.calendar-month-view-xs-dateslot i.fa-circle,
+.calendar-month-view-xs-dateslot i.fa-gift {
+  color: $green;
+  font-size: 0.8em;
+}
+.calendar-month-view-xs-rdn {
+
+  background-color: $green;
+  border-radius   : 12px;
+  color           : $white;
+  height          : 24px;
+  line-height     : 20px;
+  margin          : 0 auto;
+  padding         : 2px;
+  width           : 24px;
+}
+.create-event-short-field-holder {
+  width: 48%;
+}
+.month-view-row, .calendar-week-view-timedatecell{
+  &:active, &:hover{
+    background-color: $gray_color;
+  }
+}
+.create-event-color-selector * {
+  vertical-align: middle;
+}
+.create-event-color-selector a {
+  border-radius: 4px;
+  display: inline-block;
+
+  height: 26px;
+  vertical-align: middle;
+  width: 26px;
+}
+.create-event-color-selector .standard-radiobutton label:before {
+  height: 26px;
+  line-height: 26px;
+  width: 26px;
+}
+a.create-event-color-selector-blue,
+.standard-radiobutton.create-event-color-selector-blue label:before,
+.standard-radiobutton.create-event-color-selector-blue input[type=radio]:checked+label:before {
+  background-color: $calendar_blue;
+}
+a.create-event-color-selector-green,
+.standard-radiobutton.create-event-color-selector-green label:before,
+.standard-radiobutton.create-event-color-selector-green input[type=radio]:checked+label:before {
+  background-color: $calendar_green;
+}
+a.create-event-color-selector-purple,
+.standard-radiobutton.create-event-color-selector-purple label:before,
+.standard-radiobutton.create-event-color-selector-purple input[type=radio]:checked+label:before {
+  background-color: $calendar_purple;
+}
+.recurrence-letter-checkboxes * {
+  vertical-align: middle;
+}
+.standard-checkbox.letter-checkbox label:before {
+  color: $white;
+  font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+.standard-checkbox.letter-checkbox-L label:before,
+.standard-checkbox.letter-checkbox-L input[type=checkbox]:checked+label:before {
+  content: "L";
+}
+.standard-checkbox.letter-checkbox-M label:before,
+.standard-checkbox.letter-checkbox-M input[type=checkbox]:checked+label:before {
+  content: "M";
+}
+.standard-checkbox.letter-checkbox-J label:before,
+.standard-checkbox.letter-checkbox-J input[type=checkbox]:checked+label:before {
+  content: "J";
+}
+.standard-checkbox.letter-checkbox-V label:before,
+.standard-checkbox.letter-checkbox-V input[type=checkbox]:checked+label:before {
+  content: "V";
+}
+.standard-checkbox.letter-checkbox-S label:before,
+.standard-checkbox.letter-checkbox-S input[type=checkbox]:checked+label:before {
+  content: "S";
+}
+.standard-checkbox.letter-checkbox-D label:before,
+.standard-checkbox.letter-checkbox-D input[type=checkbox]:checked+label:before {
+  content: "D";
+}
+.create-event-color-selector-selected {
+  border: 1px solid $dark_blue;
+}
+input:not([type='checkbox']):not([type='radio']).time-before-event {
+  border-style: solid;
+  display: inline-block;
+  line-height: 28px;
+  padding-bottom: 0.4em;
+  padding-top: 0.4em;
+  width: 3em;
+  & + .custom-select-w {
+    display: inline-block;
+    margin-left: 0.5em;
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+}
+button.button-min-width2.xs-event-button,
+a.button-min-width2.xs-event-button {
+  min-width: 65px;
+  height: 35px;
+  line-height: 23px;
+}
+.event-view-xs-event-details {
+  font-size: 1.2em;
+}
+.event-view-xs-event-details span {
+  color: $green;
+}
+.event-view-xs-invites {
+  @extend .fcity-clearfix;
+  border-bottom: 1px solid $gray_color;
+  padding      : 10px 0;
+}
+.event-view-xs-invites span {
+  float: left;
+}
+.event-view-xs-invites b,
+.event-view-xs-invites i {
+  float: right;
+  font-weight: normal;
+}
+.event-view-xs-invites i {
+  font-size: 1.5em;
+  line-height: 15px;
+  margin-left: 10px;
+}
+.event-view-xs-invites-c1,
+.event-view-xs-invites-c1 a {
+  color: $green;
+}
+.event-view-xs-invites-c2{
+  color: $orange_color;
+}
+.event-view-xs-invites-c3{
+  color: $red;
+}
+.event-response-buttons-holder {
+  @extend .fcity-clearfix;
+  border : 1px solid $green;
+  margin : 0 auto;
+  padding: 20px;
+}
+.event-response-buttons-holder-xs {
+  display: inline-block;
+}
+.mobile-header-event-info {
+   @include centeredHorizontally;
+   width: 90%;
+}
+.event-details-left-column {
+  p {
+    span {
+      color: $lighter_main_font_25;
+    }
+  }
+}
+
+/* 480px */
+@media only screen and (min-width: 480px) {
+  .callendar-top-buttons1,
+  .callendar-top-buttons1:hover {
+    width: 130px;
+  }
+}
+/* /// 480px */
+
+

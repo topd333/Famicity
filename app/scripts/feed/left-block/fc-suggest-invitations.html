@@ -1,0 +1,35 @@
+<div class="s-block">
+  <fc-left-column-block-header>
+    <h3 data-translate>HOME.HAS_FEW_CONTACTS.LEFT_BLOCK.TITLE</h3>
+  </fc-left-column-block-header>
+  <div class="clearfix table-cell text-left" data-translate>HOME.HAS_FEW_CONTACTS.LEFT_BLOCK.ALREADY_HERE</div>
+  <div class="s-block-content s-block-content-type2">
+    <div ng-repeat-start="user in ::suggestions">
+      <div class="image">
+        <fc-avatar class="avatar-size40" data-user="user"></fc-avatar>
+      </div>
+      <div>
+        <span>
+          <a ui-sref="u.profile({user_id: user.id})">{{:: user.user_name }}</a>
+        </span>
+        <span>
+          <span>
+            {{:: user.email }}
+          </span>
+        </span>
+      </div>
+      <div class="actions">
+        <button ui-sref="u.directory.send-invitation({user_id: user.id, email: user.email})"
+                class="btn btn-primary btn-xs" data-translate>INVITE
+        </button>
+      </div>
+    </div>
+    <div ng-repeat-end class="item-sub-delimiter"></div>
+  </div>
+  <div class="homepage-anniversary-items-more homepage-anniversary-items-more-nb clearfix left-column-bottom-link">
+    <a class="pull-right green-link-color" ui-sref="u.directory.invite({user_id: userId})">
+      <span translate data-translate>HOME.HAS_FEW_CONTACTS.LEFT_BLOCK.INVITE_ALL</span>
+      <i class="fa fa-eye"></i>
+    </a>
+  </div>
+</div>

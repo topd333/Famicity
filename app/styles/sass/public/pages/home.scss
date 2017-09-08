@@ -1,0 +1,25 @@
+.homepage {
+  background-color: rgb(193,214,235);
+  background-position: center bottom;
+  .public-header,
+  .header,
+  .presentation .header {
+    .sign-in-pos {
+      max-width: 1200px;
+      padding-right: 2em;
+      padding-top: 1em;
+      position: static;
+      text-align: right;
+      @include centeredHorizontally;
+    }
+  }
+  .lang-pos {
+    left: 0;
+    padding: 1.1em 0 0 10px;
+    top: 0;
+    z-index: $layerAlways+1;
+  }
+}
+ .applestore-icon a:hover, .googleplay-icon a:hover {
+  opacity: 0.5;
+}

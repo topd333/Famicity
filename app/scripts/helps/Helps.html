@@ -1,0 +1,168 @@
+<div class="wrapper">
+  <div class="content">
+
+    <header ng-show="pageType == 'public'">
+      <div class="ui_elem round-famicity-logo">
+        <a ui-sref="public.base({locale: locale})" ng-if="userId == undefined"></a>
+        <a ui-sref="u.home" ng-if="userId != undefined"></a>
+      </div>
+      <h1>
+        <span class="fa fa-question-circle"></span><span data-translate>HELP_CENTER</span></h1>
+
+      <div class="top-right-linkbar">
+        <span class="lang" data-fc-language-switcher></span>/ &nbsp;
+        <a ui-sref="public.base.sign-in({locale: locale})"><i class="fa fa-lock"></i>&nbsp;<span class="hidden-xs"
+                                                                                                 data-translate>CONNECT_LINK</span></a>
+      </div>
+    </header>
+
+    <!--<div ng-show="pageType == 'private'" data-fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>HELP_CENTER</h2>-->
+    <!--</div>-->
+
+    <div class="header-image bg-image-cover" ng-show="pageType == 'public'"></div>
+    <div class="header-underline" ng-show="pageType == 'public'"></div>
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="help-left-col col-sm-4">
+
+          <h2 translate>FAMICITY_HELP_CENTER</h2>
+
+          <div class="help-topic-select visible-xs">
+            <div class="btn-group btn-group-for-select" dropdown>
+              <div dropdown-toggle class="btn-group">
+                <button type="button" class="btn-options-choice btn btn-default button-label">{{ "HELP_MENU_ITEM." +
+                  currentCategory | translate }}
+                </button>
+                <button type="button" class="btn-angle-down btn btn-default">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+              </div>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat-start="menu in menus">
+                  <h5 class="ddh-has-link">
+                    <a ng-if="pageType == 'public'" ui-sref="public.helps-category({category_id: menu.page, locale: locale})">{{
+                      "HELP_MENU_ITEM." + menu.page | translate }}</a>
+                    <a ng-if="pageType == 'private'" ui-sref="u.helps-category-private({ category_id: menu.page, user_id: userId })">{{
+                      "HELP_MENU_ITEM." + menu.page | translate }}</a>
+                  </h5>
+                </li>
+                <li ng-show="$index != (menus.length - 1)" ng-repeat-end class="divider"></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="help-navigation left-navigation-icons panel-group hidden-xs" id="accordion">
+            <div ng-repeat="category in categories" class="panel panel-default" ng-class="{'help-navigation-selected': (currentCategory == category.name)}">
+              <div class="panel-heading">
+                <a ng-if="pageType == 'public'" ui-sref="public.helps-category({ category_id: category.name, locale: locale })">
+                  <i ng-class="'fa fa-' + category.icon"></i>
+                  <h5>{{ "HELP_MENU_ITEM." + category.name | translate }}</h5>
+                </a>
+                <a ng-if="pageType == 'private'" ui-sref="u.helps-category-private({ category_id: category.name, user_id: userId })">
+                  <i ng-class="'fa fa-' + category.icon"></i>
+                  <h5>{{ "HELP_MENU_ITEM." + category.name | translate }}</h5>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- / help-navigation -->
+
+        </div>
+
+        <div class="help-right-col col-sm-8">
+
+          <fc-tooltip-popup ng-if="locale == 'en'" class="locale-not-available">
+            {{ 'LOCALE_NOT_AVAILABLE_YET' | translate}}
+          </fc-tooltip-popup>
+
+          <h2 translate>SEARCH_IN_FAQ</h2>
+
+          <form ng-submit="search()" novalidate class="form-inline search-form" id="search-form" name="searchForm" method="POST">
+            <div class="form-group">
+              <div class="input-group" ng-class="{'has-error': submitted && searchForm.helpQuestion.$invalid}">
+                <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i>
+                </span>
+                <label class="sr-only" for="help-question" translate>HELP_INPUT_LABEL</label>
+                <input type="text" class="form-control default-text-input" id="help-question" name="helpQuestion"
+                       ng-model="help.helpQuestion" data-translate data-translate-attr-placeholder="HELP_INPUT_LABEL"
+                       required/>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary green-button" translate>SEARCH.TITLE</button>
+          </form>
+
+          <div class="help-content text-content">
+            <div ng-show="questions.length">
+              <h3>{{ "HELP_MENU_ITEM." + currentCategory | translate }}</h3>
+
+              <ul class="help-questions">
+                <li ng-repeat="question in questions"><i>{{ $index + 1 }}.</i>
+                  <a ng-if="pageType == 'public'" ui-sref="helps-answer({ answer_id: question.id })">{{ question.title
+                    }}</a>
+                  <a ng-if="pageType == 'private'" ui-sref="u.helps-answer-private({ user_id: userId, answer_id: question.id })">{{
+                    question.title }}</a>
+                </li>
+              </ul>
+            </div>
+
+            <div ng-show="answer">
+              <h3>{{ answer.title }}</h3>
+
+              <div ng-bind-html="answer.description"></div>
+            </div>
+
+            <div ng-show="searchResults != undefined" class="search-results">
+              <h3>{{ 'SEARCH_RESULTS_FOR' | translate }} "{{ searchString }}"</h3>
+
+              <p ng-show="searchResults.length == 0" translate>SEARCH.NO_RESULTS_FOUND</p>
+
+              <div ng-repeat="result in searchResults">
+                <a ng-if="pageType == 'public'" ui-sref="helps-answer({ answer_id: result.id })">{{ result.title }}</a>
+                <a ng-if="pageType == 'private'" ui-sref="u.helps-answer-private({ user_id: userId, answer_id: result.id })">{{
+                  result.title }}</a>
+
+                <p ng-bind-html="result.description"></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 hidden-xs"></div>
+        <div class="col-sm-8">
+          <div class="help-footnote text-content center-text" data-translate>HELP_PAGE_SOCIAL_SC</div>
+          <div class="face-twit-function-icons">
+            <div class="face-twit-function-icons-row1 clearfix">
+              <a class="ui_elem face-twit-function-icon-twitter" href="https://twitter.com/famicity" target="_blank" title="Twitter"></a>
+              <a class="ui_elem face-twit-function-icon-facebook" href="https://facebook.com/famicity" target="_blank" title="Facebook"></a>
+              <a class="ui_elem face-twit-function-icon-pinterest" href="https://pinterest.com/famicity" target="_blank" title="Pinterest"></a>
+            </div>
+            <div class="face-twit-function-icons-row2 clearfix">
+              <a class="ui_elem face-twit-function-icon-mail" ng-if="pageType == 'public'" href="" ui-sref="public.contact({locale: locale})" title="Famicity"></a>
+              <a class="ui_elem face-twit-function-icon-mail" ng-if="pageType == 'private'" href="" ui-sref="u.settings-contact" title="Famicity"></a>
+              <a class="ui_elem face-twit-function-icon-famicity" href="http://blog.famicity.com" target="_blank" title="Blog famicity"></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--
+        <div class="row">
+            <div class="col-sm-4 hidden-xs"></div>
+            <div class="text-content col-sm-8" data-translate>HELP_PAGE_CONTACT_LINK</div>
+        </div>
+        -->
+
+    </div>
+
+  </div>
+
+  <div fc-public-footer locale="{{locale}}" ng-show="pageType == 'public'"></div>
+
+</div>

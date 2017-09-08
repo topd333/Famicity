@@ -1,0 +1,16 @@
+@import "list/fc-permission-list";
+@import "edit/fc-permission-edit";
+
+.permissions {
+  .permission-edit {
+    cursor: text;
+    overflow: visible;          // To allow popup outside the input field
+    margin-left: $labelWidth;   // Compensate 'overflow: visible' to avoid overflowing over left label
+  }
+}
+.permissions-subheading {
+  color: $green;
+}
+
+
+@import "permissions-group-fix";

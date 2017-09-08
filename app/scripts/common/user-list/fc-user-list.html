@@ -1,0 +1,49 @@
+<form action="javascript:;" class="standard-form standard-form-nomargin login-form" id="directory-search-form"
+      method="POST" ng-show="!disableSearchField">
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+      <label class="sr-only" for="search-term" data-translate>fc-user-list.SEARCH.PLACEHOLDER</label>
+      <input fc-auto-focus ng-model="search.criteria" class="form-control" id="search-term" data-translate
+             data-translate-attr-placeholder="fc-user-list.SEARCH.PLACEHOLDER" type="text"/>
+    </div>
+  </div>
+</form>
+<div class="directory-listing"
+     data-infinite-scroll="loadMoreElements()"
+     data-infinite-scroll-disabled="infiniteScrollLoading || infiniteScrollDisabled || !users"
+     data-infinite-scroll-distance="2"
+     data-infinite-scroll-container="infiniteScrollContainer"
+     data-infinite-scroll-immediate-check="false">
+  <div
+    ng-show="showResultCount && !infiniteScrollLoading && resultCount && !infiniteScrollLoading && search.criteria && search.criteria.length > minLength - 1 && users.length"
+    data-translate data-translate-values="{count: resultCount}" data-translate-interpolation="messageformat">
+    SEARCH.RESULT_COUNT
+  </div>
+  <div ng-show="!infiniteScrollLoading && search.criteria.length < minLength" data-translate
+       data-translate-values="{minLength: minLength}" data-translate-interpolation="messageformat">
+    SEARCH.AT_LEAST_CHARACTERS
+  </div>
+  <div
+    ng-show="!infiniteScrollLoading && ((search.criteria && search.criteria.length > minLength - 1) || (customSearchCriteria && customSearchCriteria.length > minLength - 1)) && !users.length"
+    ng-bind-html="'SEARCH.NO_RESULT_FULL' | translate | trustedHtml"></div>
+  <div class="user-list">
+    <div ng-repeat="user in formattedUsers track by user.id" class="directory-item removable-item"
+         ng-class="{separator:user.separator,removed:deleteMode=='remove' && user.declined}">
+      <div ng-if="displayCapital && user.separator" class="directory-listing-letter">{{user.separator}}</div>
+      <fc-user-list-item data-user="user"
+                         data-me="me"
+                         data-mode="mode"
+                         data-selection-mode="selectionMode"
+                         data-checkbox-triggered="checkboxTriggered"
+                         data-on-click="onClick"
+                         data-template="template"
+                         ng-class="{removed:deleteMode=='remove' && user.declined}"></fc-user-list-item>
+    </div>
+  </div>
+</div>
+<div class="alert-holder" ng-show="infiniteScrollLoading">
+  <div class="centered">
+    <div class="loading-alert" data-translate>LOADING</div>
+  </div>
+</div>

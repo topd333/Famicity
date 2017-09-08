@@ -1,0 +1,19 @@
+@include aboveMediumScreen() {
+  .home {
+    .menu {
+      display: none;
+    }
+    .left-column {
+      margin-top: 0;
+    }
+  }
+
+  .feed {
+    .menu {
+      display: none;
+    }
+    .left-column {
+      margin-top: 0;
+    }
+  }
+}

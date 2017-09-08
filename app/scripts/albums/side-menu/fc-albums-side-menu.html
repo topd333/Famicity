@@ -1,0 +1,141 @@
+<div class="col-sm-4 left-column hidden-xs">
+  <fc-user-summary></fc-user-summary>
+
+  <!-- Left context icons -->
+  <div class="left-column-block">
+
+    <div ng-if="!showCommentsView && !likesView" class="table " ng-show="album.permissions.is_updatable">
+      <fc-left-column-block-header action="openAddPhotoOptionsPopup()" show-btn="true" style-apply="">
+        <h3 data-translate>ADD_PICTURES_TITLE</h3>
+        <span><a class="btn-plus">+</a></span>
+      </fc-left-column-block-header>
+    </div>
+
+    <div ng-if="showCommentsView && !likesView" class="table ">
+      <fc-left-column-block-header action="openAddCommentPopup()" show-btn="true" style-apply="">
+        <h3 data-translate>ADD_A_COMMENT</h3>
+        <span><a class="btn-plus">+</a></span>
+      </fc-left-column-block-header>
+    </div>
+
+    <div class="left-column-block-content left-navigation-icons">
+      <a ui-sref="u.albums-comments({user_id: viewedUserId, album_id: album.id})">
+        <i class="btn btn-icon btn-icon-primary"><i class="fa fa-comments-o"></i></i><span data-translate>ALBUM_COMMENTS </span><b>{{ album.comments_count }}</b>
+      </a>
+      <a ng-if="album.likes_count" class="red-rollover" ui-sref="u.albums-likes({user_id: viewedUserId, album_id: album.id})">
+        <i class="btn btn-icon btn-icon-primary"><i class="fa fa-heart"></i></i><span data-translate>THEY_LIKE_ALBUM </span><b>{{ album.likes_count }}</b>
+      </a>
+      <!-- <a class="clearfix">
+        <i><i class="fa fa-comments-o"></i></i><b>{{ album.photo_comments_count }}</b><span translate>COMMENTED_PHOTOS</span>
+      </a> -->
+      <a ng-show="album.permissions.is_updatable && photos.length"
+         ng-class="{'visible-md': album.permissions.is_updatable && photos.length > 0, 'visible-lg': album.permissions.is_updatable && photos.length > 0}"
+         ui-sref="u.albums-order({user_id: viewedUserId, album_id: albumId})">
+        <i class="btn btn-icon btn-icon-primary"><i class="fa fa-sitemap"></i></i><span data-translate>CHANGE_PHOTOS_ORDER</span>
+      </a>
+      <a ng-show="album.event_id" ui-sref="u.event-show({user_id: viewedUserId, event_id: album.event_id, show_back: 'album'})">
+        <i class="btn btn-icon btn-icon-primary"><i class="fa fa-calendar-o"></i></i>
+        <span data-translate>ALBUM_EVENT_LINK</span>
+      </a>
+    </div>
+
+  </div>
+  <!-- /// Left context icons -->
+
+  <!-- Album info -->
+  <div class="left-column-block">
+    <fc-left-column-block-header> <!-- show-btn="album.permissions.is_updatable" -->
+      <h3 data-translate>ALBUM_INFORMATIONS</h3>
+      <span><a>+</a></span>
+    </fc-left-column-block-header>
+    <div class="left-column-block-content" ng-show="album.title || album.description || album.location || album.event_date">
+      <p ng-show="album.title"><span data-translate>ALBUM_NAME_SC</span>
+        <br/><span class="left-column-names">{{ album.title }}</span>
+      </p>
+
+      <p ng-show="album.description">
+        <span data-translate>ALBUM_DESCRIPTION_SC</span>
+        <br/> <span class="left-column-names">{{ album.description }}</span>
+      </p>
+
+      <p ng-show="album.location">
+        <span data-translate>PLACES_SC</span>
+        <br/><span class="left-column-names">{{ album.location }}</span>
+      </p>
+
+      <p ng-show="album.event_date">
+        <span data-translate>ALBUM_DATE_SC</span>
+        <br/><span class="left-column-names">{{ getAlbumDate(); }}</span>
+      </p>
+
+      <div class="item-sub-delimiter" ng-show="album.permissions.is_updatable"></div>
+      <div ng-show="album.permissions.is_updatable">
+        <a ui-sref="u.albums-update({user_id: viewedUserId, album_id: album.id})" class="left-column-bottom-link"><span data-translate>EDIT</span><i class="fa fa-pencil-square-o"></i></a>
+      </div>
+    </div>
+    <div ng-if="album.permissions.is_updatable && !album.title && !album.description && !album.location && !album.event_date">
+      <p
+        ng-bind-html="'EMPTY_ALBUM_INFORMATION' | translate: { url: '/users/' + viewedUserId+ '/albums/' + album.id+ '/edit'}"></p>
+    </div>
+  </div>
+
+  <div ng-show="album.permissions.is_updatable" class="left-column-block">
+    <fc-left-column-block-header>
+      <h3 data-translate>RIGHTS_TITLE</h3>
+      <span><a>+</a></span>
+    </fc-left-column-block-header>
+    <div class="left-column-block-content">
+      <div ng-if="permissions.length || exclusions.length">
+        <div class="permitted-groups-list" ng-if="permissions.length">
+          <p data-translate>ALBUM_SHARE_WITH</p>
+          <span class="left-column-names" ng-repeat="perm in permissions">
+            <span ng-if="perm.user_name != undefined">{{ perm.user_name }}</span><span ng-if="perm.group_name != undefined">{{ perm.group_name }}</span><span ng-if="$last == false">,&nbsp;</span>
+          </span>
+          <br/>
+        </div>
+        <div ng-if="exclusions.length">
+          <br ng-if="permissions.length"/>
+
+          <p data-translate>ALBUM_NOT_SHARE_WITH</p>
+          <span class="left-column-names" ng-repeat="exclu in exclusions">
+            <span ng-if="exclu.user_name != undefined">{{ exclu.user_name }}</span><span ng-if="exclu.group_name != undefined">{{ exclu.group_name }}</span><span ng-if="$last == false">,&nbsp;</span>
+          </span>
+        </div>
+        <div class="item-sub-delimiter"></div>
+        <a ui-sref="u.albums-update({user_id: viewedUserId, album_id: album.id, tab: 'permission'})" class="left-column-bottom-link">
+          <span data-translate>EDIT</span>
+          <i class="fa fa-pencil-square-o"></i>
+        </a>
+      </div>
+      <div ng-if="permissions.length == 0 && exclusions.length == 0">
+        <p
+          ng-bind-html="'EMPTY_ALBUM_PERMISSION' | translate: { url: '/users/' + viewedUserId+ '/albums/' + album.id+ '/edit?tab=permission'}"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- /// Album info -->
+
+  <!-- Shared albums -->
+  <div class="s-block" ng-if="viewedUserId != userId && sharedAlbums.length && !sharedAlbums[0].error" style-apply="">
+    <fc-left-column-block-header class="s-block-header">
+      <h3 data-translate>SHARED_ALBUMS</h3>
+    </fc-left-column-block-header>
+    <div class="s-block-content s-block-content-type2">
+      <div ng-repeat="album in sharedAlbums">
+        <div>
+          <a ui-sref="u.albums-show({user_id: album.user.id, album_id: album.id})">
+            <img ng-src="{{ album.cover_url }}">
+          </a>
+        </div>
+        <div>
+          <span><a style="display:block;" ui-sref="u.albums-show({user_id: album.user.id, album_id: album.id})">{{
+            album.title }}</a></span>
+          <span><a class="green-link-color" ui-sref="u.profile({user_id: album.user.id})">{{ album.user.user_name }}</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /// Shared albums -->
+
+</div>

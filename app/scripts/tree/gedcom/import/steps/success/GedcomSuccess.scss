@@ -1,0 +1,39 @@
+.gedcom.wizard.import {
+  .steps {
+    .success {
+      .stats {
+        margin: 1em auto 3em auto;
+        * {
+          text-align: center;
+        }
+        .import {
+          color: $green;
+          padding-left: 1.9em;
+        }
+        .gedcom {
+          padding-right: 1.9em;
+        }
+        .icon {
+          font-size: 6em;
+          margin-top: 0.1em;
+          display: inline-block;
+        }
+        .count {
+          display: block;
+          font-size: 2em;
+          line-height: 1em;
+          margin: 0.5em 0.5em 0.1em 0.5em;
+        }
+        margin-bottom: 2em;
+      }
+      .form-group {
+        .see-my-tree {
+          border: none;
+          width: 80%;
+          max-width: 23em;
+        }
+        text-align: center;
+      }
+    }
+  }
+}

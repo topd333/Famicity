@@ -1,0 +1,71 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <fc-header-bar user-id="userId">
+      <h2 class="pull-left" translate>MY_PASSIONS</h2>
+      <a class="btn pull-right" ng-click="submitPassions()" translate>SUBMIT</a>
+    </fc-header-bar>
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+        </div>
+        <div class="col-sm-8 right-column right-column-directory">
+
+          <div class="main-content">
+
+            <div ncy-breadcrumb class="hidden-xs"></div>
+            <div class="clearfix center-to-left-text">
+              <img src="/images/my-profile-collage-2.jpg" class="pic-in-text-left hidden-xs" />
+              <div class="pull-right hidden-xs"><a class="btn btn-primary btn-lg pointer" data-fc-form-submit data-submit-method="submitPassions()" data-form-in-progress="formInProgress" ng-bind="'SUBMIT' | translate"></a>
+              </div>
+              <br class="visible-xs" />
+
+              <p class="text-next-to-pic-right" data-translate>PROFILE_PASSIONS_EDIT_PAGE_EXPLANATION</p>
+
+            </div>
+
+
+            <form action="javascript:;" class="standard-form login-form" id="intro_form" method="POST">
+
+              <div class="textarea-with-icon">
+                <textarea class="form-control" id="activities" ng-attr-placeholder="{{ 'ACTIVITES' | translate }}" ng-model="passionsData.activity"></textarea>
+                <label for="activities"><i class="fa fa-pencil"></i>
+                </label>
+              </div>
+              <div class="textarea-with-icon">
+                <textarea class="form-control" id="music" ng-attr-placeholder="{{ 'MUSIC' | translate }}" ng-model="passionsData.music"></textarea>
+                <label for="music"><i class="fa fa-pencil"></i>
+                </label>
+              </div>
+              <div class="textarea-with-icon">
+                <textarea class="form-control" id="tv" ng-attr-placeholder="{{ 'TV' | translate }}" ng-model="passionsData.tvmovie"></textarea>
+                <label for="tv"><i class="fa fa-pencil"></i>
+                </label>
+              </div>
+              <div class="textarea-with-icon">
+                <textarea class="form-control" id="movies" ng-attr-placeholder="{{ 'MOVIES' | translate }}" ng-model="passionsData.movie"></textarea>
+                <label for="movies"><i class="fa fa-pencil"></i>
+                </label>
+              </div>
+              <div class="textarea-with-icon">
+                <textarea class="form-control" id="books" ng-attr-placeholder="{{ 'BOOKS' | translate }}" ng-model="passionsData.book"></textarea>
+                <label for="books"><i class="fa fa-pencil"></i>
+                </label>
+              </div>
+              <div class="textarea-with-icon">
+                <textarea class="form-control" id="notes" ng-attr-placeholder="{{ 'NOTES' | translate }}" ng-model="passionsData.about_me"></textarea>
+                <label for="notes"><i class="fa fa-pencil"></i>
+                </label>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

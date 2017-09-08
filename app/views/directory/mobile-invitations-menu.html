@@ -1,0 +1,42 @@
+<div ng-init="init()">
+    <ul ng-class="{'hidden-directory-submenu': selectionMode}" class="standard-tabs standard-tabs-3 clearfix visible-xs">
+        <li><span><a ui-sref="u.directory.list({user_id: userId})"><i class="fa fa-user"></i></a></span></li>
+        <li><span><a ui-sref="u.directory.user-groups({user_id: userId})"><i class="fa fa-users"></i></a></span></li>
+        <li class="standard-tabs-activetab"><span><a><i class="fa fa-share-square-o"></i></a></span></li>
+    </ul>
+
+    <div class="main-content">
+        <br />
+        <div class="s-menu-options">
+            <a class="clearfix" ui-sref="u.directory.invite({user_id: userId})">
+                <div class="s-menu-option-icon pull-left"><span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-envelope-o"></i></span></div>
+                <div class="s-menu-option-ta clearfix">
+                    <div class="pull-right"><i class="fa fa-angle-right"></i></div>
+                    <div class="s-menu-option-text">
+                        <div><div translate>INVITE_FAMILY</div></div>
+                    </div>
+                </div>
+            </a>
+            <a ng-if="receivedInvitations.length > 0" class="clearfix" ui-sref="u.directory.received-invitations({user_id: userId})">
+                <div class="s-menu-option-icon pull-left"><span class="wcs-g-icon wcs-g-icon-gray"><i class="fa fa-envelope-o"></i></span></div>
+                <div class="s-menu-option-ta clearfix">
+                    <div class="pull-right">{{ receivedInvitations.length }} &nbsp; <i class="fa fa-angle-right"></i></div>
+                    <div class="s-menu-option-text">
+                        <div><div translate>RECEIVED_INVITATIONS</div></div>
+                    </div>
+                </div>
+            </a>
+            <a ng-if="sentInvitations.length > 0" class="clearfix" ui-sref="u.directory.sent-invitations({user_id: userId})">
+                <div class="s-menu-option-icon pull-left"><span class="wcs-g-icon  wcs-g-icon-gray"><i class="fa fa-envelope-o"></i></span></div>
+                <div class="s-menu-option-ta clearfix">
+                    <div class="pull-right">{{ sentInvitations.length }} &nbsp; <i class="fa fa-angle-right"></i></div>
+                    <div class="s-menu-option-text">
+                        <div><div translate>SENT_INVITATIONS</div></div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+</div>

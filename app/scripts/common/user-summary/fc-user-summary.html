@@ -1,0 +1,10 @@
+<fc-avatar class="left-block-profile-picture avatar-size60" data-user="basicProfile" ng-if="basicProfile"></fc-avatar>
+<!-- <a ui-sref="u.profile({user_id: viewedUserId})"><img class="left-block-profile-picture" ng-src="{{ basicProfile.avatar_url }}" /> -->
+<!-- </a> -->
+<div class="left-block-profile-details">
+  <h3><a ui-sref="u.profile({user_id: basicProfile.id})"><i class="fa fa-fw"
+                                                            ng-class="{'fa-male': basicProfile.sex == 'male', 'fa-female': basicProfile.sex == 'female'}"></i>{{basicProfile.user_name}}</a>
+  </h3>
+  <span ng-if="basicProfile.birth_date"><i class="fa fa-gift  fa-fw"></i>{{ $moment.fromServer(basicProfile.birth_date).format('L') }}</span>
+  <span ng-if="basicProfile.birth_place"><i class="fa fa-map-marker fa-fw"></i> {{ "BORN_AT_X" | translate: { GENDER: basicProfile.sex, birth_place: basicProfile.birth_place } : "messageformat" }}</span>
+</div>

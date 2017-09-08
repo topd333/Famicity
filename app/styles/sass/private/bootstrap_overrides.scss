@@ -1,0 +1,66 @@
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 400;
+}
+
+.form-inline .input-group .input-group-addon {
+  width: 1%;
+}
+
+.progress {
+  height: 45px;
+}
+
+.progress-bar {
+  &.progress-bar-success {
+    background-color: $green;
+  }
+}
+
+@import "breadcrumb";
+
+@media only screen and (min-width: 768px) {
+  .standard-tabs > li {
+    min-width: 150px;
+  }
+}
+
+@import "tooltip";
+
+/* Modify custom dropdown from Bootstrap */
+
+ul.dropdown-menu {
+  background-color: $gray_color;
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.btn-group-for-select .btn-options-choice {
+  background-color: $grey1;
+  border: solid 1px $grey2;
+}
+
+.public {
+  ul.dropdown-menu {
+    background-color: $white;
+  }
+  .btn-group-for-select .btn-options-choice {
+    background-color: $white;
+  }
+  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: $fieldBorderRadius;
+    border-bottom-right-radius: $fieldBorderRadius;
+  }
+}
+
+.btn-group-for-select .btn-angle-down {
+  background-color: $grey1;
+}
+
+#country-dropdown-menu {
+  height: 200px;
+  overflow: auto;
+
+}
+
+/* / Modify custom dropdown from Bootstrap */

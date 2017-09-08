@@ -1,0 +1,57 @@
+@include aboveMediumScreen() {
+  $bannerFontSize: 1.4em;
+  $bounceHeight: 0.25em;
+  $layerPresentation: $layerBanner + 1;
+
+  #banner {
+    $slide1Background: $white;
+
+    .fa-chevron-down {
+      color: $grey3;
+      font-weight: normal;
+      font-size: smaller;
+      padding: 0.5em;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    display: block;
+    transition: all 1s;
+    color: #6C6F76;
+    width: 100%;
+    h1 {
+      font-weight: bold;
+      font-size: $bannerFontSize;
+      line-height: 2.1em; // Beware to be high enough to not be hidden by first arrow
+      padding: 0.3em 1em 0.3em 2em;
+    }
+    em {
+      color: $green;
+      font-style: normal;
+    }
+    &:target {
+      .contents {
+        padding-top: $headerHeight;
+        .centered {
+          vertical-align: middle;
+        }
+      }
+    }
+    animation: banner-up 0.5s ease;
+    position: fixed;
+    z-index: $layerBanner;
+    bottom: 0;
+    //    height: $bannerFontSize * 2 + $bounceHeight;
+    box-shadow: 0 1em 1em -1em rgba(0, 0, 0, 0.46) inset;
+
+    // To see "what is famicity footer"
+
+    background: $slide1Background;
+
+    right: 17px; // Scroll bar width hack
+    &.fullWidth {
+      right: 0;
+    }
+  }
+}

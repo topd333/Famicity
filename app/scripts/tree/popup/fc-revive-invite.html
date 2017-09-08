@@ -1,0 +1,32 @@
+<span class="hint" ng-bind-html="currentForm.hint|translate"></span>
+
+<form class="standard-form invite-form tree-popup-form" name="invitationsForm" data-fc-form-submit data-submit-method="revive()" data-form-in-progress="formInProgress" data-activate-on-then="true">
+
+  <div ng-if="invitedUser.global_state != 'active'" class="form-group" ng-class="{'has-error': (invitationsForm.email.$dirty || submitted) && invitationsForm.email.$invalid}">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i>
+      </span>
+      <label class="sr-only" for="email" translate>EMAIL_ADDRESS</label>
+      <input class="form-control" ng-model="treeUserProfile.concerned_invitation.mail_address" name="email" id="email"
+             data-translate data-translate-attr-placeholder="EMAIL_ADDRESS" type="email" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="textarea-with-icon textarea-with-icon-nobmargin">
+      <textarea class="form-control" id="message-text" data-translate
+                data-translate-attr-placeholder="INVITE_FORM_MESSAGE_PLACEHOLDER"
+                ng-model="treeUserProfile.concerned_invitation.comment"></textarea>
+      <label for="message-text"><i class="fa fa-pencil"></i>
+      </label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <div class="end">
+      <button class="btn btn-secondary" ng-click="cancelInvitation()" type="button" data-translate>CANCEL</button>
+      <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-primary" data-activate-on-then="true">{{ 'SUBMIT' | translate }}</button>
+    </div>
+  </div>
+
+</form>

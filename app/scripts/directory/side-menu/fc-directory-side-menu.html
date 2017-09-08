@@ -1,0 +1,104 @@
+<div ng-class="hideLeftColumnBlock ? 'hidden' : 'hidden-xs'" class="col-sm-4 left-column">
+  <div class="left-column-add-button">
+    <fc-left-column-block-header ui-sref="u.directory.add" show-btn="true" style-apply="">
+      <h3 data-translate>ADD_RELATIVE</h3>
+        <span><a class="btn-plus">+</a></span>
+    </fc-left-column-block-header>
+  </div>
+
+  <div class="left-column-add-button">
+    <fc-left-column-block-header action="openAddGroupPopup()" show-btn="true" style-apply="">
+      <h3 data-translate>CREATE_GROUP</h3>
+        <span><a class="btn-plus">+</a>
+        </span>
+    </fc-left-column-block-header>
+  </div>
+
+  <div class="left-column-block">
+    <fc-left-column-block-header>
+      <h3 data-translate>MY_GROUPS</h3>
+      <span class="btn-plus">+</span>
+    </fc-left-column-block-header>
+
+    <fc-directory-groups-list></fc-directory-groups-list>
+  </div>
+  <div class="s-block" ng-if="::receivedInvitations.length && !receivedInvitations[0].error">
+    <fc-left-column-block-header class="s-block-header s-block-header-with-amount">
+      <h3 translate data-translate>RECEIVED_INVITATIONS</h3>
+    </fc-left-column-block-header>
+    <div class="s-block-content s-block-content-type2">
+      <div ng-show="!invitation.declined" ng-repeat="invitation in ::receivedInvitations | limitTo : 2"
+           ng-click="selectReceivedInvitation(invitation)">
+        <div>
+          <fc-avatar class="avatar-size40" user="invitation.user"></fc-avatar>
+        </div>
+        <div>
+          <span>{{:: invitation.user.user_name }}</span>
+          <span>  
+            <span ng-if="::invitation.user.email">
+              <i class="fa fa-envelope-o"></i> {{:: invitation.user.email }}
+            </span>
+          </span>
+        </div>
+        <div ng-if="!invitation.accepted && !invitation.declined">
+          <i class="ok-color fa fa-angle-right"></i>
+        </div>
+        <div ng-if="invitation.accepted">
+          <i class="ok-color fa fa-check" tooltip="{{ 'DIRECTORY.INVITATION.ACCEPTED' | translate }}"></i>
+        </div>
+        <div ng-if="invitation.declined">
+          <i class="invit-decld-or-dltd fa fa-close" tooltip="{{ 'DIRECTORY.INVITATION.DECLINED' | translate }}"></i>
+        </div>
+      </div>
+    </div>
+    <div class="s-block-more">
+      <div ng-if="receivedInvitations.length > 2" class="pull-left">{{ "PLUS_X_INVITATIONS" | translate: { NUM:
+        receivedInvitations.length - 2 } : "messageformat" }}
+      </div>
+      <a href="" ui-sref="u.directory.received-invitations">
+        <span translate>LOOK</span><i class="fa fa-eye"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="s-block" ng-if="::sentInvitations.length && !sentInvitations[0].error">
+    <fc-left-column-block-header class="s-block-header" show-btn="false">
+      <h3 data-translate>SENT_INVITATIONS</h3>
+    </fc-left-column-block-header>
+    <div class="s-block-content s-block-content-type2">
+      <div ng-show="!invitation.declined" ng-repeat="invitation in ::sentInvitations | limitTo : 2"
+           ng-click="selectSentInvitation(invitation)">
+        <div>
+          <fc-avatar class="avatar-size40"
+                     user="invitation.other_user || invitation.user_concerned || invitation"></fc-avatar>
+        </div>
+        <div>
+          <span>{{:: invitation.other_user.user_name || invitation.user_concerned.user_name || invitation.user_name }}</span>
+          <span>
+            <span ng-if="::invitation.other_user.email || invitation.user_concerned.email || invitation.email">
+              <i class="fa fa-envelope-o"></i> {{:: invitation.other_user.email || invitation.user_concerned.email || invitation.email }}
+            </span>
+          </span>
+        </div>
+        <div ng-if="!invitation.accepted && !invitation.declined">
+          <i class="warning-color fa fa-share-square-o"></i>
+        </div>
+        <div ng-if="invitation.declined">
+          <i class="invit-decld-or-dltd fa fa-close" tooltip="{{ 'DIRECTORY.INVITATION.DELETED' | translate }}"></i>
+        </div>
+      </div>
+    </div>
+    <div class="s-block-more">
+      <div ng-if="::data.sent_invitations.users.length > 2" class="pull-left">{{ "PLUS_X_INVITATIONS" | translate: {
+        NUM: sentInvitations.length - 2 } : "messageformat" }}
+      </div>
+      <a href="" ui-sref="u.directory.sent-invitations">
+        <span translate>LOOK</span><i class="fa fa-eye"></i>
+      </a>
+    </div>
+  </div>
+
+</div>
+<fc-user-summary ng-class="!hideLeftColumnBlock ? 'hidden' : 'hidden-xs'"
+                 class="col-sm-4 left-column hidden-xs"></fc-user-summary>
+

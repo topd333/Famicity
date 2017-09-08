@@ -1,0 +1,56 @@
+@include aboveMediumScreen() {
+  .presentation {
+    #engage {
+      h1 {
+        position: relative;
+      }
+      .quotes {
+        display: block;
+        min-height: 15em;
+
+        $quotesCount: 7;
+        width: 100%;
+        .quote {
+          position: relative;
+          cursor: pointer;
+          width: 100%;
+          top: 0;
+          .left-slider, .right-slider {
+            position: absolute;
+            cursor: pointer;
+            padding-top: 1em;
+            width: $sliderWidth;
+            font-size: 3em;
+            height: 100%;
+            @include glow()
+          }
+          .left-slider {
+            left: 0;
+          }
+          .right-slider {
+            right: 0;
+          }
+          blockquote {
+            margin-top: 1em;
+            position: absolute;
+            left: $sliderWidth;
+            transition: opacity 1s ease;
+            opacity: 1;
+            &.ng-hide {
+              opacity: 0;
+            }
+          }
+        }
+      }
+      .form-container {
+        .btn-secondary {
+          background-color: $green;
+          border-color: $green;
+        }
+        .btn-primary {
+          display: none;
+        }
+      }
+    }
+  }
+}

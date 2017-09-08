@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Famicity se met à jour !</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <style type="text/css">
+    body,
+    html {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      color: #646567;
+      font-size: 13px;
+      font-family: Helvetica, Arial, sans-serif;
+      text-align: center;
+    }
+
+    body {
+      background-position: center center;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      /* pour Chrome et Safari */
+
+      -moz-background-size: cover;
+      /* pour Firefox */
+
+      -o-background-size: cover;
+      /* pour Opera */
+
+      background-size: cover;
+      /* version standardisée */
+
+      height: 100%;
+      width: 100%;
+    }
+
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      /* remove android tap highlight */
+    }
+    /* enable selection on input & textareas */
+
+    input,
+    textarea {
+      -webkit-touch-callout: auto;
+      -webkit-user-select: auto;
+    }
+
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    a,
+    input {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-focus-ring-color: rgba(0, 0, 0, 0);
+      outline: none;
+    }
+
+    a.tapped {
+      opacity: 0.8;
+    }
+
+    .lang-pos,
+    .top-right-linkbar {
+      color: #757575;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .lang-pos,
+    .top-right-linkbar a {
+      color: #6a7179;
+    }
+
+    .lang span {
+      display: inline-block;
+    }
+
+    .lang a {
+      display: inline-block;
+    }
+
+    .wrapper {
+      margin: 0 auto;
+      height: 100%;
+    }
+
+    .content {
+      color: #606163;
+      margin: 0 auto;
+      display: table;
+      position: relative;
+      height: 100%;
+    }
+
+    .content a {
+      color: #606163;
+    }
+
+    .main {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .welcome-message {
+      font-weight: normal;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0;
+      max-width: 600px;
+      text-align: center;
+      width: 90%;
+    }
+
+    .famicity-logo-private {
+      background-image: url(../../../images/sprite@small@mdpi.png);
+      background-repeat: no-repeat;
+      background-position: -485px 0;
+      height: 84px!important;
+      width: 312px!important;
+      background-size: 1000px 250px;
+      margin: 0 auto;
+      max-width: 337px;
+    }
+
+    .famicity-logo-private a {
+      display: block;
+      height: 100%;
+    }
+
+    .text-content {
+      color: #757575;
+    }
+
+    .content-delimiter-short {
+      font-size: 0;
+      height: 0;
+      line-height: 0;
+      border-bottom: 1px solid #a8aaab;
+      width: 200px;
+    }
+
+    .home-external-icons ul {
+      display: inline-block;
+    }
+
+    .home-external-icons ul:after {
+      clear: both;
+      content: "";
+      display: block;
+      font-size: 0;
+      height: 0;
+      line-height: 0;
+    }
+
+    .home-external-icons li {
+      float: left;
+      margin: 0 20px 0 0;
+    }
+
+    .home-external-icons li:last-child {
+      margin-right: 0;
+    }
+
+    .home-external-icons a,
+    .home-external-icons a:hover {
+      display: inline-block;
+      height: 36px;
+      line-height: 36px;
+      text-decoration: none;
+      width: 118px;
+    }
+
+    .home-external-icons .facebook-icon,
+    .home-external-icons .twitter-icon {
+      font-size: 18px;
+      padding: 0 0 4px 1px;
+    }
+
+    .home-external-icons .facebook-icon .fa.fa-facebook-square,
+    .home-external-icons .twitter-icon .fa.fa-twitter {
+      font-size: 22px;
+      margin-right: 7px;
+    }
+
+    .home-external-icons .facebook-icon a,
+    .home-external-icons .facebook-icon a:hover,
+    .home-external-icons .twitter-icon a,
+    .home-external-icons .twitter-icon a:hover {
+      color: #fff;
+      background-color: #6a7178;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      height: 35px;
+      margin: 0 auto;
+      width: 119px;
+    }
+
+    .home-external-icons .facebook-icon a:hover {
+      background-color: #3a5795;
+    }
+
+    .home-external-icons .twitter-icon a:hover {
+      background-color: #55acee;
+    }
+
+    .bottom-text {
+      color: #616163;
+    }
+
+    a.green-button,
+    a.green-button:hover {
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+      color: #fff;
+      background-color: #96bd3d;
+      border: none;
+      display: inline-block;
+    }
+    /* Base screen */
+
+    @media only screen {
+      h1 {
+        font-size: 16px;
+      }
+      .lang-pos {
+        left: 7px;
+        top: 7px;
+      }
+      .lang span {
+        font-size: 14px;
+        margin-right: 5px;
+      }
+      .content {
+        font-size: 14px;
+        margin: 0 5%;
+        width: 90%;
+      }
+      .famicity-logo-private {
+        height: 88px;
+        margin-bottom: 20px;
+        margin-top: 45px;
+        width: 90%;
+      }
+      .welcome-message {
+        font-size: 18px;
+      }
+      .content-delimiter-short {
+        margin: 25px auto 15px auto;
+      }
+      .bottom-text {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+      a.green-button {
+        font-size: 16px;
+        height: 30px;
+        line-height: 30px;
+      }
+      a.green-button-min-width {
+        min-width: 180px;
+      }
+    }
+    /* 480px */
+
+    @media only screen and (min-width: 480px) {
+      .lang-pos {
+        left: 7px;
+        top: 25px;
+      }
+      .wrapper {
+        margin: 0;
+      }
+      .content {
+        font-size: 16px;
+        margin: 0 auto;
+        max-width: 960px;
+        width: 100%;
+      }
+      .famicity-logo-private {
+        height: 88px margin-bottom: 40px;
+        margin-top: 100px;
+        width: 337px;
+      }
+      .welcome-message {
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+      .text-content {
+        font-size: 16px;
+      }
+      .content-delimiter-short {
+        margin: 45px auto 30px auto;
+      }
+      .bottom-text {
+        font-size: 24px;
+        margin-bottom: 35px;
+      }
+      a.green-button {
+        font-size: 18px;
+        height: 50px;
+        line-height: 50px;
+      }
+      a.green-button-min-width {
+        min-width: 220px;
+      }
+    }
+    /* 480px mdpi */
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 1) and (max-width: 480px),
+    only screen and (min-resolution: 96dpi) and (max-width: 480px) {
+      body {
+        background-image: url(https://farm8.staticflickr.com/7302/13128021813_1849f49e53_o.jpg);
+      }
+    }
+    /* 480px retina */
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 480px),
+    only screen and (min-resolution: 192dpi) and (max-width: 480px) {
+      body {
+        background-image: url(https://farm3.staticflickr.com/2209/13128193124_5a1478be54_o.jpg);
+      }
+    }
+    /* 768px mpd */
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 481px) and (max-width: 768px),
+    only screen and (min-resolution: 96dpi) and (min-width: 481px) and (max-width: 768px) {
+      body {
+        background-image: url(https://farm3.staticflickr.com/2325/13128194224_7c26e0e33e_o.jpg);
+      }
+    }
+    /* 768px retina */
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 481px) and (max-width: 768px),
+    only screen and (min-resolution: 192dpi) and (min-width: 481px) and (max-width: 768px) {
+      body {
+        background-image: url(https://farm8.staticflickr.com/7386/13128190804_5aaa3946b0_o.jpg);
+      }
+    }
+    /* 980px mpd */
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 769px),
+    only screen and (min-resolution: 96dpi) and (min-width: 769px) {
+      body {
+        background-image: url(https://farm4.staticflickr.com/3763/13128192434_c52a49b365_o.jpg);
+      }
+    }
+    /* 980px retina */
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 769px),
+    only screen and (min-resolution: 192dpi) and (min-width: 769px) {
+      body {
+        background-image: url(https://farm4.staticflickr.com/3781/13128017123_68b078c2b7_o.jpg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="lang-pos lang">
+    <a href="javascript:;">
+      <!-- <span class="fa fa-flag"></span><span>Français</span><span class="fa fa-caret-down"></span> -->
+    </a>
+  </div>
+
+  <div class="wrapper">
+    <div class="content">
+
+      <div class="main">
+        <div class="home-above-form">
+          <div class="famicity-logo-private"></div>
+          <h1 class="welcome-message">
+            Afin de vous offrir un meilleur service
+            <br />Famicity se met à jour!
+
+          </h1>
+        </div>
+        Pour patienter, retrouvez toute l'actualité de Famicity!
+        <br />
+        <br />
+        <div class="home-external-icons">
+
+          <ul>
+            <li class="facebook-icon">
+              <a href="https://www.facebook.com/famicity" target="_blank">
+                <span class="fa fa-facebook-square"></span>Facebook</a>
+            </li>
+            <li class="twitter-icon">
+              <a href="https://twitter.com/Famicity" target="_blank">
+                <span class="fa fa-twitter"></span>Twitter</a>
+            </li>
+          </ul>
+        </div>
+        <div class="content-delimiter-short"></div>
+        <div class="bottom-text">
+          D'ici quelques minutes vous pourrez
+          <br />de nouveau accéder à votre site préféré.
+        </div>
+        <div>
+          <a class="green-button green-button-min-width" href="/">Revenir sur Famicity</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

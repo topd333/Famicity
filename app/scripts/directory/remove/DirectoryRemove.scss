@@ -1,0 +1,16 @@
+.directory.users.remove {
+  .remove-header {
+    overflow: hidden;
+    button {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+@include aboveMediumScreen() {
+  .directory.users.remove {
+    .action-cancel {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="main-popup-over-overlay" id="tree-user-modal">
+  <div class="main-popup-table">
+    <div class="main-popup-tablecell">
+      <div class="main-popup-holder">
+
+        <div class="tree-popup">
+          <div class="tree-popup-header clearfix">
+            <div class="pull-left"><i class="fa fa-user"></i> &nbsp; {{currentForm.title | translate:
+              {firstName:treeUserProfile.first_name, aChild:currentForm.aChild, hisChild:currentForm.hisChild} }}
+            </div>
+            <div class="pull-right">
+              <a class="ui_elem close-popup-icon pointer" ui-sref="u.tree({cause:'cancel'})"></a>
+            </div>
+          </div>
+
+          <div class="tree-popup-table">
+
+            <div ui-view="treePopupMenu" class="menu"></div>
+
+            <div ui-view="treePopupForm" class="tree-popup-add-relatives contents"></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

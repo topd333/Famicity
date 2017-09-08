@@ -1,0 +1,12 @@
+@include aboveMediumScreen() {
+  .search {
+    .menu {
+      display: none;
+    }
+    .content-view {
+      .left-column {
+        margin-top: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@include aboveMediumScreen() {
+  .directory.groups.add {
+    .action-add {
+      display: none;
+    }
+  }
+}

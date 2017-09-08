@@ -1,0 +1,23 @@
+.cookies{
+  .content{
+    font-size: 16px;
+  }
+  .header-image {
+    background-image: url(../../images/cookies-header-bg.jpg);
+    height: 98px;
+  }
+  h2{
+    text-align: left;
+    color: $green;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+}
+.cookie-information{
+  text-align: justify;
+  margin-bottom: 20px;
+  a, a:hover{
+    color: $green;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,99 @@
+<!--<fc-header-bar user-id="userId">-->
+    <!--<h2 class="pull-left" translate>INVITE</h2>-->
+    <!--<a class="btn pull-right" ng-click="sendMultipleInvite()" translate>OK</a>-->
+<!--</fc-header-bar>-->
+
+<div>
+  <div class="main-content">
+    <!--<div class="clearfix hidden-xs">-->
+      <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+    <!--</div>-->
+
+    <div class="text-and-button-table">
+      <div ng-show="currentTab == 'directory'" class="center-to-left-text" translate>INVITE_MODE_INTRODUCTION</div>
+      <div ng-show="currentTab == 'email'" class="center-to-left-text" translate>INVITE_BY_EMAIL_INTRODUCTION</div>
+      <div class="text-and-button-table-button"><a class="btn btn-primary btn-lg green-button-standard hidden-xs" ng-click="sendMultipleInvite()" translate>SUBMIT</a>
+      </div>
+    </div>
+
+    <tabset>
+      <tab select="directoryTabSelected()" deselect="directoryTabDeselected()" active="isCurrentTabDirectory">
+        <tab-heading>
+          <i class="fa fa-book"></i> &nbsp;
+          <span translate>BY_DIRECTORY</span>
+        </tab-heading>
+
+        <div ng-show="!import">
+
+          <fc-user-list
+            class="invite-contacts"
+            ng-model="data.invitations.users"
+            load-more="loadMore"
+            filter="filter"
+            selection-mode="selectionMode"
+            mode="default"
+            show-alert="false"
+            selected-users="selectedUsers"
+            disable-search-field="false">
+          </fc-user-list>
+
+          <div ng-if="data.invitations.users.length == 0" class="vertical-button-group import-contacts-buttons">
+            <div ui-sref="u.directory.import-from-services">
+              <button class="btn btn-input btn-lg button-with-image-icon button-min-width">
+                <span data-translate>IMPORT_ADDRESSES_BOOK</span>
+              </button>
+            </div>
+            <div ui-sref="u.directory.add({user_id: userId})">
+              <a class="btn btn-input btn-lg button-with-image-icon button-min-width">
+                <span data-translate>ADD_RELATIVE</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div ng-show="import" class="contact-import">
+          <fc-import-services-buttons></fc-import-services-buttons>
+          <br/>
+          <button class="btn btn-danger btn-lg" ng-click="import = false" translate>CANCEL</button>
+        </div>
+      </tab>
+      <tab select="mailTabSelected()" deselect="mailTabDeselected()" active="isCurrentTabEmail">
+        <tab-heading>
+          <i class="fa fa-envelope-o"></i> &nbsp;
+          <span translate>BY_EMAIL</span>
+        </tab-heading>
+        <p data-translate>INVITE_BY_EMAIL_INTRODUCTION_INSIDE</p>
+        <form novalidate class="standard-form standard-form-nomargin login-form c-width-1" name="emailInvitationsForm">
+          <div class="table">
+            <div class="table-row" ng-repeat="mailField in data.invitations.emails">
+              <div class="invite-email-delete table-cell table-cell-pb15 pointer">
+                <a ng-click="removeMailField($index)"><i class="fa fa-trash-o danger-color"></i></a>
+              </div>
+              <div class="invite-email-field table-cell table-cell-pb15" ng-form="subForm">
+                <div class="input-group" ng-class="{'has-error': (subForm.email.$dirty || submitted) && subForm.email.$invalid}">
+                  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i>
+                  </span>
+                  <input class="form-control" data-ng-attr-id="{{ 'email' + $index }}" name="email"
+                         ng-model="mailField.email" data-translate data-translate-attr-placeholder="EMAIL_ADDRESS"
+                         type="email">
+                </div>
+              </div>
+            </div>
+
+            <div class="table-row ">
+              <div class="table-cell">
+
+              </div>
+              <div class="table-cell">
+                <div class="button-centring-div">
+                  <a class="standard-icon-nf standard-icon-green-nf btn btn-icon btn-icon-primary pointer" ng-click="addMailField()">+</a>
+                  <div class="invite-add-mail-txt" translate>ADD_MAIL</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </tab>
+    </tabset>
+  </div>
+
+</div>

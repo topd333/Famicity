@@ -1,0 +1,71 @@
+.tree-search-panel {
+  font-size: 0.9em;
+  form {
+    margin-bottom: 0.5em;
+    .input-group {
+      margin: 5px 5px 0;
+      input, .input-group-addon {
+        //@include inputSizingSmall();
+        background: $gray_color;
+      }
+    }
+  }
+  .result-count {
+    background: $colorGreenLightest;
+    padding: 5px;
+    font-size: 0.9em;
+  }
+  .directory-listing {
+    .directory-item{
+      height: auto;
+      padding: 0 5px;
+      &:hover {
+        background: $colorGreenLightest;
+      }
+    }
+    .directory-item-table {
+      padding: 0 5px;
+    }
+    .directory-item-table-cell-info {
+      h2 {
+        color: $green;
+        @include ellipsis();
+        span {
+          color: $lighter_main_font_25;
+        }
+        width: 10.6em;
+        display: inline-block;
+        line-height: 1.3!important;
+        height: auto;
+      }
+      & > div {
+        font-size: 0.9em;
+        color: $lighter_main_font_4;
+      }
+    }
+  }
+  .year {
+    width: 46%;
+  }
+  .form-inline {
+    > * {
+      width: 50%;
+      display: inline-block;
+    }
+    .begin .input-group {
+      margin-right: 2.5px;
+    }
+    .end .input-group {
+      margin-left: 2.5px;
+    }
+  }
+  .toggle-options {
+    margin-top: 5px;
+    border: none;
+    a, a:hover {
+      font-size: 1em;
+      color: $green;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<div class="main-content">
+
+  <!--<div class="clearfix hidden-xs">-->
+    <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+  <!--</div>-->
+
+  <div ng-hide="!emptyUsers">
+    <h5 data-translate>EMPTY_DIRECTORY_TITLE</h5>
+
+    <div class="vertical-button-group import-contacts-buttons">
+      <div>
+        <a class="gray-button-g button-with-image-icon button-min-width"
+           ui-sref="u.directory.invite({user_id: userId})"><span><i><i class="fa fa-envelope"></i></i><span
+          data-translate>INVITE_FAMILY</span></span></a>
+      </div>
+      <div>
+        <a class="gray-button-g button-with-image-icon button-min-width"
+           ui-sref="u.directory.add({user_id: userId})"><span><i><i class="fa fa-book"></i></i><span data-translate>ADD_RELATIVE</span></span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix hidden-xs">
+    <div class="directory-listing-invitation-button"><a class="btn btn-primary btn-lg" ng-click="sendMultipleAdd()"
+                                                        data-translate>ADD</a>
+    </div>
+    <p class="directory-listing-invitation-text" data-translate>ADD_MODE_INTRODUCTION</p>
+  </div>
+  <fc-user-list
+       data-disable-search-field="false"
+       ng-model="data.group.users"
+       load-more="loadMore"
+       filter="filter"
+       selection-mode="true"
+       mode="default"
+       show-alert="true"
+       selected-users="selectedUsers"
+       ng-hide="emptyUsers">
+  </fc-user-list>
+
+</div>

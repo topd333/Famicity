@@ -1,0 +1,5 @@
+<div class="contact-us-messages-item">
+  <h2><span class="fa fa-user"></span> &nbsp; {{ ticket.email == "TEAM_FAMICITY" ? (ticket.email | translate) : ticket.email }} &nbsp; <span class="fa fa-caret-right ng-hide"></span></h2> &nbsp;
+  <h3>{{ ticket.created_at * 1000 | date: "shortDate" }} - {{ ticket.created_at * 1000 | date: "shortTime" }}</h3>
+  <p ng-bind-html="ticket.message_html"></p>
+</div>

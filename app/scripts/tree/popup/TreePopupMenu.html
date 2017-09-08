@@ -1,0 +1,122 @@
+<div class="profile">
+  <fc-avatar class="pull-left tree-popup-avatar" data-link-disabled="isAnonymous()" data-user="treeUserProfile"></fc-avatar>
+
+  <!-- <div class="pull-left tree-popup-avatar">
+    <img class="avatar-size70" ng-src="{{ treeUserProfile.avatar_url }}">
+
+  </div> -->
+  <!-- <div><i class="fa fa-edit standard-white-c font-size90"></i>
+  </div> -->
+  <div class="tree-popup-userinfo">
+    <div>
+      <i class="fa" ng-class="{'fa-male': treeUserProfile.sex == 'Male', 'fa-female': treeUserProfile.sex == 'Female'}"></i> <span class="tree-popup-userinfo-name">{{treeUserProfile.user_name}}</span>
+    </div>
+    <span ng-if="treeUserProfile.is_deceased">
+      <span><!--
+       -->({{ treeUserProfile.birth_date ? $moment.fromServer(treeUserProfile.birth_date).format('YYYY') : '?' }} - {{ treeUserProfile.death_date ? $moment.fromServer(treeUserProfile.death_date).format('YYYY') : '?' }})<!--
+   --></span><!--
+   --><span class="birth_place" ng-if="treeUserProfile.birth_place || treeUserProfile.death_place"><!--
+     --><span>,&nbsp;</span>{{ 'TREE.SEARCH.IN' | translate:({place: treeUserProfile.death_place || treeUserProfile.birth_place}) }}
+      </span>
+    </span>
+
+    <span ng-if="!treeUserProfile.is_deceased && (treeUserProfile.birth_date || treeUserProfile.birth_place)">
+      <i class="fa fa-gift"></i>
+      <span class="tree-popup-userinfo-date">{{ treeUserProfile.birth_date && $moment.fromServer(treeUserProfile.birth_date).format('L') }}<!--
+       --><span class="birth_place" ng-show="treeUserProfile.birth_place"><!--
+       --><span ng-if="treeUserProfile.birth_date">,&nbsp;</span>{{ 'TREE.SEARCH.IN' | translate:({place: treeUserProfile.birth_place}) }}</span></span>
+    </span>
+  </div>
+</div>
+
+<div class="links">
+
+  <div ng-if="isReadable() && !isAnonymous()">
+
+    <a class="choice" ng-click="$close()" ui-sref="u.profile({user_id: treeUserProfile.id})">
+      <span class="icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="choice-label" data-translate data-translate-values="{GENDER:treeUserProfile.sex.toLowerCase()}"
+            data-translate-interpolation="messageformat">{{isMe()?"SEE_MY_PROFILE":"SEE_HIS_PROFILE"}}</span>
+    </a>
+
+    <a class="choice" ng-click="$close()" ui-sref="u.albums-index({user_id: treeUserProfile.id})">
+      <span class="icon">
+        <i class="fa fa-picture-o"></i>
+      </span>
+      <span class="choice-label" data-translate data-translate-values="{GENDER:treeUserProfile.sex.toLowerCase()}"
+            data-translate-interpolation="messageformat">{{isMe()?"SEE_MY_ALBUMS":"SEE_HIS_ALBUMS"}}</span>
+    </a>
+
+    <a class="choice" ng-click="$close()" ui-sref="u.blog.query({user_id: treeUserProfile.id})">
+      <span class="icon">
+        <i class="fa fa-pencil"></i>
+      </span>
+      <span class="choice-label" data-translate data-translate-values="{GENDER:treeUserProfile.sex.toLowerCase()}"
+            data-translate-interpolation="messageformat">{{ isMe() ? "SEE_MY_DIARY" : treeUserProfile.is_deceased ? "SEE_HIS_BIO" : "SEE_HIS_DIARY" }}</span>
+    </a>
+
+    <a class="choice" ng-click="$close()" ui-sref="u.tree({user_id: treeUserProfile.id, type: treeType})">
+      <span class="icon">
+        <i class="fc fc-tree"></i>
+      </span>
+      <span class="choice-label" data-translate data-translate-values="{GENDER:treeUserProfile.sex.toLowerCase()}"
+            data-translate-interpolation="messageformat">{{isMe()?"SEE_MY_TREE":"SEE_HIS_TREE"}}</span>
+    </a>
+
+  </div>
+
+  <div ng-if="!isReadable() && !isTreeBlockedByMe()">
+    <p data-translate="NO_ACCESS_TO_THIS_INFORMATION"></p>
+  </div>
+
+</div>
+
+<div class="actions" ng-if="!isMe()">
+
+  <div ng-if="isReadable() && !isAnonymous()">
+
+    <a class="choice" ng-show="isManagedUser() && !isInvitedByMe()" ng-click="invite(treeUserProfile)">
+      <span class="icon icon-green">
+        <i class="fc fc-users-plus"></i>
+      </span>
+      <span class="choice-label" data-translate>INVITE_THIS_PERSON</span>
+    </a>
+
+    <a class="choice orange-rollover-link warning-color" ng-show="isInvitedByMe() && !isTreeBlockedByMe() && !showReviveInvitationForm && (isInvitedByMe() || treeUserProfile.global_state != 'managed')" ui-sref="u.tree.detail.revive({user_id: userId, viewedUserId: treeUserProfile.id})">
+      <span class="icon wcs-g-icon-orange">
+        <i class="fa fa-users"></i>
+      </span>
+      <span class="choice-label" data-translate>REVIVE_INVITATION</span>
+    </a>
+
+    <!-- <a class="green-rollover-link" href="#"><span class="wcs-g-icon wcs-g-icon-gray wcs-g-icon-green-rollover"><i class="fa fa-envelope-o"></i></span> &nbsp; Envoyer un message</a> -->
+
+    <a class="choice caution" ng-click="onErase()" ng-show="treeUserProfile.is_clearable && !isTreeLocked()">
+      <span class="icon">
+        <i class="fa fa-eraser"></i>
+      </span>
+      <span class="choice-label" data-translate data-translate-values="{firstName: treeUserProfile.first_name}">ERASE_FIRST_NAME</span>
+    </a>
+
+    <a class="choice caution" ng-if="isDeletable() && (isAnonymous() || !isTreeLocked())" ng-click="onDelete()" >
+      <span class="icon"> <i class="fa fa-trash-o"></i> </span>
+      <span class="choice-label" data-translate data-translate-values="{firstName:treeUserProfile.first_name}">DELETE_FIRST_NAME</span>
+    </a>
+
+    <a class="choice caution" ng-click="blockUser()" ng-if="!isMe() && !isManagedUser() && isReadable() && !isTreeBlockedByMe() && !isAnonymous() && !treeUserProfile.is_deceased">
+      <span class="icon">
+        <i class="fa fa-minus-circle"></i>
+      </span>
+      <span class="choice-label" data-translate data-translate-values="{firstName: treeUserProfile.first_name}">BLOCK_FIRST_NAME</span>
+    </a>
+  </div>
+
+  <div ng-if="!isReadable() && isTreeBlockedByMe()">
+    <p class="text-next-to-button">
+      {{"USER_BLOCKED_BY_YOU_MSG"|translate:{GENDER:treeUserProfile.sex.toLowerCase()}:'messageformat'}}</p>
+    <a class="btn btn-primary btn-lg button-min-width2" ng-click="authorizeUser()" data-translate>UNBLOCK</a>
+  </div>
+
+</div>

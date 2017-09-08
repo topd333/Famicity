@@ -1,0 +1,54 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" data-translate></h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <div class="left-column-block">
+            <div class="my-profile-photo">
+              <br/>
+              <h1 class="standard-page-heading my-profile-photo-h1  hidden-xs" data-translate ng-if="user.id === me.id">AVATAR.MY_AVATAR</h1>
+              <h1 class="standard-page-heading my-profile-photo-h1  hidden-xs" data-translate data-translate-values="{firstName: user.first_name}" ng-if="user.id !== me.id">AVATAR.USER_AVATAR</h1>
+              <img class="left-block-profile-picture my-profile-picture-crop" ng-src="{{ avatar.url_thumb }}"/>
+              <p class="clearfix" data-translate>AVATAR.PREVIEW</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8 right-column right-column-directory">
+
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <div class="text-alignment-holder">
+              <div class="clearfix center-to-left-text" data-translate>
+                PROFILE_PHOTOS_CROP_PAGE_INTRODUCTION
+              </div>
+            </div>
+            <br/>
+
+            <div class="center-right-icons-centered-holder clearfix">
+              <div class="center-right-icons profile-picture-crop-icons clearfix">
+                <a ng-click="crop()" class="btn btn-icon btn-icon-primary pointer"><i
+                  class="fa fa-retweet"></i></a><span class="pointer" ng-click="crop()">&nbsp; {{ "CROP_IMAGE" | translate }}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a
+                class="reduced-icon-size btn btn-icon btn-icon-primary pointer" ng-click="validate()"><i
+                class="fa fa-check"></i></a><span class="pointer" ng-click="validate()">&nbsp; {{ "SUBMIT_IMAGE" | translate }}</span>
+              </div>
+            </div>
+            <br/>
+
+            <div class="profile-image-crop">
+              <img ng-src="{{ avatar.url_normal }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

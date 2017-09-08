@@ -1,0 +1,434 @@
+.btn, a {
+  text-decoration: none;
+  outline: 0 !important;
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn {
+  line-height: $fieldHeight;
+  padding: $fieldPadding $fieldPadding * 2;
+}
+
+/* Positive actions */
+.btn-primary {
+  background-color: $btn_primary_background_color;
+  border-color: $btn_primary_border_color;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+  background-color: $btn_primary_hover_background_color;
+  border-color: $btn_primary_hover_border_color;
+}
+
+.btn-primary.disabled,
+.btn-primary.disabled:hover,
+.btn-primary.disabled:focus,
+.btn-primary.disabled:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled],
+.btn-primary[disabled]:hover,
+.btn-primary[disabled]:focus,
+.btn-primary[disabled]:active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary:hover,
+fieldset[disabled] .btn-primary:focus,
+fieldset[disabled] .btn-primary:active,
+fieldset[disabled] .btn-primary.active {
+  background-color: $btn_primary_disabled_background_color;
+  border-color: $btn_primary_disabled_border_color;
+}
+
+/* negative action */
+.btn-danger {
+  background-color: $btn_danger_background_color;
+  border-color: $btn_danger_border_color;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active {
+  background-color: $btn_danger_hover_background_color;
+  border-color: $btn_danger_hover_border_color;
+}
+
+.btn-danger.disabled:hover,
+.btn-danger.disabled:focus,
+.btn-danger.disabled:active,
+.btn-danger.disabled.active,
+.btn-danger[disabled],
+.btn-danger[disabled]:hover,
+.btn-danger[disabled]:focus,
+.btn-danger[disabled]:active,
+.btn-danger[disabled].active,
+fieldset[disabled] .btn-danger:hover,
+fieldset[disabled] .btn-danger:focus,
+fieldset[disabled] .btn-danger:active,
+fieldset[disabled] .btn-danger.active {
+  background-color: $btn_danger_disabled_background_color;
+  border-color: $btn_danger_disabled_border_color;
+
+}
+
+.btn-warning {
+  background-color: $btn_warning_background_color;
+  border-color: $btn_warning_border_color;
+  color: $white;
+}
+
+.btn-warning:hover, .btn-warning:focus {
+  background-color: $btn_warning_hover_background_color;
+  border-color: $btn_warning_hover_border_color;
+  color: $white;
+}
+
+/* default action */
+.btn-secondary {
+  background-color: $btn_secondary_background_color;
+  border-color: $btn_secondary_border_color;
+  color: $btn_secondary_color;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active {
+  background-color: $btn_secondary_hover_background_color;
+  border-color: $btn_secondary_hover_border_color;
+  color: $btn_secondary_hover_color;
+}
+
+.btn-secondary.disabled:hover,
+.btn-secondary.disabled:focus,
+.btn-secondary.disabled:active,
+.btn-secondary.disabled.active,
+.btn-secondary[disabled],
+.btn-secondary[disabled]:hover,
+.btn-secondary[disabled]:focus,
+.btn-secondary[disabled]:active,
+.btn-secondary[disabled].active,
+fieldset[disabled] .btn-secondary:hover,
+fieldset[disabled] .btn-secondary:focus,
+fieldset[disabled] .btn-secondary:active,
+fieldset[disabled] .btn-secondary.active {
+  background-color: $btn_secondary_disabled_background_color;
+  border-color: $btn_secondary_disabled_border_color;
+  color: $btn_secondary_disabled_color;
+
+}
+
+/* buttons calling for inputs */
+.btn-input {
+  background-color: $btn_input_background_color;
+  border-color: $btn_input_border_color;
+  color: $btn_input_color;
+}
+
+.btn-input:hover,
+.btn-input:focus,
+.btn-input:active,
+.btn-input.active {
+  background-color: $btn_input_hover_background_color;
+  border-color: $btn_input_hover_border_color;
+}
+
+.btn-input.disabled:hover,
+.btn-input.disabled:focus,
+.btn-input.disabled:active,
+.btn-input.disabled.active,
+.btn-input[disabled],
+.btn-input[disabled]:hover,
+.btn-input[disabled]:focus,
+.btn-input[disabled]:active,
+.btn-input[disabled].active,
+fieldset[disabled] .btn-input:hover,
+fieldset[disabled] .btn-input:focus,
+fieldset[disabled] .btn-input:active,
+fieldset[disabled] .btn-input.active {
+  background-color: $btn_input_disabled_background_color;
+  border-color: $btn_input_disabled_border_color;
+
+}
+
+.btn-icon {
+  border-radius: 0;
+  font-size: 28px;
+  padding: 0 5px;
+}
+
+a.btn.btn-icon {
+  text-decoration: none;
+}
+
+/* positive icon button */
+.btn-icon-primary {
+  border-color: $gray_color;
+  color: $darker_main_font_4;
+  background-color: $gray_color;
+
+}
+
+.btn-icon.btn-icon-text {
+  font-size: 18px;
+
+}
+
+.btn-icon-primary:hover,
+.btn-icon-primary:focus,
+.btn-icon-primary:active,
+.btn-icon-primary.active {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+}
+
+.btn-icon-primary.disabled:hover,
+.btn-icon-primary.disabled:focus,
+.btn-icon-primary.disabled:active,
+.btn-icon-primary.disabled.active,
+.btn-icon-primary[disabled],
+.btn-icon-primary[disabled]:hover,
+.btn-icon-primary[disabled]:focus,
+.btn-icon-primary[disabled]:active,
+.btn-icon-primary[disabled].active,
+fieldset[disabled] .btn-icon-primary:hover,
+fieldset[disabled] .btn-icon-primary:focus,
+fieldset[disabled] .btn-icon-primary:active,
+fieldset[disabled] .btn-icon-primary.active {
+  background-color: $gray_color;
+  border-color: $gray_color;
+  color: $darker_main_font_4;
+
+}
+
+/* negative icon button */
+.btn-icon-danger {
+  background-color: $gray_color;
+  border-color: $gray_color;
+  color: $darker_main_font_4;
+}
+
+.btn-icon-danger:hover,
+.btn-icon-danger:focus,
+.btn-icon-danger:active,
+.btn-icon-danger.active {
+  background-color: $red;
+  border-color: $red;
+  color: $white;
+}
+
+.btn-icon-danger.disabled:hover,
+.btn-icon-danger.disabled:focus,
+.btn-icon-danger.disabled:active,
+.btn-icon-danger.disabled.active,
+.btn-icon-danger[disabled],
+.btn-icon-danger[disabled]:hover,
+.btn-icon-danger[disabled]:focus,
+.btn-icon-danger[disabled]:active,
+.btn-icon-danger[disabled].active,
+fieldset[disabled] .btn-icon-danger:hover,
+fieldset[disabled] .btn-icon-danger:focus,
+fieldset[disabled] .btn-icon-danger:active,
+fieldset[disabled] .btn-icon-danger.active {
+  background-color: $gray_color;
+  border-color: $gray_color;
+  color: $darker_main_font_4;
+
+}
+
+a.btn-icon-danger-inverted {
+  background-color: $red;
+  border-color: $red;
+  color: $white;
+}
+
+a.btn-icon-danger-inverted:hover,
+a.btn-icon-danger-inverted:focus,
+a.btn-icon-danger-inverted:active,
+a.btn-icon-danger-inverted.active {
+  background-color: $red;
+  border-color: $red;
+  color: $white;
+}
+
+a.btn-icon-danger-inverted.disabled:hover,
+a.btn-icon-danger-inverted.disabled:focus,
+a.btn-icon-danger-inverted.disabled:active,
+a.btn-icon-danger-inverted.disabled.active,
+a.btn-icon-danger-inverted[disabled],
+a.btn-icon-danger-inverted[disabled]:hover,
+a.btn-icon-danger-inverted[disabled]:focus,
+a.btn-icon-danger-inverted[disabled]:active,
+a.btn-icon-danger-inverted[disabled].active,
+fieldset[disabled] a.btn-icon-danger-inverted:hover,
+fieldset[disabled] a.btn-icon-danger-inverted:focus,
+fieldset[disabled] a.btn-icon-danger-inverted:active,
+fieldset[disabled] a.btn-icon-danger-inverted.active {
+  background-color: $red;
+  border-color: $red;
+  color: $white;
+
+}
+
+.btn-white {
+  background-color: $white;
+}
+
+.upload-button {
+  display: inline-block;
+  a {
+    text-decoration: none !important;
+  }
+}
+
+.btn {
+  border-radius: $gui_standard_border_radius;
+}
+
+.btn.btn-icon {
+  border-radius: 0;
+}
+
+.btn.btn-long80 {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 390px;
+  width: 80%;
+}
+
+button.standard-clean-button,
+input.standard-clean-button,
+a.standard-clean-button,
+a.green-button,
+a.gray-button-w,
+a.gray-button-g,
+a.dark-gray-button,
+a.red-button,
+a.orange-button,
+button.orange-button,
+a.fake-input {
+  cursor: pointer;
+  border-radius: $gui_standard_border_radius;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none !important;
+
+}
+
+a.fake-input-gray {
+  &:hover,
+  &:active {
+    background-color: $btn_input_hover_background_color !important;
+  }
+}
+
+a.gray-button-w {
+  background-color: $gray_color;
+  color: $white;
+
+}
+
+a.gray-button-g {
+  background-color: $gray_color;
+  color: $darker_main_font_23;
+
+}
+
+a.gray-button-g:hover {
+  background-color: $green;
+  color: $white;
+
+}
+
+a.gray-button,
+button.gray-button,
+button.gray-button:hover,
+button.gray-button:focus {
+  background-color: $gray_color;
+  border: none;
+  color: #555;
+
+}
+
+a.dark-gray-button,
+button.dark-gray-button,
+button.dark-gray-button:hover,
+button.dark-gray-button:focus {
+  background-color: $main_font_color;
+  border: none;
+  color: $white;
+
+}
+
+a.red-button,
+button.red-button,
+a.red-onhover:hover {
+  background-color: #f14949 !important;
+  border: solid 1px transparent;
+  color: $white;
+
+}
+
+a.green-button,
+button.green-button,
+a.green-onhover:hover {
+  background-color: $green !important;
+  border: solid 1px transparent;
+  color: $white;
+
+}
+
+a.orange-button,
+a.orange-button:hover,
+a.orange-button:focus,
+button.orange-button,
+button.orange-button:hover,
+button.orange-button:focus,
+a.orange-onhover:hover {
+  background-color: $orange_color !important;
+  border: solid 1px transparent;
+  color: $white;
+
+}
+
+a.button-with-icon {
+  text-align: center;
+
+}
+
+a.green-button.button-with-icon > *,
+a.gray-button-w.button-with-icon > *,
+a.gray-button-g.button-with-icon > * {
+  vertical-align: middle;
+
+}
+
+a.green-button.button-with-icon > span,
+a.gray-button-w.button-with-icon > span,
+a.gray-button-g.button-with-icon > span {
+  margin-left: 10px;
+
+}
+
+a.button-with-image-icon > span > span {
+  padding-left: 10px;
+
+}
+
+a.button-inherit-width,
+button.button-inherit-width {
+  width: 100%;
+
+}
+
+.button-inserted-right {
+  float: right;
+  margin-left: 20px;
+
+}

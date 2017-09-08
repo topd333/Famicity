@@ -1,0 +1,46 @@
+<div class="search-autocl-item clearfix pointer"
+     tabindex="-1"
+     ng-class="{'see-more': match.model.type == 'see-more', 'empty': match.model.type == 'empty', 'in-tree':  match.model.type == 'in-tree', 'error':  match.model.type == 'error'}">
+  <div ng-show="match.model.type != 'see-more' && match.model.type != 'in-tree' && match.model.type != 'empty' && match.model.type != 'error'">
+    <div class="pull-left">
+      <fc-avatar data-user="match.model"></fc-avatar>
+    </div>
+    <div class="text-left">
+      <div class="name" ng-bind-html="match.model.user_name | typeaheadHighlight:query"></div>
+      <div class="info" >
+        <span ng-if="!match.model.is_blocked_by_me && !match.model.is_invited_by_me && match.model.type === 'directory' && match.model.email">
+          <i class="fa fa-envelope-o"></i>&nbsp;<span ng-bind-html="match.model.email | typeaheadHighlight:query"></span>
+        </span>
+        <span ng-if="match.model.is_invited_by_me">
+          <span>{{ 'DIRECTORY.INVITATION_SENT_ON' | translate }}&nbsp;{{ match.model.invitation.displayed_send_date }}</span>
+        </span>
+        <span ng-if="!match.model.is_blocked_by_me && !match.model.is_invited_by_me && match.model.global_state === 'active' && match.model.type !== 'famicity'">
+          <span data-translate>DIRECTORY.AMONG_MY_CLOSES</span>
+        </span>
+        <span ng-if="match.model.is_blocked_by_me">
+          <span data-translate>DIRECTORY.BLOCKED</span>
+        </span>
+        <span ng-if="!match.model.is_blocked_by_me && !match.model.is_invited_by_me && match.model.global_state === 'active' && match.model.type === 'famicity'">
+          <span data-translate data-translate-values="{GENDER: match.model.sex.toLowerCase()}"
+                data-translate-interpolation="messageformat">DIRECTORY.NOT_AMONG_MY_CLOSES</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div ng-show="match.model.type == 'in-tree'">
+    <div class="pull-left">
+      <i class="fc fc-tree"></i>
+    </div>
+    <div class="pull-right text-left">
+      <div class="standard-green-c">{{match.model.tree_result_count}} {{ 'SEARCH.BIO_PROFILES' | translate}}</div>
+      <div data-translate>SEARCH.FOUND_IN_TREE</div>
+    </div>
+  </div>
+  <div ng-show="match.model.type == 'see-more'">
+    <span ng-if="!match.model.length" data-translate>SEARCH.ADVANCED</span>
+    <span ng-if="match.model.length && match.model.shownAll" data-translate>SEARCH.ADVANCED</span>
+    <span ng-if="match.model.length && !match.model.shownAll" data-translate>SEARCH.SEE_OTHER</span>
+  </div>
+  <div ng-show="match.model.type == 'empty'" ng-bind-html="'SEARCH.NO_RESULT_FULL' | translate | trustedHtml" class="text-left"></div>
+  <div ng-show="match.model.type == 'error'" ng-bind-html="'ERROR_PLEASE_RETRY' | translate | trustedHtml" class="text-left"></div>
+</div>

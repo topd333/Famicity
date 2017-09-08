@@ -1,0 +1,30 @@
+<table style="position: absolute; width: 100%; table-layout: fixed;" class="border-none">
+  <tr ng-if="$index < 5" ng-repeat="line in weekEvents">
+    <td ng-repeat="e in line" colspan="{{e.event.width}}" padding="{{e.event.padding}}" style="height: 21px;vertical-align: top;" class="pointer">
+      <div style="z-index: 2;" ng-if="::e.event.isEmpty == undefined && e.event.all_day != true && e.event.width < 2" class="month-row-content">
+        <div ng-click="show({eventId:e.event.id})" class="clearfix">
+          <span class="calendar-month-view-dayslots-slottime">{{ $moment(e.event.start_date, 'X').format('LT') }}</span>
+          <span class="calendar-month-view-dayslots-slotname">
+             <i class="fa fa-circle" style="color: {{e.event.color}}; font-size: 10px; padding-left: 5px;"></i>
+             {{ e.event.name }}
+           </span>
+        </div>
+      </div>
+      <div style="z-index: 2;" ng-if="::e.event.isEmpty == undefined && e.event.all_day == true && e.event.is_birthday != true" class="month-row-content">
+        <div class="calendar-month-view-lobo-slot calendar-month-view-lobo-slot-left" ng-attr-style="background-color:  {{e.event.color}}; height: 21px; ;text-align: center; border-bottom: solid 1px #e7e9ea;" bo-class="getColorText(e.event.color)" ng-click="show({eventId:e.event.id})">
+          {{ e.event.name }}
+        </div>
+      </div>
+      <div style="z-index: 2;" ng-if="::e.event.isEmpty == undefined && e.event.all_day == false && e.event.width > 1" class="month-row-content">
+        <div class="calendar-month-view-lobo-slot calendar-month-view-lobo-slot-left" ng-attr-style="background-color: {{e.event.color}}; height: 21px; border-bottom: solid 1px #e7e9ea;" bo-class="getColorText(e.event.color)" ng-click="show({eventId:e.event.id})">
+          {{ $moment(e.event.start_date, 'X').format('LT') }} {{ e.event.name }}
+        </div>
+      </div>
+      <div style="z-index: 2;" ng-if="::e.event.isEmpty == undefined && e.event.is_birthday == true" class="month-row-content" style="padding-left: 3px;">
+        <div class="calendar-month-view-event" ng-click="birthday({userId:e.event.id})">
+          <i class="fa fa-gift"></i> {{ e.event.name }}
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

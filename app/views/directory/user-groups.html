@@ -1,0 +1,59 @@
+<div ng-init="init()">
+
+  <ul ng-class="{'hidden-directory-submenu': selectionMode}" class="standard-tabs standard-tabs-3 clearfix visible-xs">
+    <li>
+      <span><a ui-sref="u.directory.list({user_id: userId})"><i class="fa fa-user"></i></a>
+      </span>
+    </li>
+    <li class="standard-tabs-activetab">
+      <span><a><i class="fa fa-users"></i></a>
+      </span>
+    </li>
+    <li>
+      <span><a ui-sref="u.directory.mobile-invitations-menu({user_id: userId})"><i class="fa fa-share-square-o"></i></a>
+      </span>
+    </li>
+  </ul>
+
+  <fc-directory-main-groups-list class="main-content">
+    <div ng-hide="selectionMode" class="clearfix">
+      <div class="center-right-icons clearfix hidden-xs">
+        <a class="btn btn-icon btn-icon-primary pointer" ui-sref="u.directory.invite({user_id: viewedUserId})"><i class="fa fa-envelope-o"></i> <i class="fa fa-angle-right"></i></a><a class="center-right-plus-icon btn btn-icon btn-icon-primary btn-plus"
+        ng-click="openAddContactsOptionsPopup()">+</a>
+      </div>
+      <div ncy-breadcrumb class="hidden-xs"></div>
+    </div>
+
+
+
+    <div class="hidden-xs" ng-hide="users.length != 0">
+      <h5 data-translate>EMPTY_DIRECTORY_TITLE</h5>
+      <br />
+
+      <div class="vertical-button-group import-contacts-buttons">
+        <div>
+          <a class="gray-button-g button-with-image-icon button-min-width" ui-sref="u.directory.invite({user_id: userId})">
+            <span><i><i class="fa fa-envelope"></i></i>
+              <span data-translate>INVITE_FAMILY</span>
+            </span>
+          </a>
+        </div>
+        <div>
+          <a class="gray-button-g button-with-image-icon button-min-width" ui-sref="u.directory.add({user_id: userId})">
+            <span><i><i class="fa fa-book"></i></i>
+              <span data-translate>ADD_RELATIVE</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div data-fc-directory-users-list class="hidden-xs" ng-hide="users.length == 0">
+
+    </div>
+
+    <fc-directory-main-groups-list ng-model="groups" selection-mode="false" class="visible-xs" ng-hide="users.length == 0"></fc-directory-main-groups-list>
+
+  </div>
+
+</div>

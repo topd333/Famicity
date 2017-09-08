@@ -1,0 +1,61 @@
+<div ng-class="{ 'hidden-xs': !showMode }" class="col-sm-8 right-column homepage-right-column" ng-show="message">
+  <!--<div class="center-right-icons cp-center-right-icons right-function-icons hidden-xs clearfix">-->
+    <!--<a class="btn btn-icon btn-icon-primary pointer" ng-if="message.recipients.length > 1" ng-click="toggleShowContactDetails()"><i class="fa fa-eye"></i></a>-->
+    <!--<a class="btn btn-icon btn-icon-danger pointer" ng-click="openDeleteMessagePopup()" tooltip-placement="bottom" tooltip="{{ 'DELETE_TOOLTIP_MESSAGES' | translate }}"><i class="fa fa-trash-o"></i></a>-->
+  <!--</div>-->
+  <!--<div class=" center-right-icons visible-xs clearfix">-->
+    <!--<a class="pointer" ng-if="message.recipients.length > 1" ng-click="toggleShowContactDetails()" data-tooltip-placement="bottom" tooltip="{{ 'PARTICIPANTS_TOOLTIP_MESSAGES' | translate }}"><i class="fa fa-eye"></i></a>-->
+  <!--</div>-->
+
+  <div class="message-index-header-left">
+    <h2><a class="green-link-color" ui-sref="u.profile({user_id: message.recipients[0].id})">{{ message.recipients[0].user_name }}</a></h2>
+    <span id="other-persons-short" ng-if="message.recipients.length > 1" ng-show="!showContactDetails">&nbsp;{{ "AND_X_OTHER_PEOPLE" | translate: { NUM: message.recipients.length - 1 } : "messageformat" }}</span>
+    <span id="other-persons-long" ng-show="showContactDetails"> {{ 'MESSAGE.AND' | translate }}
+      <span ng-repeat="recipient in message.recipients" ng-show="!$first"><!--
+        --><a ui-sref="u.profile({user_id: recipient.id})">{{ recipient.user_name }}</a><!--
+        --><span ng-show="!$last">,&nbsp;</span><!--
+       --></span><!--
+    --></span>
+    <br>{{ message.subject }}</div>
+  <div class="item-sub-delimiter"></div>
+
+  <div class="center text">
+    <a class="green-link-color message-index-more-messages pointer" ng-show="!childrenMessagesLoading && !childrenMessages[0]['is_the_first']" ng-click="loadMoreChildrenMessages()"><i class="fa fa-caret-up"></i><span translate>LOAD_OLD_MESSAGES_LINK</span></a>
+    <a class="green-link-color message-index-more-messages" ng-show="childrenMessagesLoading" translate>LOADING</a>
+  </div>
+  <br>
+  <div class="msg-item-entries main-content">
+    <div ng-repeat="message in childrenMessages" ng-class="{ 'msg-item-entry msg-item-entry-out' : message.sender_id == userId, 'msg-item-entry msg-item-entry-in' : message.sender_id != userId }"
+         fc-auto-scroll-bottom>
+      <div class="table fixed-layout">
+        <div class="table-cell v-align-top msg-entry-avatar">
+          <fc-avatar ng-show="message.sender_id != 0" user="{id: message.sender_id, avatar_url: message.sender_avatar_url, user_name: message.sender_name}"></fc-avatar>
+          <i ng-show="message.sender_id == 0" class="fc fc-logo"></i>
+        </div>
+        <div class="table-cell v-align-top">
+          <a class="msg-item-sender" ng-show="message.sender_id != 0" ui-sref="u.profile({user_id: message.sender_id})">
+            {{ message.sender_name }} &nbsp; <i class="fa fa-caret-right"></i>
+          </a>
+          <span class="standard-green-c" ng-show="message.sender_id == 0">
+            {{ message.sender_name }} &nbsp; <i class="fa fa-caret-right"></i>
+          </span> &nbsp; <span class="msg-item-update-date">
+          {{ message.updated_date * 1000 | date: "shortDate" }} {{ "AT_SMALL" | translate }} {{ message.updated_date * 1000 | date: "shortTime" }}
+          </span>
+          <br>
+          <div ng-bind-html="message.body_html"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="center-text">
+      <div class="item-sub-delimiter"></div>
+      <button type="button" class="btn btn-input btn-lg btn-long80 hidden-xs" href="" ng-click="openReplyMessagePopup()" translate>ANSWER_MESSAGES</button>
+      <button type="button" class="btn btn-input btn-lg btn-long80 visible-xs" href="" ng-click="openReplyMessagePopup()" translate>ANSWER</button>
+  </div>
+  <br>
+</div>
+
+<div ng-class="{ 'hidden-xs': showMode }" ng-show="!showMode" class="col-sm-8 right-column homepage-right-column message-index-left-list visible-xs">
+  <br />
+  <div data-fc-messages-list messages="messages" show-message="showMessage" control="messagesListControl" user-id="userId"></div>
+</div>

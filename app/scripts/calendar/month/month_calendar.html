@@ -1,0 +1,51 @@
+<div ng-repeat="days in daysWeek">
+  <table class="calendar-month-view-table">
+    <tr class="calendar-month-view-dayname">
+      <td ng-class="::{'calendar-week-view-active-cell': currentDayIndex == 0 && weekIndex == $index && isCurrentMonth == true}">
+        {{daysName[0] | capitalize}}
+      </td>
+      <td ng-class="::{'calendar-week-view-active-cell': currentDayIndex == 1 && weekIndex == $index && isCurrentMonth == true}">
+        {{daysName[1] | capitalize}}
+      </td>
+      <td ng-class="::{'calendar-week-view-active-cell': currentDayIndex == 2 && weekIndex == $index && isCurrentMonth == true}">
+        {{daysName[2] | capitalize}}
+      </td>
+      <td ng-class="::{'calendar-week-view-active-cell': currentDayIndex == 3 && weekIndex == $index && isCurrentMonth == true}">
+        {{daysName[3] | capitalize}}
+      </td>
+      <td ng-class="::{'calendar-week-view-active-cell': currentDayIndex == 4 && weekIndex == $index && isCurrentMonth == true}">
+        {{daysName[4] | capitalize}}
+      </td>
+      <td ng-class="::{'calendar-week-view-active-cell': currentDayIndex == 5 && weekIndex == $index && isCurrentMonth == true}">
+        {{daysName[5] | capitalize}}
+      </td>
+      <td ng-class="::{'calendar-week-view-active-cell': currentDayIndex == 6 && weekIndex == $index && isCurrentMonth == true}">
+        {{daysName[6] | capitalize}}
+      </td>
+    </tr>
+    <tr class="calendar-month-view-dates">
+      <td ng-class="::{'other-month': d.month != currentMonth}" ng-repeat="d in days">
+        <div>{{ d.day }}</div>
+      </td>
+    </tr>
+    <tr class="calendar-month-view-dayslots" style="height: 105px;">
+      <td colspan="7">
+        <div style="position: relative;">
+          <fc-month-line indexweek="$index" mevents="monthEvents" show="showEvent(eventId)" birthday="showBirthDay(userId)"></fc-month-line>
+          <table style="width:100%; height: 100%; position: absolute;">
+            <tr>
+              <td ng-repeat="d in days"
+                ng-class="::{'calendar-month-view-active-cell': $parent.currentDayIndex == $index && $parent.weekIndex == $parent.$index}"
+                class="month-view-row pointer"
+                ng-click="createEventInterval(d.week, $index)">
+                <div>
+                  <div class="calendar-month-view-timedatecell-bb"></div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

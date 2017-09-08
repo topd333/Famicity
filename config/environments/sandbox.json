@@ -1,0 +1,8 @@
+{
+  "api_url": "https://api-sandbox.famicity.com",
+  "oauth_url": "https://auth-sandbox.famicity.com",
+  "push_url": "https://push-sandbox.famicity.com",
+  "environment": "sandbox",
+  "api_key_monitoring": "66ecd36792032bad66fbef33e3748b17",
+  "piwikAppId": 12
+}

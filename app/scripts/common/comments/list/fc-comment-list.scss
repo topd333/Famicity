@@ -1,0 +1,17 @@
+.comments-list {
+  border: 1px solid $green;
+  & > div {
+    text-align: left;
+  }
+  & > span.comments-number {
+    border-bottom: 1px solid $lighter_main_font_47;
+    color: $green;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 0;
+    width: 90%;
+  }
+  & > div+div .inline-form {
+    border-top: 1px solid $darker_gray_20;
+  }
+}

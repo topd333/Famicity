@@ -1,0 +1,40 @@
+<div class="col-sm-8 right-column homepage-right-column">
+  <!--<div class="breadcrumb-holder clearfix hidden-xs">-->
+    <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+  <!--</div>-->
+  <div>
+    <p class="left-text" data-translate>CREATE_MESSAGE_PAGE_INTRODUCTION</p>
+  </div>
+  <form novalidate class="standard-form login-form c-width-1 message-add" id="intro_form" name="addMessageForm" ng-submit="submit()">
+    <div class="form-group">
+      <a ng-if="!formData.message.recipientsToDisplay" class="fake-input fake-input-expandable-height fake-input-gray button-force-full-width" ng-click="addPermission()">
+        <i class="fa fa-users"></i>
+        <i class="fa fa-angle-right"></i>
+        <span>{{ 'RECIPIENTS' | translate }}</span>
+      </a>
+      <a ng-if="formData.message.recipientsToDisplay" class="fake-input fake-input-expandable-height fake-input-gray button-force-full-width" ng-click="addPermission()">
+        <i class="fa fa-users"></i>
+        <i class="fa fa-angle-right "></i>
+        <span>{{ formData.message.recipientsToDisplay }}</span>
+      </a>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+        <input class="form-control" id="message-subject" data-ng-attr-placeholder="{{ 'MESSAGE_SUBJECT_OPTIONAL' | translate }}" name="subject" ng-model="formData.message.subject" type="text" />
+      </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': (addMessageForm.body.$dirty || submitted) && addMessageForm.body.$invalid}">
+      <div class="textarea-with-icon textarea-with-icon-nobmargin">
+        <textarea class="form-control" id="message-text" data-ng-attr-placeholder="{{ 'WRITE_HERE_YOUR_MESSAGE' | translate }}" name="body" ng-model="formData.message.body" required></textarea>
+        <label for="message-text"><i class="fa fa-pencil"></i>
+        </label>
+      </div>
+    </div>
+    <div class="form-group buttons">
+      <button type="submit" class="btn btn-primary" data-translate>SEND</button>
+    </div>
+
+  </form>
+
+</div>

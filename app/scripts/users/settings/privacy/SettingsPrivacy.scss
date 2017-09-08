@@ -1,0 +1,11 @@
+@include aboveMediumScreen() {
+  .settings.privacy {
+    .action-submit {
+      display: none;
+    }
+  }
+}
+
+@import "default-rights/PrivacyDefaultRights";
+@import "search-engine/PrivacySearchEngine";
+@import "tree/PrivacyTree";

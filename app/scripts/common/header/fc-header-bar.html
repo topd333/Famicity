@@ -1,0 +1,8 @@
+<div class="header-bar visible-xs">
+  <a ng-if="!showNotificationsIcon" class="logo pull-left" ui-sref="u.home"><i class="fc fc-logo"></i></a>
+  <a ng-if="showNotificationsIcon" class="btn btn-icon pull-right pointer" ui-sref="user-notifications({user_id: userId})">
+    <i class="fa fa-bell"></i>
+    <i ng-show="unreadNotifications > 0" class="notifications-count">{{ unreadNotifications }}</i>
+  </a>
+  <div class="mini-mobile-icons-header" ng-transclude></div>
+</div>

@@ -1,0 +1,45 @@
+fc-date-input {
+  .input-group {
+    position: relative;
+    background: $formInputBackground;
+    width: 100%;
+    .input-group-addon + .inputs {
+      border: none;
+      height: $fieldHeight + $fieldPadding * 2;
+      > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-weight: normal;
+      }
+      .label-as-input[fc-pattern="datePatterns"] {
+         &,
+         .inline.story .inline-form .field & { 
+          position: relative;
+          left: 0;
+          top: 0;
+          .fc-pattern {
+            padding: 0;
+            > * {
+              position: absolute;
+            }
+          }
+        }
+      }
+    }
+  }
+  + output {
+    display: inline-block;
+    line-height: 1em;
+    vertical-align: super;
+    .error {
+      color: $red;
+    }
+    .guess {
+      &:hover {
+        border-bottom: 1px dotted;
+      }
+    }
+  }
+}

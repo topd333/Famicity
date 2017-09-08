@@ -1,0 +1,319 @@
+$buttonsHeight: 2.5em;
+$buttonsMargin: 1em;
+$avatarSize: $avatarSizeLarge;
+$formFieldsMargin: 0.5em;
+
+@import "../fc-editor";
+
+@mixin inline($colorSelected, $secondaryColor, $editingBackground) {
+  transition: all 0.3s ease;
+  padding: 0;
+
+  .post-types {
+    > div {
+      float: left;
+    }
+    > * {
+      min-width: 25%;
+      > * {
+        width: 100%;
+      }
+      &.selected {
+        color: $colorSelected;
+      }
+      &:hover {
+        color: $colorSelected;
+      }
+    }
+    .post-type {
+      color: inherit;
+      display: inline-block;
+      cursor: pointer;
+      font-weight: normal;
+      text-decoration: none;
+      float: left;
+      padding: 0.2em 0.5em;
+      text-align: center;
+      background: white;
+      //    width: 100%/$tabsCount;
+      margin-right: $formFieldsMargin;
+      border-radius: 0.3em;
+      border: white 1px solid;
+      &:focus {
+        outline: 0;
+      }
+      &:hover {
+        background-color: $colorSelected;
+        border: $colorSelected 1px solid;
+        color: $white;
+        a {
+          color: $white;
+        }
+      }
+      &.selected {
+        color: $white;
+        border: $colorSelected 1px solid;
+        background: $colorSelected;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        color: $main_font_color;
+      }
+      margin-bottom: 0; // Cancels double margin of different divs
+    }
+  }
+  .inline-form {
+    @include form($secondaryColor);
+
+    padding: 1em 0 0;
+    display: block;
+    position: relative;
+
+    .input-group-addon {
+      background-color: $white;
+    }
+    div[contenteditable] {
+      &:focus {
+        &.ng-invalid {
+          border: $red 1px solid;
+        }
+      }
+      word-wrap: break-word;
+      max-width: 50em;
+      > * {
+        word-wrap: break-word;
+        max-width: 50em;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &.standard-form {
+      margin-top: 0;
+      fc-date-input {
+        .input-group {
+          border: none; // There is the field-input green border already.
+        }
+        .fc-pattern {
+          > * {
+            padding-left: 0;
+          }
+          .placeholder {
+            background-color: $white;
+          }
+        }
+      }
+      .permission-edit {
+        input[type="text"] {
+          background-color: transparent;
+        }
+      }
+    }
+    .inline-contents {
+
+      overflow: visible; // To allow popups outside
+      margin-left: $avatarSize + $inlinePadding;
+
+      .banner {
+        clear: both;
+        margin-left: -($avatarSize + $inlinePadding);
+      }
+
+      .banner + .title {
+        margin-top: 0.6em;
+      }
+
+      .title {
+        margin-left: -4em;
+        margin-right: 1em;
+        font-weight: bold;
+      }
+
+      .photo {
+        margin: 0.5em 1em 0 -4em;
+      }
+
+      .button-edit {
+        position: absolute;
+        right: 0;
+        top: 1.8em + $inlinePadding;
+        z-index: 1;
+        a {
+          color: $main_font_color;
+        }
+      }
+
+      .item-info {
+        word-wrap: break-word;
+        hyphens: auto;
+        .item-type {
+          color: $colorSelected;
+          padding-left: 0.3em;
+          float: right;
+          .f-block-icon {
+            background: $colorSelected;
+            padding: 0.2em;
+            color: white;
+            float: right;
+            height: 1.5em;
+            width: 1.5em;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 1em;
+            margin-left: 0.5em;
+          }
+        }
+        & > h4 {
+          color: $colorSelected;
+          display: inline-block;
+          margin: 0;
+          font-size: 14px;
+          a {
+            color: $colorSelected;
+          }
+        }
+        & > h5 {
+          color: $lighter_main_font_25;
+          display: inline-block;
+          margin: 0;
+          font-size: 15px;
+        }
+      }
+
+      label {
+        font-weight: normal;
+        color: #8c8c8c;
+        cursor: text;
+      }
+      .text {
+        clear: both;
+        .field {
+          .field-label {
+            display: none;
+          }
+          .field-input {
+            .fa {
+              width: 1em;
+            }
+            .editor {
+              line-height: 1.5;
+              width: 100%;
+              transition: all 0.3s ease;
+              overflow: hidden;
+            }
+          }
+        }
+        label {
+          font-weight: normal;
+          @include ellipsis();
+        }
+      }
+    }
+
+    .actions {
+      .btn {
+        line-height: $fieldHeightSmall;
+      }
+      .end {
+        display: none;
+      }
+      &.visible {
+        height: $buttonsHeight;
+        button {
+          height: $buttonsHeight;
+          line-height: 1em;
+          margin: $buttonsMargin 0 0 0;
+          vertical-align: top;
+        }
+      }
+    }
+    transition: background 0.3s ease;
+  }
+  &.creating, &.editing {
+    .inline-form {
+      padding-bottom: 1em;
+      .inline-contents {
+        .form-fields {
+          overflow: hidden;
+          width: 100%;
+          margin-bottom: -$formFieldsMargin; // Cancels double margin of different .labelled divs
+          clear: right; // Needed for Firefox
+          .inline-text {
+            line-height: 0.9;
+          }
+        }
+      }
+    }
+  }
+  &.creating {
+    padding: $inlinePadding;
+    background: $editingBackground;
+    margin: $inlinePadding 0;
+    .inline-form {
+      padding-top: 0;
+      .inline-contents {
+        .labelled {
+          .field-label {
+            display: block;
+            left: $avatarSize + $inlinePadding
+          }
+        }
+      }
+      .actions {
+        .end {
+          height: 0; // Closed by default
+        }
+      }
+    }
+    padding-bottom: 0;
+  }
+  &.editing {
+
+    padding-left: $inlinePadding;
+    padding-right: $inlinePadding;
+    background: $editingBackground;
+
+    .editor {
+      @include editor();
+    }
+    .inline-form {
+      .inline-contents {
+        .text {
+          .field {
+            .field-label {
+              display: block;
+            }
+            .field-input {
+              .inline-text {
+                display: inherit;
+                .editor {
+                  overflow: auto;
+                  min-height: 5em;
+                }
+              }
+            }
+          }
+        }
+      }
+      .actions {
+        .end {
+          height: $buttonsHeight; // Open buttons area
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.inline {
+  @include inline($green, $green, $colorEdit);
+}
+
+.inline.story {
+  @include inline($story_color_medium, $story_color_dark, $story_color_light);
+}
+
+@import "field/fc-inline-field";

@@ -1,0 +1,71 @@
+.directory-item {
+  display: table-row-group;
+  vertical-align: middle;
+  width: 100%;
+  &:not(.separator){
+  }
+
+  &.separator {
+    height: auto;
+  }
+  fc-user-list-item {
+    display: table-row;
+    & .directory-item-table-cell-info {
+      padding-bottom: 0.625em;
+      padding-top: 1.325em;
+      padding-left: 1em;
+    }
+    > * {
+      border-top: solid 1px #eee;
+      padding-bottom: 1em;
+      padding-top: 1em;
+      &:first-child {
+        padding-left: 0.5em;
+      }
+      &:last-child {
+        padding-right: 0.5em;
+      }
+    }
+  }
+  .checkbox-cell {
+    width: 40px;
+    vertical-align: middle;
+  }
+  .actions {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+    //white-space: nowrap;
+    width: 50%;
+    //vertical-align: inherit;
+    //padding: 1em 0;
+    .send-invite, .received-invite {
+      > * {
+        display: inline-block;
+      }
+    }
+    .directory-action {
+      // position: absolute;
+      // right: 1.5em;
+      // width: 1.5em;
+      // text-align: center;
+    }
+  }
+}
+
+.directory-listing-letter {
+  font-size: 140%;
+  display: table-row-group;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    border-bottom: 1px solid #737a80;
+  }
+  margin-top: -0.4em;
+  & + .directory-item {
+    border: none;
+  }
+}

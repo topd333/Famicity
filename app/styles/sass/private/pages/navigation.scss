@@ -1,0 +1,376 @@
+.main-menu-xs a * {
+  float: left;
+  vertical-align: middle;
+}
+
+.main-menu-xs-icons ul {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.main-menu-xs-icons ul li {
+  display: block;
+  float: left;
+  height: 50px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  overflow: hidden;
+  width: 50px;
+}
+
+.main-menu-xs-icons ul li:nth-child(4n+1) {
+  clear: left;
+  margin-left: 0;
+
+}
+
+.main-menu-xs-icons ul li.main-menu-home {
+  background-color: #5cb8e7;
+}
+
+.main-menu-xs-icons ul li.main-menu-profile {
+  background-color: #a675b7;
+}
+
+.main-menu-xs-icons ul li.main-menu-messages {
+  background-color: #b1b1b1;
+}
+
+
+.main-menu-event-xs {
+  margin-top: 10px;
+}
+
+.main-menu-xs span {
+  margin-right: 5px;
+}
+.main-menu-xs-icons ul li.main-menu-contacts {
+  background-color: #f85d4b;
+}
+.main-menu-xs-icons ul li.main-menu-albums {
+  background-color: #ffbf44;
+}
+.main-menu-xs-icons ul li.main-menu-diary {
+
+  background-color: #fe428c;
+}
+.main-menu-xs-icons ul li.main-menu-blog {
+  background-color: #6b6c6e;
+}
+.main-menu-xs-icons ul li.main-menu-groups {
+  background-color: #e8e8e8;
+}
+.main-menu-xs-icons ul li.main-menu-groups i {
+  color: $main_font_color;
+}
+.main-menu-xs-icons ul li a {
+  display: table;
+  height: 100%;
+  text-decoration: none;
+  width: 100%;
+}
+
+.main-menu-xs-icons ul li a>i {
+  color: $white;
+  display: table-cell;
+  font-size: 24px;
+  height: 100%;
+  text-align: center;
+
+  vertical-align: middle;
+}
+.main-menu-sm {
+  display: none;
+}
+
+@import "tabs";
+
+/* Begin standard s-menu */
+
+.s-menu-holder {
+  margin: 20px auto 0;
+  width: 90%;
+
+}
+.s-menu-options>a {
+  box-sizing: border-box;
+  color: #616161;
+  display: block;
+
+}
+.s-menu-options>a:hover {
+  color: $green;
+
+}
+.s-menu-options>a:hover .s-menu-option-icon>span {
+  background-color: $green;
+
+}
+.s-menu-options .s-menu-option-ta {
+  border-bottom: 1px solid #ccc;
+
+}
+.s-menu-options>a:first-child .s-menu-option-ta {
+  border-top: 1px solid #ccc;
+
+}
+.s-menu-options.s-menu-options-no-icons .s-menu-option-ta {
+  margin-left: 0;
+  padding-left: 0;
+
+}
+.s-menu-options.s-menu-options-no-icons>a:first-child .s-menu-option-ta {
+  border-top-style: none;
+
+}
+.s-menu-options .s-menu-option-text>div {
+  display: table;
+  /* width: 100%; */
+
+}
+.s-menu-options .s-menu-option-text>div>div {
+  display: table-cell;
+  vertical-align: middle;
+
+}
+/* Settings menu */
+
+.s-menu-options>a:last-child .s-menu-option-icon {
+  height: 39px;
+
+}
+.s-menu-options .s-menu-option-ta {
+  font-size: 16px;
+  margin-left: 40px;
+  padding-left: 10px;
+
+}
+.s-menu-options .s-menu-option-ta i.fa-angle-right {
+  line-height: 39px;
+
+}
+.s-menu-option:hover,
+.s-menu-option:active {
+  .wcs-g-icon i {
+    color: white;
+  }
+
+}
+.s-menu-options .s-menu-option-text {
+  margin-right: 20px;
+
+}
+.s-menu-options .s-menu-option-text>div {
+  height: 39px;
+
+}
+/* End standard s-menu */
+
+/* 480px */
+@media only screen and (min-width: 480px) {
+  .main-menu-xs-icons ul li {
+    height: 70px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 70px;
+
+  }
+  .main-menu-xs-icons ul li a>i {
+    font-size: 28px;
+
+  }
+  /* Standard tabs bar */
+
+  .standard-tabs>li {
+//    font-size: 18px;
+    height: $px40;
+//    &>a{
+//      font-size: 18px;
+//    }
+  }
+  /* /// Standard tabs bar */
+}
+/* /// 480px */
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+  .main-menu {
+    margin: 0 160px;
+    padding-top: 47px;
+
+  }
+  .main-menu-sm ul li {
+    border-bottom-style: solid;
+    display: block;
+    float: left;
+    /*overflow: hidden;*/
+
+  }
+  .main-menu ul li a,
+  .main-menu ul li a:hover {
+    color: $darker_main_font_4;
+    display: block;
+    position: relative;
+    text-align: center;
+
+  }
+  .main-menu-sm {
+    ul {
+      li.main-menu-home {
+        border-color: $header_home_bottom_color;
+      }
+      li.main-menu-profile {
+        border-color: $header_profile_bottom_color;
+      }
+      li.main-menu-tree {
+        border-color: $header_tree_bottom_color;
+      }
+      li.main-menu-messages {
+        border-color: $header_messages_bottom_color;
+      }
+      li.main-menu-contacts {
+        border-color: $header_contacts_bottom_color;
+      }
+      li.main-menu-albums {
+        border-color: $header_albums_bottom_color;
+      }
+      li.main-menu-diary {
+        border-color: $header_diary_bottom_color;
+      }
+      li.main-menu-blog {
+        border-color: $header_blog_bottom_color;
+      }
+    }
+
+  }
+  .main-menu-sm ul li.main-menu-tree.selected a,
+  .main-menu-sm ul li.main-menu-tree.selected a:hover {
+    background-color: #cee2a7;
+
+  }
+  .main-menu-sm ul li a>i,
+  .main-menu-sm ul li a>b,
+  .main-menu-sm ul li a>span {
+    position: absolute;
+
+  }
+  .main-menu-sm ul li a>b {
+    background-color: #f04949;
+    border-radius: 50%;
+    color: $white;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 2px;
+
+  }
+  .main-menu-xs,
+  .main-menu-xs-icons {
+    display: none;
+
+  }
+  .main-menu-sm {
+    display: block;
+
+  }
+  .main-menu-sm ul li {
+    border-bottom-width: 5px;
+    height: 60px;
+    width: 12.5%;
+
+  }
+  .main-menu-sm ul li a {
+    height: 55px;
+
+  }
+  .main-menu-sm ul li a>i {
+    bottom: 25px;
+    left: 0;
+    right: 0;
+
+  }
+  .main-menu-sm ul li a>b {
+    bottom: 40px;
+    left: 50%;
+
+  }
+  .main-menu-sm ul li a>i.fa-home,
+  .main-menu-sm ul li a>i.fa-user,
+  .main-menu-sm ul li a>i.fa-book,
+  .main-menu-sm ul li a>i.fa-picture-o {
+    font-size: 28px;
+    line-height: 0.9;
+
+  }
+  .main-menu-sm ul li a>i.fa-calendar,
+  .main-menu-sm ul li a>i.fa-envelope-o,
+  .main-menu-sm ul li a>i.fa-pencil {
+    font-size: 24px;
+
+  }
+  .main-menu-sm ul li a>span {
+    bottom: 5px;
+    font-size: 14px;
+    /* font-size: 16px; */
+    left: 0;
+    right: 0;
+
+  }
+  .top-right-menu>div a + span {
+    padding: 0 20px;
+
+  }
+  .top-right-menu>div a + b {
+    padding: 0 7px;
+
+  }
+}
+
+/* 992px */
+@media only screen and (min-width: 992px) {
+  .main-menu {
+        margin: 0 230px 0 230px;
+        padding-top: 0; /*27px*/
+  }
+
+  .main-menu-sm ul li {
+    border-bottom-width: 5px;
+        height: 108px; /* 80px */
+    /* height: 60px; */
+  }
+
+  .main-menu-sm ul li a {
+        height: 100%; /* 75px */
+    /* height: 55px; */
+  }
+
+  .main-menu-sm ul li a>span {
+        bottom: 20px; /*10px*/
+    font-size: 16px; /**/
+  }
+
+  .main-menu-sm ul li a>i {
+        bottom: 40px; /* 30px */
+    /* bottom: 25px; */
+  }
+
+    .main-menu-sm ul li a>b {
+        bottom: 50px;
+    }
+
+  .main-menu-sm ul li a>i.fa-home,
+  .main-menu-sm ul li a>i.fa-user,
+  .main-menu-sm ul li a>i.fa-book,
+  .main-menu-sm ul li a>i.fa-picture-o {
+    font-size: 31px;
+    /* font-size: 29px; */
+    line-height: 0.9;
+  }
+
+
+  .main-menu-sm ul li a>i.fa-calendar,
+  .main-menu-sm ul li a>i.fa-envelope-o,
+  .main-menu-sm ul li a>i.fa-pencil  {
+    font-size: 28px;
+    /* font-size: 26px; */
+  }
+}

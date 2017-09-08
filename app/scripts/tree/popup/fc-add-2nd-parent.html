@@ -1,0 +1,32 @@
+<div class="tree-popup-second-parent">
+  <div class="hint"
+       data-translate data-translate-values="{firstName: treeUserProfile.first_name, ofTheChild: childType, aChild: currentForm.aChild, hisChild: currentForm.hisChild, gender: currentForm.childSex}"
+       data-translate-interpolation="messageformat">
+       {{ treeUserProfile.partners.length < 1 ? 'fc-add-relative.SELECT_SECOND_PARENT.HINT_UNKNOWN':'fc-add-relative.SELECT_SECOND_PARENT.HINT' }}</div>
+
+  <div class="tile-holder clearfix">
+
+    <!--<figure ng-click="openAddRelativeChildPopup(partner.partner.id)" ng-repeat="partner in treeUserProfile.partners" class="pointer" ng-class="{'filled-tile':partner.partner.global_state=='unknown'}">-->
+    <figure ui-sref="u.tree.detail.createChild({partnerId:partner.partner.id})" ng-repeat="partner in treeUserProfile.partners" class="pointer named-partner-tile" ng-class="{'filled-tile':partner.partner.global_state=='unknown'}">
+      <div class="add-tile">
+        <fc-avatar-img user="partner.partner"></fc-avatar-img>
+      </div>
+      <figcaption>{{partner.partner.user_name}}</figcaption>
+    </figure>
+
+    <figure ui-sref="u.tree.detail.createChild" class="pointer add-relative-empty-question">
+      <div class="add-tile"><span class="huge">?</span></div>
+      <figcaption data-translate>fc-add-relative.SELECT_SECOND_PARENT.UNKNOWN</figcaption>
+    </figure>
+
+    <figure ng-click="createParent()" class="pointer add-relative-empty-plus">
+      <div class="add-tile"><span class="huge">+</span></div>
+      <figcaption data-translate>fc-add-relative.SELECT_SECOND_PARENT.ADD_ANOTHER</figcaption>
+    </figure>
+
+  </div>
+
+  <div class="actions">
+    <a class="btn btn-primary back" ui-sref="u.tree.detail.add" data-translate>fc-add-relative.SELECT_SECOND_PARENT.CANCEL</a>
+  </div>
+</div>

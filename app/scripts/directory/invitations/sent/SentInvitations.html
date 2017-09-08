@@ -1,0 +1,26 @@
+<div class="main-content">
+
+  <!--<div class="clearfix hidden-xs">-->
+    <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+  <!--</div>-->
+
+  <div ng-hide="users.length != 0">
+    <!-- TODO -->
+  </div>
+
+  <div ng-if="sentInvitations.length && sentInvitations[0].error">
+    {{ 'DIRECTORY.INVITATION.SENT_ERROR' | translate }}
+  </div>
+
+  <fc-user-list ng-if="sentInvitations.length && !sentInvitations[0].error"
+    data-me="me"
+    ng-model="sentInvitations"
+    load-more="null"
+    filter="filter"
+    selection-mode="false"
+    mode="sent_invit"
+    show-alert="false"
+    delete-mode="remove"
+    selected-users="selectedUsers">
+  </fc-user-list>
+</div>

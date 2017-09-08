@@ -1,0 +1,121 @@
+<div class="f-block">
+  <div class="f-block-header">
+    <div class="author">
+      <fc-avatar data-user="{id: object.author_id, avatar_url: object.author_avatar_url}"></fc-avatar>
+    </div>
+    <div class="f-block-header-left f-block-header-left-with-icon">
+      <span>
+        <span class="f-block-icon-text" data-translate>EVENT</span> <span class="f-block-icon">
+          <i class="fa fa-calendar-o"></i>
+        </span><br>
+        <a ng-show="::object.permissions.is_updatable" ui-sref="u.event-edit({event_id: object.id})"><i class="fa fa-cog"></i></a>
+      </span>
+      <div>
+        <h3><a class="green-link-color" ui-sref="u.profile({user_id: object.author_id})">{{::object.author_name}}</a> </h3>
+        <span class="at">{{::object.created_date*1000|timeOrDatePrefixFilter}} {{::object.created_date*1000|timeOrDateFilter}}</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="item-sub-delimiter"></div>
+  <div class="f-block-content f-block-content-type3 hidden-xs">
+    <div ng-if="object.answer == 'can' && object.answer != null && !isAfterDate(object.start_date)">
+      <div data-translate>EVENT_PRESENCE</div>
+      <div>
+        <a class="btn btn-primary green-button button-min-width2 xs-event-button" ng-click="eventAnswer('yes')"
+           data-translate>EVENT_ANSWER_YES</a> &nbsp;
+        <a class="btn btn-primary orange-button button-min-width2 xs-event-button" ng-click="eventAnswer('maybe')"
+           data-translate>EVENT_ANSWER_MAYBE</a> &nbsp;
+        <a class="btn btn-primary red-button button-min-width2 xs-event-button" ng-click="eventAnswer('no')"
+           data-translate>EVENT_ANSWER_NO</a>
+      </div>
+      <br/>
+    </div>
+    <div ng-if="object.answer != 'can' && object.answer != null && isAfterDate(object.start_date) == false">
+      <div class="center-text">
+        <span ng-if="object.answer == 'attend'" data-translate>EVENT_ANSWERED</span>
+        <span ng-if="object.answer == 'maybe'" data-translate>EVENT_ANSWERED_MAYBE</span>
+        <span ng-if="object.answer == 'decline'" data-translate>EVENT_ANSWERED_NO</span>
+      </div>
+      <div>
+        <a class="btn btn-primary green-button button-min-width2 xs-event-button" ng-click="editAnswer()"
+           data-translate>EVENT_ANSWER_CHANGE</a>
+      </div>
+      <br/>
+    </div>
+  </div>
+  <div class="f-block-content f-block-content-type3 visible-xs">
+    <div ng-if="object.answer == 'can' && object.answer != null && isAfterDate(object.start_date) == false">
+
+      <div class="center-text" data-translate>EVENT_PRESENCE</div>
+      <div class="center-text">
+        <a class="btn btn-primary green-button button-min-width2 xs-event-button" ng-click="eventAnswer('yes')"
+           data-translate>EVENT_ANSWER_YES</a> &nbsp;
+        <a class="btn btn-primary orange-button button-min-width2 xs-event-button" ng-click="eventAnswer('maybe')"
+           data-translate>EVENT_ANSWER_MAYBE</a> &nbsp;
+        <a class="btn btn-primary red-button button-min-width2 xs-event-button" ng-click="eventAnswer('no')"
+           data-translate>EVENT_ANSWER_NO</a>
+      </div>
+      <br>
+    </div>
+    <div ng-if="object.answer != 'can' && object.answer != null && isAfterDate(object.start_date) == false">
+      <div class="center-text">
+        <span ng-if="object.answer == 'attend'" data-translate>EVENT_ANSWERED</span>
+        <span ng-if="object.answer == 'maybe'" data-translate>EVENT_ANSWERED_MAYBE</span>
+        <span ng-if="object.answer == 'decline'" data-translate>EVENT_ANSWERED_NO</span>
+      </div>
+      <div>
+        <a class="btn btn-primary" ng-click="editAnswer()" data-translate>EVENT_ANSWER_CHANGE</a>
+      </div>
+      <br/>
+    </div>
+  </div>
+  <div class="f-block-event-info">
+    <div ng-if="::object.name">
+      <span data-translate>EVENT_NAME_SC</span>&nbsp;
+      <a ui-sref="u.event-show({event_id: object.id})">{{:: object.name }}</a><br/>
+    </div>
+    <div ng-if="::object.location">
+      <span data-translate>EVENT_LOCATION_SC</span>&nbsp;
+      <a class="underline" ui-sref="u.event-show({event_id: object.id})">{{:: object.location }}</a><br/>
+    </div>
+    <div ng-if="::object.start_date != 0">
+      <span data-translate>BEGIN_DATE_SC</span>&nbsp;
+      <span ng-if="::object.all_day == false">
+        <a class="underline" ui-sref="u.event-show({event_id: object.id})">
+          {{:: $moment(object.start_date, 'X').format('LLLL') }}
+        </a>
+      </span>
+      <span ng-if="::object.all_day == true">
+        <a class="underline" ui-sref="u.event-show({event_id: object.id})">
+          {{:: $moment(object.end_date, 'X').format('LL') }}
+        </a>
+      </span><br>
+    </div>
+    <div ng-if="::object.end_date != 0">
+      <span data-translate>END_DATE_SC</span>&nbsp;
+      <span ng-if="::object.all_day == false">
+        <a class="underline" ui-sref="u.event-show({event_id: object.id})">
+          {{:: $moment(object.end_date, 'X').format('LLLL') }}
+        </a>
+      </span>
+      <span ng-if="::object.all_day == true">
+        <a class="underline" ui-sref="u.event-show({event_id: object.id})">
+          {{:: $moment(object.end_date, 'X').format('LL') }}
+        </a>
+      </span><br>
+    </div>
+    <div ng-if="::object.description">
+      <span data-translate>EVENT_DESC_SC</span>&nbsp;
+      <p ng-bind-html="::object.description | trustedHtml"></p>
+    </div>
+  </div>
+  <br>
+  <div class="comments-like-row">
+    <fc-comments-count data-object="object" data-list-page="listCommentsPage"></fc-comments-count>
+    <fc-like data-object="object" data-view-mode="default" data-list-page="listPageUrl"></fc-like>
+  </div>
+
+  <fc-comment-list data-object="object" data-user="user"></fc-comment-list>
+
+</div>

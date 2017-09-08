@@ -1,0 +1,37 @@
+$portraitWidth: 4em;
+
+#privacy {
+  @include page($grey7);
+
+  h1 {
+    margin-bottom: 1em;
+  }
+  .contents {
+    .text {
+      width: 100%;
+      .quote {
+        overflow: hidden;
+        .portrait {
+          float: left;
+          width: $portraitWidth;
+          height: $portraitWidth;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        blockquote {
+          font-size: 0.9em;
+          font-style: italic;
+          p {
+            text-indent: -0.5em;
+            margin: 0 2em;
+          }
+          cite {
+            display: block;
+            margin-top: 1em;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}

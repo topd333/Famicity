@@ -1,0 +1,135 @@
+<div class="wrapper" ng-init="init()">
+  <div class="lang lang-pos" data-fc-language-switcher></div>
+  <div class="content">
+    <div class="main">
+      <div class="home-above-form">
+        <div class="ui_elem famicity-logo">
+          <a ui-sref="base"></a>
+        </div>
+        <h1 class="welcome-message" translate>SETTINGS.EMAIL_NOTIFICATIONS.NOTIFICATIONS_PAGE_TITLE</h1>
+      </div>
+      <div class="notifications-block">
+        <form ng-submit="submit()" novalidate class="notifications-form" id="notifications-form" name="notificationsForm" method="POST">
+          <h2 translate>SETTINGS.EMAIL_NOTIFICATIONS.NOTIFICATIONS_FILTERS_TITLE1</h2>
+
+          <div class="standard-checkbox">
+            <input id="newsletter_notifications" type="checkbox" ng-model="notifications.newsletter_mails" />
+            <label for="newsletter_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.FAMICITY_NEWSLETTERS</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="birthdays_mails_notifications" type="checkbox" ng-model="notifications.birthday_reminder_mails" />
+            <label for="birthdays_mails_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.BIRTHDAY_REMINDERS</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="event_reminder_mails" type="checkbox" ng-model="notifications.event_reminder_mails" />
+            <label for="event_reminder_mails" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_REMINDER</span>
+            </label>
+          </div>
+          <!-- <div class="standard-checkbox">
+            <input id="community_mails_notifications" type="checkbox" ng-model="notifications.community_mails" />
+            <label for="community_mails_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.HELP_MAIL</span>
+            </label>
+          </div> -->
+
+          <h2 translate>SETTINGS.EMAIL_NOTIFICATIONS.NOTIFICATIONS_FILTERS_TITLE2</h2>
+
+          <div class="standard-checkbox">
+            <input id="new_post_notifications" type="checkbox" ng-model="notifications.new_post_mails" />
+            <label for="new_post_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.NEW_PUBLICATION</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="new_album_notifications" type="checkbox" ng-model="notifications.new_album_mails" />
+            <label for="new_album_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.NEW_ALBUM</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="comment_answers_notifications" type="checkbox" ng-model="notifications.comment_answer_all_mails" />
+            <label for="comment_answers_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.NEW_COMMENT</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="messages_mails_notifications" type="checkbox" ng-model="notifications.new_message_mails" />
+            <label for="messages_mails_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.NEW_MAIL</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="subscribe_invitation_notifications" type="checkbox" ng-model="notifications.subscribe_invitation_mails" />
+            <label for="subscribe_invitation_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.INVITAION_RESPONSE</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="event_invitation_notifications" type="checkbox" ng-model="notifications.event_invitation_mails" />
+            <label for="event_invitation_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_INVITATION</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="event_accept_notifications" type="checkbox" ng-model="notifications.event_accept_mails" />
+            <label for="event_accept_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_RESPONSE</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="event_update_notifications" type="checkbox" ng-model="notifications.event_update_mails" />
+            <label for="event_update_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_CHANGE</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="event_destroy_notifications" type="checkbox" ng-model="notifications.event_destroy_mails" />
+            <label for="event_destroy_notifications" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.EVENT_DESTROY</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="like_mails" type="checkbox" ng-model="notifications.like_mails" />
+            <label for="like_mails" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.LIKE</span>
+            </label>
+          </div>
+          <div class="standard-checkbox">
+            <input id="avatar_mails" type="checkbox" ng-model="notifications.avatar_mails" />
+            <label for="avatar_mails" class="fa">
+              <span translate>SETTINGS.EMAIL_NOTIFICATIONS.AVATAR</span>
+            </label>
+          </div>
+          <!-- <h2>&nbsp;</h2>
+
+          <div class="standard-radiobutton">
+            <input id="day_report" type="radio" ng-model="week_report_mails" ng-value="false" />
+            <span class="radio-element"></span>
+          </div>
+          <label for="day_report" class="fa" translate>SETTINGS.EMAIL_NOTIFICATIONS.NOTIFICATIONS_PER_DAY</label>
+
+          <div class="standard-radiobutton">
+            <input id="week_report_mails" type="radio" ng-model="week_report_mails" ng-value="true" />
+            <span class="radio-element"></span>
+          </div>
+          <label for="week_report_mails" class="fa" translate>SETTINGS.EMAIL_NOTIFICATIONS.NOTIFICATIONS_PER_WEEK</label>
+          -->
+
+          <br />
+
+          <div class="form-button-center">
+            <button class="btn btn-primary green-button" type="submit" translate>CONFIRM</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

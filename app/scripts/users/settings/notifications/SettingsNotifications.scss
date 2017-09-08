@@ -1,0 +1,7 @@
+@include aboveMediumScreen() {
+  .settings.notifications {
+    .action-submit {
+      display: none;
+    }
+  }
+}

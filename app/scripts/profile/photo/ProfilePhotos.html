@@ -1,0 +1,85 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>MY_PROFILE_PHOTOS</h2>-->
+      <!--<a ng-if="basicProfile.permissions.is_updatable" class="btn btn-icon txt-icon pull-right" ng-click="openAvatarAddPhotoOptionsPopup()">+</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary profile="profile"></fc-user-summary>
+        </div>
+        <div class="col-sm-8 right-column right-column-directory">
+
+          <div class="main-content">
+            <div ng-show="avatars.length == 0">
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+              <div class="text-alignment-holder" ng-if="basicProfile.permissions.is_updatable">
+                <div class="clearfix">
+                  <img alt="" class="pic-in-text-left hidden-xs" src="/images/picture-mode-collage.jpg" />
+                  <br class="visible-xs" />
+
+                  <p class="text-next-to-pic-right" data-translate>EMPTY_PROFILE_PHOTOS_PAGE_EXPLANATION1</p>
+                </div>
+
+                <br />
+
+                <div class="center-to-center-text" data-translate>EMPTY_PROFILE_PHOTOS_PAGE_EXPLANATION2</div>
+              </div>
+              <div class="photo-add-options-holder hidden-xs" ng-if="basicProfile.permissions.is_updatable">
+                <div>&nbsp;</div>
+                <ul class="photo-add-options clearfix">
+                  <li id="photo-add-local" class="photo-add-local">
+                    <div fc-image-uploader type="button" class="btn btn-primary btn-lg" id="img-uploader">{{::
+                      'ADD_PHOTO' | translate }}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="text-alignment-holder" ng-if="!basicProfile.permissions.is_updatable">
+                <p data-translate data-translate-values="{sex: profile.sex, username: profile.user_name}" data-translate-interpolation="messageformat">PROFILE.HAS_NO_AVATAR</p>
+                <a class="btn btn-secondary" ui-sref="u.profile({user_id: viewedUserId})" data-translate data-translate-values="{GENDER: profile.sex}" data-translate-interpolation="messageformat">PROFILE.RETURN_PROFILE</a>
+              </div>
+
+              <div class="visible-xs">
+                <br />
+                <div class="vertical-button-group import-contacts-buttons" ng-if="basicProfile.permissions.is_updatable">
+                  <div>
+                    <div fc-image-uploader class="btn btn-primary btn-lg button-min-width">{{:: 'ADD_PHOTO' | translate
+                      }}
+                    </div>
+                  </div>
+                 <!-- <div>
+                    <a class="btn btn-primary btn-lg button-min-width" ui-sref="u.profile-photos-gallery"
+                       data-translate>CHOOSE_FROM_GALLERY</a>
+                  </div>
+                  <div>
+                    <a class="dark-gray-button button-min-width" href="#" data-translate>CANCEL</a>
+                  </div>-->
+                </div>
+              </div>
+            </div>
+
+            <div ng-hide="avatars.length == 0">
+              <div class="clearfix">
+                <!--<div class="center-right-icons clearfix hidden-xs">-->
+                  <!--<a class="btn btn-icon btn-icon-primary pointer" ng-click="startSlideshow()"><i class="fa fa-play-circle"></i></a><a ng-if="basicProfile.permissions.is_updatable" class="btn btn-icon btn-icon-primary pointer" ng-click="openAvatarAddPhotoOptionsPopup()">+</a>-->
+                <!--</div>-->
+                <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+              </div>
+              <br />
+              <div class="profile-photos-holder clearfix">
+                <a ng-repeat="avatar in avatars" ui-sref="u.profile-photos-item({user_id: viewedUserId, photo_id: avatar.id})">
+                  <img ng-src="{{ avatar.url_thumb }}" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

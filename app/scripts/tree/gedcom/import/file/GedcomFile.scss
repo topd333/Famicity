@@ -1,0 +1,23 @@
+.gedcom.wizard.import {
+  .upload {
+    h3 {
+      text-align: center;
+      font-size: 1em;
+      font-weight: bold;
+      color: $green;
+    }
+    form {
+      text-align: center;
+      overflow: hidden;
+      .form-group > * {
+        margin: 0.5em 0.25em;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .file-name {
+        width: 80%;
+        max-width: 20em;
+      }
+    }
+  }
+}

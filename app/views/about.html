@@ -1,0 +1,160 @@
+<div class="wrapper">
+  <div class="content">
+
+    <header>
+      <div class="ui_elem round-famicity-logo">
+        <a ui-sref="public.base({locale: locale})"></a>
+      </div>
+      <h1><span class="fa fa-leaf"></span> {{ "ABOUT_PAGE_TITLE" | translate }}</h1>
+
+      <div class="top-right-linkbar">
+        <span class="lang" data-fc-language-switcher></span>/ &nbsp; <a ui-sref="public.base.sign-in({locale: locale})"><i
+        class="fa fa-lock"></i>&nbsp;<span class="hidden-xs" data-translate>CONNECT_LINK</span></a>
+      </div>
+    </header>
+
+    <div class="header-image bg-image-cover"></div>
+    <div class="header-underline"></div>
+
+    <div class="about-content">
+      <h2 data-translate>ABOUT_PAGE_INTRO</h2>
+      <br/>
+
+      <h3 translate>THE_SHORT_HISTORY_TITLE</h3>
+
+      <div class="containter-fluid about-history" translate>THE_SHORT_HISTORY</div>
+      <br/>
+      <cite>
+        <i class="fa fa-quote-left"></i>{{ "ABOUT_PAGE_QUOTE" | translate }}<i class="fa fa-quote-right"></i>
+      </cite>
+      <br/>
+
+      <h3 translate>THE_TEAM</h3>
+
+      <div class="about-team-members">
+        <div class="about-team-members-gallery clearfix">
+          <div>
+            <img src="/images/team/guillaume.png"/>
+            <h4>Guillaume</h4>
+            <h5 translate>CO_FOUNDER_CEO</h5>
+
+            <p class="text-left" ng-bind-html="'GUILLAUME_DESCRIPTION' | translate"></p>
+            <h6><i class="fa fa-twitter"></i> : <a href="https://twitter.com/GuillaumeLan">@GuillaumeLan</a></h6>
+          </div>
+          <div>
+            <img src="/images/team/jerome.png"/>
+            <h4>Jérôme</h4>
+            <h5 translate>CO_FOUNDER_CTO</h5>
+
+            <p class="text-left" ng-bind-html="'JEROME_DESCRIPTION' | translate"></p>
+            <h6><i class="fa fa-twitter"></i> : <a href="https://twitter.com/JeromeBlanchard">@JeromeBlanchard</a></h6>
+          </div>
+          <div>
+            <img src="/images/team/simon-pierre.png"/>
+            <h4>Simon-Pierre</h4>
+            <h5 translate>ISG_ENTREPRENEUR</h5>
+
+            <p class="text-left" ng-bind-html="'SIMON_DESCRIPTION' | translate"></p>
+            <!--<h6><i class="fa fa-twitter"></i> : @XXXXXXXXX</h6>-->
+          </div>
+
+          <div>
+            <img src="/images/team/audrey.png"/>
+            <h4>Audrey</h4>
+            <h5 translate>COMMUNICATION_MARKETING</h5>
+
+            <p class="text-left" ng-bind-html="'AUDREY_DESCRIPTION' | translate"></p>
+            <h6><i class="fa fa-twitter"></i> : <a href="https://twitter.com/Audrey_Fcy">@Audrey_Fcy</a></h6>
+          </div>
+          <div>
+            <img src="/images/team/nathalie.png"/>
+            <h4>Nathalie</h4>
+            <h5 translate>GRAPHIST_WEBDESIGNER</h5>
+
+            <p class="text-left" ng-bind-html="'NATHALIE_DESCRIPTION' | translate"></p>
+            <h6><i class="fa fa-twitter"></i> : <a href="https://twitter.com/NathalieHemonin">@NathalieHemonin</a></h6>
+          </div>
+          <div>
+            <img src="/images/team/zoe.png"/>
+            <h4>Zoé</h4>
+            <h5 translate>COMMUNICATION_MARKETING</h5>
+
+            <p class="text-left" ng-bind-html="'ZOE_DESCRIPTION' | translate"></p>
+            <h6><i class="fa fa-twitter"></i> : <a href="https://twitter.com/Zoe_Fcy">@Zoe_Fcy</a></h6>
+          </div>
+
+          <div>
+            <img src="/images/team/pascal.png"/>
+            <h4>Pascal</h4>
+            <h5 translate>DEVELOPER</h5>
+
+            <p class="text-left" ng-bind-html="'PASCAL_DESCRIPTION' | translate"></p>
+            <!--<h6><i class="fa fa-twitter"></i> : @XXXXXXXXX</h6>-->
+          </div>
+          <div>
+            <img src="/images/team/jimmy.png"/>
+            <h4>Jimmy</h4>
+            <h5 translate>DEVELOPER</h5>
+
+            <p class="text-left" ng-bind-html="'JIMMY_DESCRIPTION' | translate"></p>
+            <!--<h6><i class="fa fa-twitter"></i> : @XXXXXXXXX</h6>-->
+          </div>
+          <div>
+            <img src="/images/team/luc.png"/>
+            <h4>Luc</h4>
+            <h5 translate>FULL_STACK_DEVELOPER</h5>
+
+            <p class="text-left" ng-bind-html="'LUC_DESCRIPTION' | translate"></p>
+            <!--<h6><i class="fa fa-twitter"></i> : @XXXXXXXXX</h6>-->
+          </div>
+
+          <div>
+            <img src="/images/team/bruno.png"/>
+            <h4>Bruno</h4>
+            <h5 translate>NETWORK_ARCHITECT</h5>
+
+            <p class="text-left" ng-bind-html="'BRUNO_DESCRIPTION' | translate"></p>
+            <!--<h6><i class="fa fa-twitter"></i> : @XXXXXXXXX</h6>-->
+          </div>
+          <div>
+            <img src="/images/team/kajan.png"/>
+            <h4>Kajan</h4>
+            <h5 translate>FRONT_END_DEVELOPER</h5>
+
+            <p class="text-left" ng-bind-html="'KAJAN_DESCRIPTION' | translate"></p>
+            <!--<h6><i class="fa fa-twitter"></i> : @XXXXXXXXX</h6>-->
+          </div>
+          <div>
+            <img src="/images/team/nicolas.png"/>
+            <h4>Nicolas</h4>
+            <h5 translate>FRONT_END_DEVELOPER</h5>
+
+            <p class="text-left" ng-bind-html="'NICOLAS_DESCRIPTION' | translate"></p>
+            <!--<h6><i class="fa fa-twitter"></i> : @XXXXXXXXX</h6>-->
+          </div>
+
+          <div>
+            <img src="/images/team/fabien.png"/>
+            <h4>Fabien</h4>
+            <h5 translate>FUNCTIONAL_TESTER</h5>
+
+            <p class="text-left" ng-bind-html="'FABIEN_DESCRIPTION' | translate"></p>
+            <!--<h6><i class="fa fa-twitter"></i> : @XXXXXXXXX</h6>-->
+          </div>
+        </div>
+      </div>
+      <h3 translate>AND_A_GREAT_THANKS_TO</h3>
+
+      <div class="containter-fluid about-thanks">
+        <div class="row">
+          <div class="col-sm-6"><p translate>FREDERIC_DESCRIPTION</p></div>
+          <div class="col-sm-6"><p translate>LUCIEN_DESCRIPTION</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div fc-public-footer data-locale="{{locale}}"></div>
+
+</div>

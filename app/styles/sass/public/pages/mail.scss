@@ -1,0 +1,68 @@
+.mail {
+  #slide1 {
+    background: url("../../images/parallax/background/mail-visuel1-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide2 {
+    background: url("../../images/parallax/background/mail-visuel2-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide3 {
+    background: url("../../images/parallax/background/mail-visuel3-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide4 {
+    background: url("../../images/parallax/background/mail-visuel4-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+}
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+
+    .mail #slide1 {
+        background: url("../../images/parallax/background/mail-visuel1-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .mail #image-slide2 {
+        background: url("../../images/parallax/background/mail-visuel2-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .mail #image-slide3 {
+        background: url("../../images/parallax/background/mail-visuel3-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .mail #image-slide4 {
+        background: url("../../images/parallax/background/mail-visuel4-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}
+
+/* 980px */
+@media only screen and (min-width: 980px) {
+
+    .mail #slide1 {
+        background: url("../../images/parallax/background/mail-visuel1-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .mail #image-slide2 {
+        background: url("../../images/parallax/background/mail-visuel2-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .mail #image-slide3 {
+        background: url("../../images/parallax/background/mail-visuel3-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .mail #image-slide4 {
+        background: url("../../images/parallax/background/mail-visuel4-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}

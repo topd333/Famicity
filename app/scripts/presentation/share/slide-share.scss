@@ -1,0 +1,50 @@
+#share {
+  @include page($grey7);
+
+  .contents {
+    .images {
+      height: 30em;
+      position: relative;
+      > * {
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+  .mobile-image{
+    .share-img-1 {
+      background-size: cover;
+    }
+  }
+  .share-img-1 {
+    background-size: cover;
+    $width: 100%;
+    left: 8%;
+    height: 100%;
+    transform: rotate(4deg);
+    width: $width;
+  }
+  .share-img-3 {
+    position: absolute;
+    height: 100%;
+    left: 2em;
+    width: 30%;
+    transform: rotate(-8deg);
+  }
+
+  .share-img-4 {
+    position: absolute;
+    left: 14%;
+    height: 100%;
+    top: 40%;
+    width: 49%;
+    transform: rotate(1deg);
+  }
+}
+
+@include onTouchScreen() {
+  #share {
+    @include page($white);
+  }
+}

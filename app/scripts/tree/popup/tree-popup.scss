@@ -1,0 +1,347 @@
+@import "../../../styles/sass/private/pages/icons";
+
+.single-form {
+  padding: 2vh 2vw;
+}
+
+.tree-popup {
+
+  background: $white; // Replace by some $popupBackground
+  border: 1px solid #6a7179;
+  margin: 0 auto;
+  max-width: 50em;
+
+  .tree-popup-header {
+    background-color: #6a7179;
+    color: #fff;
+    height: 35px;
+    line-height: 35px;
+    overflow: hidden;
+    padding: 0 10px;
+    i.fa-user {
+      font-size: 1.25em;
+    }
+  }
+
+  .tree-popup-table {
+    @extend .table;
+    height: 25em;
+    .profile {
+      padding: 1em;
+    }
+    .menu {
+      display: table-cell;
+      clear: both;
+
+      text-align: left;
+      vertical-align: top;
+
+      border-right: 1px solid #6a7179;
+      .choice {
+        cursor: pointer;
+        clear: both;
+        display: table;
+        color: $main_font_color;
+
+        .icon {
+          display: table-cell;
+          @extend .wcs-g-icon;
+          @extend .wcs-g-icon-gray;
+          //line-height: 1.5;
+        }
+        .icon-green {
+          @extend .wcs-g-icon-green;
+        }
+        .choice-label {
+          padding-left: 0.5em;
+          display: table-cell;
+          vertical-align: middle;
+        }
+        margin-bottom: 0.0625em;
+
+        &.caution {
+          word-break: break-all;
+          &:hover {
+            color: $red;
+            .icon {
+              @extend .wcs-g-icon-red;
+            }
+          }
+        }
+        &:hover {
+          color: $green;
+          .icon {
+            @extend .wcs-g-icon-green;
+          }
+        }
+      }
+      &:nth-child(2) {
+        width: 100%;
+      }
+
+      .links {
+        padding: 1em;
+        clear: both;
+        @extend .tree-popup-vertical-wcs-icons;
+        @extend .left-navigation-icons;
+      }
+      .actions {
+        border-top: 1px gray solid;
+        padding: 1em;
+      }
+    }
+
+    .contents {
+
+      display: table-cell;
+      @extend .tree-popup-add-relatives-holder;
+    }
+
+  }
+}
+
+/* Tree popup info */
+
+.tree-popup-info {
+  &.main-popup-window > div {
+    padding: 20px;
+  }
+  h1 {
+    color: #6a7178;
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 0;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  h4 {
+    color: #6a7178;
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 0;
+  }
+  .tree-popup-info-top {
+    display: table;
+    width: 100%;
+  }
+  .tree-popup-info-nameandicons {
+    display: table-cell;
+    font-size: 16px;
+    padding-left: 20px;
+    text-align: left;
+    vertical-align: bottom;
+    > {
+      div {
+        display: table;
+        width: 100%;
+      }
+      span {
+        color: #6a7178;
+        > span {
+          color: #96bd3e;
+        }
+      }
+    }
+  }
+  .wcs-g-icon {
+    //background-color: #e6e6e6;
+    //color: #60676d;
+    display: inline-block;
+    font-size: 24px;
+    height: 40px;
+    text-align: center;
+    width: 40px;
+    &:hover {
+      background-color: #96bd3e;
+      color: #fff;
+    }
+  }
+  .btn-icon-danger {
+    color: #60676d;
+    &:hover {
+      color: #fff;
+    }
+  }
+  .wcs-g-icon i {
+    line-height: 40px;
+  }
+  .wcs-g-icon-red {
+    background-color: #f04949;
+  }
+}
+
+form.wsc-form-50pw {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.tree-popup-info {
+  .tree-popup-info-name {
+    color: #96bd3e;
+    display: table-cell;
+    font-size: 20px;
+    vertical-align: bottom;
+    span {
+      display: inline-block;
+      line-height: 1;
+      vertical-align: text-top;
+    }
+  }
+  .tree-popup-info-icons {
+    display: table-cell;
+    padding-right: 50px;
+    text-align: right;
+    > div {
+      display: table;
+      float: right;
+      > div {
+        display: table-cell;
+        padding-left: 10px;
+        text-align: center;
+        vertical-align: bottom;
+      }
+    }
+  }
+  .tree-popup-section-items-count {
+    color: #96bd3e;
+    border-bottom: 2px solid #96bd3e;
+    margin-bottom: 2px;
+  }
+  h2 {
+    color: #96bd3e;
+    font-size: 22px;
+    font-weight: normal;
+    margin: 10px 0 0;
+    text-align: left;
+  }
+  .tree-popup-info-personal-info {
+    > div {
+      box-sizing: border-box;
+      border-bottom: 1px solid #e7e8ea;
+      color: #a8a8aa;
+      float: left;
+      font-size: 14px;
+      padding: 20px 0;
+      text-align: left;
+      width: 49%;
+      &:nth-child(2n) {
+        padding-left: 2%;
+        width: 51%;
+      }
+    }
+    h3 {
+      color: #6a7178;
+      font-weight: normal;
+      margin: 0;
+      text-align: left;
+    }
+  }
+  p.text-next-to-button {
+    color: #6a7178;
+    font-size: 16px;
+    text-align: left;
+  }
+}
+
+/* Tree popup delete */
+
+.tree-popup-delete {
+  border: 1px solid #f04949 !important;
+  > div {
+    padding: 20px;
+  }
+  h1 {
+    color: #f04949;
+    font-size: 22px;
+    font-weight: normal;
+    margin: 0;
+  }
+  h5 {
+    color: #f04949;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+  }
+}
+
+@import "fc-add-relative";
+@import "fc-add-2nd-parent";
+@import "fc-fill-relative";
+
+.tree-popup-avatar {
+  //margin-right: 15px;
+  position: relative;
+
+  .avatar-rounded {
+    height: 3.15em;
+    width: 3.15em;
+  }
+}
+
+.tree-popup-userinfo {
+  font-size: 0.9em;
+  margin-left: 5.6em;
+  max-width: 11em;
+  word-wrap: break-word;
+  div {
+    width: 100%;
+    word-wrap: break-word;
+  }
+  .tree-popup-userinfo-name {
+    color: $green;
+  }
+  .tree-popup-userinfo-date {
+    color: $grey3;
+  }
+}
+
+.tree-popup-vertical-wcs-icons a {
+  display: block;
+}
+
+.tree-popup-vertical-wcs-icons a + a,
+a + .tree-popup-vertical-wcs-icons,
+.tree-popup-vertical-wcs-icons + a {
+  margin-top: 1px;
+}
+
+.tree-popup-table > div.tree-popup-add-relatives-holder {
+  text-align: center;
+  vertical-align: middle;
+}
+
+@import "fc-tree-add";
+
+.tree-popup-icon-with-plus i.fa {
+  font-size: 20px !important;
+}
+
+.tree-popup-icon-plus-child {
+  bottom: 11px;
+  font-size: 14px;
+  line-height: 0;
+  right: 3px;
+}
+
+.tree-popup:after {
+  display: none;
+}
+
+@include belowLargeScreen() {
+  .tree-popup {
+    .field {
+      width: 100%;
+    }
+  }
+}
+
+@include aboveMediumScreen() {
+  .tree-popup {
+    .field:not(.long) {
+      width: 49%;
+    }
+  }
+}
+

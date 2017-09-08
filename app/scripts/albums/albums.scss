@@ -1,0 +1,9 @@
+.album {
+  .actions {
+    .start {
+      display: none;  // Hide "show options"
+    }
+  }
+}
+@import "show/AlbumShow";
+@import "order/AlbumPhotosOrder";

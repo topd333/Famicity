@@ -1,0 +1,73 @@
+<div><!-- This extra div avoid multiple directives per element -->
+  <div class="wrapper" id="welcome">
+    <div class="contents" id="welcome-contents">
+      <div class="centered">
+
+        <div class="form-container">
+          <div class="home-above-form">
+            <div class="ui_elem famicity-logo pointer">
+              <a ui-sref="public.base.signUp({locale:locale})" ui-sref-opts="{reload:true}"></a>
+            </div>
+            <h2 data-translate>WELCOME.BASELINE_START_STORY_1</h2>
+
+            <h3 data-translate>WELCOME.BASELINE_START_STORY_2</h3>
+          </div>
+
+          <form class="sign-in login-form" fc-form-submit data-submit-method="createSession()" data-form-in-progress="formInProgress" novalidate ng-class="{'standard-form': isLandingPage, 'mt-0 m-form-1': isLandingPage}" id="login-form" name="loginForm">
+            <span ng-if="isLandingPage" class="font-size15">{{ introText | translate: {"first_name": inviterFirstName} }}</span>
+            <fieldset>
+              <div class="field input-group" ng-class="{'has-error':(loginForm.loginEmail.$dirty || submitted) && loginForm.loginEmail.$invalid}">
+                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                <label class="sr-only" for="login-email" data-translate>YOUR_EMAIL</label>
+                <input type="email" class="form-control" id="login-email" name="loginEmail" fc-stop-propagation="keydown"
+                       what="username"
+                       ng-model="signIn.sessionUsername"
+                       data-translate
+                       data-translate-attr-placeholder="YOUR_EMAIL">
+              </div>
+              <h6 ng-if="showSpamMsg" data-translate>ANTI_SPAM_MSG</h6>
+
+              <div class="field input-group" ng-class="{'has-error': (loginForm.loginPassword.$dirty || submitted) && loginForm.loginPassword.$invalid}">
+                <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                <label class="sr-only" for="login-password" data-translate>YOUR_PASSWORD</label>
+                <input type="password" id="login-password" name="loginPassword" class="form-control" fc-stop-propagation="keydown"
+                       ng-model="signIn.sessionPass"
+                       what="password"
+                       ng-keypress="checkCaps($event)"
+                       data-translate
+                       data-translate-attr-placeholder="YOUR_PASSWORD">
+              </div>
+            </fieldset>
+            <div class="remember">
+              <input id="remember_me" type="checkbox" ng-model="signIn.remember_me"/>
+              <label for="remember_me" class="fa">
+                <span data-translate>REMEMBER_ME</span>
+              </label>
+            </div>
+            <button fc-form-submit data-form-in-progress="formInProgress" class="field btn btn-primary button-inherit-width" id="form-button-sign-in" type="submit">
+              {{'CONNECT_LINK'|translate}}
+            </button>
+            <a class="link-below-form"
+               ui-sref="public.password_recoveries({email: signIn.sessionUsername, locale: locale})" data-translate>FORGOT_PASSWORD</a>
+
+            <div class="content-delimiter">
+              <span class="rule"></span>
+              <span class="text" data-translate>OR</span>
+              <span class="rule"></span>
+            </div>
+            <button type="button" class="field btn btn-secondary button-inherit-width for-sign-in" id="form-button" ui-sref="public.base.signUp({locale:locale})" >
+              {{(btnText||'START_STORY')|translate}}
+            </button>
+            <fc-hello></fc-hello>
+            <a ui-sref="public.contact({locale: locale})" data-translate>CONTACT_US_LINK</a>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="lang lang-pos" fc-language-switcher></div>
+  </div>
+
+
+</div>

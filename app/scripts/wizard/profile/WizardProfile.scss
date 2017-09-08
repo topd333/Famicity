@@ -1,0 +1,41 @@
+.wizard {
+  .profile {
+    h2, h3 {
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.2em;
+    }
+    h3 {
+      font-size: 1.1em;
+      margin: 0.5em 0 1em 0;
+    }
+    .crop-zone {
+      position: absolute;
+      z-index: 3;
+      //background: lightgray;
+      width: 100%;
+      min-height: 600px; // Make sure to hide non-photo form fields
+      height: 100%;
+      // Center absolutely positioned div
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &.cropping {
+      .holder-for-form-width {
+        width: 100%;
+        max-width: 90%;
+      }
+    }
+  }
+}
+@include onSmallScreen {
+  .photo-enabled {
+    fc-gender-input {
+      width: 8em;
+      margin-left: 1em;
+    }
+  }
+}

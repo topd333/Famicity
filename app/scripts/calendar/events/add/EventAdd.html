@@ -1,0 +1,164 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" data-translate>ADD_EVENT</h2>-->
+      <!--<a class="btn pull-right" fc-form-submit data-submit-method="addEvent()" data-form-in-progress="formInProgress" ng-bind="'OK' | translate"></a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <div>
+              <p>
+                <button class="btn btn-primary btn-lg button-inserted-right hidden-xs" data-fc-form-submit data-submit-method="addEvent()" data-form-in-progress="formInProgress" ng-bind="'SUBMIT' | translate"></button>{{ 'EVENT_DESCRIPT' | translate }}
+              </p>
+            </div>
+
+            <fc-form-tab template="eventCreate"></fc-form-tab>
+            <div class="album-create-info-holder">
+              <div ng-show="tabActive == 'info'">
+                <form action="javascript:;" ng-submit="addEvent()" class="standard-form login-form" id="infos_form" name="eventForm">
+
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                      <label class="sr-only" for="name" data-translate>EVENT_NAME</label>
+                      <input class="form-control" id="name" data-translate data-translate-attr-placeholder="EVENT_NAME"
+                             type="text" ng-model="formData.event.name" required/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+                      <label class="sr-only" for="location" data-translate>EVENT_PLACE</label>
+                      <input class="form-control" id="location" data-translate
+                             data-translate-attr-placeholder="EVENT_PLACE" type="text"
+                             ng-model="formData.event.location"/>
+                    </div>
+                  </div>
+                  <div class="clearfix">
+                    <div class="create-event-short-field-holder pull-left">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                          <label class="sr-only" for="start_date" data-translate>BEGIN_DATE</label>
+                          <input class="form-control" name="start_date" id="start_date"
+                                 placeholder="{{ 'BEGIN_DATE_PLACEHOLDER' | translate }}" type="text"
+                                 ng-model="formData.event.start_date" datepicker-popup="shortDate"
+                                 is-open="datePickers.start_date.isOpen"
+                                 ng-change="setStartDate(formData.event.start_date)"
+                          ng-click="datePickers.start_date.isOpen = true" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                          <label class="sr-only" for="end_date" data-translate>END_DATE</label>
+                          <input class="form-control" name="end_date" id="end_date"
+                                 placeholder="{{ 'END_DATE_PLACEHOLDER' | translate }}" type="text"
+                                 ng-model="formData.event.end_date" datepicker-popup="shortDate" min-date="minDateEnd"
+                                 is-open="datePickers.end_date.isOpen" ng-click="datePickers.end_date.isOpen = true"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="create-event-short-field-holder pull-right">
+                      <div class="form-group">
+                        <div class="input-group" ng-show="!formData.event.all_day">
+                          <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
+                          <label class="sr-only" for="start_time" data-translate>BEGIN_HOUR</label>
+                          <input class="form-control" id="start_time" data-translate
+                                 data-translate-attr-placeholder="BEGIN_HOUR" type="text"
+                                 ng-model="formData.event.start_hour" ng-disabled="formData.event.all_day == true"/>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group" ng-show="!formData.event.all_day">
+                          <span class="input-group-addon"><i class="fa fa-clock-o fa-fw"></i></span>
+                          <label class="sr-only" for="end-time" data-translate>END_HOUR</label>
+                          <input class="form-control" id="end-time" data-translate
+                                 data-translate-attr-placeholder="END_HOUR" type="text"
+                                 ng-model="formData.event.end_hour" ng-disabled="formData.event.all_day == true"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <span class="standard-checkbox">
+                                       <input id="all_day"  type="checkbox" ng-model="formData.event.all_day" />
+                                       <label class="fa" for="all_day"><span data-translate>EVENT_ALLDAY_FORM</span>
+                    </label>
+                    </span>
+                  </div>
+                  <div class="textarea-with-icon">
+                    <textarea class="form-control" id="description" data-translate
+                              data-translate-attr-placeholder="EVENT_DETAILS"
+                              ng-model="formData.event.description"></textarea>
+                    <label for="activities"><i class="fa fa-pencil"></i>
+                    </label>
+                  </div>
+                  <div class="create-event-color-selector">
+                    {{ 'CHOICE_COLOUR' | translate }}:
+                    <a class="create-event-color-selector-blue" href="" ng-click="setColor('#c1e4f7')" ng-class="{'create-event-color-selector-selected': formData.event.color == '#c1e4f7' }"></a>&nbsp;
+                    <a class="create-event-color-selector-green" href="" ng-click="setColor('#DBEBAD')" ng-class="{'create-event-color-selector-selected': formData.event.color == '#DBEBAD' }"></a>&nbsp;
+                    <a class="create-event-color-selector-purple" href="" ng-click="setColor('#C8ADD0')" ng-class="{'create-event-color-selector-selected': formData.event.color == '#C8ADD0' }"></a>
+                  </div>
+                  <br />
+                  <div class="form-group">
+                    <span class="standard-checkbox">
+                      <input id="reminder_email"  type="checkbox" ng-model="formData.event.reminder_email" />
+                      <label class="fa" for="reminder_email"><span data-translate>EVENT_REMINDER_EMAIL</span></label>
+                    </span>
+                  </div>
+                  <br />
+                  <div class="form-group" ng-show="formData.event.reminder_email == true">
+                    <label class="sr-only" for="m">jj*</label>
+                    <input class="form-control time-before-event placeholder-center" id="m" type="text" ng-model="formData.event.reminder_number" />
+                    <div class="custom-select-w">
+                      <div class="btn-group form-group btn-group-for-select custom-select-holder" dropdown is-open="status.isopen" dropdown-toggle>
+                        <button class="btn-options-choice btn-options-choice-profile btn btn-default dropdown-control dropdown-countries-list custom-select-button" type="button">{{ 'EVENT_REMINDER_TYPE_' + formData.event.reminder_unit | translate }}</button>
+                        <button class="btn-angle-down btn btn-default dropdown-control dropdown-countries-caret custom-select-caret" type="button">
+                          <span class="caret"></span>
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a ng-click="formData.event.reminder_unit = 'Mi'; toggleDropdown();" href=""
+                                 data-translate>EVENT_REMINDER_TYPE_Mi</a>
+                          </li>
+                          <li><a ng-click="formData.event.reminder_unit = 'H'; toggleDropdown();" href=""
+                                 data-translate>EVENT_REMINDER_TYPE_H</a>
+                          </li>
+                          <li><a ng-click="formData.event.reminder_unit = 'D'; toggleDropdown();" href=""
+                                 data-translate>EVENT_REMINDER_TYPE_D</a>
+                          </li>
+                          <li><a ng-click="formData.event.reminder_unit = 'W'; toggleDropdown();" href=""
+                                 data-translate>EVENT_REMINDER_TYPE_W</a>
+                          </li>
+                          <li><a ng-click="formData.event.reminder_unit = 'M'; toggleDropdown();" href=""
+                                 data-translate>EVENT_REMINDER_TYPE_M</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <fc-old-permission-list ng-show="tabActive == 'permission'" template="event_template"></fc-old-permission-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

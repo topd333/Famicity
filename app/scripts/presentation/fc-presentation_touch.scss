@@ -1,0 +1,8 @@
+.presentation {
+  .slider {
+    display: none;
+  }
+  .page {
+    height: auto; // On touch devices we prefer document flow/scrolling than page-by-page scrolling
+  }
+}

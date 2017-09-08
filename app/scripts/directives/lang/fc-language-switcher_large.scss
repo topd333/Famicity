@@ -1,0 +1,14 @@
+@include aboveSmallScreen() {
+  .public {
+    .content-view {
+      .language-switcher {
+        .language-min {
+          display: none;
+        }
+        .language-full {
+          display: inline;
+        }
+      }
+    }
+  }
+}

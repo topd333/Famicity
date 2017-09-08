@@ -1,0 +1,86 @@
+$tileSize: 5.1em;
+$tilePadding: 0.7em;
+$tileMargin: 1em;
+
+.tile-hovered {
+  color: white;
+  background: $green;
+  transition: all 0.2s ease;
+  .fc-unknown_m, .fc-unknown_f{
+    color: $white;
+  }
+}
+
+.add-tile {
+  display: inline-block;
+  margin: $tileMargin;
+  width: $tileSize + $tileMargin;
+  height: $tileSize + $tileMargin;
+  line-height: $tileSize;
+  padding: $tilePadding;
+  border: 1px solid #96bd3d;
+  border-radius: 0.4em;
+  color: #96bd3d;
+  a {
+    display: inline-block;
+    border-radius: 4px;
+    color: inherit;
+    font-size: 0.9em;
+    height: 100%;
+    line-height: 1.1;
+    /*padding: 5px;*/
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+  }
+  .first-name {
+    margin-top: 5px;
+  }
+  cursor: pointer;
+  &:hover {
+    @extend .tile-hovered;
+  }
+  &.add-tile-filled-image {
+    line-height: 1.5;
+  }
+}
+
+.tile-holder {
+  display: inline-block;
+
+  figure {
+    .add-tile {
+      margin-bottom: 0.5em;
+    }
+    .first-name {
+      color: $green;
+    }
+    &.add-relative-empty-question .add-tile {
+      line-height: ($tileSize + $tileMargin)*0.955;
+      padding: 0;
+    }
+    &.add-relative-empty-plus .add-tile {
+      line-height: ($tileSize + $tileMargin)*0.95;
+      padding: 0;
+    }
+    float: left;
+    .huge {
+      font-size: 4em;
+    }
+    figcaption {
+      font-size: 0.9em;
+      line-height: 1.3em;
+      text-align: center;
+    }
+    width: 9em;
+    margin: 0.5em;
+    &:hover {
+      figcaption {
+        color: $green;
+      }
+      .add-tile {
+        @extend .tile-hovered;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@include aboveMediumScreen() {
+  .settings.locale {
+    .action-submit {
+      display: none;
+    }
+    .content-view {
+      .left-column {
+        margin-top: -$fcMenuHeight;
+      }
+    }
+  }
+}
+
+@import "language/SettingsLanguage";
+@import "calendar/SettingsCalendar";

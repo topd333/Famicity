@@ -1,0 +1,89 @@
+fc-import-services-buttons {
+
+  a,
+  a:hover {
+    &.button-import-gmail,
+    &.button-import-outlook,
+    &.button-import-yahoo {
+      > span {
+        margin-bottom: -4px;
+        margin-top: -4px;
+        i {
+          height: 28px;
+        }
+      }
+    }
+  }
+
+  .button-import-gmail-icon,
+  a:hover .button-import-gmail-icon-gray {
+    background-position: -432px -99px;
+    height: 28px;
+    width: 26px;
+  }
+
+  .button-import-yahoo-icon,
+  a:hover .button-import-yahoo-icon-gray {
+    background-position: -466px -106px;
+    height: 20px;
+    width: 32px;
+  }
+
+  .button-import-outlook-icon,
+  a:hover .button-import-outlook-icon-gray {
+    background-position: -505px -100px;
+    height: 26px;
+    width: 27px;
+  }
+
+  .button-import-applemail-icon,
+  a:hover .button-import-applemail-icon-gray {
+    background-position: -538px -98px;
+    height: 26px;
+    width: 26px;
+  }
+
+  .button-import-gmail-icon-gray {
+    background-position: -573px -99px;
+    height: 28px;
+    width: 26px;
+  }
+
+  .button-import-yahoo-icon-gray {
+    background-position: -607px -106px;
+    height: 20px;
+    width: 32px;
+  }
+
+  .button-import-outlook-icon-gray {
+    background-position: -646px -100px;
+    height: 26px;
+    width: 27px;
+  }
+
+  .button-import-applemail-icon-gray {
+    background-position: -679px -98px;
+    height: 26px;
+    width: 26px;
+  }
+
+  h2 {
+    margin: 3em 0 2em;
+  }
+  $fontSize: 1.4em;
+  .status {
+    font-size: $fontSize;
+    .loader {
+      margin: 0.7em;
+      font-size: 2em;
+      color: $green;
+    }
+    em {
+      font-style: normal;
+      color: $green;
+    }
+  }
+  h3 {
+    font-size: $fontSize;
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../scripts/common/inline/variables.scss";
+
+.author {
+  float: left;
+
+  margin-right: $pictureMargin;
+  height: 100%;
+}
+
+fc-feed-list {
+  .feed-elements {
+    .feed-element {
+      @extend .item-delimiter;
+      margin: 0;
+      //    padding : 1em 0 0 0;
+    }
+  }
+  fc-comments-count {
+    .icon, .counter {
+      color: $green;
+    }
+  }
+  fc-like {
+    .icon, .counter {
+      color: $colorLike;
+    }
+  }
+}
+
+@import "fc-post-add";
+@import "../../scripts/blog/directives/fc-feed-post";

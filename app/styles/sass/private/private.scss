@@ -1,0 +1,36 @@
+@import 'base';
+@import 'bootstrap_overrides';
+@import 'pages/gui_blocks';
+
+@import 'pages/home';
+@import '../../../scripts/directives/header/fc-header';
+@import '../../../scripts/wizard/wizard';
+@import 'pages/navigation';
+@import 'pages/icons';
+@import 'pages/form';
+@import 'pages/popin';
+@import '../../../scripts/directory/directory';
+@import 'pages/profile';
+@import 'pages/albums';
+@import '../../../scripts/albums/albums';
+@import '../../../scripts/profile/profile';
+@import '../../../scripts/blog/Blog';
+@import 'pages/blog';
+@import 'pages/messages';
+@import 'pages/rights';
+@import "../../../scripts/tree/Tree";
+@import "../../../scripts/home/home";
+@import '../../../scripts/users/settings/settings';
+//@import 'pages/chat';
+@import '../../../scripts/calendar/calendar';
+@import 'pages/404_500';
+@import 'pages/notifications';
+@import 'pages/gedcom';
+
+@import '../../../scripts/blog/directives/fc-story-detail';
+@import 'pages/story';
+@import 'pages/search';
+
+body {
+  background: $white;
+}

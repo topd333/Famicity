@@ -1,0 +1,28 @@
+<div class="main-content">
+
+  <!--<div class="clearfix hidden-xs">-->
+    <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+  <!--</div>-->
+
+  <div class="clearfix">
+    <div class="directory-listing-invitation-button">
+      <a class="btn btn-danger hidden-xs" ng-click="sendMultipleDelete()" data-translate>DELETE</a>
+    </div>
+    <p class="directory-listing-invitation-text" data-translate>DELETE_MODE_INTRODUCTION</p>
+  </div>
+
+  <fc-user-list
+     ng-if="!emptyUsers"
+     data-disable-search-field="false"
+     ng-model="users"
+     load-more="loadMore"
+     filter="filter"
+     selection-mode="true"
+     mode="default"
+     show-alert="false"
+     selected-users="selectedUsers"
+     data-disable-search-field="false">
+
+  </fc-user-list>
+
+</div>

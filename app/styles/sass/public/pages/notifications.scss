@@ -1,0 +1,50 @@
+.public {
+  &.notifications {
+    background-color: rgb(242, 230, 216);
+    .notifications-block {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 4px;
+      margin: 0 auto 40px auto;
+      max-width: 350px;
+      padding: 20px;
+      width: 90%;
+      form {
+        text-align: left;
+        width: 100%;
+      }
+      h2 {
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+/* 480px */
+@media only screen and (min-width: 480px) {
+  .public {
+    &.notifications {
+      .notifications-block form {
+        font-size: 14px;
+      }
+      .notifications-block h2 {
+        font-size: 18px;
+
+      }
+    }
+  }
+}
+
+/* below 480px */
+@media only screen {
+  .public {
+    &.notifications {
+      .notifications-block form {
+        font-size: 12px;
+      }
+      .notifications-block h2 {
+        font-size: 14px;
+      }
+    }
+  }
+}

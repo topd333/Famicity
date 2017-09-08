@@ -1,0 +1,68 @@
+<div class="wrapper">
+  <div class="public-header">
+    <div class="sign-in-pos hidden-xs">
+      <a class="btn btn-primary home-signin" ui-sref="public.base.sign-in({locale: locale})" data-translate>WELCOME.SIGN_IN</a>
+    </div>
+  </div>
+  <div class="contents">
+    <div class="centered">
+      <div class="form-container">
+        <div class="home-above-form">
+          <div class="ui_elem famicity-logo">
+            <a ui-sref="public.base({locale: locale})"></a>
+          </div>
+          <h2 class="welcome-message" data-translate="CONTACT_PAGE_TITLE"></h2>
+        </div>
+        <form class="login-form" id="login-form" novalidate data-fc-form-submit data-submit-method="send()"
+              data-form-in-progress="formInProgress" name="loginForm">
+          <div class="form-group">
+            <div class="input-group"
+                 ng-class="{'has-error': (loginForm.loginEmail.$dirty || submitted) && loginForm.loginEmail.$invalid}">
+              <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+              <label class="sr-only" for="login-email" data-translate>YOUR_EMAIL</label>
+              <input fc-auto-focus type="email" class="form-control" id="login-email" name="loginEmail" data-translate
+                     data-translate-attr-placeholder="YOUR_EMAIL" ng-model="contact.userEmail" required/>
+            </div>
+          </div>
+          <fc-bootstrap-dropdown-select ng-model="contact.reason" select-val="selected_status = selectedVal"
+                                        preselected-item="selected_status"
+                                        data-dropdown-data="statuses"></fc-bootstrap-dropdown-select>
+          <div class="form-group"
+               ng-class="{'has-error': (loginForm.message.$dirty || submitted) && loginForm.message.$invalid}">
+            <textarea class="form-control" name="message" data-translate data-translate-attr-placeholder="YOUR_MESSAGE"
+                      rows="3" ng-model="contact.contactContent" required></textarea>
+          </div>
+          <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-primary green-button "
+                  id="form-button" type="submit" ng-bind="'SEND_MESSAGE' | translate"></button>
+        </form>
+      </div>
+      <a class="link-below-form visible-xs" ui-sref="public.base.sign-in({locale: locale})"
+         data-translate>CONNECT_LINK</a><span class="visible-xs">&nbsp; / &nbsp;</span><a class="link-below-form"
+                                                                                          ui-sref="public.base({locale: locale})"
+                                                                                          data-translate>SUBSCRIBE_LINK</a>
+      </br></br>
+      <div class="help-footnote text-content center-text" ng-bind-html="'HELP_PAGE_SOCIAL_SC' | translate"></div>
+      <div class="face-twit-function-icons">
+        <div class="face-twit-function-icons-row1 clearfix">
+          <a class="ui_elem face-twit-function-icon-twitter" href="https://twitter.com/famicity" target="_blank"
+             title="Twitter"></a>
+          <a class="ui_elem face-twit-function-icon-facebook" href="https://facebook.com/famicity" target="_blank"
+             title="Facebook"></a>
+          <a class="ui_elem face-twit-function-icon-pinterest" href="https://pinterest.com/famicity" target="_blank"
+             title="Pinterest"></a>
+        </div>
+        <div class="face-twit-function-icons-row2 clearfix">
+          <a class="ui_elem face-twit-function-icon-mail" ng-if="pageType == 'public'" href=""
+             ui-sref="public.contact({locale: locale})" title="Famicity"></a>
+          <a class="ui_elem face-twit-function-icon-mail" ng-if="pageType == 'private'" href=""
+             ui-sref="u.settings-contact" title="Famicity"></a>
+          <a class="ui_elem face-twit-function-icon-famicity" href="http://blog.famicity.com" target="_blank"
+             title="Blog famicity"></a>
+        </div>
+      </div>
+      <br/>
+    </div>
+  </div>
+  <div fc-public-footer data-locale="{{locale}}"></div>
+</div>
+<fc-language-switcher class="lang lang-pos"></fc-language-switcher>

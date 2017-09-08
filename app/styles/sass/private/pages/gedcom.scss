@@ -1,0 +1,312 @@
+/* 768px */
+@media only screen and (min-width: 768px) {
+  .gedcom-box {
+    height: 200px;
+
+  }
+  .gedcom-text-box {
+    height: 80%;
+    padding: 20%;
+
+  }
+  .gedcom-text-box .table-cell {
+    padding: 20px;
+
+  }
+  .gedcom-button-box {
+    height: 20%;
+
+  }
+  .table-espace-ged-details {
+    margin: 0 auto;
+    width: 90%;
+
+  }
+  .table-espace-ged-details .table-cell {
+    line-height: 1;
+    vertical-align: top;
+
+  }
+  .table-espace-ged-details-name {
+    color: $green;
+  }
+  .table-espace-ged-details-date {
+    color: #96bd3d;
+    padding-right: 30px;
+    padding-top: 3px;
+    width: 100px;
+
+  }
+  .table-espace-ged-details-stalk {
+    border-left: 3px solid #96bd3d;
+    width: 33px;
+
+  }
+  .table-espace-ged-details .table-row:first-child > .table-cell:nth-child(2) > div {
+    margin-left: -50%;
+    //height: 50px;
+    position: relative;
+  }
+  .table-espace-ged-details .table-row:first-child > .table-cell:nth-child(2) > div > img {
+    height: 100%;
+    position: absolute;
+    right: 0;
+
+  }
+  .table-espace-ged-details .table-row:first-child > .table-cell:nth-child(3) > span {
+    margin-left: 20px;
+
+  }
+  .table-espace-ged-details .table-row:nth-child(2) .table-espace-ged-details-date {
+    padding-top: 28px;
+
+  }
+  .table-espace-ged-details .table-row:nth-child(2) .table-espace-ged-details-stalk-1 {
+    margin-top: 25px;
+
+  }
+  .table-espace-ged-details .table-row:nth-child(2) .table-espace-ged-details-info {
+    padding-top: 25px;
+
+  }
+  .table-espace-ged-details .table-row:last-child .table-espace-ged-details-stalk {
+    border-left-color: transparent;
+
+  }
+  .table-espace-ged-details-stalk-1 {
+    position: relative;
+
+  }
+  .table-espace-ged-details-stalk-1 > div {
+    background-color: #fff;
+    left: -9px;
+    padding: 2px 0;
+    position: absolute;
+    top: 0;
+
+  }
+  .table-espace-ged-details-stalk-1 > div > span {
+    background-color: #96bd3d;
+    border-radius: 50%;
+    display: block;
+    height: 15px;
+    width: 15px;
+
+  }
+  .table-espace-ged-details-info {
+    padding: 0 10px 35px 0;
+  }
+  .table-espace-ged-details-info > div {
+    border: 1px solid #96bd3d;
+    line-height: 1.2;
+    margin-top: -5px;
+    padding: 10px;
+
+  }
+  .table-espace-ged-details-info .button-centring-div {
+    margin-top: 20px;
+
+  }
+  .gedcom-progress-bar {
+    border: 1px solid #e7e7e7;
+    height: 13px;
+    @include centeredHorizontally;
+    width: 70%;
+  }
+  .gedcom-progress-bar > div {
+    background-color: $green;
+    height: 100%;
+
+  }
+  .gedcom-espace-import-table .table-cell {
+    padding: 20px 0;
+
+  }
+  .gedcom-espace-import-table .table-row + .table-row .table-cell {
+    border-top: 1px solid #f5f5f5;
+
+  }
+  .gedcom-espace-import-table .table + .table .table-cell {
+    border-top: 1px solid #f5f5f5;
+
+  }
+  .gedcom-espace-import-table-avatar {
+    width: 65px;
+
+  }
+  .gedcom-espace-import-table-button {
+    width: 120px;
+
+  }
+  .gedcom-espace-tables-delimiter {
+    border-bottom: 1px solid #737a80;
+
+  }
+  .gedcom-espace-import-table1 .table-row:last-child .table-cell {
+    border-bottom: 1px solid #f5f5f5;
+
+  }
+  .gedcom-annuaire-fusion-table-avatar {
+    width: 160px;
+
+  }
+  .gedcom-annuaire-fusion-table-avatar img,
+  .gedcom-annuaire-fusion-table-avatar > div {
+    float: left;
+    line-height: 0.5;
+
+  }
+  .gedcom-annuaire-fusion-table-avatar > div {
+    margin: 0 10px;
+    padding-top: 15px;
+
+  }
+  .gedcom-annuaire-fusion-table-avatar .fa {
+    line-height: 0;
+
+  }
+  .gedcom-annuaire-fusion-table .table-cell {
+    padding: 20px 0;
+
+  }
+  .gedcom-annuaire-fusion-table .table-row + .table-row .table-cell {
+    border-top: 1px solid #f5f5f5;
+
+  }
+  .gedcom-annuaire-fusion-table-button {
+    width: 250px;
+
+  }
+  .gedcom-annuaire-fusion-table-button br + a {
+    margin-top: 10px;
+
+  }
+  .gedcom-annuaire-fusion-table .table-row:last-child .table-cell {
+    border-bottom: 1px solid #f5f5f5;
+
+  }
+  .gedcom-annuaire-invitations-table-avatar {
+    width: 160px;
+
+  }
+  .gedcom-annuaire-invitations-table-avatar img,
+  .gedcom-annuaire-invitations-table-avatar > div {
+    float: left;
+    line-height: 0.5;
+
+  }
+  .gedcom-annuaire-invitations-table-avatar > div {
+    margin: 0 10px;
+    padding-top: 15px;
+
+  }
+  .gedcom-annuaire-invitations-table-avatar .fa {
+    line-height: 0;
+
+  }
+  .gedcom-annuaire-invitations-table .table-cell {
+    padding: 20px 0;
+
+  }
+  .gedcom-annuaire-fusion-table .table-row + .table-row .table-cell {
+    border-top: 1px solid #f5f5f5;
+
+  }
+  .gedcom-annuaire-invitations-table-button {
+    width: 250px;
+
+  }
+  .gedcom-annuaire-invitations-table-button br + a {
+    margin-top: 10px;
+
+  }
+  .gedcom-annuaire-fusion-table .table-row:last-child .table-cell {
+    border-bottom: 1px solid #f5f5f5;
+
+  }
+  .gedcom-annuaire-invitations2arrows1,
+  .gedcom-annuaire-invitations2arrows2 {
+    position: relative;
+    line-height: 20px;
+
+  }
+  .gedcom-annuaire-invitations2arrows1 > div,
+  .gedcom-annuaire-invitations2arrows2 > div {
+    position: absolute;
+
+  }
+  .gedcom-annuaire-invitations2arrows1 > div:first-child {
+    top: 15px;
+    width: 100%;
+
+  }
+  .gedcom-annuaire-invitations2arrows1 > div:nth-child(2) {
+    top: 25px;
+    width: 100%;
+
+  }
+  .gedcom-annuaire-invitations2arrows1 > div,
+  .gedcom-annuaire-invitations2arrows1 > div i.fa,
+  .gedcom-annuaire-invitations2arrows2 > div,
+  .gedcom-annuaire-invitations2arrows2 > div i.fa {
+    line-height: 0.1;
+
+  }
+  .gedcom-annuaire-invitations2arrows2 {
+    position: relative;
+    width: 30px;
+
+  }
+  .gedcom-annuaire-invitations2arrows2 > div:first-child {
+    text-align: center;
+    top: 15px;
+    width: 100%;
+
+  }
+  .gedcom-annuaire-invitations2arrows2 > div:nth-child(2) {
+    text-align: center;
+    top: 23px;
+    width: 100%;
+
+  }
+  .gedcom-annuaire-invitations-top-icon {
+    width: 40px;
+
+  }
+  .gedcom-annuaire-invitations-table-checkbox.table-cell {
+    padding-right: 10px;
+  }
+  .match-row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .gedcom-upload-form {
+    @include centeredHorizontally;
+    width: 80%;
+  }
+  .gedcom-cancel-alert-text {
+    @include centeredHorizontally;
+    width: 80%;
+    color: $lighter_main_font_25;
+  }
+  .gedcom-imports-side-list {
+    width: auto;
+  }
+  label.gedcom-deceased-label {
+    font-weight: normal;
+  }
+  .gedcom-upload-wait {
+    color: $lighter_main_font_25;
+  }
+  .gedcom-local-heading,
+  .fusion-local-heading {
+    color: $green;
+  }
+  .gedcom-ged-icon-text {
+    display: inline-block;
+    font-size: 0.6em;
+    margin-bottom: 0.5em;
+    vertical-align: middle;
+  }
+}
+@import "../../../../scripts/tree/gedcom/import/GedcomImport";

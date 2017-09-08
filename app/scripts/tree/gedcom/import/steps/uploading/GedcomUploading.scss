@@ -1,0 +1,52 @@
+.gedcom.wizard.import {
+  .steps {
+    min-width: 80%;
+    .uploading {
+      h3 {
+        text-align: center;
+        margin-top: 2em;
+        font-size: 1em;
+        font-weight: bold;
+        color: $green;
+      }
+      .info {
+        text-align: center;
+      }
+      progress {
+        width: 80%;
+        background: white;
+        max-width: 38em;
+        display: inherit;
+        border: 1px lightgray solid;
+        margin: auto;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        &::-webkit-progress-bar {
+          background-color: $white;
+        }
+        &::-webkit-progress-value {
+          background: $green;
+        }
+        &::-moz-progress-bar {
+          background-color: $green;
+        }
+      }
+      label {
+        font-weight: normal;
+        width: 100%;
+        text-align: center;
+      }
+      .cancel {
+        background: $red;
+        color: $white;
+      }
+      .back {
+        @extend .btn;
+        @extend .btn-secondary;
+        @extend .btn-lg;
+        margin: auto;
+      }
+    }
+  }
+}

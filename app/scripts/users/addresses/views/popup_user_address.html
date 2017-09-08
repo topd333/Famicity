@@ -1,0 +1,69 @@
+<div id="profile-addresses-modal" ng-init="init()">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3 ng-if="mailFormMode == 'add'" data-translate>ADD_ADDRESS</h3>
+
+      <h3 ng-if="mailFormMode == 'edit'" data-translate>EDIT_ADDRESS</h3>
+
+      <form data-fc-form-submit data-submit-method="submit()" data-form-in-progress="formInProgress" novalidate class="standard-form login-form" id="address-form" name="formHolder.addressForm">
+        <fc-bootstrap-dropdown-select ng-model="address.address_type" select-val="selected_type = selectedVal; selectAddressType(selectedVal)" preselected-item="selected_type" data-dropdown-data="addressTypeList"></fc-bootstrap-dropdown-select>
+
+        <div class="form-group" ng-show="address['address_type'] == 'custom'">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
+            <label class="sr-only" for="custom-address-type" data-translate>ADDRESS_TYPE</label>
+            <input class="form-control" id="custom-address-type" ng-attr-placeholder="{{ 'ADDRESS_TYPE' | translate }}" type="text" name="customMailTypeInput" ng-model="address['custom_address_type']" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group" ng-class="{'has-error': (formHolder.addressForm.address.$dirty || submitted) && formHolder.addressForm.address.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+            <label class="sr-only" for="address" data-translate>YOUR_ADDRESS</label>
+            <input fc-auto-focus class="form-control" id="address" data-translate
+                   data-translate-attr-placeholder="YOUR_ADDRESS" type="text" name="addressInput"
+                   ng-model="address['address']" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group" ng-class="{'has-error': (formHolder.addressForm.addressComplementInput.$dirty || submitted) && formHolder.addressForm.addressComplementInput.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+            <label class="sr-only" for="address2" data-translate>ADDRESS_COMPLEMENT</label>
+            <input class="form-control" id="address2" data-translate
+                   data-translate-attr-placeholder="ADDRESS_COMPLEMENT" type="text" name="addressComplementInput"
+                   ng-model="address['address_complement']"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group" ng-class="{'has-error': (formHolder.addressForm.zipCodeInput.$dirty || submitted) && formHolder.addressForm.zipCodeInput.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+            <label class="sr-only" for="post_code" data-translate>ZIP_CODE</label>
+            <input class="form-control" id="post_code" data-translate data-translate-attr-placeholder="ZIP_CODE"
+                   type="text" name="zipCodeInput" ng-model="address['zip_code']" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group" ng-class="{'has-error': (formHolder.addressForm.cityInput.$dirty || submitted) && formHolder.addressForm.cityInput.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+            <label class="sr-only" for="city" data-translate>CITY</label>
+            <input class="form-control" id="city" data-translate data-translate-attr-placeholder="CITY" type="text"
+                   name="cityInput" ng-model="address['city']" required/>
+          </div>
+        </div>
+        <fc-bootstrap-dropdown-select ng-model="address.country" select-val="selected_country = selectedVal; selectCountry(selectedVal)" preselected-item="selected_country" data-dropdown-data="countryList"></fc-bootstrap-dropdown-select>
+
+        <div class="form-group">
+          <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-primary green-button" type="submit" ng-bind="'SUBMIT' | translate"></button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-secondary" type="button" ng-click="$close()" data-translate>CANCEL</button>
+        </div>
+        <div class="form-group" ng-show="addressFormMode == 'edit'">
+          <button data-fc-form-submit data-submit-method="deleteAddress()" data-form-in-progress="formInProgress" class="btn btn-danger" type="button" ng-bind="'DELETE' | translate"></button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

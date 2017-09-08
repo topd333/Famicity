@@ -1,0 +1,22 @@
+<div class="popin-holder popin-holder-on" ng-init="init()">
+  <div class="popin-dialog">
+    <div class="popin-dialog-decoration"></div>
+    <h3 translate>VALIDATE_MY_EMAIL_ADDRESS</h3>
+
+    <form novalidate class="standard-form login-form" id="intro_form">
+      <h6 class="center-text" translate>VALIDATE_MY_EMAIL_INSTRUCTIONS</h6>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+          <label class="sr-only" for="email" translate>EMAIL_ADDRESS</label>
+          <input class="form-control" id="email" ng-model="mail.email" type="email" ng-disabled="true" />
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary green-button" ng-click="submit()" type="submit" translate>SUBMIT</button>
+      </div>
+      <button class="btn btn-secondary" ng-click="$close()" type="submit" translate>CANCEL</button>
+    </form>
+
+  </div>
+</div>

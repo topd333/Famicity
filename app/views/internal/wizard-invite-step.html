@@ -1,0 +1,46 @@
+<div class="wrapper" ng-init="init()">
+
+    <div class="content">
+        <div data-fc-progress-bullet-bar ng-attr-data-nb-steps="showInvitationStep ? 4 : 3" data-current-step="3"></div>
+
+        <div class="form-block">
+
+            <form action="javascript:;" class="standard-form standard-form-nomargin login-form" id="directory-search-form" method="POST">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                  <label class="sr-only" for="search-term" data-translate>fc-user-list.SEARCH.PLACEHOLDER</label>
+                  <input ng-model="search.criteria" class="form-control" id="search-term" data-translate data-translate-attr-placeholder="fc-user-list.SEARCH.PLACEHOLDER" type="text" />
+                </div>
+              </div>
+            </form>
+
+            <fc-user-list class="selected-match"
+              ng-model="match"
+              load-more="null"
+              filter="filter"
+              selection-mode="true"
+              mode="default"
+              show-alert="false"
+              ng-hide="false"
+              filter-by-name="true"
+              disable-search-field="true"
+              selected-users="selectedMatch"
+              data-me="me"></fc-user-list>
+
+            <fc-user-list class="selected-no-match"
+              ng-model="noMatch"
+              load-more="null"
+              filter="filter"
+              selection-mode="true"
+              mode="default"
+              show-alert="false"
+              ng-hide="false"
+              selected-users="selectedNoMatch"
+              disable-search-field="true"
+              custom-search-criteria="search.criteria"
+              data-me="me"></fc-user-list>
+
+        </div>
+    </div>
+</div>

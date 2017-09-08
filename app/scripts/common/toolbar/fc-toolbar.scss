@@ -1,0 +1,101 @@
+fc-toolbar {
+  z-index: $toolbarLayer;
+  .notification-count {
+    font-size: 0.65em;
+    line-height: 2.2em;
+    top: -0.5em;
+    right: -0.5em;
+    position: absolute;
+  }
+  .more-choices.fc-toolbar-choice .notification-count {
+    top: -1.5em;
+  }
+  .label {
+    display: none;
+  }
+
+  //.visible-choice:hover + .more-choices .remaining-choices {
+  //  display: none;
+  //}
+  .more-choices {
+    //height: $iconSquareSize;
+    .remaining-choices {
+      .label {
+        display: inline;
+      }
+      position: absolute;
+      right: 0.1em;
+      top: 3em;
+      z-index: $toolbarLayer;
+      box-shadow: 0.1em 0.1em 0.2em rgb(192, 190, 190);
+      white-space:nowrap;
+      .remaining-choice {
+        display: block;
+        text-align: left;
+        z-index: $toolbarLayer;
+        background: $gray_color;
+        > a {
+          display: block;
+          padding-right: 1em;
+          width: 100%;
+          > span {
+            display: inline-block;
+            vertical-align: middle;
+          }
+        }
+        > a:hover .fc-toolbar-icon.wcs-g-icon-red-rollover,
+        > a:hover .fc-toolbar-icon.wcs-g-icon-red-rollover i {
+          @extend .wcs-g-icon-red;
+        }
+        .fc-toolbar-icon {
+          //width: $iconSquareSize;
+          i {
+            color: $grey;
+            font-size: 1em;
+            &.fa {
+              margin-left: -1.5em;
+              margin-right: -1.5em;
+            }
+          }
+
+        }
+        .notification-count {
+          font-size: 0.65em;
+          line-height: 2.2em;
+          top: 0.7em;
+          right: -3.3em;
+        }
+        &:hover {
+          .label {
+            color: $white;
+          }
+          .fc-toolbar-icon {
+            color: $white;
+            background: $amande_hover;
+          }
+          color: $white;
+          background: $amande_hover;
+        }
+      }
+    }
+  }
+  .arrow_box {
+    position: relative;
+    background: $gray_color;
+    &:after {
+      bottom: 100%;
+      right: 0.75em;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: $gray_color;
+      border-width: 0.5em;
+      margin-left: -0.5em;
+    }
+  }
+}
+
+@import "choice/fc-toolbar-choice";

@@ -1,0 +1,42 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>CREATE_ALBUM</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<ncy-breadcrumb class="hidden-xs"></ncy-breadcrumb> -->
+            <!--</div>-->
+
+            <fc-inline
+              data-object="album"
+              data-edit-copy="editCopy"
+              data-user="me"
+
+              data-focus="title"
+              data-show-options="true"
+              data-required="requiredFields"
+              data-labels="{title:'ALBUM_NAME', text:'ALBUM_DESCRIPTION', date:'ALBUM_DATE', location:'PLACE_WHERE_PHOTOS_WHERE_TAKEN'}"
+              data-options="{title:true, date:true, location:true}"
+              data-form-status="formStatus"
+              data-on-create="createAlbum(object,required)"
+              >
+            </fc-inline>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

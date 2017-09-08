@@ -1,0 +1,11 @@
+<span class="{{choice.style}}" data-tooltip-placement="{{choice.tooltipPlacement||tooltipPlacement}}" tooltip="{{::(allowTooltip?choice.tooltip:'')|translate}}" href="" ng-click="choice.onActive()">
+  <span class="fc-toolbar-icon {{choice.style}}" ng-class="{selected:choice.state}">
+    <fc-comments-count data-object="object" data-list-page="listPageUrl"></fc-comments-count>
+    <i class="{{choice.icon}}"></i>{{choice.label|translate}}
+  </span>
+  <span class="label">{{choice.tooltip|translate}}</span>
+  <span ng-if="choice.notificationsCount" class="fa-stack fa-stack-3x notification-count">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <span class="fa-stack-1x">{{choice.notificationsCount}}</span>
+  </span>
+</span>

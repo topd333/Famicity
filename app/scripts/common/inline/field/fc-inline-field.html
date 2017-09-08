@@ -1,0 +1,14 @@
+<div class="field ng-cloak" ng-class="{'has-error':(inlineForm[key].$dirty||submitted) && inlineForm[key].$invalid}">
+  <div class="field-label"></div>
+  <div class="field-input">
+    <span class="input-group">
+      <span class="input-group-addon"><i class="fa {{::labelIcon}}"></i></span>
+      <label ng-show="formStatus.isEditing && !object[key]" for="{{::id}}">
+        <span data-translate data-translate-interpolation="messageformat"
+            data-translate-values="{{::labelValues}}">{{::label}}</span>{{::required?'*':''}}
+      </label>
+      <input ng-required="{{::required}}" id="{{::id}}" type="text" class="single-line inline-title editor"
+             ng-model="object[key]">
+    </span>
+  </div>
+</div>

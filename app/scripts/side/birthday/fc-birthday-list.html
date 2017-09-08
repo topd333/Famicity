@@ -1,0 +1,34 @@
+<div class="s-block">
+  <fc-left-column-block-header class="s-block-header">
+    <h3 data-translate>UPCOMING_BIRTHDAYS</h3>
+  </fc-left-column-block-header>
+
+  <div class="s-block-content s-block-content-type2" ng-show="::nextBirthdays.length">
+    <div ng-repeat="nextBirthday in ::nextBirthdays">
+      <div>
+        <fc-avatar class="avatar-size40" data-user="nextBirthday"></fc-avatar>
+      </div>
+      <div class="info">
+        <span>
+          <i class="fa fa-gift"></i> <a class="green-link-color" ui-sref="u.profile({user_id: nextBirthday.id})">{{nextBirthday.user_name}}</a>
+        </span>
+        <span ng-if="::isToday(nextBirthday.group_date)" data-translate data-translate-values="{age: nextBirthday.age}">TODAY_X_YEARS_OLD</span>
+        <span ng-if="::!isToday(nextBirthday.group_date)" data-translate data-translate-values="{NUM: nextBirthday.age, GENDER: nextBirthday.sex.toLowerCase(), date: $moment.fromServer(nextBirthday.group_date).format('L') }" data-translate-interpolation="messageformat">CELEBRATE_HIS_HER_X_YEARS_THE_DATE</span>
+      </div>
+      <div>
+        <a class="green-link-color pointer" ui-sref="u.messages.add({users: [nextBirthday.id]})">
+          <i class="fa fa-envelope-o"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="s-block-empty clearfix" ng-show="::!nextBirthdays.length">
+    <img alt="" src="/images/homepage-left-content-image-2.jpg">
+    <p data-translate>EMPTY_BIRTHDAYS_LIST_PLACEHOLDER</p>
+    <br/>
+  </div>
+  <div class="s-block-more"><!-- TODO: Should be inside above block -->
+    <a ui-sref="user-birthdays({user_id: userId})"><span translate>LOOK_ALL_BIRTHDAYS</span><i class="fa fa-eye"></i></a>
+  </div>
+
+</div>

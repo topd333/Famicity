@@ -1,0 +1,103 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" data-translate>PHOTOS_UPLOAD</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <fc-albums-side-menu></fc-albums-side-menu>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+
+            <h2 ng-show="totalProgressPercent != 100" class="center-text" data-translate>PHOTOS_UPLOAD_ONGOING</h2>
+            <h2 ng-show="totalProgressPercent == 100" class="center-text" data-translate>UPLOAD_FINISHED</h2>
+            <br />
+            <div class="clearfix">
+              <div class="upload-progress-percent upload-progress-percent-big">{{ totalProgressPercent }}%</div>
+              <div class="upload-progress-bar-outside upload-progress-bar-outside-big">
+                <div class="upload-progress-bar-inside" ng-style="{width: totalProgressPercent + '%'}">
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="visible-xs">
+              <p ng-show="totalProgressPercent != 100 && !canceled" class="center-text" data-translate>PHOTOS_UPLOAD_ONGOING_CANCEL_INSTRUCTIONS</p>
+              <p ng-show="totalProgressPercent == 100 || canceled" class="center-text" data-translate>PHOTOS_UPLOAD_COMPLETED_INSTRUCTIONS</p>
+              <div ng-show="totalProgressPercent != 100 && !canceled" class="button-centring-div">
+                <a class="red-button button-min-width pointer" ng-click="cancelAll()" data-translate>CANCEL_UPLOAD</a>
+              </div>
+              <div ng-show="totalProgressPercent == 100 || canceled" class="button-centring-div">
+                <a class="btn btn-primary btn-lg button-min-width" ui-sref="u.albums-show({user_id: viewedUserId, album_id: albumId})" data-translate>SEE_ALBUM</a>
+              </div>
+            </div>
+
+            <div class="clearfix hidden-xs" ng-show="totalProgressPercent != 100 && !canceled">
+              <div class="directory-listing-invitation-button hidden-xs"><a class="btn btn-danger btn-lg green-button-standard pointer" ng-click="cancelAll()" data-translate>CANCEL</a>
+              </div>
+              <p class="directory-listing-invitation-text" data-translate>PHOTOS_UPLOAD_ONGOING_CANCEL_INSTRUCTIONS</p>
+            </div>
+            <div class="clearfix hidden-xs" ng-show="totalProgressPercent == 100 || canceled">
+              <p><a class="btn btn-primary btn-lg green-button-standard button-inserted-right" ui-sref="u.albums-show({user_id: viewedUserId, album_id: albumId})" data-translate>SEE_ALBUM</a>
+                <span data-translate>PHOTOS_UPLOAD_COMPLETED_INSTRUCTIONS</span>
+              </p>
+            </div>
+            <br />
+
+            <div class="hidden-xs">
+
+              <div ng-repeat="image in uploadingImagesList" class="upload-file-block clearfix">
+                <div ng-show="!image.thumbnailElement" class="upload-file-thumbnail upload-file-progress-thumb">
+                  <i class="fa fa-camera"></i>
+                </div>
+                <img ng-show="image.thumbnailElement" ng-src="{{ image.thumbnailElement }}" class="upload-file-thumbnail upload-file-progress-thumb" />
+                <div class="upload-file-real">
+                  <div ng-show="image.status == 'upload successful'" class="upload-file-status" data-translate>FINISHED</div>
+                  <div ng-show="image.status == 'upload failed'" class="upload-file-status" data-translate>ERROR</div>
+                  <div ng-show="image.status == 'uploading'" class="upload-file-status" data-translate>LOADING</div>
+                  <div ng-show="image.status == 'queued'" class="upload-file-status" data-translate>QUEUED</div>
+                  <div ng-hide="image.status == 'queued'" class="upload-file-status-dash">-</div>
+                  <div ng-hide="image.status == 'queued'" class="upload-progress-percent upload-progress-percent-small">{{ image.percent || 0 }}%</div>
+                  <div ng-hide="image.status == 'queued'" class="upload-progress-bar-outside upload-progress-bar-outside-small">
+                    <div class="upload-progress-bar-inside" ng-style="{width: image.percent + '%' || 0 + '%'}"></div>
+                  </div>
+                  <div class="album-photo-description" ng-show="!image.editing && image.finalId" ng-click="editDescription($event)">
+                    <h4 class="pointer" data-translate>PHOTO_DESCRIPTION_SC</h4>
+                    <p>{{ image.description }}</p>
+                    <p ng-if="!image.description" data-translate>NO_DESCRIPTION</p>
+                    <div>
+                      <div class="upload-desc-modify clearfix">
+                        <a class="btn btn-secondary btn-lg" ng-click="editDescription($event)"> &nbsp; &nbsp; {{ "EDIT_DESCRIPTION" | translate }} &nbsp; &nbsp; </a>
+                      </div>
+                    </div>
+                  </div>
+                  <form ng-show="image.editing && image.finalId" class="standard-form" id="desc_form" method="POST">
+                    <br />
+                    <div class="form-group">
+                      <div class="textarea-with-icon textarea-with-icon-nobmargin">
+                        <textarea class="form-control" ng-model="image.description" data-translate
+                                  data-translate-attr-placeholder="ADD_A_DESCRIPTION"></textarea>
+                        <label for="mail-addresses-textarea"><i class="fa fa-pencil"></i></label>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="upload-desc-modify clearfix">
+                        <button class="btn btn-primary btn-lg" ng-click="updatePhoto(image)"> &nbsp; &nbsp; {{ "SUBMIT" | translate }} &nbsp; &nbsp; </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

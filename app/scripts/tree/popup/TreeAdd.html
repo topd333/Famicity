@@ -1,0 +1,93 @@
+<div ng-show="!isTreeLocked() && isMyTree">
+  <!--<div ng-show="currentForm==FORMS.ADD">-->
+  <p class="add-relative-instructions" ng-bind-html="'fc-add-relative.ADD.INSTRUCTION'|translate: ({firstName: treeUserProfile.user_name})"></p>
+  <div>
+    <div class="add-row-top tile-holder">
+      <figure>
+        <div class="add-tile" ng-if="!treeUserProfile.parents[0] || treeUserProfile.parents[0].global_state === 'unknown'" >
+          <a ui-sref="u.tree.detail.createFirstParent">
+            <i class="fa fa-user"></i>{{'fc-add-relative.ADD.FIRST_PARENT'|translate}}
+          </a>
+        </div>
+        <div class="add-tile add-tile-filled-image" ng-if="treeUserProfile.parents[0] && treeUserProfile.parents[0].global_state !== 'unknown'" >
+          <a ui-sref="u.profile({user_id:treeUserProfile.parents[0].id})">
+            <fc-avatar-img user="treeUserProfile.parents[0]"></fc-avatar-img>
+          </a>
+        </div>
+        <figcaption class="first-name" ng-if="treeUserProfile.parents[0].global_state !== 'unknown'">{{treeUserProfile.parents[0].user_name}}</figcaption>
+      </figure>
+
+      <figure>
+        <div class="add-tile" ng-if="!treeUserProfile.parents[1] || treeUserProfile.parents[1].global_state === 'unknown'" >
+          <a ui-sref="u.tree.detail.createSecondParent">
+            <i class="fa fa-user"></i>{{'fc-add-relative.ADD.SECOND_PARENT'|translate}}
+          </a>
+        </div>
+        <div class="add-tile add-tile-filled-image" ng-if="treeUserProfile.parents[1] && treeUserProfile.parents[1] .global_state !== 'unknown'" >
+          <a ui-sref="u.profile({user_id:treeUserProfile.parents[1].id})">
+            <fc-avatar-img user="treeUserProfile.parents[1]"></fc-avatar-img>
+          </a>
+        </div>
+        <figcaption class="first-name" ng-if="treeUserProfile.parents[1].global_state !== 'unknown'">{{treeUserProfile.parents[1].user_name}}</figcaption>
+      </figure>
+    </div>
+    <div class="add-row-middle">
+      <div class="add-row-middle-left add-row-vertical">
+        <div class="add-tile">
+          <a ui-sref="u.tree.detail.addBrother"><i class="fa fa-user"></i><span data-translate>fc-add-relative.ADD.BROTHER</span></a>
+        </div>
+        <div class="add-tile">
+          <a ui-sref="u.tree.detail.addSister"><i class="fa fa-user"></i><span
+            data-translate>fc-add-relative.ADD.SISTER</span></a>
+        </div>
+      </div>
+      <div class="add-row-middle-center">
+        <a ng-click="$close()" ui-sref="u.profile({user_id: treeUserProfile.id})">
+          <img ng-src="{{treeUserProfile.avatar_url}}"/><br>
+          {{treeUserProfile.user_name}}
+        </a>
+      </div>
+      <div class="add-row-middle-right">
+        <div class="add-tile">
+          <a ui-sref="u.tree.detail.addHusband"><i class="fa fa-user"></i><span data-translate>fc-add-relative.ADD.HUSBAND</span></a>
+        </div>
+        <div class="add-tile">
+          <a ui-sref="u.tree.detail.addWife"><i class="fa fa-user"></i><span
+            data-translate>fc-add-relative.ADD.WIFE</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="add-row-bottom">
+      <div class="add-tile">
+        <a ui-sref="u.tree.detail.addSon"><i class="fa fa-user"></i><span data-translate>fc-add-relative.ADD.SON</span></a>
+      </div>
+      <div class="add-tile">
+        <a ui-sref="u.tree.detail.addDaughter"><i class="fa fa-user"></i><span data-translate>fc-add-relative.ADD.DAUGHTER</span></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!--</div>-->
+
+  <!--<div ng-show="currentForm==FORMS.INVITE || currentForm==FORMS.REVIVE">-->
+  <!--<fc-revive-invite class="tree-invite"></fc-revive-invite>-->
+  <!--</div>-->
+
+</div>
+
+<div ng-show="isTreeLocked() && isMyTree">
+  <p data-translate>BLOCKED_POPUP_TREE_USER_INSTRUCTIONS</p>
+
+  <div class="c-width-1">
+    <div class="form-group">
+      <a class="btn btn-secondary btn-lg button-inherit-width pointer" ng-click="$close()" data-translate>COME_BACK_TO_TREE</a>
+    </div>
+  </div>
+</div>
+
+<div ng-show="!isMyTree">
+  <p ng-bind-html="'YOU_ARE_IN_THE_TREE_OF' | translate: {user_name: treeUserProfile.user_name, href: '/users/' + treeUserProfile.id + '/profile'}"></p>
+
+  <p data-translate="RELATIVE_ADD_RESTRICTION"></p>
+</div>

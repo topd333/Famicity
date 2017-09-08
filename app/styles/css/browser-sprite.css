@@ -1,0 +1,168 @@
+﻿
+/********** Browser Page Sprites */
+
+.ui_elem_browser_page{
+    background-image: url(../../images/browser-sprite@mdpi.png);
+    background-repeat: no-repeat;
+    background-size: 495px 116px;
+    display:inline-block;
+}
+
+body.browser .browser-firefox-icon {
+    background-position:  -288px -64px;
+    height: 49px;
+    width: 50px;
+}
+
+body.browser .browser-chrome-icon {
+    background-position: -347px -64px;
+    height: 50px;
+    width: 51px;
+}
+
+body.browser .browser-safari-icon {
+    background-position: -405px -60px;
+    height: 54px;
+    width: 53px;
+}
+
+body.browser .browser-internetexplorer-icon {
+    background-position: -465px -59px;
+    height: 54px;
+    width: 58px;
+}
+
+body.browser .browser-window-head {
+    background-position:  -2px -62px;
+    height: 28px;
+    width: 276px;
+}
+
+/* Base mdpi */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1),
+only screen and (min-resolution: 96dpi) {
+	.ui_elem_browser_page{ 
+		background-image: url(../../images/browser-sprite@mdpi.png);
+		background-repeat: no-repeat;
+		background-size: 495px 116px;
+		display:inline-block;
+	}
+	
+	body.browser .browser-firefox-icon {
+		background-position:  -288px -64px;
+		height: 49px;
+		width: 50px;
+	}
+	
+	body.browser .browser-chrome-icon {
+		background-position: -347px -64px;
+		height: 50px;
+		width: 51px;
+	}
+	
+	body.browser .browser-safari-icon {
+		background-position: -405px -60px;
+		height: 54px;
+		width: 53px;
+	}
+	
+	body.browser .browser-internetexplorer-icon {
+		background-position: -465px -59px;
+		height: 54px;
+		width: 58px;
+	}
+	
+	body.browser .browser-window-head {
+		background-position:  -2px -62px;
+		height: 28px;
+		width: 276px;
+	}
+	
+}
+
+/* /// Base mdpi */
+
+/* Base retina */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1),
+only screen and (min-resolution: 192dpi) {
+	.ui_elem_browser_page{ 
+		background-image: url(../../images/browser-sprite@2x.png);
+		background-repeat: no-repeat;
+		background-size: 495px 115px;
+		display:inline-block;
+	}
+	
+	body.browser .browser-firefox-icon {
+		background-position: -284px -63px;
+		height: 49px;
+		width: 50px;
+	}
+	
+	body.browser .browser-chrome-icon {
+		background-position: -341px -63px;
+		height: 50px;
+		width: 50px;
+	}
+	
+	body.browser .browser-safari-icon {
+		background-position: -398px -58px;
+		height: 54px;
+		width: 53px;
+	}
+	
+	body.browser .browser-internetexplorer-icon {
+		background-position: -458px -58px;
+		height: 55px;
+		width: 58px;
+	}
+	
+	body.browser .browser-window-head {
+		background-position:  -2px -62px;
+		height: 27px;
+		width: 276px;
+	}
+	
+}
+
+/* /// Base retina */
+
+
+/* 768px mdpi */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 768px),
+only screen and (min-resolution: 96dpi) and (min-width: 768px)
+{
+	
+	body.browser .browser-window-head {
+		background-position:  -2px -2px;
+		height: 50px;
+		width: 490px;
+	}
+}
+
+/* /// 768px mdpi */
+
+/* 768px retina */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1) and (min-width: 768px),
+only screen and (min-resolution: 192dpi) and (min-width: 768px)
+{
+
+	body.browser .browser-window-head {
+		background-position:  -2px -2px;
+		height: 49px;
+		width: 490px;
+	}
+	
+}
+
+/* /// 768px retina */
+
+/********** /// Browser Page Sprites */
+

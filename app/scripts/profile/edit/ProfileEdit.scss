@@ -1,0 +1,13 @@
+.profile.edit {
+  .birth, .occupation, .death {
+    display: block;
+    clear: both;
+  }
+}
+@include aboveMediumScreen() {
+  .profile.edit {
+    .action-submit {
+      display: none;  // Only on smaller screens header bar
+    }
+  }
+}

@@ -1,0 +1,148 @@
+@mixin halfCircleRight($size) {
+  height:$size;
+  width:$size/2;
+  border-radius: 0 $size $size 0;
+}
+@mixin halfCircleLeft($size) {
+  height:$size;
+  width:$size/2;
+  border-radius: $size 0 0 $size;
+}
+@mixin circle($size) {
+  height:$size;
+  width:$size;
+  border-radius: 50%;
+}
+$doneColor: $green;
+$color: $grey1;
+$width: 80%;
+fc-wizard-step {
+.bullets {
+  display: table;
+  table-layout: fixed;
+  width: $width;
+  max-width: 40em;
+  margin: auto;
+  $bulletSize: 1.25em;
+  $linkSize: 0.25em;
+  counter-reset: total 1 done 1;
+  > * {
+    counter-increment: total;
+    $middleSize: ($bulletSize - $linkSize) / 2;
+    position: relative;
+    height: $linkSize;
+    top: $middleSize;
+    display: table-cell;
+    background: $color;
+    &::before {
+      content: '';
+      background: $color;
+      left: 0;
+      position: absolute;
+      top: -$middleSize;
+      @include halfCircleRight($bulletSize);
+    }
+    &::after {
+      content: '';
+      background: $color;
+      position: absolute;
+      top: -$middleSize;
+      right: 0;
+      @include halfCircleLeft($bulletSize);
+    }
+    &:first-child {
+      &::before {
+        content: '';
+        background: $doneColor;
+        position: absolute;
+        top: -$middleSize;
+        left: -$bulletSize / 2;
+        @include circle($bulletSize);
+      }
+    }
+    &:last-child {
+      &::after {
+        content: '';
+        position: absolute;
+        top: -$middleSize;
+        right: -$bulletSize / 2;
+        @include circle($bulletSize);
+      }
+    }
+    &.done {
+      counter-increment: total done;
+      background: $doneColor;
+      &::before {
+        background: $doneColor;
+      }
+      &::after {
+        background: $doneColor;
+      }
+      + * {
+        &::before {
+          background: $doneColor;
+        }
+      }
+    }
+  }
+  margin-bottom: 3em;
+}
+.intervals {
+  display: table;
+  table-layout: fixed;
+  width: $width;
+  margin: auto;
+  > * {
+    display: table-cell;
+    text-align: center;
+    &.done {
+      color: $doneColor;
+    }
+  }
+}
+.labels {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin: auto;
+  > * {
+    display: table-cell;
+    text-align: center;
+    &.done {
+      color: $doneColor;
+    }
+  }
+  > .label {
+    padding-bottom: 0.5em;
+  }
+}
+.count {
+  display: none;
+  text-align: center;
+  line-height: 1;
+  font-size: 3em;
+  .done-count::after {
+    color: $doneColor;
+    content: counter(done);
+  }
+  .total-count::after {
+    content: counter(total);
+  }
+}
+}
+@media (max-width: 25em) {
+  fc-wizard-step {
+    .bullets {
+      width: 0;
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    .count {
+      display: block;
+    }
+    .intervals, .labels {
+      display: none;
+    }
+  }
+}

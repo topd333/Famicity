@@ -1,0 +1,15 @@
+<div class="directory-listing">
+    <div ng-repeat-start="group in groups | orderBy: ['group_name'] | directoryGroupsList" ng-hide="{{ !group.group_by_CHANGED }}" class="directory-listing-letter">{{ group.initial }}</div>
+    <div ng-repeat-end ng-hide="{{ !group.group_name }}" class="table directory-item-table">
+        <div ng-if="selectionMode" class="table-cell checkbox-cell">
+            <span class="directory-listing-item-checkbox  directory-listing-item-checkbox-no-tm standard-checkbox standard-checkbox-no-bm">
+                <input id="c{{ group.id }}" ng-model="group.selected" value="{{ group.id }}" type="checkbox" />
+                <label for="c{{ group.id }}" class="fa"></label>
+            </span>
+        </div>
+        <div class="table-cell directory-item-table-cell-info">
+            <h2 ng-if="selectionMode">{{ group.group_name }}</h2>
+            <h2 ng-if="!selectionMode"><a ui-sref="u.directory.user-group({group_id: group.id})">{{ group.group_name }}</a></h2>
+        </div>
+    </div>
+</div>

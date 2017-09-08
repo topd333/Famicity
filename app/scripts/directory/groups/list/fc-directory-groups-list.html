@@ -1,0 +1,15 @@
+<div class="left-column-block-content left-navigation-icons">
+  <!-- Group paging -->
+  <div  ng-show="::pages.length > 1" class="left-column-block-paging clearfix">
+    <span class="left-column-block-paging-previous"><a class="btn btn-icon btn-icon-primary next-icon-button-big" ng-click="goPrevPage()" ng-class="{'disabled': currentPage == 1}"><i class="fa fa-angle-left"></i></a></span>
+    <span class="left-column-block-paging-next"><a class="btn btn-icon btn-icon-primary previous-icon-button-big" ng-click="goNextPage()" ng-class="{'disabled': groups.length < currentPage * ngGroupsPerPage}"><i class="fa fa-angle-right"></i></a></span>
+    <div>
+      <a ng-repeat="page in ::pages track by $index" class="pagination-bullet" ng-class="{active: currentPage == page}" ng-click="goPage(page)"></a>
+    </div>
+  </div>
+  <!-- /// Group paging -->
+
+  <a ng-repeat="group in groups | orderBy: ['-is_default', 'group_name'] | startFrom: ((currentPage - 1) * ngGroupsPerPage) | limitTo: ngGroupsPerPage" ui-sref="u.directory.user-group({group_id: group.id})" ui-sref-opts="{reload: true}">
+    <i class="btn btn-icon btn-icon-primary"><i class="fa fa-users"></i></i><span>{{::group.group_name}}</span><b>{{:: group.users_count }}</b>
+  </a>
+</div>

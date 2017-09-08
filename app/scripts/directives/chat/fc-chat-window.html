@@ -1,0 +1,81 @@
+<div ng-show="!conversation.closed && !conversation.stacked">
+
+  <div class="chat-conversation-open-holder pull-right" ng-show="!conversation.hidden">
+    <div class="chat-conversation-open">
+      <div class="chat-conversation-inside">
+        <div class="chat-conversation-open-header" ng-class="conversation.unread > 0 ? 'hasUnread' : ''">
+          <div class="table">
+            <div class="table-cell left-text v-align-middle chat-user-circle" ng-click="conversation.user.status && setFocus()" ng-class="conversation.user.status ? 'pointer' : ''">
+              <i class="fa fa-circle" ng-class="conversation.user.status ? 'online' : 'offline'"></i>
+                <span ng-show="conversation.unread > 0" class="unread">{{ conversation.unread }}</span>
+                <span>{{ conversation.user.userName }}</span>
+              </div>
+            <div class="table-cell right-text v-align-top chat-user-close">
+              <a href="" ng-click="toggleHideWindow()">
+                <i class="fa fa-minus white-close-icon"></i>
+              </a>&nbsp;
+              <a href="" ng-click="closeConversation(conversation.id)">
+                <i class="fa fa-times white-close-icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="chat-main chat-conversation" ng-click="conversation.user.status" ng-class="conversation.user.status ? 'pointer' : ''">
+          <div class="chat-messages">
+            <div ng-show="!conversation.messages.length && conversation.user.status" translate translate-values="{username: conversation.user.userName}">CHAT.WRITE_INSTRUCTIONS</div>
+            <div ng-repeat="message in conversation.messages" ng-attr-title="{{$moment(message.timestamp).format('LT')}}">
+              <!-- Outgoing messages -->
+              <div ng-if="message.userId == userId" class="chat-conversation-message chat-conversation-message-out clearfix">
+                <div class="chat-conversation-message chat-conversation-message-out clearfix">
+                  <div class="chat-dialog-arrow pull-right"></div>
+                  <div class="chat-dialog-balloon-holder">
+                    <div class="chat-dialog-balloon">{{ message.text }}</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Incoming messages -->
+              <div ng-if="message.userId != userId" class="chat-conversation-message chat-conversation-message-in clearfix">
+                <div class="chat-conversation-message-avatar pull-left">
+                  <img ng-src="{{conversation.user.avatarUrl}}">
+                </div>
+                <div class="chat-dialog-arrow pull-left"></div>
+                <div class="chat-dialog-balloon-holder">
+                  <div class="chat-dialog-balloon">{{ message.text }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-conversation-timestamp-out right-text">
+              <div ng-show="conversation.messages.length">
+                {{ 'CHAT.SENT_AGO' | translate}} {{ conversation.sentAgo }}
+              </div>
+              <div ng-show="!conversation.user.status">
+                {{ 'CHAT.OFFLINE_USER' | translate }}
+                <a class="offline" ui-sref="u.messages.add({users: [conversation.user.userId]})">{{ 'CHAT.OFFLINE_USER_SEND_MESSAGE' | translate}}.</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="chat-panel-conversation-icons"  ng-class="{disabled: !conversation.user.status}">
+        <div class="table">
+          <div class="table-cell pull-left">
+            <a href="" ng-click="" ng-disabled="!conversation.user.status"><i class="fa fa-pencil"></i></a>
+          </div>
+          <form ng-submit="speak()">
+            <textarea fc-autosize rows="1" ng-model="text" ng-focus="focused()" ng-blur="blurred()" ng-disabled="!conversation.user.status" ng-keydown="keydown($event)" placeholder="{{'CHAT.WRITE' | translate}}"></textarea>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-window-closed-holder pull-right" ng-show="conversation.hidden">
+    <div class="chat-window-closed chat-window-closed2" ng-class="conversation.unread > 0 ? 'unread' : ''">
+      <div class="chat-window-closed-x pull-right"><a href="" ng-click="closeConversation(conversation.id)"><i class="fa fa-times"></i></a></div>
+      <div class="chat-window-closed-name pull-left" ng-click="toggleHideWindow()"><a href="">&nbsp;<span ng-show="conversation.unread">{{ conversation.unread }}</span>&nbsp;{{ conversation.user.userName }}</a>
+      </div>
+    </div>
+  </div>
+
+</div>

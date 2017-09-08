@@ -1,0 +1,66 @@
+@mixin headerButton() {
+  background: white;
+}
+
+@mixin signUpButton() {
+  @include headerButton();
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+  transition-property: color, background-color;
+  &:active, &:focus {
+    outline: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  text-decoration: none;
+}
+
+@mixin publicHeader() {
+  z-index: $layerAlways;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  .sign-in-pos {
+    a {
+      font-size: 0.8em;
+      //padding: 0.5em 0.8em;
+    }
+    //right: $marginRight;
+    padding-right: 1em;
+  }
+
+  .logo {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    img {
+      height: 2.7em;
+    }
+  }
+
+  .header-button {
+    @include headerButton();
+  }
+
+  button {
+    @include headerButton();
+  }
+
+  .sign-up {
+    position: absolute;
+
+    .sign-up-button {
+      @include signUpButton();
+    }
+
+    button {
+      @include signUpButton();
+    }
+  }
+}
+.public-header {
+  @include publicHeader();
+}

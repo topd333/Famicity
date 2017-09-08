@@ -1,0 +1,29 @@
+@import "../../../styles/sass/variables";
+
+.wizard {
+  .invite-emails {
+    h2, h3, h4 {
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.2em;
+    }
+    h3 {
+      font-size: 1em;
+      font-weight: bold;
+      color: $green;
+    }
+    h4 {
+      font-size: 1em;
+      color: $main_font_color;
+    }
+    $buttonHeight: 3.5em;
+    button, input {
+      max-height: $buttonHeight;
+      height: $buttonHeight;
+    }
+    button, .field {
+      margin: 0.5em 0;
+    }
+  }
+}

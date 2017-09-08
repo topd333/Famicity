@@ -1,0 +1,35 @@
+.gedcom.import.wizard {
+  width: 80%;
+  max-width: 60em;
+  margin: auto;
+
+  h2 {
+    text-align: center;
+    &.error {
+      color: $red;
+    }
+  }
+
+  .large-button {
+    width: 80%;
+    max-width: 23em;
+  }
+  .form-group {
+    text-align: center;
+    > * {
+      margin-bottom: 0.85em;
+      display: block;
+      @include centeredHorizontally();
+    }
+  }
+}
+
+@import "file/GedcomFile";
+@import "options/GedcomOptions";
+@import "steps/GedcomSteps";
+
+@include onSmallScreen() {
+  .wizard {
+    width: 95%;
+  }
+}

@@ -1,0 +1,166 @@
+<div class="wrapper">
+  <div class="content">
+
+    <!--<fc-header-bar user-id="viewedUserId">-->
+      <!--<h2 class="pull-left" translate>THEY_LIKE_EVENT</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+          <div class="left-column-block">
+            <div class="left-column-block-content">
+              <a ng-if="event.likes_count" class="red-rollover" ui-sref="u.event-likes({event_id: event.id})">
+                <i><i class="fa fa-heart"></i></i><span translate>THEY_LIKE_EVENT </span><b>{{ event.likes_count }}</b>
+              </a>
+            </div>
+          </div>
+          <!-- Event info -->
+          <div class="left-column-block">
+            <div class="table ">
+              <fc-left-column-block-header>
+                <h3 data-translate>EVENT_INFO</h3>
+                <span ng-if="event.permissions.is_updatable == true"><a>+</a></span>
+              </fc-left-column-block-header>
+            </div>
+            <div class="left-column-block-content event-details-left-column">
+              <div ng-if="event.author_id != userId">
+                <p>
+                  {{ event.author_name}}
+                </p>
+              </div>
+              <div>
+                <p>
+                  {{ 'EVENT_NAME_SC' | translate }}<br/>
+                  <span>{{ event.name }}</span>
+                </p>
+              </div>
+              <div ng-if="event.location != null">
+                <p>
+                  {{ 'EVENT_PLACE_SC' | translate }}<br/>
+                  <span>{{ event.location }}</span>
+                </p>
+              </div>
+              <div ng-if="event.start_date != 0">
+                <p>
+                  {{ 'EVENT_START_DATETIME_SC' | translate }}<br>
+                  <span ng-if="event.all_day == false">
+                      {{ $moment(event.start_date, 'X').format('LLLL') }}
+                    <br>
+                  </span>
+                  <span ng-if="event.all_day == true">
+                      {{ $moment(event.start_date, 'X').format('LL') }}
+                    <br>
+                  </span>
+                </p>
+              </div>
+              <div ng-if="event.end_date != 0">
+                <p>
+                  {{ 'EVENT_END_DATETIME_SC' | translate }}<br>
+                  <span ng-if="event.all_day == false">
+                      {{ $moment(event.end_date, 'X').format('LLLL') }}
+                    <br>
+                  </span>
+                  <span ng-if="event.all_day == true">
+                      {{ $moment(event.end_date, 'X').format('LL') }}
+                  </span>
+                </p>
+              </div>
+              <div ng-if="event.description">
+                <p>
+                  {{ 'EVENT_DETAILS_SC' | translate }}<br/>
+                  <span ng-bind-html="event.description | trustedHtml"></span>
+                </p>
+              </div>
+              <div class="item-sub-delimiter" ng-show="event.permissions.is_updatable"></div>
+              <div ng-show="event.permissions.is_updatable">
+                <a href="" ng-click="gotoEditEvent()" class="left-column-bottom-link">
+                  <span translate>EDIT</span><i class="fa fa-pencil-square-o"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /// Event info -->
+          <!-- Invites -->
+          <div class="left-column-block">
+            <div class="table ">
+              <fc-left-column-block-header> <!-- event.permissions.is_updatable == true -->
+                <h3 data-translate>EVENT_GUESTS</h3>
+                <span ng-if="event.permissions.is_updatable == true"><a>+</a></span>
+              </fc-left-column-block-header>
+            </div>
+            <div class="left-column-block-content">
+              <a class="clearfix pointer green-rollover-link" ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'yes'})" ng-if="event.attend_count">
+                <div class="pull-left" data-translate>EVENT_GUESTS_YES</div>
+                <div class="pull-right">{{ event.attend_count }}</div>
+              </a>
+              <a class="clearfix pointer green-rollover-link" ng-if="event.attend_count == 0">
+                <div class="pull-left" data-translate>EVENT_GUESTS_YES</div>
+                <div class="pull-right">{{ event.attend_count }}</div>
+              </a>
+              <br />
+              <a class="clearfix pointer color-orange-hover" ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'maybe'})" ng-if="event.maybe_count">
+                <div class="pull-left" data-translate>EVENT_GUESTS_MAYBE</div>
+                <div class="pull-right">{{ event.maybe_count }}</div>
+              </a>
+              <a class="clearfix pointer color-orange-hover" ng-if="event.maybe_count == 0">
+                <div class="pull-left" data-translate>EVENT_GUESTS_MAYBE</div>
+                <div class="pull-right">{{ event.maybe_count }}</div>
+              </a>
+              <br />
+              <a class="clearfix pointer color-red-hover" ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'no'})" ng-if="event.decline_count">
+                <div class="pull-left" data-translate>EVENT_GUESTS_NO</div>
+                <div class="pull-right">{{ event.decline_count }}</div>
+              </a>
+              <a class="clearfix pointer color-red-hover" ng-if="event.decline_count == 0">
+                <div class="pull-left" data-translate>EVENT_GUESTS_NO</div>
+                <div class="pull-right">{{ event.decline_count }}</div>
+              </a>
+              <br/>
+              <a class="clearfix pointer" ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'no_answer'})" ng-if="event.no_answer_count">
+                <div class="pull-left" data-translate>EVENT_GUESTS_NO_ANSWER</div>
+                <div class="pull-right">{{ event.no_answer_count }}</div>
+              </a>
+              <a class="clearfix pointer" ng-if="event.no_answer_count == 0">
+                <div class="pull-left" data-translate>EVENT_GUESTS_NO_ANSWER</div>
+                <div class="pull-right">{{ event.no_answer_count }}</div>
+              </a>
+              <br/>
+              <div class="item-sub-delimiter" ng-show="event.permissions.is_updatable"></div>
+              <div ng-show="event.permissions.is_updatable">
+                <a href="" ng-click="gotoEditEvent('permission')" class="left-column-bottom-link">
+                  <span translate>EDIT</span><i class="fa fa-pencil-square-o"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /// Invites -->
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <div class="notification-list likes table">
+              <div class="table-row" ng-repeat="like in likesList | orderBy: '-create_date'">
+                <fc-notification-item
+                  avatar-url="like.user.avatar_url"
+                  text-key="likeText"
+                  type="'like'"
+                  number-of-users="1"
+                  user-id="like.user.id"
+                  user-name="like.user.user_name"
+                  date="like.create_date">
+                </fc-notification-item>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

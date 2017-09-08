@@ -1,0 +1,93 @@
+<div>
+  <h4 class="permissions-subheading" data-translate>EVENT_INVITATION_PERSON</h4>
+  <div class="clearfix">
+    <div class="pull-left">
+      <span class="rights-icon-an rights-icon-an-authorized" href=""><i class="fa fa-unlock"></i>
+      </span> &nbsp;
+      <span class="rights-icon-an-authorized-text" data-translate>EVENT_PERSON_INVITED</span>
+    </div>
+    <div class="center-right-icons clearfix">
+      <a class="center-right-plus-icon btn btn-icon btn-icon-primary btn-plus" href="" ng-click="addPermission()">+</a>
+    </div>
+  </div>
+  <br>
+
+  <div
+    ng-if="!(formData.permissions.email_permissions.length || formData.permissions.group_permissions.length || formData.permissions.user_permissions.length)"
+    data-translate>ADD_PERSON_GROUP_DESCRIPTION_EVENT
+  </div>
+
+  <div class="directory-listing directory-listing-rights">
+    <div class="directory-listing-item clearfix" ng-repeat="groupPermission in formData.permissions.group_permissions" ng-if="formData.permissions.group_permissions.length">
+      <span class="directory-listing-group-icon hidden-xs"><i class="fa fa-users"></i>
+      </span>
+      <span class="pull-right rights-item-option-icons">
+        <a href="" ng-click="deletePermissionElement($index, 'group')"><i class="fa fa-trash-o"></i></a>
+      </span>
+      <div class="directory-listing-item-info rights-item-info">
+        <h2>
+          <span class="rights-item-group-icon-xs hidden-sm hidden-md hidden-lg"><i class="fa fa-users"></i> &nbsp; &nbsp; </span><div class="name"><span>{{ groupPermission.group_name }}</span></div></h2>
+      </div>
+    </div>
+    <div class="directory-item-user" ng-repeat="userPermission in formData.permissions.user_permissions" ng-if="formData.permissions.user_permissions.length">
+      <div>
+        <!-- <span ng-show="userPermission.avatar_url" class="directory-listing-item-picture hidden-xs"><img ng-src="{{ userPermission.avatar_url }}" /></span> -->
+        <fc-avatar class="directory-item-table-cell-picture hidden-xs" data-user="userPermission"></fc-avatar>
+        <div class="directory-listing-item-info">
+          <h2>{{ userPermission.user_name }}</h2>
+        </div>
+        <div class="actions">
+          <a href="" ng-click="deletePermissionElement($index, 'user')"><i class="fa fa-trash-o"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="directory-listing-item clearfix" ng-repeat="emailPermission in formData.permissions.email_permissions" ng-if="formData.permissions.email_permissions.length">
+      <span class="pull-right rights-item-option-icons"><a href="" ng-click="deletePermissionElement($index, 'email')"><i class="fa fa-trash-o"></i></a>
+      </span>
+      <div class="directory-listing-item-info rights-item-info">
+        <h2>{{ emailPermission.email }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="item-delimiter"></div>
+  <div class="clearfix">
+    <div class="pull-left">
+      <span class="rights-icon-an rights-icon-an-nonauthorized" href=""><i class="fa fa-lock"></i>
+      </span> &nbsp;
+      <span class="rights-icon-an-nonauthorized-text" data-translate>EVENT_PERSON_NO_INVITED</span>
+    </div>
+    <div class="center-right-icons clearfix">
+      <a class="center-right-plus-icon btn btn-icon btn-icon-primary btn-plus" href="" ng-click="addExclusion()">-</a>
+    </div>
+  </div>
+  <br>
+
+  <div ng-if="!(formData.permissions.group_exclusions.length || formData.permissions.user_exclusions.length)"
+       data-translate>REMOVE_PERSON_GROUP_DESCRIPTION_EVENT
+  </div>
+
+  <div class="directory-listing">
+    <div class="directory-listing-item clearfix" ng-repeat="groupExclusion in formData.permissions.group_exclusions" ng-if="formData.permissions.group_exclusions.length">
+      <span class="directory-listing-group-icon hidden-xs"><i class="fa fa-users"></i>
+      </span>
+      <span class="pull-right rights-item-option-icons">
+        <a href="" ng-click="deleteExclusionElement($index, 'group')"><i class="fa fa-trash-o"></i></a>
+      </span>
+      <div class="directory-listing-item-info rights-item-info">
+        <h2>
+          <span class="rights-item-group-icon-xs hidden-sm hidden-md hidden-lg"><i class="fa fa-users"></i> &nbsp; &nbsp; </span><div class="name"><span>{{ groupExclusion.group_name }}</span></div></h2>
+      </div>
+    </div>
+    <div class="directory-listing-item clearfix" ng-repeat="userExclusion in formData.permissions.user_exclusions" ng-if="formData.permissions.user_exclusions.length">
+      <span ng-show="userExclusion.avatar_url" class="directory-listing-item-picture hidden-xs">
+        <img ng-src="{{ userExclusion.avatar_url }}" />
+      </span>
+      <span class="pull-right rights-item-option-icons"><a href="" ng-click="deleteExclusionElement($index, 'user')"><i class="fa fa-trash-o"></i></a>
+      </span>
+      <div class="directory-listing-item-info rights-item-info">
+        <h2>{{ userExclusion.user_name }}</h2>
+      </div>
+    </div>
+  </div>
+</div>

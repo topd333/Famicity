@@ -1,0 +1,17 @@
+/**
+ * z-index ordering
+ */
+$layerInput: 2;  // From bootstrap :(
+
+// Below
+$layerTab: $layerInput - 1;
+$layerNever: $layerTab - 1;
+
+// Above
+$layerPlaceholder: $layerInput + 1;
+$toolbarLayer: $layerPlaceholder + 1;
+$layerBanner: $toolbarLayer + 1;
+$layerPopup: $layerBanner + 1;
+$layerAlert: $layerPopup + 1;
+$layerTooltip: $layerAlert + 1;
+$layerAlways: $layerTooltip + 1;

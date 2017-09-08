@@ -1,0 +1,23 @@
+<div id="group-add-basic-options-modal" ng-init="init()">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3 data-translate>MULTIPLE_CHOICES_POPUP_TITLE</h3>
+
+      <form action="javascript:;" class="standard-form login-form" id="intro_form" method="POST">
+        <div class="form-group">
+          <button class="btn btn-primary green-button pointer" type="submit" ng-click="goGroupAdd()" data-translate>
+            ADD_CONTACTS
+          </button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary green-button pointer" type="submit" ng-click="goDirectoryAdd()" data-translate>
+            CREATE_CONTACT
+          </button>
+        </div>
+        <button class="btn btn-secondary" type="submit" ng-click="$close()" data-translate>CANCEL</button>
+      </form>
+
+    </div>
+  </div>
+</div>

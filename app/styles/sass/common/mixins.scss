@@ -1,0 +1,33 @@
+@mixin ellipsis() {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin centeredVertically() {
+  display: table;
+  height: 100%;
+  .centered {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+@mixin sliderSelect() {
+  color: black;
+  border: $bulletSelectedColor $bulletBorder;
+  background: $sliderSelectedBackground;
+}
+
+.presentation {
+  .slider {
+    a.selected {
+      @include sliderSelect();
+    }
+  }
+}
+
+@mixin centeredHorizontally() {
+  margin-left: auto;
+  margin-right: auto;
+}

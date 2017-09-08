@@ -1,0 +1,87 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+    <!--<a ng-if="album.permissions.is_updatable" ng-click="openAlbumMobileOptionsPopup()" class="btn btn-icon pull-right tree-dots"><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i></a>-->
+    <!--<a ng-show="photos.length > 0 && album.permissions.is_updatable" class="btn btn-icon txt-icon pull-right" ng-click="openAddPhotoOptionsPopup()">+</a>-->
+    <!--<span fc-like data-object-type="album" data-object="album" data-view-mode="mobile" data-list-page="listPageUrl"></span>-->
+    <!--<a class="reduced-icon-size btn btn-icon pull-right" ui-sref="u.albums-comments({'user_id': viewedUserId, 'album_id': album.id})"><i class="fa fa-comment-o"></i> {{ album.comments_count }}</a>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <fc-albums-side-menu main-button="'album'"></fc-albums-side-menu>
+
+        <div ng-show="photos.length > 0" class="col-sm-8 right-column">
+          <!--<div class="main-content">-->
+          <!--<div class="clearfix hidden-xs">-->
+          <!--<div class="center-right-icons right-function-icons clearfix hidden-xs">-->
+          <!--<span class="icon-link-wrapper" fc-like data-object-type="album" data-object="album" data-view-mode="btn-icon"></span>-->
+          <!--<a class="btn btn-icon btn-icon-primary pointer" ng-click="startSlideshow()"><i class="fa fa-play-circle-o"></i></a>-->
+          <!--<a ng-show="album.permissions.is_updatable" class="btn btn-icon btn-icon-primary pointer" ng-click="goToEditPage()"><i class="fa fa-pencil-square-o"></i></a>-->
+          <!--<a ng-show="album.permissions.is_updatable" class="btn btn-icon btn-icon-primary pointer btn-plus" ng-click="openAddPhotoOptionsPopup()">+</a>-->
+          <!--<a ng-show="album.permissions.is_updatable" class="btn btn-icon btn-icon-danger pointer" ng-click="openDeleteAlbumAlertPopup()"><i class="fa fa-trash-o"></i></a>-->
+          <!--</div>-->
+          <!---->
+          <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+          <!--</div>-->
+          <!--<br />-->
+          <div class="album-images-holder clearfix">
+            <a ng-repeat="photo in ::photos"
+               ui-sref="u.albums-photos-show({user_id: viewedUserId, album_id: album.id, photo_id: photo.id})">
+              <div class="image-content" afkl-lazy-image="{{:: photo.url_thumb }}"></div>
+            </a>
+          </div>
+        </div>
+
+        <div ng-show="!photos.length" class="col-sm-8 right-column">
+          <div ng-show="album.permissions.is_updatable" class="main-content">
+            <!--<div class="center-right-icons right-function-icons clearfix hidden-xs">-->
+            <!--<fc-like class="icon-link-wrapper"  data-object-type="album" data-object="album" data-view-mode="btn-icon"></fc-like>-->
+            <!--<a ng-show="album.permissions.is_updatable" class="btn btn-icon btn-icon-primary pointer" ng-click="goToEditPage()"><i class="fa fa-pencil-square-o"></i></a>-->
+            <!--<a ng-show="album.permissions.is_updatable" class="btn btn-icon btn-icon-primary pointer btn-plus" ng-click="openAddPhotoOptionsPopup()">+</a>-->
+            <!--<a ng-show="album.permissions.is_updatable" class="btn btn-icon btn-icon-danger pointer" ng-click="openDeleteAlbumAlertPopup()"><i class="fa fa-trash-o"></i></a>-->
+            <!--</div>-->
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <div class="empty-introduction">
+              <img src="/images/59-3-collage.jpg" class="directory-invite-relatives-img"/>
+              <br/><span translate>EMPTY_ALBUM_INSTRUCTIONS</span>
+            </div>
+
+            <div class="vertical-button-group ">
+              <div class="hidden-md hidden-lg" id="photoUploadBtnMobile">
+                <a class="btn btn-primary btn-lg button-min-width"><i class="fa fa-mobile"></i> &nbsp; <span translate>CHOOSE_PHOTOS</span></a>
+              </div>
+              <div class="visible-md visible-lg" id="photoUploadBtn">
+                <a class="btn btn-primary btn-lg button-min-width"><i class="fa fa-desktop"></i> &nbsp; <span translate>CHOOSE_PHOTOS</span></a>
+              </div>
+              <!--<div class="visible-md visible-lg">-->
+              <!--<a class="gray-button-g button-with-image-icon button-min-width " href="#"><span><i><i class="ui_elem button-webcam-icon-gray"></i></i><span translate>WITH_WEBCAM</span></span></a>-->
+              <!--</div>-->
+            </div>
+          </div>
+          <div ng-show="!album.permissions.is_updatable" class="main-content">
+            <div ncy-breadcrumb class="hidden-xs"></div>
+
+            <div>
+              <br/>
+
+              <p class="clearfix">
+                <img src="/images/59-3-collage.jpg" class="directory-invite-relatives-img"/>
+                <br/><span translate>EMPTY_ALBUM_NO_RIGHTS_INSTRUCTIONS</span>.</p>
+            </div>
+            <br/>
+
+            <div class="vertical-button-group ">
+              <div>
+                <a class="dark-gray-button button-min-width" fc-nav="u.albums-index({user_id: viewedUserId})"
+                   data-translate>GO_BACK_TO_ALBUMS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

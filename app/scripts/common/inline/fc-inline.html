@@ -1,0 +1,168 @@
+<div>
+  <div class="inline"
+       ng-class="{editing:formStatus.isEditing,creating:formStatus.isCreating,story:object.story||story}">
+    <form class="inline-form standard-form" data-fc-form-submit data-form-in-progress="formInProgress"
+          data-activate-on-then="true" data-submit-method="submit()" novalidate name="{{::formId}}">
+      <div class="inline-row">
+
+        <div class="author">
+          <fc-avatar data-user="::author"></fc-avatar>
+        </div>
+
+        <div class="inline-contents">
+
+          <div ng-show="formStatus.show.formTypes && (formStatus.isEditing||formStatus.isCreating)" class="post-types">
+            <button class="post-type" type="button" ng-class="{selected:formStatus.isEditing && !formStatus.isUploadedPhoto}"
+                    ng-click="setPostType('NEWS')">
+              <span><i class="fa fa-pencil"></i>&nbsp;&nbsp;<span data-translate>{{::user.is_deceased?'fc-post.POST_TYPE.BIOGRAPHY':'fc-post.POST_TYPE.NEWS'}}</span></span>
+            </button>
+            <div ng-show="formStatus.show.photo" class="upload-button post-type" ng-class="{selected:formStatus.isEditing && formStatus.isUploadedPhoto}">
+              <!-- must be a container to hold <input type="file"> dynamically inserted by fine uploader -->
+              <a class="" ng-class="{selected:formStatus.isEditing && formStatus.isUploadedPhoto}">
+                <span><i class="fake-input-left-icon fa fa-camera"></i> <span
+                  data-translate>fc-post.POST_TYPE.PHOTO</span></span>
+              </a><!-- Cannot be a button because of IE -->
+            </div>
+          </div>
+
+          <div class="button-edit" tooltip="{{::editLabel}}" data-tooltip-append-to-body="true"
+               data-tooltip-placement="bottom"
+               ng-show="object.permissions.is_updatable && !formStatus.isEditing && !formStatus.isCreating">
+            <a href="" ng-click="edit()"><i class="fa fa-pencil-square-o"></i></a>
+          </div>
+          <div class="item-info" ng-if="!formStatus.isEditing && !formStatus.isCreating">
+            <div class="item-type">
+            <span class="f-block-icon-text" data-translate>
+              {{:: (object.story || story ? 'fc-post.POST_TYPE.STORY':'HEADER.JOURNAL') }}
+            </span>
+
+              <span ng-if="::(!object.story && !story)" class="f-block-icon"><i class="fa fa-pencil"></i></span>
+              <span ng-if="::(object.story || story)" class="f-block-icon"><i class="fc fc-pencil"></i></span>
+            </div>
+            <h4>
+              <a ui-sref="u.profile({user_id: object.author_id})">{{::object.author_name}}</a>&nbsp;<i
+              class="fa fa-caret-right"></i>
+            </h4>&nbsp;<h5>{{::object.created_date*1000|timeOrDateFilter}}</h5>
+
+            <div ng-show="::object.user_concerned_name">
+              <span data-translate>{{::object.user_concerned_is_deceased?'BIOGRAPHY_OF':'DIARY_OF'}}</span>
+              <a ui-sref="u.profile({user_id: object.user_concerned_id || object.author_id})">{{::object.user_concerned_name}}</a></div>
+          </div>
+
+          <div class="form-fields">
+            <div class="banner">
+              <a class="story-title" ng-if="::object.story && !formStatus.isEditing && !story"
+                 ui-sref="u.story.get({id:object.story.id})">{{::object.story.title}}</a>
+            </div>
+
+            <div ng-show="object.title && !formStatus.isEditing" class="center-text title">{{object.title}}</div>
+
+            <div class="photo">
+              <fc-photo-upload ng-if="formStatus.isCreating || formStatus.isEditing"></fc-photo-upload>
+              <div ng-if="!formStatus.isCreating && !formStatus.isEditing">
+                <div class="center-text post-picture" ng-if="object.photo_url_normal">
+                  <div afkl-lazy-image="{{::object.photo_url_normal}}" afkl-lazy-image-options="{nolazy: noLazy}" ng-click="openFullScreenImage()" class="max-sized-full pointer"></div>
+                </div>
+                <div class="slideshow single-picture" ng-show="slideshowMode">
+                  <div class="navbar">
+                    <p class="slideshow-close-btn fa fa-times pointer" ng-click="closeSlideshowMode()"></p>
+                  </div>
+                  <!--<img class="slideshow-img" ng-src="{{photo.url_original }}" />-->
+                  <div class="royalSlider rsDefault">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="labelled text">
+
+              <fc-inline-field ng-show="formStatus.show.title && formStatus.isEditing" data-object="object"
+                               data-required="::required.title" data-key="title" data-label="{{::labels.title}}"
+                               data-label-values="{{ {month: story.month, vowel: story.vowel} }}"
+                               data-label-icon="fa-pencil" data-form-status="formStatus" data-scope-id="{{$id}}">
+              </fc-inline-field>
+
+              <div class="field" ng-click="formStatus.isCreating && edit()">
+                <div class="field-label"></div>
+                <div class="field-input">
+                  <label ng-show="formStatus.isEditing && !object.textValue" for="{{::$id}}-fcEditor">
+                    <i class="fa fa-pencil"></i>&nbsp;&nbsp;<span data-translate
+                                                                  data-translate-interpolation="messageformat"
+                                                                  data-translate-values="{month: story.month,vowel:story.vowel,GENDER: user.sex}">
+                    {{::labels.text}}
+                  </span>{{::required.text?'*':''}}
+                  </label>
+                  <label class="to-click" ng-show="isMe && !formStatus.isEditing && formStatus.isCreating"><i class="fa fa-pencil"></i>&nbsp;&nbsp;{{::editLabel}}</label>
+
+                  <fc-editor class="inline-text" data-id="{{::$id}}-fcEditor" data-rows="3"
+                       data-is-editing="formStatus.isEditing||formStatus.isCreating"
+                       model="object" data-check="checkValidity" data-submit="submit()" data-cancel="cancel()"
+                       required="{{::required.text}}" ng-focus="edit()"></fc-editor>
+                </div>
+              </div>
+
+              <div ng-if="formStatus.show.date && formStatus.isEditing" class="field ng-cloak">
+                <div class="field-label"></div>
+                <div class="field-input">
+                  <label ng-show="formStatus.isEditing && !object.event_date" ng-click="pickADate()"><i
+                    class="fa fa-calendar"></i>&nbsp;&nbsp;{{::labels.date|translate}}{{::required.date?'*':''}} </label>
+                  <fc-date-input name="birthDate"
+                                 data-locale="{{locale}}"
+                                 data-not-found-message="{{::'fc-date-input.DATE_INVALID'|translate}}"
+                                 data-click-to-confirm-message="fc-date-input.CLICK_TO_CONFIRM"
+                                 data-is-valid="formStatus.validity.date"
+                                 ng-model="object.event_date"
+                                 placeholder="{{::labels.date|translate}}">
+                  </fc-date-input>
+                </div>
+              </div>
+
+              <fc-inline-field ng-if="formStatus.show.location && formStatus.isEditing" data-object="object"
+                               data-key="location" data-required="::required.location"
+                               data-label="PLACE_WHERE_PHOTOS_WHERE_TAKEN" data-label-icon="fa-map-marker fa-fw"
+                               data-form-status="formStatus" data-scope-id="{{$id}}"></fc-inline-field>
+
+            </div>
+          </div>
+          <div class="labelled">
+
+            <div ng-if="formStatus.show.permissions && formStatus.isEditing">
+              <fc-permissions disallow="formStatus.showOptions" data-permissions="object.permissions"
+                              data-author="author"></fc-permissions>
+            </div>
+
+          </div>
+
+          <div class="actions">
+            <div class="start">
+              <a ng-if="formStatus.isEditing && onDelete && !formStatus.isCreating" href=""
+                 ng-click="onDelete({id: object.id})" class="deletion">
+                <i class="fa fa-trash-o"></i> <span data-translate>DELETE</span></a>
+              <!--<span ng-if="!formStatus.isCreating && !formStatus.isEditing" fc-like data-object="object" data-view-mode="default" data-list-page="likesUrl(comment)"></span>-->
+              <a ng-show="formStatus.isEditing && formStatus.isCreating" class="show-more-options" href=""
+                 ng-click="setOptions(!formStatus.showOptions)">
+                <span>{{formStatus.toggleOptionsLabel|translate}}</span>
+              </a>
+            </div>
+            <div class="end" title="{{validateInfo}}">
+              <button ng-if="formStatus.isCancellable" class="btn btn-secondary" ng-click="cancel()" type="button" data-translate>CANCEL</button>
+              <button data-fc-form-submit
+                      data-form-in-progress="formInProgress" class="btn btn-primary"
+                      type="submit" ng-disabled="!formStatus.isValid" ng-bind="'SUBMIT'|translate"></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-if="!formStatus.isCreating && (object.comments || object.last_comments)">
+    <div class="comments-like-row unselectable">
+      <fc-comments-count data-object="object" data-list-page="listCommentsPage"></fc-comments-count>
+      <fc-like data-object="object" data-list-page="listLikesPage"></fc-like>
+    </div>
+    <fc-comment-list data-object="object" data-user="user"></fc-comment-list>
+  </div>
+
+</div>

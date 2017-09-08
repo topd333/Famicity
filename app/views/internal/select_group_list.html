@@ -1,0 +1,14 @@
+<div class="directory-listing directory-listing-groups directory-listing-checkboxes">
+   <div ng-repeat="group in groups | filter: filter | orderBy: 'group_name' | directoryGroupsList">
+      <div ng-hide="{{ !group.group_by_CHANGED || !group.initial }}" class="directory-listing-letter">{{ group.initial }}</div>    
+      <div ng-hide="{{ !group.group_name}}" class="directory-listing-item clearfix">
+            <span ng-show="selectionMode" class="directory-listing-item-checkbox standard-checkbox">
+                <input  id="c{{ group.id }}" ng-model="group.selected" value="{{ group.id }}" type="checkbox" />
+                <label for="c{{ group.id }}" class="fa"></label>
+            </span>
+            <div class="directory-listing-item-info">
+                <h2>{{ group.group_name }}</h2>
+            </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,69 @@
+.calendar {
+  #slide1 {
+    background: url("../../images/parallax/background/calendar-visuel1-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide2 {
+    background: url("../../images/parallax/background/calendar-visuel2-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide3 {
+    background: url("../../images/parallax/background/calendar-visuel3-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+  #image-slide4 {
+    background: url("../../images/parallax/background/calendar-visuel4-480.jpg") center 0 no-repeat fixed;
+    background-size: cover;
+  }
+}
+
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+
+    .calendar #slide1 {
+        background: url("../../images/parallax/background/calendar-visuel1-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .calendar #image-slide2 {
+        background: url("../../images/parallax/background/calendar-visuel2-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .calendar #image-slide3 {
+        background: url("../../images/parallax/background/calendar-visuel3-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .calendar #image-slide4 {
+        background: url("../../images/parallax/background/calendar-visuel4-768.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}
+
+/* 980px */
+@media only screen and (min-width: 980px) {
+
+    .calendar #slide1 {
+        background: url("../../images/parallax/background/calendar-visuel1-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .calendar #image-slide2 {
+        background: url("../../images/parallax/background/calendar-visuel2-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .calendar #image-slide3 {
+        background: url("../../images/parallax/background/calendar-visuel3-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+    .calendar #image-slide4 {
+        background: url("../../images/parallax/background/calendar-visuel4-980.jpg") center 0 no-repeat fixed;
+        background-size: cover;
+    }
+
+}

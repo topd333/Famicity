@@ -1,0 +1,18 @@
+@include aboveMediumScreen() {
+  .tree.fusions {
+    .content .fusions-left-column{
+      margin-top: -1.5em;
+    }
+    .gedcom-espace-import-table-button{
+      min-width: 14em;
+    }
+    .gedcom-message {
+      width: 100%;
+    }
+  }
+}
+.tree.fusions {
+  fc-menu {
+    display: block;
+  }
+}

@@ -1,0 +1,383 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+    <!--<h2 ng-if="tabActive == 'info'" class="pull-left" translate>INFOS_LINK</h2>-->
+    <!--<h2 ng-if="tabActive == 'album'" class="pull-left" translate>ALBUMS_LINK</h2>-->
+    <!--<h2 ng-if="tabActive == 'comments'" class="pull-left" translate>COMMENTS_LINK</h2>-->
+    <!--<a ng-if="event.permissions.is_updatable" class="btn btn-icon pull-right" ui-sref="u.event-edit({event_id: event.id})"><i class="fa fa-edit"></i></a>-->
+    <!--<fc-like data-object-type="event" data-object="event" data-view-mode="mobile" data-list-page="listPageUrl"></fc-like>-->
+    <!--</fc-header-bar>-->
+
+    <header class="clearfix visible-xs">
+      <div fc-mobile-header-event tab-active="tabActive" event="event"></div>
+    </header>
+    <div class="container-fluid column-holder">
+      <div class="row">
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+          <div class="left-column-block">
+            <div class="left-column-block-content">
+              <a ng-if="event.likes_count" class="clearfix red-rollover" ui-sref="u.event-likes({event_id: event.id})">
+                <i><i class="fa fa-heart"></i></i><span translate>THEY_LIKE_EVENT </span><b>{{ event.likes_count }}</b>
+              </a>
+            </div>
+          </div>
+          <!-- Event info -->
+          <div class="left-column-block event-details-left-column">
+            <div class="table ">
+              <fc-left-column-block-header>
+                <h3 data-translate>EVENT_INFO</h3>
+                <span ng-if="event.permissions.is_updatable == true"><a>+</a></span>
+              </fc-left-column-block-header>
+            </div>
+            <div class="left-column-block-content">
+              <div ng-if="event.author_id != userId">
+                <span ng-bind="event.author_name"></span>
+              </div>
+              <div>
+                <p>
+                  {{ 'EVENT_NAME_SC' | translate }}<br/>
+                  <span ng-bind="event.name"></span>
+                </p>
+              </div>
+              <div ng-if="event.location != null">
+                <p>
+                  {{ 'EVENT_PLACE_SC' | translate }}<br/>
+                  <span ng-bind="event.location"></span>
+                </p>
+              </div>
+              <div ng-if="event.start_date != 0">
+                <p>
+                  {{ 'EVENT_START_DATETIME_SC' | translate }}<br>
+                  <span ng-if="event.all_day == false">
+                      {{ $moment(event.start_date, 'X').format('LLLL') }}
+                    <br>
+                  </span>
+                  <span ng-if="event.all_day == true">
+                      {{ $moment(event.start_date, 'X').format('LL') }}
+                    <br>
+                  </span>
+                </p>
+              </div>
+              <div ng-if="event.end_date != 0">
+                <p>
+                  {{ 'EVENT_END_DATETIME_SC' | translate }}<br>
+                  <span ng-if="event.all_day == false">
+                      {{ $moment(event.end_date, 'X').format('LLLL') }}
+                    <br>
+                  </span>
+                  <span ng-if="event.all_day == true">
+                      {{ $moment(event.end_date, 'X').format('LL') }}
+                  </span>
+                </p>
+              </div>
+              <div ng-if="event.description">
+                <p>
+                  {{ 'EVENT_DETAILS_SC' | translate }}<br/>
+                  <span ng-bind-html="event.description | trustedHtml"></span>
+                </p>
+              </div>
+              <div class="item-sub-delimiter" ng-show="event.permissions.is_updatable"></div>
+              <div ng-show="event.permissions.is_updatable">
+                <a href="" ng-click="gotoEditEvent()" class="left-column-bottom-link">
+                  <span translate>EDIT</span><i class="fa fa-pencil-square-o"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /// Event info -->
+          <!-- Invites -->
+          <div class="left-column-block guest-list">
+
+            <fc-left-column-block-header> <!-- event.permissions.is_updatable == true -->
+              <h3 data-translate>EVENT_GUESTS</h3>
+              <span ng-if="event.permissions.is_updatable == true"><a>+</a></span>
+            </fc-left-column-block-header>
+
+            <div class="left-column-block-content">
+              <a ng-if="event.attend_count" class="counter attend"
+                 ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'yes'})">
+                <div class="pull-left" data-translate>EVENT_GUESTS_YES</div>
+                <div class="pull-right">{{ event.attend_count }}</div>
+              </a>
+              <a ng-if="event.attend_count == 0" class="counter attend">
+                <div class="pull-left" data-translate>EVENT_GUESTS_YES</div>
+                <div class="pull-right">{{ event.attend_count }}</div>
+              </a>
+              <a ng-if="event.maybe_count == 0" class="counter maybe">
+                <div class="pull-left" data-translate>EVENT_GUESTS_MAYBE</div>
+                <div class="pull-right">{{ event.maybe_count }}</div>
+              </a>
+              <a ng-if="event.maybe_count" class="counter maybe" ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'maybe'})">
+                <div class="pull-left" data-translate>EVENT_GUESTS_MAYBE</div>
+                <div class="pull-right">{{ event.maybe_count }}</div>
+              </a>
+              <a ng-if="event.decline_count" class="counter no"
+                 ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'no'})">
+                <div class="pull-left" data-translate>EVENT_GUESTS_NO</div>
+                <div class="pull-right">{{ event.decline_count }}</div>
+              </a>
+              <a class="counter no" ng-if="event.decline_count == 0">
+                <div class="pull-left" data-translate>EVENT_GUESTS_NO</div>
+                <div class="pull-right">{{ event.decline_count }}</div>
+              </a>
+              <a class="counter no-answer"
+                 ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'no_answer'})"
+                 ng-if="event.no_answer_count">
+                <div class="pull-left" data-translate>EVENT_GUESTS_NO_ANSWER</div>
+                <div class="pull-right">{{ event.no_answer_count }}</div>
+              </a>
+              <a class="counter no-answer" ng-if="event.no_answer_count == 0">
+                <div class="pull-left" data-translate>EVENT_GUESTS_NO_ANSWER</div>
+                <div class="pull-right">{{ event.no_answer_count }}</div>
+              </a>
+
+              <div class="item-sub-delimiter" ng-show="event.permissions.is_updatable"></div>
+              <div ng-show="event.permissions.is_updatable">
+                <a href="" ng-click="gotoEditEvent('permission')" class="left-column-bottom-link">
+                  <span translate>EDIT</span><i class="fa fa-pencil-square-o"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /// Invites -->
+        </div>
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <!--<div class="clearfix hidden-xs">-->
+            <!--<div class="center-right-icons clearfix hidden-xs">-->
+            <!--<fc-like data-object="event" data-view-mode="btn-icon" class="btn-icon"></fc-like>-->
+            <!--<a ng-if="event.permissions.is_updatable" class="center-right-plus-icon btn btn-icon btn-icon-primary pointer" href="" ng-if="tabActive == 'album' && event.albums.length > 0" ui-sref="u.albums-create({user_id:userId,event_id:event.id})">+</a>-->
+            <!--<a ng-if="event.permissions.is_updatable" class="center-right-plus-icon btn btn-icon btn-icon-primary pointer" ui-sref="u.event-edit({event_id:event.id})"><i class="fa fa-edit"></i></a>-->
+            <!--<a ng-if="event.permissions.is_updatable" class="center-right-plus-icon btn btn-icon btn-icon-danger pointer" ng-click="openDeleteEventAlertPopup()" ng-if="event.author_id==userId"><i class="fa fa-trash-o"></i></a>-->
+            <!--</div>-->
+            <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+            <div ng-if="event.answer != null && event.answer == 'can' && event.isAfterDate == false">
+              <div class="event-response-buttons-holder clearfix hidden-xs">
+                <div class="pull-left homepage-event-question" data-translate>EVENT_PRESENCE</div>
+                <div class="pull-right homepage-event-buttons">
+                  <a class="btn btn-primary button-min-width2 xs-event-button" ng-click="eventAnswer('yes')"
+                     data-translate>EVENT_ANSWER_YES</a> &nbsp;
+                  <a class="btn btn-warning orange-button button-min-width2 xs-event-button"
+                     ng-click="eventAnswer('maybe')" data-translate>EVENT_ANSWER_MAYBE</a> &nbsp;
+                  <a class="btn btn-danger red-button button-min-width2 xs-event-button" ng-click="eventAnswer('no')"
+                     data-translate>EVENT_ANSWER_NO</a>
+                </div>
+              </div>
+              <div class="center-text visible-xs">
+                <div class="event-response-buttons-holder event-response-buttons-holder-xs clearfix ">
+                  <div class="center-text homepage-event-question" data-translate>EVENT_PRESENCE</div>
+                  <div class="center-text homepage-event-buttons">
+                    <a class="btn btn-primary button-min-width2 xs-event-button" ng-click="eventAnswer('yes')"
+                       data-translate>EVENT_ANSWER_YES</a> &nbsp;
+                    <a class="btn btn-warning button-min-width2 xs-event-button" ng-click="eventAnswer('maybe')"
+                       data-translate>EVENT_ANSWER_MAYBE</a> &nbsp;
+                    <a class="btn btn-danger button-min-width2 xs-event-button" ng-click="eventAnswer('no')"
+                       data-translate>EVENT_ANSWER_NO</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="event-response-buttons-holder clearfix hidden-xs"
+                 ng-if="event.answer != 'can' && event.answer != null && event.isAfterDate == false">
+              <div ng-if="event.answer == 'attend'" class="pull-left homepage-event-question" data-translate>
+                EVENT_ANSWERED
+              </div>
+              <div ng-if="event.answer == 'maybe'" class="pull-left homepage-event-question" data-translate>
+                EVENT_ANSWERED_MAYBE
+              </div>
+              <div ng-if="event.answer == 'decline'" class="pull-left homepage-event-question" data-translate>
+                EVENT_ANSWERED_NO
+              </div>
+              <div class="pull-right homepage-event-buttons">
+                <a class="btn btn-primary green-button button-min-width2 xs-event-button" href=""
+                   ng-click="changeAnswer()" data-translate>EVENT_ANSWER_CHANGE</a>
+              </div>
+            </div>
+
+            <p class="hidden-xs" data-translate>EVENT_SHOW_DESC</p>
+
+            <fc-form-tab template="eventShow"></fc-form-tab>
+            <div class="hidden-xs">
+              <div ng-show="tabActive == 'info'">
+                <div class="center-text" data-translate>EVENT_COMMENTS</div>
+                <fc-comment-list data-object="event" data-user="user"></fc-comment-list>
+              </div>
+              <div ng-show="tabActive=='album'">
+                <div class="clearfix hidden-xs" ng-if="event.albums.length">
+                  <div class="pull-left" data-translate>EVENT_ALBUM_ADD</div>
+                </div>
+                <div class="albums-holder clearfix" ng-if="event.albums.length">
+                  <a ng-repeat="album in event.albums" ng-class="{'empty-album-link': album.photos_count == 0}"
+                     ui-sref="u.albums-show({user_id: album.author_id, album_id: album.id})"><span
+                          ng-show="album.photos_count == 0"><i class="fa fa-camera"></i></span>
+
+                    <div ng-show="album.photos_count > 0" class="image-content"><img ng-src="{{ album.cover_url }}"/>
+                    </div>
+                    <div class="topmost-content">{{ album.photos_count }}<br/>{{ album.title }}</div>
+                  </a>
+                </div>
+                <div ng-if="event.albums.length == 0">
+                  <div ng-show="basicProfile.permissions.is_updatable">
+                    <h5 class="center-text" translate>ALBUM_LIST_PAGE_ADD_ALBUM_INSTRUCTIONS</h5>
+                    <br/>
+
+                    <div class="vertical-button-group import-contacts-buttons">
+                      <div>
+                        <a class="btn btn-primary btn-lg button-min-width"
+                           ui-sref="u.albums-create({user_id: userId, event_id: event.id})"><span
+                                translate>CREATE_ALBUM</span></a>
+                      </div>
+                      <!-- Fixes #5482
+                      <div>
+                        <a class="gray-button-g button-with-image-icon button-min-width button-album-facebook" href="#"><span><i><i class="fa fa-facebook-square"></i></i><span translate>FACEBOOK_ALBUM</span></span></a>
+                      </div>
+                      <div>
+                        <a class="gray-button-g button-with-image-icon button-min-width button-album-picasa" href="#"><span><i><i class="ui_elem button-album-picasa-icon"></i></i><span translate>PICASA_ALBUM</span></span></a>
+                      </div>
+                      <div>
+                        <a class="gray-button-g button-with-image-icon button-min-width button-album-flickr" href="#"><span><i><i class="fa fa-flickr"></i></i><span translate>FLICKR_ALBUM</span></span></a>
+                      </div>
+                      -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile view -->
+            <div class="visible-xs">
+
+              <!-- Event info -->
+              <div ng-show="tabActive==='info'">
+                <div class="event-view-xs-event-details">
+                  <div class="">
+                    <fc-user-summary></fc-user-summary>
+                  </div>
+                  <!--
+                    <h2 class="event-view-xs-heading" data-translate>EVENT_INFO</h2>
+                    <br><span>{{ event.creator.user_name }}:</span>
+                  -->
+                  <br/><span>{{ 'EVENT_PLACE_SC' | translate }}&nbsp;</span>{{ event.location }}
+                  <br/><span>{{ 'EVENT_DETAILS_SC' | translate }}&nbsp;</span>
+
+                  <p ng-bind-html="event.description | trustedHtml"></p>
+                </div>
+                <div class="item-delimiter"></div>
+                <!--
+                <div class="center-right-icons clearfix">
+                  <a class="" href="" ng-click="gotoEditEvent('permission')" ng-if="event.permissions.is_updatable == true">
+                    <i class="fa fa-edit"></i>
+                  </a>
+                </div>
+                -->
+                <h2 class="event-view-xs-heading clearfix" data-translate>EVENT_GUESTS</h2>
+
+                <!-- YES -->
+                <div ng-if="event.attend_count" class="event-view-xs-invites event-view-xs-invites-c1"
+                     ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'yes'})">
+                  <span data-translate>EVENT_GUESTS_YES</span>
+                  <i class="fa fa-angle-right"></i><b>{{ event.attend_count }}</b>
+                </div>
+                <div ng-if="!event.attend_count" class="event-view-xs-invites event-view-xs-invites-c1">
+                  <span data-translate>EVENT_GUESTS_YES</span>
+                  <i class="fa fa-angle-right"></i><b>{{ event.attend_count }}</b>
+                </div>
+                <!-- MAYBE -->
+                <div ng-if="event.maybe_count" class="event-view-xs-invites event-view-xs-invites-c2"
+                     ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'maybe'})">
+                  <span data-translate>EVENT_GUESTS_MAYBE</span>
+                  <i class="fa fa-angle-right"></i><b>{{ event.maybe_count }}</b>
+                </div>
+                <div ng-if="!event.maybe_count" class="event-view-xs-invites event-view-xs-invites-c2">
+                  <span data-translate>EVENT_GUESTS_MAYBE</span>
+                  <i class="fa fa-angle-right"></i><b>{{ event.maybe_count }}</b>
+                </div>
+                <!-- NO -->
+                <div ng-if="event.no_answser_count" class="event-view-xs-invites event-view-xs-invites-c3"
+                     ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'no'})">
+                  <span data-translate>EVENT_GUESTS_NO</span>
+                  <i class="fa fa-angle-right"></i><b>{{ event.decline_count }}</b>
+                </div>
+                <div ng-if="!event.decline_count" class="event-view-xs-invites event-view-xs-invites-c3">
+                  <span data-translate>EVENT_GUESTS_NO</span>
+                  <i class="fa fa-angle-right"></i><b>{{ event.decline_count }}</b>
+                </div>
+                <!-- NO ANSWER -->
+                <div ng-if="event.no_answser_count" class="event-view-xs-invites event-view-xs-invites-c3"
+                     ui-sref="u.event-list-invitations({event_id: event.id, invit_type: 'no_answer'})">
+                  <span data-translate>EVENT_GUESTS_NO_ANSWER</span>
+                  <i class="fa fa-angle-right"></i><b>{{ event.no_answer_count }}</b>
+                </div>
+                <div ng-if="!event.no_answser_count" class="event-view-xs-invites event-view-xs-invites-c3">
+                  <span data-translate>EVENT_GUESTS_NO_ANSWER</span>
+                  <i class="fa fa-angle-right"></i><b>{{ event.no_answer_count }}</b>
+                </div>
+
+              </div>
+              <!-- Event comments -->
+              <div ng-show="tabActive === 'comments'">
+                <fc-comment-list data-object="event" data-user="user"></fc-comment-list>
+              </div>
+              <!-- Event albums -->
+              <div ng-show="tabActive === 'album'">
+                <div class="clearfix hidden-xs" ng-if="event.albums.length">
+                  <div class="pull-left" data-translate>EVENT_ALBUM_ADD</div>
+                </div>
+                <div class="albums-holder clearfix" ng-if="event.albums.length">
+                  <a ng-repeat="album in event.albums" ng-class="{'empty-album-link': album.photos_count == 0}"
+                     ui-sref="u.albums-show({user_id: event.author_id, album_id: album.id})"><span
+                          ng-show="album.photos_count == 0"><i class="fa fa-camera"></i></span>
+
+                    <div ng-show="album.photos_count > 0" class="image-content"><img ng-src="{{ album.cover_url }}"/>
+                    </div>
+                    <div class="topmost-content">{{ album.photos_count }}<br/>{{ album.title }}</div>
+                  </a>
+                </div>
+                <div>
+                  <div ng-show="basicProfile.permissions.is_updatable">
+                    <h5 class="center-text" translate>ALBUM_LIST_PAGE_ADD_ALBUM_INSTRUCTIONS</h5>
+                    <br/>
+
+                    <div class="vertical-button-group import-contacts-buttons">
+                      <div>
+                        <a class="btn btn-primary btn-lg button-min-width"
+                           ui-sref="u.albums-create({user_id: userId, event_id: event.id})"><span
+                                translate>CREATE_ALBUM</span></a>
+                      </div>
+                      <!-- <div>
+                        <a class="gray-button-g button-with-image-icon button-min-width button-album-facebook" href="#"><span><i><i class="fa fa-facebook-square"></i></i><span translate>FACEBOOK_ALBUM</span></span></a>
+                      </div>
+                      <div>
+                        <a class="gray-button-g button-with-image-icon button-min-width button-album-picasa" href="#"><span><i><i class="ui_elem button-album-picasa-icon"></i></i><span translate>PICASA_ALBUM</span></span></a>
+                      </div>
+                      <div>
+                        <a class="gray-button-g button-with-image-icon button-min-width button-album-flickr" href="#"><span><i><i class="fa fa-flickr"></i></i><span translate>FLICKR_ALBUM</span></span></a>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="mobile-bottom-icons-layer visible-xs">
+      <div class="mobile-bottom-icons-holder visible-xs">
+        <br />
+        <div class="mobile-bottom-icons center-left-icons clearfix">
+          <a class="min-width reduced-icon-size selected" href="#"><i class="fa fa-info-circle"></i></a>
+          <a class="min-width reduced-icon-size" href="#"><i class="fa fa-comments-o"></i></a>
+          <a class="min-width reduced-icon-size numbered-icon" href="#"><span>5</span><i class="fa fa-picture-o"></i></a>
+          <a class="min-width reduced-icon-size" href="#"><i class="fa fa-edit"></i></a>
+          <a class="min-width reduced-icon-size btn btn-icon btn-icon-danger pointer" href="#"><i class="fa fa-trash-o"></i></a>
+        </div>
+      </div>
+    </div>
+  -->
+  </div>
+</div>

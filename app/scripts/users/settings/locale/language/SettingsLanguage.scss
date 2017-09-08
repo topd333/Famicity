@@ -1,0 +1,17 @@
+.settings.locale.language {
+  .language-select {
+    margin-top: 1em;
+  }
+}
+@include aboveMediumScreen() {
+  .settings.locale.language {
+    .action-submit {
+      display: none;
+    }
+    .content-view {
+      .left-column {
+        margin-top: -$fcMenuHeight;
+      }
+    }
+  }
+}

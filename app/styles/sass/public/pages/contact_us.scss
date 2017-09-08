@@ -1,0 +1,122 @@
+.contact-us-s1 {
+  background-color: rgb(205, 194, 202);
+}
+.contact-us-s3 {
+  background-attachment: fixed;
+  .contact-us-messages {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 90%;
+    a {
+      color: #757575;
+      display: inline-block;
+      margin-bottom: 10px;
+      span {
+        text-decoration: none;
+      }
+      h2 {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1;
+        position: relative;
+        top: -5px;
+      }
+    }
+  }
+  .contact-us-messages-load-more {
+    color: $white;
+  }
+  .contact-us-new-message {
+    margin-bottom: 20px;
+    h2 {
+      color: $green;
+    }
+    textarea {
+      background-color: transparent;
+      box-sizing: border-box;
+      height: 150px;
+      padding-top: 12px;
+    }
+    textarea:focus+label {
+      display: none;
+    }
+  }
+  .contact-us-messages-item {
+    h2 {
+      color: $green;
+    }
+  }
+  .contact-us-new-message-textarea {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    label {
+      color: #999;
+      left: 15px;
+      position: absolute;
+      top: 15px;
+      i {
+        color: #636363;
+      }
+    }
+  }
+}
+.contact-us-s3 .contact-us-messages-item,.contact-us-s3 .contact-us-new-message-textarea {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: $gui_standard_border_radius;
+  border: 1px solid #d0d0d0;
+  font-weight: normal;
+  line-height: 1;
+  text-align: left;
+}
+.contact-us-s3 .contact-us-messages-item  h2,.contact-us-s3 .contact-us-messages-item  h3 {
+  display: inline-block;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* below 480px */
+@media only screen {
+
+  .contact-us-s3 .contact-us-messages-item {
+    margin-bottom: 10px;
+    padding: 7px;
+  }
+
+  .contact-us-s3 .contact-us-messages-item *,
+  .contact-us-s3 .contact-us-new-message-textarea,
+  .contact-us-s3 .contact-us-new-message-textarea textarea {
+    font-size: 12px;
+  }
+
+  .contact-us-s3 .contact-us-messages-item p {
+    margin: 10px 0 10px 0;
+  }
+
+}
+
+/* 480px */
+@media only screen and (min-width: 480px) {
+
+  .contact-us .copyright {
+    margin: 70px 0;
+
+  }
+
+  .contact-us-s3 .contact-us-messages-item {
+    margin-bottom: 10px;
+    padding: 15px;
+
+  }
+  .contact-us-s3 .contact-us-messages-item *,
+  .contact-us-s3 .contact-us-new-message-textarea,
+  .contact-us-s3 .contact-us-new-message-textarea textarea {
+    font-size: 14px;
+
+  }
+  .contact-us-s3 .contact-us-messages-item p {
+    margin: 15px 0;
+
+  }
+
+}

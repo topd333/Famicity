@@ -1,0 +1,44 @@
+<div class="wrapper">
+
+  <div class="content">
+    <!--<fc-header-bar user-id="userId">-->
+      <!--<h2 class="pull-left" translate>EDIT_ALBUM</h2>-->
+    <!--</fc-header-bar>-->
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-user-summary></fc-user-summary>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+
+            <!--<div class="clearfix hidden-xs">-->
+              <!--<div ncy-breadcrumb class="hidden-xs"></div>-->
+            <!--</div>-->
+
+            <fc-inline
+              data-user="me"
+              data-object="album"
+              data-edit-copy="editCopy"
+              data-edit-label="{{'EDIT'|translate}}"
+              data-required="requiredFields"
+              data-on-update="updateAlbum(editCopy,textVal,userId,required)"
+              data-on-delete="deleteAlbum()"
+              data-labels="{title:'ALBUM_NAME', text:'ALBUM_DESCRIPTION', date:'ALBUM_DATE', location:'PLACE_WHERE_PHOTOS_WHERE_TAKEN'}"
+              data-options="{title:true, date:true, location:true}"
+              data-focus="title"
+              data-show-options="true"
+              data-form-status="formStatus"
+              data-list-likes-page="listLikesPage"
+              >
+            </fc-inline>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

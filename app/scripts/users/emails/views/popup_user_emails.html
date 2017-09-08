@@ -1,0 +1,43 @@
+<div id="profile-mails-modal">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3 ng-if="mailFormMode == 'add'" data-translate>ADD_MAIL</h3>
+
+      <h3 ng-if="mailFormMode == 'edit'" data-translate>EDIT_MAIL</h3>
+
+      <form data-fc-form-submit data-submit-method="submit()" data-form-in-progress="formInProgress" novalidate class="standard-form login-form" id="mail-form" name="formHolder.mailForm">
+        <fc-bootstrap-dropdown-select ng-model="mail.email_type" select-val="selected_type = selectedVal; selectMailType(selectedVal)" preselected-item="selected_type" data-dropdown-data="mailTypeList"></fc-bootstrap-dropdown-select>
+
+        <div class="form-group" ng-show="mail['email_type'] == 'custom'">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
+            <label class="sr-only" for="custom-mail-type" data-translate>MAIL_TYPE</label>
+            <input class="form-control" id="custom-mail-type" data-translate data-translate-attr-placeholder="MAIL_TYPE"
+                   type="text" name="customMailTypeInput" ng-model="mail['custom_email_type']"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group" ng-class="{'has-error': (formHolder.mailForm.mailInput.$dirty || submitted) && formHolder.mailForm.mailInput.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+            <label class="sr-only" for="email" data-translate>YOUR_EMAIL</label>
+            <input fc-auto-focus class="form-control" id="email" data-translate
+                   data-translate-attr-placeholder="YOUR_EMAIL" type="email" name="mailInput" ng-model="mail['email']"
+                   required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-primary green-button" type="submit" ng-bind="'SUBMIT' | translate"></button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-secondary" type="button" ng-click="$close()" data-translate>CANCEL</button>
+        </div>
+        <div class="form-group" ng-if="!(mailFormMode === 'add' || !mail.destroyable)">
+          <button data-fc-form-submit data-submit-method="deleteMail()" data-form-in-progress="formInProgress" class="btn btn-danger" type="button" ng-bind="'DELETE' | translate"></button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.public {
+  .content-view {
+    .language-switcher {
+      cursor: pointer;
+      text-decoration: none;
+      .language-full {
+        display: none;
+      }
+    }
+  }
+}
+  @import "fc-language-switcher_large";

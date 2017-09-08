@@ -1,0 +1,59 @@
+$addPhotoSize: 10em;
+
+.tree-popup-add-relatives {
+  .add-relative-instructions {
+    margin-top: 1em;
+  }
+  .add-tile {
+    > div {
+      display: table;
+      height: 100%;
+      width: 100%;
+    }
+    i {
+      display: block;
+      font-size: 24px;
+    }
+    &.filled-tile > div > a:hover {
+      background-color: transparent;
+      color: #96bd3d;
+    }
+  }
+  .add-row-middle {
+    display: table;
+    margin: -2em auto -1em auto;
+    .add-tile {
+      display: block;
+    }
+  }
+}
+
+.tree-popup-add-relatives .add-tile
+.tree-popup-add-relatives .add-tile a > img {
+  border-radius: 6px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* Added those styles when fixing the bug #9292,
+but it's some kind of temporary fix
+TODO : fix the main problem : the elements width display: table
+don't respect their width rule */
+.tree-popup-add-relatives .add-row-middle .add-row-middle-center a {
+  color: $green;
+  width: $addPhotoSize;
+  margin: 0 1.5em;
+  display: inline-block;
+  @include ellipsis();
+}
+
+.tree-popup-add-relatives .add-row-middle > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.tree-popup-add-relatives .add-row-middle-center .smartImage {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+}

@@ -1,0 +1,66 @@
+<div class="wrapper" ng-init="init()">
+
+    < class="content">
+        <fc-header-bar user-id="userId">
+            <h2 class="pull-left" translate>WEBCAM</h2>
+        </fc-header-bar>
+
+        <div class="container-fluid column-holder">
+            <div class="row">
+                <div class="col-sm-4 left-column hidden-xs">
+                    <div class="left-column-block">
+                        <div class="my-profile-photo">
+                            <br />
+
+                          <h1 class="standard-page-heading my-profile-photo-h1 hidden-xs" data-translate>
+                            MY_PROFILE_PICTURE_TITLE</h1>
+                            <img class="left-block-profile-picture" ng-src="{{ userProfileGet.avatar_url }}" />
+
+                          <p class="clearfix" data-translate>PREVIEW_OF_MY_PROFILE_PICTURE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 right-column right-column-directory">
+
+                    <div class="main-content">
+
+                        <div class="clearfix hidden-xs">
+
+                            <div ncy-breadcrumb class="hidden-xs"></div>
+                        </div>
+
+                        <div class="hidden-xs hidden-sm">
+                            <div class="text-alignment-holder">
+                              <div class="clearfix center-to-left-text" data-translate>
+                                PROFILE_PHOTOS_WEBCAM_PAGE_INTRODUCTION
+                              </div>
+                            </div>
+                            <br />
+                            <div class="center-right-icons-centered-holder clearfix">
+                                <div class="center-right-icons clearfix">
+                                    <a><i class="ui_elem webcam-icon-profile"></i></a><span>&nbsp; {{ "TAKE_A_PHOTO" | translate }}</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>   <a class="reduced-icon-size"><i class="fa fa-check fa-fw"></i></a><span>&nbsp; {{ "SUBMIT_IMAGE" | translate }}</span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="webcam-panel-holder clearfix">
+                                <div class="webcam-panel-arrows">
+                                    <a href="#"><i class="fa fa-caret-up"></i></a>
+
+                                    <a href="#"><i class="fa fa-caret-down"></i></a>
+                                </div>
+                                <div class="webcam-panel-small">
+                                    <div></div>
+
+                                    <div></div>
+                                </div>
+                                <div class="webcam-panel-big"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

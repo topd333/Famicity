@@ -1,0 +1,206 @@
+.home-big-button-icon,
+.home-big-button-text {
+  color: #666d73;
+  left: 0;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+.home-big-button-text {
+  font-size: 13px;
+  top: 50px;
+}
+.home-big-button-icon {
+  bottom: 30px;
+  font-size: 35px;
+}
+.home-main-delimiter {
+  border-bottom: 1px solid #6d7077;
+  margin: 28px auto;
+  width : 268px;
+}
+.private-home-right-column {
+  padding-left: 0;
+  padding-right: 0;
+}
+.home-big-buttons {
+  margin-left: auto;
+  margin-right: auto;
+  width: 268px;
+  a {
+    background-color: $gray_color;
+    border-radius: 8px;
+    float: left;
+    height: 78px;
+    margin-top: 12px;
+    position: relative;
+    width: 78px;
+  }
+  a:nth-child(4) {
+    margin-left: 0;
+  }
+  a+a {
+    margin-left: 17px;
+  }
+  .btn-input:hover,
+  .btn-input:focus,
+  .btn-input:active,
+  .btn-input.active {
+    border: none;
+    box-shadow: none;
+    background-color: $green;
+    i, .home-big-button-text{
+      color: white;
+    }
+  }
+  .notification-bubble{
+    color: white;
+    font-size: 0.3em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    .fa-circle{
+      color: $red;
+    }
+  }
+  .btn:hover .notification-bubble{
+    color: $green;
+  }
+}
+
+.home-small-buttons {
+  margin-left: auto;
+  margin-right: auto;
+  width: 182px;
+  a {
+    color: #666d73;
+    background-color: $gray_color;
+    border-radius: $gui_standard_border_radius;
+    float: left;
+    font-size: 1.5em;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 48px;
+  }
+  a:hover,
+  a:focus,
+  a:active,
+  a.active {
+    border: none;
+    box-shadow: none;
+    background-color: $green;
+    i{
+      color: white;
+    }
+    &.home-log-out-button{
+      background-color: $red;
+    }
+  }
+  a+a {
+    margin-left: 19px;
+  }
+  a.home-log-out-button {
+    color: #f14946;
+  }
+}
+
+.invite-closes{
+  .button-block{
+    margin-top: 5px;
+  }
+  .btn{
+    margin-top: 5px;
+    min-width: 190px;
+  }
+}
+
+fc-birthday-list {
+  .s-block-content {
+    .info {
+      span {
+        a {
+          padding-left: 1.2em;
+          margin-left: -1em;
+        }
+      }
+    }
+  }
+}
+
+fc-suggest-invitations {
+  .s-block-content {
+    div .image {
+      padding-right: 0.25em;
+      width: 1%;
+    }
+    .actions {
+      padding-left: 0.25em;
+      button {
+        font-size: 0.7em;
+      }
+    }
+    a{
+      color: $main_font_color;
+    }
+  }
+}
+
+/* 480px */
+@media only screen and (min-width: 480px) {
+  .home-big-buttons {
+    width: 386px;
+    a {
+      height: 112px;
+      margin-top: 17px;
+      width: 112px;
+    }
+    a+a {
+      margin-left: 25px;
+
+    }
+    a:nth-child(4) {
+      margin-left: 0;
+    }
+  }
+  .home-big-button-icon {
+    bottom: 45px;
+    font-size: 47px;
+
+  }
+  .home-big-button-text {
+    font-size: 17px;
+    top: 70px;
+
+  }
+  .home-main-delimiter {
+    margin: 50px auto;
+    width: 386px;
+
+  }
+  .home-small-buttons {
+    width: 254px;
+    a {
+      border-radius: $gui_standard_border_radius;
+      height: 40px;
+      font-size: 26px;
+      line-height: 40px;
+      width: 70px;
+    }
+    a+a {
+      margin-left: 22px;
+    }
+  }
+
+}
+/* /// 480px */
+
+
+/* 768px */
+@media only screen and (min-width: 768px) {
+  .homepage-right-column {
+    padding-right: 1em;
+  }
+}
+/* /// 768px */

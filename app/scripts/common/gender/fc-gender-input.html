@@ -1,0 +1,14 @@
+<div class="form-group fc-gender-input"
+     ng-class="{'has-error': (formName.gender.$dirty || submitted) && formName.gender.$invalid}">
+  <span class="standard-radiobutton">
+    <input id="male" name="gender" ng-model="user.sex" type="radio" value="Male" required/>
+    <span class="radio-element"></span>
+  </span>
+  <label for="male" class="fa">{{ "MAN" | translate }}*</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class="standard-radiobutton">
+    <input id="female" name="gender" ng-model="user.sex" type="radio" value="Female" required/>
+    <span class="radio-element"></span>
+  </span>
+  <label for="female" class="fa">{{ "WOMAN" | translate }}*</label>
+</div>

@@ -1,0 +1,78 @@
+<div class="wrapper" ng-init="init()">
+
+  <div class="content">
+    <fc-header-bar user-id="userId">
+      <h2 class="pull-left" translate>IMPORT_MY_GEDCOM</h2>
+    </fc-header-bar>
+
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <div class="col-sm-4 left-column hidden-xs">
+          <fc-gedcom-left-menu></fc-gedcom-left-menu>
+        </div>
+
+        <div class="col-sm-8 right-column">
+          <div class="main-content">
+            <div ncy-breadcrumb class="hidden-xs"></div>
+
+            <div class="center-text">
+              <div ng-if="secondAccess">
+                <p translate>GEDCOM_UPLOAD_SECOND_ACCESS_INSTRUCTIONS</p>
+                <br />
+              </div>
+              <div ng-if="!secondAccess">
+                <div ng-if="!uploadSuccess && !uploadError">
+                  <p translate>GEDCOM_UPLOAD_IN_PROGRESS</p>
+                  <p class="gedcom-upload-wait" data-translate>PLEASE_WAIT</p>
+                </div>
+                <div ng-if="uploadSuccess && !uploadError">
+                  <p translate>UPLOAD_FINISHED</p>
+                </div>
+                <div ng-if="uploadError">
+                  <p translate>UPLOAD_IN_ERROR</p>
+                </div>
+                <br>
+                <div ng-if="!uploadError" class="gedcom-progress-bar">
+                  <div ng-style="{ width: uploadData.uploadPercent + '%' || 0 + '%' }"></div>
+                </div>
+                <br />
+                <p ng-if="uploadData.uploadedBytes && uploadData.totalBytes && !uploadError">{{ uploadData.uploadedPercent | number : 2 }}% - <span ng-if="uploadData.totalBytes < 1000000 && true">{{ uploadData.uploadedBytes / 1024 | number : 2 }} ko</span><span ng-if="uploadData.totalBytes >= 1000000 && true">{{ uploadData.uploadedBytes / 1048576 | number : 2 }} Mo</span> / <span ng-if="uploadData.totalBytes < 1000000 && true">{{ uploadData.totalBytes / 1024 | number : 2 }} ko</span><span ng-if="uploadData.totalBytes >= 1000000 && true">{{ uploadData.totalBytes / 1048576 | number : 2 }} Mo</span></p>
+              </div>
+
+              <div class="row">
+                <p class="col-md-12" translate>ELEMENTS_TO_BE_ADDED_TO_TREE</p>
+                <div class="col-md-3 col-md-offset-3">
+                  <p class="left-text" translate>FIRST_AND_LAST_NAME</p>
+                  <p class="left-text" translate>GENDER</p>
+                  <p class="left-text" translate>BIRTH_DATE</p>
+                  <p class="left-text" translate>BIRTH_PLACE</p>
+                </div>
+                <div class="col-md-3">
+                  <p class="left-text" translate>DATE_OF_DEATH</p>
+                  <p class="left-text" translate>PLACE_OF_DEATH</p>
+                  <p class="left-text" translate>OTHER_NAME</p>
+                  <p class="left-text" translate>BIOGRAPHIES_NOTES</p>
+                </div>
+                <p class="col-md-12 danger-color" translate>IMPORT_MISSING_DETAILS_ALERT</p>
+              </div>
+              <br>
+              <div class="c-width-1">
+                <div ng-if="!uploadSuccess && !uploadError" class="form-group">
+                  <a class="btn btn-danger btn-lg button-inherit-width pointer" ng-click="cancelUpload(true)" translate>CANCEL</a>
+                </div>
+                <div ng-if="uploadSuccess" class="form-group">
+                  <button class="btn btn-primary btn-lg button-inherit-width pointer" ng-click="launchImport()" translate>OK_UNDERSTOOD</button>
+                </div>
+                <div ng-if="uploadSuccess" class="form-group">
+                  <button class="btn btn-secondary btn-lg button-inherit-width pointer" ng-click="cancelImport(true)" translate>CANCEL</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

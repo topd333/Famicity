@@ -1,0 +1,11 @@
+<ul class="standard-tabs standard-tabs-2 clearfix">
+  <li ng-class="{'standard-tabs-activetab': tabActive == 'user'}"><span><a href="" ng-click="showUsers()"><i
+          class="fa fa-user"></i> {{ "DIRECTORY_LINK" | translate }}</a></span></li>
+  <li ng-class="{'standard-tabs-activetab': tabActive == 'group'}">
+    <span><a href="" ng-click="showGroups()"><i class="fa fa-users"></i> {{ "GROUPS" | translate }}</a></span></li>
+  <li ng-if="showInvitationTab" ng-class="{'standard-tabs-activetab': tabActive == 'email'}">
+    <span>
+      <a href="" ng-click="showInvitations()"><i class="fa fa-envelope-o "></i> {{ "INVITATIONS" | translate }}</a>
+    </span>
+  </li>
+</ul>

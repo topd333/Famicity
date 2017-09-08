@@ -1,0 +1,43 @@
+<div class="top-right-linkbar">
+  <a ui-sref="sign-in" translate>CONNECT_LINK</a> &nbsp; / &nbsp; <a ui-sref="base" translate>SUBSCRIBE_LINK</a>
+</div>
+
+<div class="wrapper" ng-init="init()">
+  <div class="lang lang-pos" data-fc-language-switcher></div>
+  <div class="content">
+    <div class="main">
+      <div class="home-above-form">
+        <div class="ui_elem famicity-logo"><a href="/"></a></div>
+        <h1 class="welcome-message" translate>MY_MESSAGES_TITLE</h1>
+      </div>
+      <div class="contact-us-messages">
+        <a class="contact-us-messages-load-more" ng-show="nbTicketsToShow < tickets.length"
+           ng-click="showMoreMessages()"><span class="fa fa-caret-up"></span>
+
+          <h2 translate>LOAD_OLD_MESSAGES_LINK</h2></a>
+
+        <div
+          ng-repeat="ticket in tickets | orderBy:'created_at':true | limitTo: nbTicketsToShow | orderBy:'created_at':false">
+          <div data-fc-ticket></div>
+        </div>
+
+        <div class="contact-us-new-message">
+          <form ng-submit="send()" novalidate id="new-contact-messsage-form" name="newMessageForm" method="POST">
+            <div class="contact-us-new-message-textarea">
+                          <textarea class="form-control" id="new-contact-use-message" data-translate
+                                    data-translate-attr-placeholder="MESSAGES_TEXTAREA_PLACEHOLDER"
+                                    ng-model="message.newMessageContent" required></textarea>
+              <label for="new-contact-use-message"><i class="fa fa-pencil"></i></label>
+            </div>
+            <div class="form-button-center">
+              <button class="btn btn-primary green-button green-button-min-width" type="submit" translate>SEND</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div fc-public-footer data-locale="{{locale}}"></div>
+</div>

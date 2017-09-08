@@ -1,0 +1,6 @@
+<div class="bullets">
+  <div ng-repeat="step in steps" ng-if="!$last" ng-class="{done: step.index < currentStep.index}" title="{{step.name}}"></div>
+</div>
+<div class="count">
+  <span class="done-count"></span> / <span class="total-count"></span>
+</div>

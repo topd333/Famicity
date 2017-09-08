@@ -1,0 +1,7 @@
+@include aboveMediumScreen() {
+  .directory.invite {
+    .action-submit {
+      display: none;
+    }
+  }
+}

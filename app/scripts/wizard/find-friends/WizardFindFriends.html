@@ -1,0 +1,20 @@
+<div class="find-friends">
+
+  <div ng-show="importStatus.started === false">
+    <h2 data-translate>WIZARD.find-friends.TITLE</h2>
+    <h3 data-translate>WIZARD.find-friends.SUBTITLE</h3>
+  </div>
+
+  <div class="holder-for-form-width">
+
+    <form class="login-form">
+      <fc-import-services-buttons data-show-intro="false" data-status="importStatus"></fc-import-services-buttons>
+
+      <button class="btn btn-secondary" ui-sref="wizard-tree-info" data-translate ng-show="importStatus.started === false">
+        WIZARD.find-friends.ACTION.NEXT
+      </button>
+
+    </form>
+
+  </div>
+</div>

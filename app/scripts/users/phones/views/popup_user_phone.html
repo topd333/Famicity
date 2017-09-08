@@ -1,0 +1,42 @@
+<div id="profile-phones-modal" ng-init="init()">
+  <div class="popin-holder popin-holder-on">
+    <div class="popin-dialog">
+      <div class="popin-dialog-decoration"></div>
+      <h3 ng-if="mailFormMode == 'add'" data-translate>ADD_TELEPHONE</h3>
+
+      <h3 ng-if="mailFormMode == 'edit'" data-translate>EDIT_TELEPHONE</h3>
+
+      <form data-fc-form-submit data-submit-method="submit()" data-form-in-progress="formInProgress" novalidate class="standard-form login-form" id="phone-form" name="formHolder.phoneForm">
+        <fc-bootstrap-dropdown-select ng-model="phone.phone_type" select-val="selected_type = selectedVal; selectPhoneType(selectedVal)" preselected-item="selected_type" data-dropdown-data="phoneTypeList"></fc-bootstrap-dropdown-select>
+
+        <div class="form-group" ng-show="phone['phone_type'] == 'custom'">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
+            <label class="sr-only" for="custom-phone-type" data-translate>PHONE_TYPE</label>
+            <input class="form-control" id="custom-phone-type" data-translate
+                   data-translate-attr-placeholder="PHONE_TYPE" type="text" name="customMailTypeInput"
+                   ng-model="phone['custom_phone_type']"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group" ng-class="{'has-error': (formHolder.phoneForm.numberInput.$dirty || submitted) && formHolder.phoneForm.numberInput.$invalid}">
+            <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+            <label class="sr-only" for="phone">{{ "YOUR_PHONE" | translate }}</label>
+            <input fc-auto-focus class="form-control" id="phone" ng-attr-placeholder="{{ 'YOUR_PHONE' | translate }}" type="text" name="numberInput" ng-model="phone['phone']" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <button data-fc-form-submit data-form-in-progress="formInProgress" class="btn btn-primary green-button" type="submit" ng-bind="'SUBMIT' | translate"></button>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-secondary" type="button" ng-click="$close()" data-translate>CANCEL</button>
+        </div>
+        <div class="form-group" ng-if="!(mailFormMode === 'add' || !phone.destroyable)">
+          <button data-fc-form-submit data-submit-method="deletePhone()" data-form-in-progress="formInProgress" class="btn btn-danger" type="button" ng-bind="'DELETE' | translate"></button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

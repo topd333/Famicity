@@ -1,0 +1,193 @@
+.menu {
+  .content {
+    .left-column {
+      margin-top: 0;
+    }
+  }
+}
+
+$fcMenuIconHeight: 2em;
+$fcMenuHeight: $fcMenuIconHeight + 1em;
+fc-menu {
+  $colorText: $white;
+  $colorBackground: $green;
+  $colorButton: transparent;
+
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  //@include fieldSizing();
+  width: 100%;
+  background-color: $colorBackground;
+  color: $colorText;
+  .logo {
+    display: block;
+    float: left;
+    color: $colorText;
+    @include buttonSizing();
+    width: 4em;
+    i {
+      font-size: $fcMenuIconHeight;
+    }
+  }
+  .left-column {
+    display: none;
+  }
+  h2 {
+    display: inline-block;
+    float: left;
+    margin: 0;
+    font-size: 1.3em;
+    @include inputSizing();
+    text-align: left;
+  }
+  .breadcrumb {
+    font-size: inherit;
+    li {
+      &:not(.active) {
+        display: none
+      }
+    }
+    li + li:before {
+      display: none;
+    }
+    margin-bottom: 0;
+  }
+  //a.btn {
+  //  padding: 0 12px;
+  //}
+  //.btn {
+  //  font-size: 24px;
+  //  height: auto; //40px;
+  //  margin-top: 7px; //TODO: check impact
+  //  color: $colorText;
+  //  margin-left: 10px;
+  //  &:active,
+  //  &:focus {
+  //    box-shadow: none;
+  //  }
+  //  a {
+  //    color: $colorText;
+  //  }
+  //}
+
+  .more-choices {
+  .remaining-choices {
+      position: absolute;
+      right: 0.9em;
+      top: 4em;
+    }
+  }
+  .txt-icon {
+    font-size: 32px;
+    line-height: 28px;
+  }
+
+  .tree-dots {
+    i {
+      font-size: 10px;
+    }
+    font-size: 10px;
+    line-height: 28px;
+  }
+
+  fc-toolbar {
+    margin-top: $fieldMargin;
+    float: right;
+    .fc-toolbar-choice {
+      float: left;
+      margin-left: 0.7em;
+      .fc-toolbar-icon {
+        display: inline;
+        font-size: $fcMenuIconHeight;
+        @include inputSizing();
+        i {
+          line-height: $fieldHeight;
+        }
+        i + span {
+          line-height: 1;
+        }
+        i.fc + span,
+        i.fa + span {
+          line-height: inherit;
+        }
+      }
+    }
+  }
+  .fc-toolbar-icon {          // Low-specificity color definitions to ease overriding
+    color: $colorText;
+    background-color: $colorButton;
+  }
+  overflow: visible;          // Required to have tooltips visible below it
+}
+
+@include aboveMediumScreen() {
+  .left-column {
+    margin-top: -$fcMenuHeight;
+  }
+  fc-menu {
+    position: relative;
+    .logo {
+      display: none;
+    }
+    $colorText: $grey;
+    $colorBackground: transparent;
+    $colorButton: $grey1;
+
+    h2 {
+      font-size: 1.2em;
+      float: left;
+      padding: 0;
+    }
+    .breadcrumb {
+      li {
+        &:not(.active) {
+          display: inline;
+          color: $green;
+        }
+        + li::before {
+          display: inline;
+          content: ">";
+          color: $grey2;
+        }
+      }
+      &.breadcrumb {
+        .active {
+          color: $grey4;
+        }
+      }
+    }
+    background-color: $colorBackground;
+    color: $colorText;
+    fc-toolbar {
+      margin-top: 0;
+      position: relative;
+      float: right;
+      top: 0;
+      right: 1em;
+      .fc-toolbar-choice {
+        .fc-toolbar-icon {
+          //@include buttonSizing();
+          display: inline-block;
+          .center-icon {
+            margin-left: -1.5em;
+            margin-right: -1.5em;
+          }
+        }
+      }
+    }
+    .fc-toolbar-icon {                  // Low-specificity color definitions to ease overriding
+      color: $colorText;
+      background-color: $colorButton;
+    }
+  }
+}
+fc-menu .left-column {
+  display: block;
+  //margin-right: 1em;
+  //max-width: 25em;
+  //width: 33%;
+}
+

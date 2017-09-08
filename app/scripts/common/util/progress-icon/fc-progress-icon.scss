@@ -1,0 +1,28 @@
+$size: 12em;
+$progress: 45;  // Fixed progress percentage
+
+.progress-icon {
+  font-size: $size;
+  height: 1em;
+  width: 1em;
+  display: inline-block;
+  > * {
+    position: absolute;
+    &.done {
+      overflow: hidden;
+      height: 0;  // Zero progress by default
+      color: $green;
+    }
+    &.todo {
+      color: $grey4;
+    }
+  }
+}
+@keyframes progression {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 1em;
+  }
+}

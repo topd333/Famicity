@@ -1,0 +1,51 @@
+.content-delimiter {
+  display: table;
+  width: 100%;
+  margin: 0.5em 0;
+  font-size: 0.8em;
+  span {
+    background: transparent;
+    position: relative;
+    &.text {
+      white-space: nowrap;
+      padding: 0 1.5em;
+    }
+    &.rule {
+      display: table-cell;
+      position: relative;
+      top: 0.7em;
+      border-top: 1px solid #b6bbbf;
+      width: 50%;
+    }
+  }
+}
+
+.home-external-icons {
+  button[type=submit] {
+    background: gray;
+    border: gray;
+  }
+  .facebook-icon {
+    background-color: $facebook_color;
+    color: $white;
+    &:hover {
+      background-color: #6a7178;
+    }
+    position: relative;
+    .fa-facebook {
+      line-height: 2.2em;
+      position: absolute;
+      left: 0.7em;
+      top: 0;
+    }
+  }
+  .warning {
+    @extend .conditions;
+    max-width: 90%;
+    &.sign-up {
+      i {
+        font-size: 1.1em;
+      }
+    }
+  }
+}

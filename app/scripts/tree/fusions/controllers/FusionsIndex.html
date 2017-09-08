@@ -1,0 +1,37 @@
+<div class="wrapper">
+
+  <div class="content">
+    <div class="container-fluid column-holder">
+      <div class="row">
+
+        <fc-fusions-left-menu user-id="userId"></fc-fusions-left-menu>
+
+        <div class="col-sm-8 right-column">
+          <fc-tooltip-popup>
+            <p class="center-text" data-translate>FUSION.BETA_WARNING</p>
+          </fc-tooltip-popup>
+          <div ng-show="!fusions.length" data-translate>EMPTY_FUSIONS_PAGE_INSTRUCTION</div>
+
+          <div ng-show="fusions.length">
+            <div class="main-content">
+
+              <div ng-if="fusions.length" ng-repeat="fusion in fusions track by fusion.id" class="table gedcom-espace-import-table">
+                <!--{{fusion}}-->
+                <fc-fusion-received-complete ng-if="fusion.sent == false && fusion.complete == true" fusion="fusion" user-id="userId"></fc-fusion-received-complete>
+                <fc-fusion-received-in-progress ng-if="fusion.sent == false && fusion.complete == false" fusion="fusion" user-id="userId" data-accept="accept(id)" data-refuse="refuse(id)"></fc-fusion-received-in-progress>
+                <fc-fusion-sent-complete ng-if="fusion.sent == true && fusion.complete == true" fusion="fusion" user-id="userId"></fc-fusion-sent-complete>
+                <fc-fusion-sent-in-progress ng-if="fusion.sent == true && fusion.complete == false" fusion="fusion" user-id="userId" data-cancel="cancel(id)"></fc-fusion-sent-in-progress>
+              </div>
+              <br>
+              <div class="item-sub-delimiter" ng-show="infiniteScrollLoading"></div>
+              <div class="center-text" ng-show="infiniteScrollLoading"><a class="green-link-color" translate>LOADING</a></div>
+              <div class="item-sub-delimiter" ng-show="infiniteScrollLoading"></div>
+            </div>
+          </div>
+
+        </div>
+
+       </div>
+    </div>
+  </div>
+</div>

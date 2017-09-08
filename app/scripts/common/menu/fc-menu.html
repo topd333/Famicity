@@ -1,0 +1,8 @@
+<a ng-if="::!header.showNotificationsIcon" class="logo" ui-sref="u.home"><i class="fc fc-logo"></i></a>
+<a ng-if="::header.showNotificationsIcon" class="btn btn-icon pull-right pointer"
+   ui-sref="user-notifications({user_id: userId})">
+  <i class="fa fa-bell"></i>
+  <i ng-show="::header.unreadNotifications > 0" class="notifications-count">{{ header.unreadNotifications }}</i>
+</a>
+<div class="col-sm-4 left-column"></div><h2><span ng-if="header.menu.title">{{header.menu.title|translate}}</span><ncy-breadcrumb ng-if="!header.menu.title"></ncy-breadcrumb></h2>
+<fc-toolbar class="menu-toolbar" choices="header.menu.actions" context="header.menu.context" tooltip-placement="bottom" max="{{header.menu.actionsMax}}"></fc-toolbar>

@@ -1,0 +1,92 @@
+.invited-landing-page.public {
+  .wrapper {
+    height: auto;
+  }
+  .content {
+    padding: 2em 1em 0;
+    height: auto;
+    max-width: none;
+
+    .frame-green-1 {
+      max-width: $formWidthMax; // To match
+      margin: 1em;
+    }
+
+    .contents {
+      height: auto;
+      .form-container {
+        background: transparent;
+      }
+    }
+    .form-container {
+      padding: 0;
+      .home-above-form {
+        > * {
+          text-align: left;
+        }
+      }
+    }
+  }
+  .two-column-form-table .two-column-form-table-avatar,
+  .two-column-form-table .two-column-form-table-avatar img {
+    height: 90px;
+    width: 90px;
+  }
+
+  .two-column-form-table {
+    span {
+      font-size: 0.8em;
+    }
+  }
+
+  .two-column-form-table-ntf-table {
+    margin-bottom: 0;
+
+  }
+  .two-column-form-table-ntf-table > .table-cell {
+    padding: 10px;
+
+  }
+  form.m-form-1 {
+    max-width: none;
+    width: 100%;
+
+  }
+
+  .white-gedcom-link a.import-gedcom-link {
+    color: #fff;
+  }
+
+  .landing-padding-10 {
+    padding: 10px;
+  }
+
+  .form-and-items-background {
+    background: rgba(244, 244, 244, 0.85);
+    border-radius: $gui_standard_border_radius;
+    margin: 0 auto;
+    padding: 15px;
+    width: 90%;
+    .standard-checkbox label::before {
+      background-color: $white;
+    }
+    form.login-form {
+      margin: 0;
+      width: 100%;
+    }
+    position: relative;
+    margin-bottom: 3em;
+    .famicity-logo {
+      margin-top: 0;
+    }
+    .welcome-message {
+      font-size: 20px;
+    }
+  }
+}
+
+.land-page-info-detail {
+  color: $green;
+}
+
+@import "large/landing_large";

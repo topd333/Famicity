@@ -1,0 +1,18 @@
+.app-icons {
+  text-align: center;
+  a {
+    text-decoration: none;
+    display: inline-block;
+  }
+  .app-icon {
+    &:hover {
+      opacity: 0.5;
+    }
+    &.apple {
+      width: 12em;  // Apple Store icon is SVG, which doesn't enforce width on MSIE
+    }
+    height: 3.4em;
+    display: inline-block;
+    margin: 0 0.5em;
+  }
+}
